@@ -12,8 +12,20 @@ const rajdhani = Rajdhani({
 })
 
 export const metadata: Metadata = {
-  title: "Rallie - Your Truly Reliable Tennis Hitting Partner",
+  title: "rallie - Most Reliable Tennis Hitting Partner",
   description: "Join the waitlist for the most compact, durable, and powerful intelligent tennis ball machine ever.",
+  keywords: "tennis, ball machine, training, sports equipment, tennis practice",
+  openGraph: {
+    title: "Rallie Tennis Ball Machine",
+    description: "The most compact, durable, and intelligent tennis ball machine ever.",
+    images: ["/og-image.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rallie Tennis Ball Machine",
+    description: "The most compact, durable, and intelligent tennis ball machine ever.",
+    images: ["/twitter-image.jpg"],
+  },
 }
 
 export default function RootLayout({

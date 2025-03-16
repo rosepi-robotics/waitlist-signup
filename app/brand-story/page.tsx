@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, Calendar, User } from "lucide-react"
+import { Calendar, User } from "lucide-react"
 import { Navbar } from "../components/navbar"
 
 export default function BrandStory() {
@@ -14,14 +14,6 @@ export default function BrandStory() {
     >
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 pt-28 pb-12 sm:px-6 lg:px-8">
-        {/* Back button */}
-        <div className="mb-8">
-          <Link href="/" className="inline-flex items-center text-white hover:text-white/80 transition-colors">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
-        </div>
-
         {/* Article header */}
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-xl">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our Brand Story</h1>

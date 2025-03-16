@@ -1,12 +1,12 @@
 "use client"
 import Link from "next/link"
 import { XIcon } from "./icons/x-icon"
-import { InstagramIcon } from "./icons/instagram-icon"
 import { DiscordIcon } from "./icons/discord-icon"
 import { FacebookIcon } from "./icons/facebook-icon"
 import { SocialIcon } from "./social-icon"
 import { ToggleText } from "./toggle-text"
 import { Rajdhani } from "next/font/google"
+import { GraduationCap, Building2, TurtleIcon as Tennis, Quote } from "lucide-react"
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -56,15 +56,6 @@ const innerContainerStyle = {
   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
 }
 
-// Define the back container style (for stacked effect) - removed blur effects
-const backContainerStyle = {
-  background: "rgba(255, 255, 255, 0.08)",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
-  borderRadius: "16px",
-  overflow: "hidden",
-  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
-}
-
 // Define the noise texture overlay
 const noiseOverlayStyle = {
   content: '""',
@@ -79,18 +70,18 @@ const noiseOverlayStyle = {
   pointerEvents: "none" as const,
 }
 
-// Mosaic effect for the logo
-const mosaicOverlayStyle = {
+// Testimonial quote style
+const testimonialStyle = {
+  background: "rgba(255, 255, 255, 0.1)",
+  backdropFilter: "blur(4px)",
+  WebkitBackdropFilter: "blur(4px)",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  borderRadius: "12px",
+  padding: "12px",
+  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
   position: "absolute" as const,
-  bottom: "40%",
-  left: "30%",
-  width: "80px",
-  height: "30px",
-  background: "rgba(255, 255, 255, 0.2)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
-  borderRadius: "4px",
-  zIndex: 2,
+  zIndex: 10,
+  maxWidth: "180px",
 }
 
 export function WaitlistSignup() {
@@ -115,31 +106,18 @@ export function WaitlistSignup() {
             </div>
 
             {/* Outer glass container - moved down with significantly more margin */}
-            <div className="w-full max-w-6xl mx-auto mt-40 relative">
+            <div className="w-full max-w-6xl mx-auto mt-28 relative">
               <div className="rounded-3xl p-8 md:p-10" style={glassContainerStyle}>
                 {/* Noise texture overlay */}
                 <div style={noiseOverlayStyle}></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-6">
-                  {/* Left column - Stacked images - moved further left with pl-0 and pr-8 */}
-                  <div className="flex items-center justify-start pl-0 pr-8 relative">
-                    {/* Back image - Tennis ball machine - smaller size */}
-                    <div
-                      className="absolute w-[60%] md:w-[55%] aspect-square -right-3 -top-3 z-0"
-                      style={backContainerStyle}
-                    >
-                      {/* Tennis ball machine image */}
-                      <img
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10791742095813_.pic.jpg-KV9f69OinQZ4fHvdkbZBe2jSLQLyoE.jpeg"
-                        alt="Tennis ball machine"
-                        className="w-full h-full object-cover object-center"
-                      />
-                    </div>
-
-                    {/* Front image - Person loading machine - smaller size */}
-                    <div className="relative w-[60%] md:w-[55%] aspect-[3/4] z-10" style={innerContainerStyle}>
+                  {/* Left column - Centered image with floating quotes */}
+                  <div className="flex items-center justify-center relative h-[350px] pt-10">
+                    {/* Person loading machine image - centered and smaller */}
+                    <div className="relative w-[45%] md:w-[50%] aspect-[3/4] z-1 mt-6" style={innerContainerStyle}>
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-2"></div>
 
                       {/* Person loading machine image */}
                       <img
@@ -147,9 +125,29 @@ export function WaitlistSignup() {
                         alt="Person loading a tennis ball machine"
                         className="w-full h-full object-cover object-center"
                       />
+                    </div>
 
-                      {/* Mosaic effect over the logo */}
-                      <div style={mosaicOverlayStyle}></div>
+                    {/* Testimonial quotes - smaller quote icon and larger text */}
+                    <div style={{ ...testimonialStyle, top: "0px", left: "0px" }} className="animate-float-slow">
+                      <Quote className="h-3 w-3 text-white/60 mb-1" />
+                      <p className="text-sm text-white/90 font-medium">This is f**king heavy to load into my car</p>
+                    </div>
+
+                    <div style={{ ...testimonialStyle, bottom: "30px", left: "0px" }} className="animate-float-medium">
+                      <Quote className="h-3 w-3 text-white/60 mb-1" />
+                      <p className="text-sm text-white/90 font-medium">
+                        Why does this thing break down every other month?
+                      </p>
+                    </div>
+
+                    <div style={{ ...testimonialStyle, top: "20px", right: "0px" }} className="animate-float-fast">
+                      <Quote className="h-3 w-3 text-white/60 mb-1" />
+                      <p className="text-sm text-white/90 font-medium">I spent $1,200 on this and it's so basic</p>
+                    </div>
+
+                    <div style={{ ...testimonialStyle, bottom: "50px", right: "0px" }} className="animate-float-medium">
+                      <Quote className="h-3 w-3 text-white/60 mb-1" />
+                      <p className="text-sm text-white/90 font-medium">The battery died after just 2 hours of use!</p>
                     </div>
                   </div>
 
@@ -165,26 +163,44 @@ export function WaitlistSignup() {
                           </span>
                         </h3>
                         {/* Added more space before "I'm a:" */}
-                        <p className="text-white/90 mb-3 mt-4">I'm a:</p>
-                        <ul className="list-disc pl-5 space-y-1 text-white/90">
-                          <li>UC Berkeley & UPenn-trained engineer and robotist</li>
-                          <li>Serial entrepreneur based in SF</li>
-                          <li>Tennis enthusiast</li>
+                        <p className="text-white/90 mb-3 mt-8">I'm a:</p>
+                        <ul className="pl-5 space-y-3 text-white/90">
+                          <li className="flex items-center gap-2">
+                            <GraduationCap className="h-5 w-5 text-white/80 flex-shrink-0" />
+                            <span>UC Berkeley & UPenn-trained engineer and robotist</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Building2 className="h-5 w-5 text-white/80 flex-shrink-0" />
+                            <span>Serial entrepreneur based in San Francisco</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Tennis className="h-5 w-5 text-white/80 flex-shrink-0" />
+                            <span>Passionate tennis player</span>
+                          </li>
                         </ul>
                       </div>
 
-                      {/* Problem statement */}
-                      <div className="mb-2">
-                        <p className="font-medium">
-                          I've owned most ball machines on the market but found none of them satisfactory, so I decided
-                          to build my own.
+                      <br />
+
+                      {/* Problem statement - increased spacing with mt-12 */}
+                      <div className="mt-20 mb-2">
+                        <p className="font-normal">
+                          I've tried nearly all the tennis ball machines on the market but found none of them
+                          satisfactory, so I decided to build my own!{" "}
+                          <span className="tracking-wide font-medium">
+                            Read more about my story{" "}
+                            <Link href="/brand-story" className="underline hover:text-blue-300 transition-colors">
+                              here
+                            </Link>
+                            .
+                          </span>
                         </p>
                       </div>
 
                       {/* Solution highlight */}
                       <div className="mb-2">
-                        <p className="font-medium">
-                          I'm building the most <span style={highlightGradientStyle}>COMPACT</span>,{" "}
+                        <p className="font-normal">
+                          I aim to build the most <span style={highlightGradientStyle}>COMPACT</span>,{" "}
                           <span style={highlightGradientStyle}>DURABLE</span>, and{" "}
                           <span style={highlightGradientStyle}>INTELLIGENT</span> tennis ball machine ever.
                         </p>
@@ -192,7 +208,7 @@ export function WaitlistSignup() {
 
                       {/* Call to action */}
                       <div>
-                        <p className="font-medium">Join my journey shaping the future of tennis training.</p>
+                        <p className="font-normal">Join me in shaping the future of tennis training!!</p>
                       </div>
                     </div>
                   </div>
@@ -213,7 +229,7 @@ export function WaitlistSignup() {
                     href="/waitlist"
                     className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 transition-colors w-full sm:w-auto text-center"
                   >
-                    Sign up to follow progress
+                    Follow Our Progress
                   </Link>
                 </div>
               </div>
@@ -221,30 +237,24 @@ export function WaitlistSignup() {
           </div>
         </div>
       </div>
-      <div className="pt-8 flex justify-center space-x-6">
+      {/* Increased padding-top for the footer */}
+      <div className="pt-20 flex justify-center space-x-6">
         <SocialIcon
-          href="https://x.com"
+          href="https://x.com/sophie_taco"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X (formerly Twitter)"
           icon={<XIcon className="w-6 h-6" />}
         />
         <SocialIcon
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          icon={<InstagramIcon className="w-6 h-6" />}
-        />
-        <SocialIcon
-          href="https://discord.com"
+          href="https://discord.gg/ptaTkcbQ"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Discord"
           icon={<DiscordIcon className="w-6 h-6" />}
         />
         <SocialIcon
-          href="https://facebook.com"
+          href="https://www.facebook.com/groups/963981362613884"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"

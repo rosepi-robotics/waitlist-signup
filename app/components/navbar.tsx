@@ -75,15 +75,15 @@ export function Navbar() {
             <div className="bg-black/80 backdrop-blur-md rounded-full px-5 py-3 flex items-center">
               <Link
                 href="/brand-story"
-                className="text-white text-base hover:text-white/80 transition-all font-medium px-6 py-2"
+                className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
               >
                 Brand Story
               </Link>
               <Link
                 href="/connect"
-                className="text-white text-base hover:text-white/80 transition-all font-medium px-6 py-2"
+                className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
               >
-                Connect with us
+                Connect with Us
               </Link>
               <Link href="/survey">
                 <Button className="bg-white hover:bg-white/90 text-black rounded-full font-medium ml-4 px-6 py-1 h-9 text-sm">

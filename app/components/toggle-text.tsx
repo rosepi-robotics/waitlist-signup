@@ -7,7 +7,6 @@ const messages = [
   "Frustrated with $100+ per hour tennis lessons?",
   "Tired of hitting partner no-shows?",
   "Sick of bulky, outdated ball machines that break down often?",
-  "Why are these dumb machines costing me $1,200+??",
 ]
 
 // Define the gradient style for the text
