@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X } from "lucide-react"
 import { Rajdhani } from "next/font/google"
+import { Button } from "@/components/ui/button"
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -11,13 +12,40 @@ const rajdhani = Rajdhani({
   variable: "--font-rajdhani",
 })
 
+// Define the gradient style for the logo
+const logoGradientStyle = {
+  background: "linear-gradient(to right, #c64f34, #ffd700)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+  textFillColor: "transparent",
+  display: "inline-block",
+}
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [hasScrolled, setHasScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setHasScrolled(window.scrollY > 10)
+      const currentScrollY = window.scrollY
+
+      // Hide/show navbar based on scroll direction
+      if (currentScrollY > 100) {
+        // If scrolling down, hide the navbar
+        if (currentScrollY > lastScrollY.current) {
+          setVisible(false)
+        } else {
+          // If scrolling up, show the navbar
+          setVisible(true)
+        }
+      } else {
+        // Always show navbar at the top of the page
+        setVisible(true)
+      }
+
+      lastScrollY.current = currentScrollY
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -27,42 +55,84 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        hasScrolled ? "bg-black/30 backdrop-blur-md shadow-md" : "bg-transparent"
+        visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
-        <Link href="/" className={`${rajdhani.className} text-white font-bold text-2xl`}>
-          Rallie
-        </Link>
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex h-36 items-center justify-between">
+          <div className="flex items-center pl-4 md:pl-8 pt-6">
+            <Link
+              href="/"
+              className={`${rajdhani.className} font-bold text-5xl hover:opacity-90 transition-opacity`}
+              style={logoGradientStyle}
+            >
+              rallie
+            </Link>
+          </div>
 
-        {/* Desktop navigation */}
-        <div className="hidden md:flex space-x-8">
-          <Link href="/brand-story" className="text-white text-sm hover:text-white/80 transition-colors">
-            Brand Story
-          </Link>
+          {/* Desktop navigation - grouped in a rounded container */}
+          <div className="hidden md:flex items-center">
+            <div className="bg-black/80 backdrop-blur-md rounded-full px-5 py-3 flex items-center">
+              <Link
+                href="/brand-story"
+                className="text-white text-base hover:text-white/80 transition-all font-medium px-6 py-2"
+              >
+                Brand Story
+              </Link>
+              <Link
+                href="/connect"
+                className="text-white text-base hover:text-white/80 transition-all font-medium px-6 py-2"
+              >
+                Connect with us
+              </Link>
+              <Link href="/survey">
+                <Button className="bg-white hover:bg-white/90 text-black rounded-full font-medium ml-4 px-6 py-1 h-9 text-sm">
+                  Take Survey
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden text-white ml-4"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </div>
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-14 left-0 right-0 bg-black/60 backdrop-blur-sm p-4 shadow-md">
-          <div className="flex flex-col space-y-4">
-            <Link
-              href="/brand-story"
-              className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Brand Story
-            </Link>
+        <div className="md:hidden absolute top-36 left-0 right-0 bg-black/80 backdrop-blur-md p-4 shadow-md">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col space-y-4 py-2">
+              <Link
+                href="/brand-story"
+                className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Brand Story
+              </Link>
+              <Link
+                href="/connect"
+                className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Connect with us
+              </Link>
+              <div className="pt-2 border-t border-white/20">
+                <Link
+                  href="/survey"
+                  className="block text-center bg-white hover:bg-white/90 text-black rounded-full font-medium px-6 py-2 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Take Survey
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}

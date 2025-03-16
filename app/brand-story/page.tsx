@@ -9,7 +9,7 @@ export default function BrandStory() {
     <main
       className="min-h-screen"
       style={{
-        background: "radial-gradient(circle at center, #c64f34, #ffd700)",
+        background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
       }}
     >
       <Navbar />

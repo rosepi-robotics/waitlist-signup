@@ -12,9 +12,8 @@ const rajdhani = Rajdhani({
 })
 
 export const metadata: Metadata = {
-  title: "Rallie - Your Truly Reliable Tennis Hitting Pal",
-  description: "Join the waitlist for the most durable, powerful and affordable intelligent tennis ball machine ever.",
-    generator: 'v0.dev'
+  title: "Rallie - Your Truly Reliable Tennis Hitting Partner",
+  description: "Join the waitlist for the most compact, durable, and powerful intelligent tennis ball machine ever.",
 }
 
 export default function RootLayout({
@@ -33,6 +32,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'
