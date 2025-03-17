@@ -6,7 +6,7 @@ import { FacebookIcon } from "./icons/facebook-icon"
 import { SocialIcon } from "./social-icon"
 import { ToggleText } from "./toggle-text"
 import { Rajdhani } from "next/font/google"
-import { GraduationCap, Building2, TurtleIcon as Tennis, Quote } from "lucide-react"
+import { GraduationCap, Building2, TurtleIcon as Tennis } from "lucide-react"
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -70,20 +70,6 @@ const noiseOverlayStyle = {
   pointerEvents: "none" as const,
 }
 
-// Testimonial quote style
-const testimonialStyle = {
-  background: "rgba(255, 255, 255, 0.1)",
-  backdropFilter: "blur(4px)",
-  WebkitBackdropFilter: "blur(4px)",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
-  borderRadius: "12px",
-  padding: "12px",
-  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
-  position: "absolute" as const,
-  zIndex: 10,
-  maxWidth: "180px",
-}
-
 export function WaitlistSignup() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 flex flex-col justify-between min-h-screen">
@@ -112,12 +98,12 @@ export function WaitlistSignup() {
                 <div style={noiseOverlayStyle}></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-6">
-                  {/* Left column - Centered image with floating quotes */}
+                  {/* Left column - Centered image */}
                   <div className="flex items-center justify-center relative h-[350px] pt-10">
-                    {/* Person loading machine image - centered and smaller */}
-                    <div className="relative w-[45%] md:w-[50%] aspect-[3/4] z-1 mt-6" style={innerContainerStyle}>
+                    {/* Person loading machine image - centered */}
+                    <div className="relative w-[45%] md:w-[50%] aspect-[3/4] z-10 mt-6" style={innerContainerStyle}>
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-2"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-20"></div>
 
                       {/* Person loading machine image */}
                       <img
@@ -125,29 +111,6 @@ export function WaitlistSignup() {
                         alt="Person loading a tennis ball machine"
                         className="w-full h-full object-cover object-center"
                       />
-                    </div>
-
-                    {/* Testimonial quotes - smaller quote icon and larger text */}
-                    <div style={{ ...testimonialStyle, top: "0px", left: "0px" }} className="animate-float-slow">
-                      <Quote className="h-3 w-3 text-white/60 mb-1" />
-                      <p className="text-sm text-white/90 font-medium">This is f**king heavy to load into my car</p>
-                    </div>
-
-                    <div style={{ ...testimonialStyle, bottom: "30px", left: "0px" }} className="animate-float-medium">
-                      <Quote className="h-3 w-3 text-white/60 mb-1" />
-                      <p className="text-sm text-white/90 font-medium">
-                        Why does this thing break down every other month?
-                      </p>
-                    </div>
-
-                    <div style={{ ...testimonialStyle, top: "20px", right: "0px" }} className="animate-float-fast">
-                      <Quote className="h-3 w-3 text-white/60 mb-1" />
-                      <p className="text-sm text-white/90 font-medium">I spent $1,200 on this and it's so basic</p>
-                    </div>
-
-                    <div style={{ ...testimonialStyle, bottom: "50px", right: "0px" }} className="animate-float-medium">
-                      <Quote className="h-3 w-3 text-white/60 mb-1" />
-                      <p className="text-sm text-white/90 font-medium">The battery died after just 2 hours of use!</p>
                     </div>
                   </div>
 
@@ -223,7 +186,7 @@ export function WaitlistSignup() {
                     href="/survey"
                     className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl bg-[#042d62] text-white hover:bg-[#031f45] transition-colors w-full sm:w-auto text-center"
                   >
-                    Take a Survey
+                    Take a Survey and Win $100
                   </Link>
                   <Link
                     href="/waitlist"

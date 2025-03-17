@@ -87,7 +87,7 @@ export function Navbar() {
               </Link>
               <Link href="/survey">
                 <Button className="bg-white hover:bg-white/90 text-black rounded-full font-medium ml-4 px-6 py-1 h-9 text-sm">
-                  Take Survey
+                  Take Survey and Win $100
                 </Button>
               </Link>
             </div>
@@ -129,7 +129,7 @@ export function Navbar() {
                   className="block text-center bg-white hover:bg-white/90 text-black rounded-full font-medium px-6 py-2 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Take Survey
+                  Take Survey and Win $100
                 </Link>
               </div>
             </div>
