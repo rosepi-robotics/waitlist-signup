@@ -189,7 +189,7 @@ export function WaitlistSignup() {
                     Take a Survey and Win $100
                   </Link>
                   <Link
-                    href="/waitlist"
+                    href="/progress"
                     className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 transition-colors w-full sm:w-auto text-center"
                   >
                     Follow Our Progress

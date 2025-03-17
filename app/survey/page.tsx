@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Navbar } from "../components/navbar"
 import { Button } from "@/components/ui/button"
@@ -43,6 +43,11 @@ export default function Survey() {
   const [errors, setErrors] = useState<{
     [key: string]: string
   }>({})
+
+  useEffect(() => {
+    // Scroll to top when the page loads
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target

@@ -1,10 +1,16 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import { Calendar, User } from "lucide-react"
 import { Navbar } from "../components/navbar"
 
 export default function BrandStory() {
+  useEffect(() => {
+    // Scroll to top when the page loads
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <main
       className="min-h-screen"

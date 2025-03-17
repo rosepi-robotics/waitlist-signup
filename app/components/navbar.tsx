@@ -80,10 +80,10 @@ export function Navbar() {
                 Brand Story
               </Link>
               <Link
-                href="/connect"
+                href="/progress"
                 className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
               >
-                Connect with Us
+                Follow Our Progress
               </Link>
               <Link href="/survey">
                 <Button className="bg-white hover:bg-white/90 text-black rounded-full font-medium ml-4 px-6 py-1 h-9 text-sm">
@@ -117,11 +117,11 @@ export function Navbar() {
                 Brand Story
               </Link>
               <Link
-                href="/connect"
+                href="/progress"
                 className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Connect with us
+                Follow Our Progress
               </Link>
               <div className="pt-2 border-t border-white/20">
                 <Link
