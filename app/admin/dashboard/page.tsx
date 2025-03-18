@@ -5,6 +5,7 @@ import { Navbar } from "@/app/components/navbar"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
+import { runDrawing } from "@/app/actions/admin"
 
 interface SurveyStats {
   participantCount: number
@@ -48,7 +49,7 @@ export default function AdminDashboard() {
     fetchStats()
   }, [toast])
 
-  const runDrawing = async () => {
+  const handleRunDrawing = async () => {
     if (
       !confirm("Are you sure you want to run the monthly drawing? This will select a winner from all participants.")
     ) {
@@ -58,24 +59,17 @@ export default function AdminDashboard() {
     setIsRunningDrawing(true)
 
     try {
-      const response = await fetch("/api/drawing", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_API_KEY || "test-key"}`,
-        },
-      })
+      const result = await runDrawing()
 
-      if (response.ok) {
-        const data = await response.json()
+      if (result.success) {
         toast({
           title: "Drawing Complete",
-          description: `Winner: ${data.winner}. Notification email sent.`,
+          description: `Winner: ${result.winner}. Notification email sent.`,
         })
       } else {
-        const error = await response.json()
         toast({
           title: "Error",
-          description: error.error || "Failed to run drawing",
+          description: result.error || "Failed to run drawing",
           variant: "destructive",
         })
       }
@@ -143,7 +137,7 @@ export default function AdminDashboard() {
                 <div className="bg-white/10 rounded-xl p-6 text-center">
                   <h2 className="text-lg font-medium mb-2">Monthly Drawing</h2>
                   <Button
-                    onClick={runDrawing}
+                    onClick={handleRunDrawing}
                     disabled={isRunningDrawing || (stats?.participantCount || 0) === 0}
                     className="bg-white text-black hover:bg-white/90 mt-2"
                   >
