@@ -27,17 +27,22 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     // Store email in Upstash Redis
     await redis.sadd("waitlist_emails", email.toString())
 
-    // Send welcome email using Resend
-    const { data, error } = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
-      to: email.toString(),
-      subject: "Welcome to Our Waitlist!",
-      html: EmailTemplate({ email: email.toString() }),
-    })
+    // Send welcome email using Resend with your verified subdomain
+    try {
+      const { data, error } = await resend.emails.send({
+        from: "Rallie Tennis <hello@updates.rallie.tennis>", // Using your verified subdomain
+        to: email.toString(),
+        subject: "Welcome to the Rallie Tennis Waitlist!",
+        html: EmailTemplate({ email: email.toString() }),
+      })
 
-    if (error) {
-      console.error("Error sending email:", error)
-      return { success: false, message: "Failed to join waitlist. Please try again." }
+      if (error) {
+        console.error("Error sending email:", error)
+        // Continue execution even if email sending fails
+      }
+    } catch (emailError) {
+      console.error("Failed to send email:", emailError)
+      // Continue execution even if email sending fails
     }
 
     const count = await getWaitlistCount()

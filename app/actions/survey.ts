@@ -133,30 +133,80 @@ export async function submitSurvey(formData: FormData) {
       // Send confirmation email
       const resend = new Resend(process.env.RESEND_API_KEY)
       await resend.emails.send({
-        from: "Rallie Tennis <hello@rallie.com>",
+        from: "Rallie Tennis <hello@updates.rallie.tennis>",
         to: surveyData.email,
         subject: "Thanks for completing our survey!",
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h1>Thank you for your feedback!</h1>
-            <p>You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card.</p>
-            <p>Winners are selected on the 1st of each month and notified via email.</p>
-            <p>We appreciate your input as we develop our revolutionary tennis ball machine.</p>
-            <p>Best regards,<br>The Rallie Team</p>
-          </div>
-        `,
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <title>Thanks for Completing Our Survey!</title>
+          </head>
+          <body style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; padding: 20px; background-color: #f5f5f5; margin: 0;">
+            <div style="max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; padding: 30px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+              <div style="text-align: center; margin-bottom: 20px;">
+                <h1 style="color: #042d62; font-size: 28px; margin-bottom: 10px;">Thank You for Your Feedback!</h1>
+                <div style="height: 4px; width: 60px; background: linear-gradient(90deg, #c64f34, #ffd700); margin: 0 auto;"></div>
+              </div>
+              
+              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
+                We really appreciate you taking the time to complete our survey. Your feedback is invaluable as we develop our revolutionary tennis ball machine.
+              </p>
+              
+              <div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
+                <p style="color: #0c4a6e; font-size: 16px; margin: 0;">
+                  <strong>Congratulations!</strong> You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card. Winners are selected on the 1st of each month and notified via email.
+                </p>
+              </div>
+              
+              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
+                We've also added you to our waitlist to keep you updated on our progress. Here's what you can expect:
+              </p>
+              
+              <ul style="color: #374151; font-size: 16px; margin-bottom: 24px; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Regular updates on our development progress</li>
+                <li style="margin-bottom: 8px;">Early access to product information</li>
+                <li style="margin-bottom: 8px;">Exclusive pre-order opportunities</li>
+                <li style="margin-bottom: 8px;">Special pricing for our waitlist members</li>
+              </ul>
+              
+              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
+                <strong>Don't worry about spam</strong> - we'll only email you about once per month with important updates. If you'd like more frequent news about our progress, please follow us on social media.
+              </p>
+              
+              <div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
+                <p style="color: #0c4a6e; font-size: 16px; margin: 0;">
+                  Follow our journey on <a href="https://x.com/sophie_taco" style="color: #0ea5e9; text-decoration: underline;">X</a>, <a href="https://discord.gg/ptaTkcbQ" style="color: #0ea5e9; text-decoration: underline;">Discord</a>, and <a href="https://www.facebook.com/groups/963981362613884" style="color: #0ea5e9; text-decoration: underline;">Facebook</a>.
+                </p>
+              </div>
+              
+              <p style="color: #374151; font-size: 16px; margin-bottom: 8px;">Best regards,</p>
+              <p style="color: #111827; font-size: 16px; font-weight: 500;">Sophie Luo<br>Creator of Rallie Tennis</p>
+            </div>
+            
+            <div style="max-width: 600px; margin: 20px auto 0; text-align: center; color: #6b7280; font-size: 14px;">
+              <p style="margin-bottom: 10px;">© 2025 Rallie Tennis. All rights reserved.</p>
+              <p>
+                If you didn't complete this survey, you can safely ignore this email.
+              </p>
+            </div>
+          </body>
+        </html>
+      `,
       })
 
       return {
         success: true,
-        message: "Survey submitted successfully! You've been entered into our drawing.",
+        message: "Survey submitted successfully! You've been entered into our drawing and added to our waitlist.",
         hasEmail: true,
       }
     } else {
       // Return success but indicate no email was provided
       return {
         success: true,
-        message: "Survey submitted successfully! However, without an email, you won't be entered into our drawing.",
+        message:
+          "Survey submitted successfully! However, without an email, you won't be entered into our drawing or added to our waitlist.",
         hasEmail: false,
       }
     }

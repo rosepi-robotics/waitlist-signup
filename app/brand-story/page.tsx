@@ -6,6 +6,7 @@ import { Calendar, User, ArrowRight } from "lucide-react"
 import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
 import { Rajdhani } from "next/font/google"
+import { WaitlistForm } from "../components/waitlist-form"
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -332,6 +333,15 @@ export default function BrandStory() {
                       – I'll personally respond to every email!
                     </span>
                   </li>
+                  <li className="flex items-start">
+                    <span className="text-white mr-2 font-bold">📝</span>
+                    <span>
+                      Join our waitlist to get updates on our progress:
+                      <div className="mt-3">
+                        <WaitlistForm onSuccess={() => {}} />
+                      </div>
+                    </span>
+                  </li>
                 </ul>
               </div>
 
@@ -370,7 +380,7 @@ export default function BrandStory() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8">
               <Link
                 href="/survey"
                 className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-black bg-white hover:bg-white/90 transition-colors"

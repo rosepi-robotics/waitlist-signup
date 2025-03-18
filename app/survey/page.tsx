@@ -764,8 +764,8 @@ export default function Survey() {
                   ) : (
                     <p className="text-xs text-white/70 mt-1">
                       We need your email to enter you in the gift card drawing and send product updates. If you don't
-                      provide an email, you won't be eligible for the drawing. We'll never share your email with third
-                      parties or spam you.
+                      provide an email, you won't be eligible for the drawing. By providing your email, you'll be
+                      automatically added to our waitlist. We'll never share your email with third parties or spam you.
                     </p>
                   )}
                 </div>
@@ -804,15 +804,15 @@ export default function Survey() {
               <p className="text-lg max-w-2xl mx-auto">
                 Your feedback is invaluable to us as we develop our tennis ball machine.
                 {formData.email
-                  ? " You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card!"
-                  : " Unfortunately, without an email address, we couldn't enter you into our gift card drawing."}
+                  ? " You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card and added to our waitlist!"
+                  : " Unfortunately, without an email address, we couldn't enter you into our gift card drawing or add you to our waitlist."}
               </p>
 
               <div className="bg-white/10 rounded-xl p-6 border border-white/20 max-w-md mx-auto mt-8">
                 <p className="text-sm">
                   {formData.email
                     ? "Winners are selected on the 1st of each month and notified via email. Good luck!"
-                    : "If you'd like to enter the drawing, please take the survey again and include your email address."}
+                    : "If you'd like to enter the drawing and join our waitlist, please take the survey again and include your email address."}
                 </p>
               </div>
 
