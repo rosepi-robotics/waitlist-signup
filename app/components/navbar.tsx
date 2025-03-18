@@ -77,7 +77,7 @@ export function Navbar() {
                 href="/brand-story"
                 className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
               >
-                Brand Story
+                The Rallie Story
               </Link>
               <Link
                 href="/progress"
@@ -114,7 +114,7 @@ export function Navbar() {
                 className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Brand Story
+                The Rallie Story
               </Link>
               <Link
                 href="/progress"

@@ -3,6 +3,7 @@
 import { WaitlistSignup } from "./components/waitlist-signup"
 import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "./components/navbar"
+import { Footer } from "./components/footer"
 
 const backgroundStyle = `
   .tennis-ball {
@@ -36,6 +37,7 @@ const backgroundStyle = `
   .content {
     position: relative;
     z-index: 2;
+    padding-top: 6rem;
   }
 `
 
@@ -55,6 +57,7 @@ export default function Home() {
       <div className="content container mx-auto px-6 lg:px-8">
         <WaitlistSignup />
       </div>
+      <Footer />
       <Toaster
         toastOptions={{
           style: {

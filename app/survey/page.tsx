@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Navbar } from "../components/navbar"
+import { Footer } from "../components/footer"
 import { Button } from "@/components/ui/button"
 import { Gift, Calendar, Award, ArrowRight, Loader2, Clock } from "lucide-react"
 import { submitSurvey } from "../actions/survey"
@@ -218,13 +219,13 @@ export default function Survey() {
 
   return (
     <main
-      className="min-h-screen"
+      className="min-h-screen overflow-hidden"
       style={{
         background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
       }}
     >
       <Navbar />
-      <div className="max-w-5xl mx-auto px-4 pt-28 pb-12 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8">
         {/* Survey container - increased max-width from 4xl to 5xl */}
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">
@@ -436,7 +437,6 @@ export default function Survey() {
             </div>
           )}
 
-          {/* Updated step 2 with conditional questions for both user types */}
           {currentStep === 2 && (
             <div className="space-y-8">
               <p className="text-lg text-center mb-6">Tell us about your tennis practice and ball machine experience</p>
@@ -843,6 +843,7 @@ export default function Survey() {
           )}
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

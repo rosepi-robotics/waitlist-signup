@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Mail, MessageCircle, Gift } from "lucide-react"
 import { Navbar } from "../components/navbar"
+import { Footer } from "../components/footer"
 import { XIcon } from "../components/icons/x-icon"
 import { InstagramIcon } from "../components/icons/instagram-icon"
 import { DiscordIcon } from "../components/icons/discord-icon"
@@ -23,13 +24,13 @@ export default function Progress() {
 
   return (
     <main
-      className="min-h-screen"
+      className="min-h-screen overflow-hidden"
       style={{
         background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
       }}
     >
       <Navbar />
-      <div className="max-w-3xl mx-auto px-4 pt-28 pb-12 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8">
         {/* Connect content */}
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-xl">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6">Follow Our Progress</h1>
@@ -62,7 +63,7 @@ export default function Progress() {
               <h2 className="text-2xl font-semibold text-white mb-4">Follow Us</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <a
-                  href="https://x.com"
+                  href="https://x.com/sophie_taco"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
@@ -80,7 +81,7 @@ export default function Progress() {
                   <span>Instagram</span>
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/groups/963981362613884"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
@@ -89,7 +90,7 @@ export default function Progress() {
                   <span>Facebook</span>
                 </a>
                 <a
-                  href="https://discord.com"
+                  href="https://discord.gg/ptaTkcbQ"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
@@ -155,6 +156,7 @@ export default function Progress() {
           </p>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

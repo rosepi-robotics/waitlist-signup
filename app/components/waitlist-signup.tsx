@@ -1,9 +1,5 @@
 "use client"
 import Link from "next/link"
-import { XIcon } from "./icons/x-icon"
-import { DiscordIcon } from "./icons/discord-icon"
-import { FacebookIcon } from "./icons/facebook-icon"
-import { SocialIcon } from "./social-icon"
 import { ToggleText } from "./toggle-text"
 import { Rajdhani } from "next/font/google"
 import { GraduationCap, Building2, TurtleIcon as Tennis } from "lucide-react"
@@ -74,7 +70,7 @@ export function WaitlistSignup() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 flex flex-col justify-between min-h-screen">
       {/* Added more padding to the top to move everything down */}
-      <div className="pt-44 flex-1 flex flex-col justify-start items-start text-left">
+      <div className="pt-36 flex-1 flex flex-col justify-start items-start text-left">
         <div className="space-y-6 w-full">
           <div className="w-full max-w-5xl mx-0 -ml-4">
             <h2 className="text-6xl sm:text-7xl md:text-8xl font-light text-white leading-tight text-left">
@@ -199,30 +195,6 @@ export function WaitlistSignup() {
             </div>
           </div>
         </div>
-      </div>
-      {/* Increased padding-top for the footer */}
-      <div className="pt-20 flex justify-center space-x-6">
-        <SocialIcon
-          href="https://x.com/sophie_taco"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="X (formerly Twitter)"
-          icon={<XIcon className="w-6 h-6" />}
-        />
-        <SocialIcon
-          href="https://discord.gg/ptaTkcbQ"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Discord"
-          icon={<DiscordIcon className="w-6 h-6" />}
-        />
-        <SocialIcon
-          href="https://www.facebook.com/groups/963981362613884"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          icon={<FacebookIcon className="w-6 h-6" />}
-        />
       </div>
     </div>
   )
