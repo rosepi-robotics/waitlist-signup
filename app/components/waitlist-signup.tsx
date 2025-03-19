@@ -70,16 +70,16 @@ export function WaitlistSignup() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 flex flex-col justify-between min-h-screen">
       {/* Added more padding to the top to move everything down */}
-      <div className="pt-36 flex-1 flex flex-col justify-start items-start text-left">
+      <div className="pt-20 flex-1 flex flex-col justify-start items-start text-left">
         <div className="space-y-6 w-full">
-          <div className="w-full max-w-5xl mx-0 -ml-4">
-            <h2 className="text-6xl sm:text-7xl md:text-8xl font-light text-white leading-tight text-left">
+          <div className="w-full max-w-5xl mx-auto px-4 sm:px-0 sm:-ml-4">
+            <h2 className="text-6xl sm:text-7xl md:text-8xl font-light text-white leading-tight text-center sm:text-left">
               Your Most Reliable <br /> Tennis Training Partner
             </h2>
           </div>
 
           <div className="w-full space-y-8 pt-6">
-            <div className="-ml-2 w-full">
+            <div className="w-full px-4 sm:px-0 sm:-ml-2">
               <ToggleText />
             </div>
 
@@ -88,7 +88,7 @@ export function WaitlistSignup() {
             </div>
 
             {/* Outer glass container - moved down with significantly more margin */}
-            <div className="w-full max-w-6xl mx-auto mt-28 relative">
+            <div className="w-full max-w-6xl mx-auto mt-30 relative">
               <div className="rounded-3xl p-8 md:p-10" style={glassContainerStyle}>
                 {/* Noise texture overlay */}
                 <div style={noiseOverlayStyle}></div>
@@ -163,6 +163,35 @@ export function WaitlistSignup() {
                           <span style={highlightGradientStyle}>DURABLE</span>, and{" "}
                           <span style={highlightGradientStyle}>INTELLIGENT</span> tennis ball machine ever.
                         </p>
+                        <div className="mt-4">
+                          <p className="font-medium mb-2">My current design is:</p>
+                          <ul className="pl-5 space-y-2 text-white/90">
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-400 font-bold">•</span>
+                              <span>80 MPH top speed</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-400 font-bold">•</span>
+                              <span>
+                                Topspin, backspin, and even <span style={highlightGradientStyle}>sidespin</span>
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-400 font-bold">•</span>
+                              <span>Internal oscillation</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-400 font-bold">•</span>
+                              <span>30% smaller and 30% lighter than current models</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-400 font-bold">•</span>
+                              <span>
+                                Lots of AI functions to make your training really personalized (and interactive :D)
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
 
                       {/* Call to action */}

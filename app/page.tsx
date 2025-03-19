@@ -4,6 +4,7 @@ import { WaitlistSignup } from "./components/waitlist-signup"
 import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
+import { SurveyBanner } from "./components/survey-banner"
 
 const backgroundStyle = `
   .tennis-ball {
@@ -20,6 +21,32 @@ const backgroundStyle = `
     pointer-events: none;
     z-index: 0;
     animation: float 6s ease-in-out infinite;
+  }
+
+  .green-blob {
+    position: fixed;
+    bottom: 15%;
+    left: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, rgba(74, 222, 128, 0) 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .green-blob-2 {
+    position: fixed;
+    top: 30%;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, rgba(74, 222, 128, 0) 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
   }
 
   @keyframes float {
@@ -46,7 +73,7 @@ export default function Home() {
     <main
       className="min-h-screen overflow-hidden"
       style={{
-        background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
+        background: "linear-gradient(165deg, #042d62 55%, #4ade80 100%)",
       }}
     >
       <style jsx global>
@@ -54,6 +81,8 @@ export default function Home() {
       </style>
       <Navbar />
       <div className="tennis-ball"></div>
+      <div className="green-blob"></div>
+      <div className="green-blob-2"></div>
       <div className="content container mx-auto px-6 lg:px-8">
         <WaitlistSignup />
       </div>
@@ -69,6 +98,7 @@ export default function Home() {
           duration: 5000,
         }}
       />
+      <SurveyBanner />
     </main>
   )
 }

@@ -3,8 +3,9 @@
 import { z } from "zod"
 import { Resend } from "resend"
 import { redis } from "../lib/redis"
+import { headers } from "next/headers"
 
-// Update the schema to make email optional and add additionalFeedback field
+// Update the schema to include platform field
 const surveySchema = z
   .object({
     playFrequency: z.string().min(1, "Please select how often you play"),
@@ -34,6 +35,9 @@ const surveySchema = z
 
     // Make email optional
     email: z.string().email("Please enter a valid email address").optional(),
+
+    // Hidden field for platform
+    platform: z.string().optional(),
   })
   .refine(
     (data) => {
@@ -61,9 +65,15 @@ const surveySchema = z
 
 export type SurveyData = z.infer<typeof surveySchema>
 
-// Update the submitSurvey function to handle truly optional email
+// Update the submitSurvey function to handle platform detection
 export async function submitSurvey(formData: FormData) {
   try {
+    // Detect platform based on user agent
+    const headersList = headers()
+    const userAgent = headersList.get("user-agent") || ""
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+    const platform = isMobile ? "mobile" : "web"
+
     // Extract data from form
     const surveyData = {
       playFrequency: formData.get("playFrequency") as string,
@@ -93,6 +103,9 @@ export async function submitSurvey(formData: FormData) {
 
       // Make email truly optional
       email: (formData.get("email") as string) || "",
+
+      // Add platform information
+      platform: platform,
     }
 
     // Validate the data
@@ -116,6 +129,7 @@ export async function submitSurvey(formData: FormData) {
       ),
       desiredFeatures: JSON.stringify(surveyData.desiredFeatures),
       submittedAt: new Date().toISOString(),
+      platform: platform, // Add platform information
     }
 
     // Store survey data in Redis - always do this regardless of email

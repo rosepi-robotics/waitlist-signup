@@ -32,7 +32,7 @@ export function ToggleText() {
 
   return (
     <div className="py-4 w-full">
-      <div className="h-16 flex items-center justify-start overflow-hidden">
+      <div className="h-20 sm:h-16 flex items-center justify-center sm:justify-start overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.p
             key={currentIndex}
@@ -40,7 +40,7 @@ export function ToggleText() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl font-medium text-left"
+            className="text-3xl sm:text-2xl md:text-3xl font-medium text-center sm:text-left"
             style={textGradientStyle}
           >
             {messages[currentIndex]}
