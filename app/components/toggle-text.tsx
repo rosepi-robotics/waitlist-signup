@@ -32,8 +32,8 @@ export function ToggleText() {
 
   return (
     <div className="py-4 w-full">
-      {/* Increased height for mobile and made container full width */}
-      <div className="h-24 sm:h-20 flex items-center justify-center sm:justify-start overflow-hidden w-full">
+      {/* Increased height significantly for mobile to accommodate 4 lines */}
+      <div className="h-36 sm:h-20 flex items-center justify-center sm:justify-start overflow-hidden w-full">
         <AnimatePresence mode="wait">
           <motion.p
             key={currentIndex}
@@ -41,7 +41,7 @@ export function ToggleText() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-2xl md:text-3xl font-medium text-center sm:text-left w-full px-2 sm:px-0"
+            className="text-2xl sm:text-2xl md:text-3xl font-medium text-center sm:text-left w-full px-4 sm:px-0 leading-tight"
             style={textGradientStyle}
           >
             {messages[currentIndex]}

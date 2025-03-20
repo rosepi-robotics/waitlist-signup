@@ -78,27 +78,28 @@ export function WaitlistSignup() {
             </h2>
           </div>
 
-          <div className="w-full space-y-8 pt-6">
+          <div className="w-full space-y-4 sm:space-y-8 pt-2 sm:pt-6">
             {/* Increased width for toggle text container on mobile */}
             <div className="w-full px-2 sm:px-0 sm:-ml-2">
               <ToggleText />
             </div>
 
-            <div className="-ml-2 w-full">
-              <br />
-            </div>
+            {/* Removed the <br> to reduce space */}
 
-            {/* Outer glass container - moved down with significantly more margin */}
-            <div className="w-full max-w-6xl mx-auto mt-30 relative">
-              <div className="rounded-3xl p-8 md:p-10" style={glassContainerStyle}>
+            {/* Outer glass container - reduced margin on mobile */}
+            <div className="w-full max-w-6xl mx-auto mt-4 sm:mt-30 relative">
+              <div className="rounded-3xl p-6 sm:p-8 md:p-10" style={glassContainerStyle}>
                 {/* Noise texture overlay */}
                 <div style={noiseOverlayStyle}></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-6">
-                  {/* Left column - Centered image */}
-                  <div className="flex items-center justify-center relative h-[350px] pt-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 pt-2 sm:pt-6">
+                  {/* Left column - Centered image - reduced padding */}
+                  <div className="flex items-center justify-center relative h-[300px] sm:h-[350px] pt-2 sm:pt-10">
                     {/* Person loading machine image - centered */}
-                    <div className="relative w-[45%] md:w-[50%] aspect-[3/4] z-10 mt-6" style={innerContainerStyle}>
+                    <div
+                      className="relative w-[45%] md:w-[50%] aspect-[3/4] z-10 mt-0 sm:mt-6"
+                      style={innerContainerStyle}
+                    >
                       {/* Overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-20"></div>
 
@@ -174,7 +175,7 @@ export function WaitlistSignup() {
                             <li className="flex items-start gap-2">
                               <span className="text-green-400 font-bold">•</span>
                               <span>
-                                Topspin, backspin, and even <span style={highlightGradientStyle}>sidespin</span>
+                                Topspin, backspin, volley, and even <span style={highlightGradientStyle}>sidespin</span>
                               </span>
                             </li>
                             <li className="flex items-start gap-2">
@@ -204,7 +205,7 @@ export function WaitlistSignup() {
                 </div>
 
                 {/* Space between content and buttons */}
-                <div className="mt-12"></div>
+                <div className="mt-8 sm:mt-12"></div>
 
                 {/* Buttons below both columns with even more separation */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 relative z-10 justify-center">
