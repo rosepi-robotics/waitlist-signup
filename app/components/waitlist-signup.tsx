@@ -69,8 +69,8 @@ const noiseOverlayStyle = {
 export function WaitlistSignup() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 flex flex-col justify-between min-h-screen">
-      {/* Added more padding to the top to move everything down */}
-      <div className="pt-20 flex-1 flex flex-col justify-start items-start text-left">
+      {/* Reduced padding on mobile to move everything up */}
+      <div className="pt-10 sm:pt-20 flex-1 flex flex-col justify-start items-start text-left">
         <div className="space-y-6 w-full">
           <div className="w-full max-w-5xl mx-auto px-4 sm:px-0 sm:-ml-4">
             <h2 className="text-6xl sm:text-7xl md:text-8xl font-light text-white leading-tight text-center sm:text-left">
@@ -79,7 +79,8 @@ export function WaitlistSignup() {
           </div>
 
           <div className="w-full space-y-8 pt-6">
-            <div className="w-full px-4 sm:px-0 sm:-ml-2">
+            {/* Increased width for toggle text container on mobile */}
+            <div className="w-full px-2 sm:px-0 sm:-ml-2">
               <ToggleText />
             </div>
 

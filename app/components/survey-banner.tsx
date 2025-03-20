@@ -15,7 +15,7 @@ export function SurveyBanner() {
         <div className="flex items-center">
           <span className="hidden sm:inline mr-2 text-xl">🎾</span>
           <p className="text-base sm:text-lg font-medium">
-            Help me shape the future of tennis training! Take our survey and win $100.
+            Help shape the future of tennis training! Take survey and win $100.
           </p>
         </div>
         <div className="flex items-center">
