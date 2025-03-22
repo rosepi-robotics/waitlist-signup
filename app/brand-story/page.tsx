@@ -153,7 +153,7 @@ export default function BrandStory() {
               <li className="flex items-start">
                 <span className="text-red-400 mr-2 font-bold">❌</span>
                 <span>
-                  It was way too heavy—at 5'4", 120 lbs, loading and unloading it into my car was a workout in itself
+                  It was way too heavy and too bulky, loading and unloading into my car and pulling it to the tennis court (1/2 mile walk) was a workout in itself
                 </span>
               </li>
               <li className="flex items-start">

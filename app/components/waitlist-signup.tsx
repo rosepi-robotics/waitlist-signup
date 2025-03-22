@@ -66,6 +66,14 @@ const noiseOverlayStyle = {
   pointerEvents: "none" as const,
 }
 
+// Define the polaroid-style frame
+const polaroidStyle = {
+  background: "rgba(255, 255, 255, 0.9)",
+  padding: "10px 10px 30px 10px",
+  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.2)",
+  border: "1px solid rgba(255, 255, 255, 0.8)",
+}
+
 export function WaitlistSignup() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 flex flex-col justify-between min-h-screen">
@@ -84,31 +92,78 @@ export function WaitlistSignup() {
               <ToggleText />
             </div>
 
-            {/* Removed the <br> to reduce space */}
-
             {/* Outer glass container - reduced margin on mobile */}
-            <div className="w-full max-w-6xl mx-auto mt-4 sm:mt-30 relative">
+            <div className="w-full max-w-6xl mx-auto mt-8 sm:mt-30 relative">
               <div className="rounded-3xl p-6 sm:p-8 md:p-10" style={glassContainerStyle}>
                 {/* Noise texture overlay */}
                 <div style={noiseOverlayStyle}></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 pt-2 sm:pt-6">
-                  {/* Left column - Centered image - reduced padding */}
-                  <div className="flex items-center justify-center relative h-[300px] sm:h-[350px] pt-2 sm:pt-10">
-                    {/* Person loading machine image - centered */}
-                    <div
-                      className="relative w-[45%] md:w-[50%] aspect-[3/4] z-10 mt-0 sm:mt-6"
-                      style={innerContainerStyle}
-                    >
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent z-20"></div>
+                  {/* Left column - Dynamic collage */}
+                  <div className="flex items-center justify-center relative h-[450px] sm:h-[500px] pt-10 sm:pt-16">
+                    <div className="relative w-full h-full mt-6 sm:mt-10">
+                      {/* Tennis player image - top left, rotated slightly */}
+                      <div
+                        className="absolute top-0 left-0 w-[55%] h-[45%] z-20 rounded-lg overflow-hidden shadow-xl transform -rotate-3"
+                        style={innerContainerStyle}
+                      >
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-22%20at%2011.18.26%E2%80%AFAM-W1PBcxFbtu9EohHMJKOfckSiAxb62X.png"
+                          alt="Tennis player practicing"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
 
-                      {/* Person loading machine image */}
-                      <img
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-15%20at%208.21.23%E2%80%AFPM-HHmxhjFtggu36xEIJTy5CpbM1nfX9i.png"
-                        alt="Person loading a tennis ball machine"
-                        className="w-full h-full object-cover object-center"
-                      />
+                      {/* Blue tennis court - top right, rotated slightly */}
+                      <div
+                        className="absolute top-[5%] right-0 w-[50%] h-[40%] z-10 rounded-lg overflow-hidden shadow-xl transform rotate-2"
+                        style={innerContainerStyle}
+                      >
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10921742666975_.pic.jpg-5UC1WP4jzwKfg270t86VZSZIdrSg8Q.jpeg"
+                          alt="Blue tennis court"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Tennis ball machine - bottom left, rotated slightly */}
+                      <div
+                        className="absolute bottom-[-2%] left-[5%] w-[45%] h-[45%] z-10 rounded-lg overflow-hidden shadow-xl transform rotate-3"
+                        style={innerContainerStyle}
+                      >
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10791742095813_.pic.jpg-3sRWyPK0NsTuIbYJGII7VuxX7Y7s2J.jpeg"
+                          alt="Tennis ball machine"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Loading equipment - center, larger */}
+                      <div
+                        className="absolute top-[32%] left-[22%] w-[55%] h-[45%] z-30 rounded-lg overflow-hidden shadow-xl border-2 border-white/30"
+                        style={{
+                          ...innerContainerStyle,
+                          background: "rgba(255, 255, 255, 0.15)",
+                        }}
+                      >
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10821742146089_.pic.jpg-7GPZ59Mp2C9c76JHePFzeTBe2czn32.jpeg"
+                          alt="Loading tennis equipment"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Tennis selfie - bottom right, rotated slightly */}
+                      <div
+                        className="absolute bottom-[2%] right-[5%] w-[50%] h-[40%] z-20 rounded-lg overflow-hidden shadow-xl transform -rotate-3"
+                        style={innerContainerStyle}
+                      >
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10911742666974_.pic.jpg-Zd2wSZBxytdTGEolrQ4x16b4zrw5dU.jpeg"
+                          alt="Tennis selfie with equipment"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
                   </div>
 
