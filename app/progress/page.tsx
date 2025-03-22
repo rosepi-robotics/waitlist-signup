@@ -60,6 +60,48 @@ export default function Progress() {
 
           {/* Progress Updates Section */}
           <div className="space-y-12 mb-12">
+            {/* Latest Update - March 22 */}
+            <div className="pb-10 border-b border-white/10">
+              <div className="flex items-center text-white/80 mb-4 space-x-4">
+                <div className="flex items-center">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <time dateTime="2025-03-22">March 22, 2025</time>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="h-4 w-4 mr-1" />
+                  <span>2 min read</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl font-bold mb-4">3/22 Development Update - 3D printed parts, motor issue</h2>
+
+              <p className="mb-4">
+                We got the printed parts back (maybe it's time to buy a 3D printer!), there's some issue witht the precision of the 3D-printed components, particularly the ball
+                ejecting part. We've initiated a reprint of the affected parts to
+                ensure a proper fit and function.
+              </p>
+
+              <p className="mb-4">
+                In the meantime, we have successfully installed the yaw and pitch mechanisms, so it can shoot high/low, and oscilate. However, the second-hand motor (for cost saving in prototyping) exhibits significant backlash, affecting its control capabilities. We'll need to get some new motors to fix this. The controller is functioning as expected.
+              </p>
+
+              <p className="mb-6">
+                While we await the arrival of the newly printed parts, we will proceed with soldering
+                the necessary wiring. We also plan to replace the problematic motor to ensure the machine operates
+                smoothly and meets our standards for quality and performance.
+              </p>
+
+              <p className="mb-6">
+                Will be back soon with more updates and perhaps som pictures/short videos to show! Stay tuned!
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-white/10 px-3 py-1 rounded-full text-sm">Assembly</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full text-sm">3D Printing</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full text-sm">Motors</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full text-sm">Troubleshooting</span>
+              </div>
+            </div>
             {/* Second Update */}
             <div className="pb-10">
               <div className="flex items-center text-white/80 mb-4 space-x-4">
