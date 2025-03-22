@@ -73,16 +73,16 @@ export default function Progress() {
                 </div>
               </div>
 
-              <h2 className="text-2xl font-bold mb-4">3/22 Development Update - 3D printed parts, motor issue</h2>
+              <h2 className="text-2xl font-bold mb-4">Development Update 3/22 - 3D printed parts, motors and other issues</h2>
 
               <p className="mb-4">
-                We got the printed parts back (maybe it's time to buy a 3D printer!), there's some issue witht the precision of the 3D-printed components, particularly the ball
-                ejecting part. We've initiated a reprint of the affected parts to
+                The 3D printed parts have arrived! (maybe it's time to buy a 3D printer. Anyone has suggestions?) There's some issue with th precision of these components, particularly the section ball ejection. We'll need reprint these parts to
                 ensure a proper fit and function.
               </p>
 
               <p className="mb-4">
-                In the meantime, we have successfully installed the yaw and pitch mechanisms, so it can shoot high/low, and oscilate. However, the second-hand motor (for cost saving in prototyping) exhibits significant backlash, affecting its control capabilities. We'll need to get some new motors to fix this. The controller is functioning as expected.
+                Additionally, we've successfully installed the yaw and pitch to change height and get oscilation. However, since we used some second-hand motors (on a tight budget for the prototype), these motors exhibit significant backlash, affecting its control capabilities.
+                Thie controller works fined though. Will need to buy some new motors.
               </p>
 
               <p className="mb-6">
@@ -91,8 +91,8 @@ export default function Progress() {
                 smoothly and meets our standards for quality and performance.
               </p>
 
-              <p className="mb-6">
-                Will be back soon with more updates and perhaps som pictures/short videos to show! Stay tuned!
+               <p className="mb-6">
+                I'll get back soon with updates and hopefully some videos to show! Keep updated!
               </p>
 
               <div className="flex flex-wrap gap-3">
