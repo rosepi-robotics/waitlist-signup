@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Navbar } from "@/app/components/navbar"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 import { runDrawing } from "@/app/actions/admin"
 
 interface SurveyStats {
@@ -12,6 +12,11 @@ interface SurveyStats {
   featureCounts: Record<string, number>
   skillLevelCounts: Record<string, number>
   totalSurveys: number
+  referralStats?: {
+    totalReferrals: number
+    averageReferralsPerUser: number
+    topReferrers: Array<{ email: string; count: number }>
+  }
 }
 
 export default function AdminDashboard() {
@@ -104,6 +109,16 @@ export default function AdminDashboard() {
         .sort((a, b) => b.count - a.count)
     : []
 
+  // Referral data for pie chart
+  const referralData = stats?.referralStats
+    ? [
+        { name: "With Referrals", value: stats.referralStats.totalReferrals },
+        { name: "No Referrals", value: stats.participantCount - stats.referralStats.totalReferrals },
+      ]
+    : []
+
+  const COLORS = ["#4ade80", "#0ea5e9", "#f97316", "#f43f5e"]
+
   return (
     <main
       className="min-h-screen"
@@ -145,6 +160,65 @@ export default function AdminDashboard() {
                   </Button>
                 </div>
               </div>
+
+              {/* Referral stats */}
+              {stats?.referralStats && (
+                <div className="bg-white/10 rounded-xl p-6">
+                  <h2 className="text-xl font-medium mb-4">Referral Statistics</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <div className="space-y-4">
+                        <div className="bg-white/10 rounded-xl p-4">
+                          <h3 className="text-sm font-medium mb-1">Total Referrals</h3>
+                          <p className="text-2xl font-bold">{stats.referralStats.totalReferrals}</p>
+                        </div>
+                        <div className="bg-white/10 rounded-xl p-4">
+                          <h3 className="text-sm font-medium mb-1">Average Referrals Per User</h3>
+                          <p className="text-2xl font-bold">{stats.referralStats.averageReferralsPerUser.toFixed(2)}</p>
+                        </div>
+                      </div>
+
+                      {stats.referralStats.topReferrers.length > 0 && (
+                        <div className="mt-4">
+                          <h3 className="text-sm font-medium mb-2">Top Referrers</h3>
+                          <div className="bg-white/10 rounded-xl p-4">
+                            <ul className="space-y-2">
+                              {stats.referralStats.topReferrers.map((referrer, index) => (
+                                <li key={index} className="flex justify-between">
+                                  <span className="truncate max-w-[200px]">{referrer.email}</span>
+                                  <span className="font-bold">{referrer.count} referrals</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="h-64">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={referralData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                          >
+                            {referralData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Feature popularity chart */}
               <div className="bg-white/10 rounded-xl p-6">

@@ -2,19 +2,28 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
 import { Button } from "@/components/ui/button"
-import { Gift, Calendar, Award, ArrowRight, Loader2, Clock } from "lucide-react"
+import { Gift, Calendar, Award, ArrowRight, Loader2, Clock, Share2 } from "lucide-react"
 import { submitSurvey } from "../actions/survey"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function Survey() {
+  const searchParams = useSearchParams()
+  const referralCode = searchParams.get("ref")
+
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [participantCount, setParticipantCount] = useState<number | null>(null)
+  const [referralUrl, setReferralUrl] = useState<string | null>(null)
+  const [referralSuccess, setReferralSuccess] = useState(false)
   const { toast } = useToast()
+
+  // Add this state at the top with other states
+  const [copyButtonText, setCopyButtonText] = useState("Copy")
 
   // Update the formData state to include the new additionalFeedback field
   const [formData, setFormData] = useState({
@@ -39,6 +48,8 @@ export default function Survey() {
     additionalFeedback: "",
     desiredFeatures: [] as string[],
     email: "",
+    // Add referral code if present
+    referredBy: referralCode || "",
   })
 
   const [errors, setErrors] = useState<{
@@ -48,7 +59,16 @@ export default function Survey() {
   useEffect(() => {
     // Scroll to top when the page loads
     window.scrollTo(0, 0)
-  }, [])
+
+    // If there's a referral code, show a toast
+    if (referralCode) {
+      toast({
+        title: "Referral Link Detected",
+        description: "You're helping a friend increase their chances of winning!",
+        duration: 5000,
+      })
+    }
+  }, [referralCode, toast])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -130,6 +150,44 @@ export default function Survey() {
     window.scrollTo(0, 0)
   }
 
+  // Update the handleCopyReferralLink function:
+  const handleCopyReferralLink = () => {
+    if (referralUrl) {
+      navigator.clipboard.writeText(referralUrl)
+      setCopyButtonText("Copied!")
+      toast({
+        title: "Link copied!",
+        description: "Your referral link has been copied to clipboard.",
+        duration: 3000,
+      })
+
+      // Reset button text after 2 seconds
+      setTimeout(() => {
+        setCopyButtonText("Copy")
+      }, 2000)
+    }
+  }
+
+  const handleShare = async () => {
+    if (referralUrl) {
+      const shareData = {
+        title: "Rallie Tennis Survey",
+        text: "Help shape the future of tennis training and get a chance to win a $100 Tennis Warehouse gift card!",
+        url: referralUrl,
+      }
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData)
+        } catch (err) {
+          console.error("Error sharing:", err)
+        }
+      } else {
+        handleCopyReferralLink()
+      }
+    }
+  }
+
   // Update the handleSubmit function to include the new field
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -178,6 +236,11 @@ export default function Survey() {
         formDataObj.append("email", formData.email)
       }
 
+      // Include referral code if present
+      if (formData.referredBy) {
+        formDataObj.append("referredBy", formData.referredBy)
+      }
+
       const result = await submitSurvey(formDataObj)
 
       if (result.success) {
@@ -186,6 +249,13 @@ export default function Survey() {
           description: result.message,
           duration: 5000,
         })
+
+        // If the user provided an email and got a referral code
+        if (result.referralCode && result.referralUrl) {
+          setReferralUrl(result.referralUrl)
+          setReferralSuccess(true)
+        }
+
         setCurrentStep(4)
         window.scrollTo(0, 0)
       } else {
@@ -263,6 +333,14 @@ export default function Survey() {
                     <p>
                       The sooner you enter, the <span className="font-semibold">higher your chances</span> of winning as
                       the participant pool grows over time.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start">
+                    <Share2 className="mr-3 h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
+                    <p>
+                      <span className="font-semibold">Increase your chances</span> by sharing with friends! Each person
+                      who completes the survey through your referral link gives you an additional entry in the drawing.
                     </p>
                   </div>
                 </div>
@@ -807,6 +885,36 @@ export default function Survey() {
                   ? " You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card and added to our waitlist!"
                   : " Unfortunately, without an email address, we couldn't enter you into our gift card drawing or add you to our waitlist."}
               </p>
+
+              {referralSuccess && referralUrl && (
+                <div className="bg-white/10 rounded-xl p-6 border border-white/20 max-w-md mx-auto mt-8">
+                  <h3 className="text-xl font-semibold mb-4">Increase Your Chances of Winning!</h3>
+                  <p className="mb-4">
+                    Share your unique referral link with friends. For each person who completes the survey using your
+                    link, you'll get an additional entry in the drawing!
+                  </p>
+                  <div className="bg-white/10 rounded-xl p-4 mb-4 flex items-center justify-between">
+                    <code className="text-sm overflow-x-auto whitespace-nowrap max-w-[calc(100%-80px)]">
+                      {referralUrl}
+                    </code>
+                    <Button
+                      onClick={handleCopyReferralLink}
+                      className="ml-2 bg-white/20 hover:bg-white/30 text-white"
+                      size="sm"
+                    >
+                      {copyButtonText}
+                    </Button>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <Button onClick={handleShare} className="bg-blue-600 hover:bg-blue-700">
+                      <Share2 className="mr-2 h-4 w-4" /> Share
+                    </Button>
+                    <Link href={`/referrals/${referralUrl.split("ref=")[1]}`}>
+                      <Button className="bg-green-600 hover:bg-green-700">View Referral Dashboard</Button>
+                    </Link>
+                  </div>
+                </div>
+              )}
 
               <div className="bg-white/10 rounded-xl p-6 border border-white/20 max-w-md mx-auto mt-8">
                 <p className="text-sm">

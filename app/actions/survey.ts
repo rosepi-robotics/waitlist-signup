@@ -4,8 +4,9 @@ import { z } from "zod"
 import { Resend } from "resend"
 import { redis } from "../lib/redis"
 import { headers } from "next/headers"
+import { nanoid } from "nanoid"
 
-// Update the schema to include platform field
+// Update the schema to include referral code field
 const surveySchema = z
   .object({
     playFrequency: z.string().min(1, "Please select how often you play"),
@@ -38,6 +39,9 @@ const surveySchema = z
 
     // Hidden field for platform
     platform: z.string().optional(),
+
+    // Referral code (if the user was referred)
+    referredBy: z.string().optional(),
   })
   .refine(
     (data) => {
@@ -65,7 +69,7 @@ const surveySchema = z
 
 export type SurveyData = z.infer<typeof surveySchema>
 
-// Update the submitSurvey function to handle platform detection
+// Update the submitSurvey function to handle referrals
 export async function submitSurvey(formData: FormData) {
   try {
     // Detect platform based on user agent
@@ -73,6 +77,9 @@ export async function submitSurvey(formData: FormData) {
     const userAgent = headersList.get("user-agent") || ""
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
     const platform = isMobile ? "mobile" : "web"
+
+    // Get referral code if present
+    const referredBy = (formData.get("referredBy") as string) || ""
 
     // Extract data from form
     const surveyData = {
@@ -106,6 +113,9 @@ export async function submitSurvey(formData: FormData) {
 
       // Add platform information
       platform: platform,
+
+      // Add referral information
+      referredBy: referredBy,
     }
 
     // Validate the data
@@ -136,19 +146,54 @@ export async function submitSurvey(formData: FormData) {
     const surveyId = `survey:${Date.now()}`
     await redis.hset(surveyId, redisData)
 
+    // Process referral if present and valid
+    if (referredBy) {
+      // Check if the referral code exists
+      const referrerExists = await redis.exists(`referral:${referredBy}`)
+
+      if (referrerExists) {
+        // Increment the referrer's count
+        await redis.hincrby(`referral:${referredBy}`, "referralCount", 1)
+
+        // Add this survey to the referrer's list of referrals
+        await redis.sadd(`referral:${referredBy}:surveys`, surveyId)
+      }
+    }
+
+    let referralCode = ""
+    let referralUrl = ""
+
     // Only add to drawing participants and send email if email is provided and not empty
     if (surveyData.email && surveyData.email.trim() !== "") {
+      const email = surveyData.email.trim()
+
+      // Generate a unique referral code for this user
+      referralCode = nanoid(8)
+
+      // Store the referral code with the user's email
+      await redis.hset(`referral:${referralCode}`, {
+        email: email,
+        createdAt: new Date().toISOString(),
+        referralCount: 0,
+      })
+
+      // Associate the email with the referral code for lookup
+      await redis.set(`email:${email}:referralCode`, referralCode)
+
+      // Create the referral URL
+      referralUrl = `https://rallie.tennis/survey?ref=${referralCode}`
+
       // Add email to drawing participants list
-      await redis.sadd("drawing_participants", surveyData.email)
+      await redis.sadd("drawing_participants", email)
 
       // Add email to waitlist if not already there
-      await redis.sadd("waitlist_emails", surveyData.email)
+      await redis.sadd("waitlist_emails", email)
 
-      // Send confirmation email
+      // Send confirmation email with referral link
       const resend = new Resend(process.env.RESEND_API_KEY)
       await resend.emails.send({
         from: "Rallie Tennis <hello@updates.rallie.tennis>",
-        to: surveyData.email,
+        to: email,
         subject: "Thanks for completing our survey!",
         html: `
         <!DOCTYPE html>
@@ -171,6 +216,18 @@ export async function submitSurvey(formData: FormData) {
               <div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
                 <p style="color: #0c4a6e; font-size: 16px; margin: 0;">
                   <strong>Congratulations!</strong> You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card. Winners are selected on the 1st of each month and notified via email.
+                </p>
+              </div>
+              
+              <div style="background-color: #f0fff4; border-left: 4px solid #4ade80; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
+                <p style="color: #0c4a6e; font-size: 16px; margin-bottom: 10px;">
+                  <strong>Want to increase your chances of winning?</strong> Share your unique referral link with friends and tennis partners. For each person who completes the survey using your link, you'll get an additional entry in the drawing!
+                </p>
+                <div style="background-color: #e6e6e6; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 10px;">
+                  <a href="${referralUrl}" style="color: #0ea5e9; word-break: break-all;">${referralUrl}</a>
+                </div>
+                <p style="color: #0c4a6e; font-size: 14px; margin: 0;">
+                  Track your referrals and chances at: <a href="https://rallie.tennis/referrals/${referralCode}" style="color: #0ea5e9;">https://rallie.tennis/referrals/${referralCode}</a>
                 </p>
               </div>
               
@@ -214,6 +271,8 @@ export async function submitSurvey(formData: FormData) {
         success: true,
         message: "Survey submitted successfully! You've been entered into our drawing and added to our waitlist.",
         hasEmail: true,
+        referralCode,
+        referralUrl,
       }
     } else {
       // Return success but indicate no email was provided
@@ -239,6 +298,41 @@ export async function getDrawingParticipantCount() {
   } catch (error) {
     console.error("Error getting participant count:", error)
     return 0
+  }
+}
+
+// New function to get referral stats
+export async function getReferralStats(referralCode: string) {
+  try {
+    // Check if the referral code exists
+    const exists = await redis.exists(`referral:${referralCode}`)
+
+    if (!exists) {
+      return {
+        success: false,
+        message: "Invalid referral code",
+      }
+    }
+
+    // Get referral data
+    const referralData = await redis.hgetall(`referral:${referralCode}`)
+
+    // Get list of referred surveys
+    const referredSurveys = await redis.smembers(`referral:${referralCode}:surveys`)
+
+    return {
+      success: true,
+      email: referralData.email,
+      createdAt: referralData.createdAt,
+      referralCount: Number.parseInt(referralData.referralCount || "0"),
+      referredSurveys,
+    }
+  } catch (error) {
+    console.error("Error getting referral stats:", error)
+    return {
+      success: false,
+      message: "An error occurred while fetching referral stats",
+    }
   }
 }
 
