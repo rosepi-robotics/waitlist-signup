@@ -194,7 +194,7 @@ export async function submitSurvey(formData: FormData) {
       await resend.emails.send({
         from: "Rallie Tennis <hello@updates.rallie.tennis>",
         to: email,
-        subject: "Thanks for completing our survey!",
+        subject: "Thanks for helping shape the future of tennis training!",
         html: `
         <!DOCTYPE html>
         <html lang="en">
@@ -202,68 +202,6 @@ export async function submitSurvey(formData: FormData) {
             <meta charset="UTF-8">
             <title>Thanks for Completing Our Survey!</title>
           </head>
-          <body style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; padding: 20px; background-color: #f5f5f5; margin: 0;">
-            <div style="max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; padding: 30px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
-              <div style="text-align: center; margin-bottom: 20px;">
-                <h1 style="color: #042d62; font-size: 28px; margin-bottom: 10px;">Thank You for Your Feedback!</h1>
-                <div style="height: 4px; width: 60px; background: linear-gradient(90deg, #c64f34, #ffd700); margin: 0 auto;"></div>
-              </div>
-              
-              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-                We really appreciate you taking the time to complete our survey. Your feedback is invaluable as we develop our revolutionary tennis ball machine.
-              </p>
-              
-              <div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
-                <p style="color: #0c4a6e; font-size: 16px; margin: 0;">
-                  <strong>Congratulations!</strong> You've been entered into our monthly drawing for a $100 Tennis Warehouse gift card. Winners are selected on the 1st of each month and notified via email.
-                </p>
-              </div>
-              
-              <div style="background-color: #f0fff4; border-left: 4px solid #4ade80; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
-                <p style="color: #0c4a6e; font-size: 16px; margin-bottom: 10px;">
-                  <strong>Want to increase your chances of winning?</strong> Share your unique referral link with friends and tennis partners. For each person who completes the survey using your link, you'll get an additional entry in the drawing!
-                </p>
-                <div style="background-color: #e6e6e6; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 10px;">
-                  <a href="${referralUrl}" style="color: #0ea5e9; word-break: break-all;">${referralUrl}</a>
-                </div>
-                <p style="color: #0c4a6e; font-size: 14px; margin: 0;">
-                  Track your referrals and chances at: <a href="https://rallie.tennis/referrals/${referralCode}" style="color: #0ea5e9;">https://rallie.tennis/referrals/${referralCode}</a>
-                </p>
-              </div>
-              
-              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-                We've also added you to our waitlist to keep you updated on our progress. Here's what you can expect:
-              </p>
-              
-              <ul style="color: #374151; font-size: 16px; margin-bottom: 24px; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Regular updates on our development progress</li>
-                <li style="margin-bottom: 8px;">Early access to product information</li>
-                <li style="margin-bottom: 8px;">Exclusive pre-order opportunities</li>
-                <li style="margin-bottom: 8px;">Special pricing for our waitlist members</li>
-              </ul>
-              
-              <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-                <strong>Don't worry about spam</strong> - we'll only email you about once per month with important updates. If you'd like more frequent news about our progress, please follow us on social media.
-              </p>
-              
-              <div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
-                <p style="color: #0c4a6e; font-size: 16px; margin: 0;">
-                  Follow our journey on <a href="https://x.com/sophie_taco" style="color: #0ea5e9; text-decoration: underline;">X</a>, <a href="https://discord.gg/ptaTkcbQ" style="color: #0ea5e9; text-decoration: underline;">Discord</a>, and <a href="https://www.facebook.com/groups/963981362613884" style="color: #0ea5e9; text-decoration: underline;">Facebook</a>.
-                </p>
-              </div>
-              
-              <p style="color: #374151; font-size: 16px; margin-bottom: 8px;">Best regards,</p>
-              <p style="color: #111827; font-size: 16px; font-weight: 500;">Sophie Luo<br>Creator of Rallie Tennis</p>
-            </div>
-            
-            <div style="max-width: 600px; margin: 20px auto 0; text-align: center; color: #6b7280; font-size: 14px;">
-              <p style="margin-bottom: 10px;">© 2025 Rallie Tennis. All rights reserved.</p>
-              <p>
-                If you didn't complete this survey, you can safely ignore this email.
-              </p>
-            </div>
-          </body>
-        </html>
       `,
       })
 
