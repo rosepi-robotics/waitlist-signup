@@ -6,6 +6,9 @@ import { Menu, X } from "lucide-react"
 import { Rajdhani } from "next/font/google"
 import { Button } from "@/components/ui/button"
 
+// Import the trackEvent function at the top of the file
+import { trackEvent } from "../utils/analytics"
+
 const rajdhani = Rajdhani({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
@@ -76,16 +79,18 @@ export function Navbar() {
               <Link
                 href="/brand-story"
                 className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
+                onClick={() => trackEvent("button_click", "navigation", "brand_story")}
               >
                 The Rallie Story
               </Link>
               <Link
                 href="/progress"
                 className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
+                onClick={() => trackEvent("button_click", "navigation", "progress")}
               >
                 Follow Our Progress
               </Link>
-              <Link href="/survey">
+              <Link href="/survey" onClick={() => trackEvent("button_click", "navigation", "survey")}>
                 <Button className="bg-white hover:bg-white/90 text-black rounded-full font-medium ml-4 px-6 py-1 h-9 text-sm">
                   Take Survey and Win $100
                 </Button>
@@ -112,14 +117,20 @@ export function Navbar() {
               <Link
                 href="/brand-story"
                 className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  trackEvent("button_click", "navigation_mobile", "brand_story")
+                }}
               >
                 The Rallie Story
               </Link>
               <Link
                 href="/progress"
                 className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  trackEvent("button_click", "navigation_mobile", "progress")
+                }}
               >
                 Follow Our Progress
               </Link>
@@ -127,7 +138,10 @@ export function Navbar() {
                 <Link
                   href="/survey"
                   className="block text-center bg-white hover:bg-white/90 text-black rounded-full font-medium px-6 py-2 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    trackEvent("button_click", "navigation_mobile", "survey")
+                  }}
                 >
                   Take Survey and Win $100
                 </Link>

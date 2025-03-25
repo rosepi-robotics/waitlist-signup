@@ -3,6 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter, Rajdhani } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AnalyticsProvider } from "@/app/components/analytics-provider"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const rajdhani = Rajdhani({
@@ -28,6 +29,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           {children}
         </ThemeProvider>
+        <AnalyticsProvider />
       </body>
     </html>
   )

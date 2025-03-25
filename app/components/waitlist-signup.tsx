@@ -3,6 +3,8 @@ import Link from "next/link"
 import { ToggleText } from "./toggle-text"
 import { Rajdhani } from "next/font/google"
 import { GraduationCap, Building2, TurtleIcon as Tennis } from "lucide-react"
+// Import the trackEvent function at the top of the file
+import { trackEvent } from "../utils/analytics"
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -107,7 +109,7 @@ export function WaitlistSignup() {
                         className="absolute top-0 left-0 w-[55%] h-[45%] z-20 rounded-lg overflow-hidden shadow-xl transform -rotate-3"
                         style={innerContainerStyle}
                       >
-                          <img
+                        <img
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-22%20at%2011.18.26%E2%80%AFAM-W1PBcxFbtu9EohHMJKOfckSiAxb62X.png"
                           alt="Tennis player practicing"
                           className="w-full h-full object-cover"
@@ -267,12 +269,14 @@ export function WaitlistSignup() {
                   <Link
                     href="/survey"
                     className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl bg-[#042d62] text-white hover:bg-[#031f45] transition-colors w-full sm:w-auto text-center"
+                    onClick={() => trackEvent("button_click", "main_cta", "take_survey")}
                   >
                     Take a Survey and Win $100
                   </Link>
                   <Link
                     href="/progress"
                     className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 transition-colors w-full sm:w-auto text-center"
+                    onClick={() => trackEvent("button_click", "main_cta", "follow_progress")}
                   >
                     Follow Our Progress
                   </Link>

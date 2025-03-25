@@ -11,6 +11,9 @@ import { Gift, Calendar, Award, ArrowRight, Loader2, Clock, Share2 } from "lucid
 import { submitSurvey } from "../actions/survey"
 import { useToast } from "@/components/ui/use-toast"
 
+// Import the trackEvent function at the top of the file
+import { trackEvent } from "../utils/analytics"
+
 export default function Survey() {
   const searchParams = useSearchParams()
   const referralCode = searchParams.get("ref")
@@ -188,7 +191,8 @@ export default function Survey() {
     }
   }
 
-  // Update the handleSubmit function to include the new field
+  // Find the handleSubmit function and update it to track submissions:
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -244,6 +248,9 @@ export default function Survey() {
       const result = await submitSurvey(formDataObj)
 
       if (result.success) {
+        // Track successful submission
+        trackEvent("form_submit", "survey", "success", 1)
+
         toast({
           title: "Survey Submitted!",
           description: result.message,
@@ -259,6 +266,9 @@ export default function Survey() {
         setCurrentStep(4)
         window.scrollTo(0, 0)
       } else {
+        // Track failed submission
+        trackEvent("form_submit", "survey", "error", 0)
+
         toast({
           title: "Error",
           description: result.message,
@@ -276,6 +286,9 @@ export default function Survey() {
         }
       }
     } catch (error) {
+      // Track exception
+      trackEvent("form_submit", "survey", "exception", 0)
+
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
