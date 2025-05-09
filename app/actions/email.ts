@@ -2,6 +2,7 @@
 
 import { Resend } from "resend"
 import ProgressUpdateMay from "../components/email-templates/progress-update-may"
+import WinnerNotification from "../components/email-templates/winner-notification"
 
 // Initialize Resend with your API key
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -58,7 +59,7 @@ export async function sendUpdateToSubscribers() {
           const { data, error } = await resend.emails.send({
             from: "Rallie Tennis <hello@updates.rallie.tennis>",
             to: email,
-            subject: "Rallie Tennis - May Progress Update",
+            subject: "Rallie Tennis - We Have a Winner for the Draw!",
             html: ProgressUpdateMay({ unsubscribeUrl, isTest: false }),
           })
 
@@ -89,6 +90,35 @@ export async function sendUpdateToSubscribers() {
     }
   } catch (error) {
     console.error("Error sending update to subscribers:", error)
+    return { success: false, error: "An unexpected error occurred" }
+  }
+}
+
+/**
+ * Send a winner notification email
+ */
+export async function sendWinnerEmail(testEmail?: string) {
+  try {
+    const recipient = testEmail || "delice.wang@hotmail.com"
+    const isTest = !!testEmail
+
+    const { data, error } = await resend.emails.send({
+      from: "Rallie Tennis <hello@updates.rallie.tennis>",
+      to: recipient,
+      subject: isTest
+        ? "[TEST] Congratulations! You've Won the Rallie Tennis Draw"
+        : "Congratulations! You've Won the Rallie Tennis Draw",
+      html: WinnerNotification({ winnerEmail: "delice.wang@hotmail.com", isTest }),
+    })
+
+    if (error) {
+      console.error("Error sending winner email:", error)
+      return { success: false, error: error.message }
+    }
+
+    return { success: true, messageId: data?.id }
+  } catch (error) {
+    console.error("Exception sending winner email:", error)
     return { success: false, error: "An unexpected error occurred" }
   }
 }

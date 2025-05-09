@@ -4,9 +4,11 @@ import { useState } from "react"
 import { Navbar } from "@/app/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { sendTestEmail, sendUpdateToSubscribers } from "@/app/actions/email"
+import { sendTestEmail, sendUpdateToSubscribers, sendWinnerEmail } from "@/app/actions/email"
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import { logout } from "@/app/actions/auth"
+import { useRouter } from "next/navigation"
 
 export default function AdminEmailPage() {
   const [testEmail, setTestEmail] = useState("")
@@ -14,6 +16,16 @@ export default function AdminEmailPage() {
   const [isSendingBulk, setIsSendingBulk] = useState(false)
   const [bulkResult, setBulkResult] = useState<any>(null)
   const { toast } = useToast()
+  const router = useRouter()
+
+  // Add a new state for the winner email
+  const [isWinnerEmailTest, setIsWinnerEmailTest] = useState(false)
+  const [isSendingWinnerEmail, setIsSendingWinnerEmail] = useState(false)
+
+  const handleLogout = async () => {
+    await logout()
+    router.push("/admin/login")
+  }
 
   const handleSendTest = async () => {
     if (!testEmail) {
@@ -87,6 +99,76 @@ export default function AdminEmailPage() {
     }
   }
 
+  // Add this new function after the existing handleSendToAll function
+  const handleSendWinnerTest = async () => {
+    if (!testEmail) {
+      toast({
+        title: "Error",
+        description: "Please enter an email address for testing",
+        variant: "destructive",
+      })
+      return
+    }
+
+    setIsWinnerEmailTest(true)
+    try {
+      const result = await sendWinnerEmail(testEmail)
+
+      if (result.success) {
+        toast({
+          title: "Success",
+          description: `Test winner email sent to ${testEmail}`,
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: result.error || "Failed to send test winner email",
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred",
+        variant: "destructive",
+      })
+    } finally {
+      setIsWinnerEmailTest(false)
+    }
+  }
+
+  const handleSendWinnerEmail = async () => {
+    if (!confirm("Are you sure you want to send the winner notification to Delice? This action cannot be undone.")) {
+      return
+    }
+
+    setIsSendingWinnerEmail(true)
+    try {
+      const result = await sendWinnerEmail()
+
+      if (result.success) {
+        toast({
+          title: "Success",
+          description: "Winner notification email sent to Delice",
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: result.error || "Failed to send winner email",
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSendingWinnerEmail(false)
+    }
+  }
+
   return (
     <main
       className="min-h-screen"
@@ -97,7 +179,12 @@ export default function AdminEmailPage() {
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 pt-28 pb-12 sm:px-6 lg:px-8">
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
-          <h1 className="text-3xl font-bold mb-8">Email Management</h1>
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold">Email Management</h1>
+            <Button onClick={handleLogout} variant="outline" className="border-white text-white hover:bg-white/10">
+              Logout
+            </Button>
+          </div>
 
           <div className="space-y-8">
             {/* Send Test Email Section */}
@@ -164,6 +251,51 @@ export default function AdminEmailPage() {
                   )}
                 </div>
               )}
+            </div>
+
+            {/* Add this new section to the JSX, after the "Send to All Subscribers" section */}
+            <div className="bg-white/10 rounded-xl p-6">
+              <h2 className="text-xl font-medium mb-4">Winner Notification Email</h2>
+              <p className="mb-4">Send a congratulatory email to Delice, the winner of the May draw.</p>
+
+              <div className="space-y-4">
+                <div className="flex gap-4 items-start">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email for testing"
+                    value={testEmail}
+                    onChange={(e) => setTestEmail(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white"
+                  />
+                  <Button
+                    onClick={handleSendWinnerTest}
+                    disabled={isWinnerEmailTest}
+                    className="bg-white text-black hover:bg-white/90"
+                  >
+                    {isWinnerEmailTest ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
+                      </>
+                    ) : (
+                      "Test Winner Email"
+                    )}
+                  </Button>
+                </div>
+
+                <Button
+                  onClick={handleSendWinnerEmail}
+                  disabled={isSendingWinnerEmail}
+                  className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                >
+                  {isSendingWinnerEmail ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    "Send Winner Email to Delice"
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
