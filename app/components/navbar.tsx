@@ -84,9 +84,16 @@ export function Navbar() {
                 The Rallie Story
               </Link>
               <Link
-                href="/progress"
+                href="#progress"
                 className="text-white text-sm hover:text-white/80 transition-all font-medium px-6 py-2"
-                onClick={() => trackEvent("button_click", "navigation", "progress")}
+                onClick={() => {
+                  trackEvent("button_click", "navigation", "progress")
+                  // Smooth scroll to progress section
+                  document.querySelector(".progress-section")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }}
               >
                 Follow Our Progress
               </Link>
@@ -125,11 +132,16 @@ export function Navbar() {
                 The Rallie Story
               </Link>
               <Link
-                href="/progress"
+                href="#progress"
                 className="text-white text-sm hover:text-white/80 transition-colors px-4 py-2"
                 onClick={() => {
                   setIsMenuOpen(false)
                   trackEvent("button_click", "navigation_mobile", "progress")
+                  // Smooth scroll to progress section
+                  document.querySelector(".progress-section")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }}
               >
                 Follow Our Progress
