@@ -15,7 +15,7 @@ export async function sendTestEmail(email: string) {
       from: "Rallie Tennis <hello@updates.rallie.tennis>",
       to: email,
       subject: "[TEST] Rallie Tennis - May Progress Update",
-      html: ProgressUpdateMay({ unsubscribeUrl: "https://rallie.tennis/unsubscribe" }),
+      html: ProgressUpdateMay({ unsubscribeUrl: "https://rallie.tennis/unsubscribe", isTest: true }),
     })
 
     if (error) {
@@ -59,7 +59,7 @@ export async function sendUpdateToSubscribers() {
             from: "Rallie Tennis <hello@updates.rallie.tennis>",
             to: email,
             subject: "Rallie Tennis - May Progress Update",
-            html: ProgressUpdateMay({ unsubscribeUrl }),
+            html: ProgressUpdateMay({ unsubscribeUrl, isTest: false }),
           })
 
           if (error) {
