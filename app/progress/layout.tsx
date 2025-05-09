@@ -14,4 +14,3 @@ export default function ProgressLayout({
 }) {
   return children
 }
-

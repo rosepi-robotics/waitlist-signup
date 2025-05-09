@@ -21,4 +21,3 @@ export function SocialIcon({ href, "aria-label": ariaLabel, icon, target, rel }:
     </a>
   )
 }
-

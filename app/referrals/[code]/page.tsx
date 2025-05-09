@@ -218,4 +218,3 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
     </main>
   )
 }
-

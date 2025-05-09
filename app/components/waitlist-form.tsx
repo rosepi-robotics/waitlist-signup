@@ -67,4 +67,3 @@ export function WaitlistForm({ onSuccess }: WaitlistFormProps) {
     </form>
   )
 }
-

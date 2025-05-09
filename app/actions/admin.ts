@@ -105,4 +105,3 @@ export async function runDrawing() {
     return { success: false, error: "Failed to run drawing" }
   }
 }
-

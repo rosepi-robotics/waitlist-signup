@@ -1,3 +1,8 @@
+// Analytics utility functions
+
+/**
+ * Track a button click or other event
+ */
 export const trackEvent = (eventName: string, category: string, label: string, value?: number) => {
   if (typeof window !== "undefined" && "gtag" in window) {
     const gtag = (window as any).gtag
@@ -20,4 +25,3 @@ export const trackPageView = (url: string) => {
     })
   }
 }
-

@@ -6,4 +6,3 @@ export function XIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-

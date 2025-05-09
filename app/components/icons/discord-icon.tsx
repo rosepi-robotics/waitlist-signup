@@ -6,4 +6,3 @@ export function DiscordIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-

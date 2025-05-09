@@ -7,4 +7,3 @@ export function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-

@@ -4,18 +4,23 @@ import type { Metadata } from "next"
 import { Inter, Rajdhani } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AnalyticsProvider } from "@/app/components/analytics-provider"
+import { Suspense } from "react"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
 const rajdhani = Rajdhani({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-rajdhani",
+  weight: ["400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
-  title: "Rallie | Smart Tennis Ball Machine",
-  description:
-    "Train smarter with Rallie – a powerful, compact and intelligent tennis ball machine that helps you level up your game anytime, anywhere.",
+  title: "v0 App",
+  description: "Created with v0",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -29,9 +34,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           {children}
         </ThemeProvider>
-        <AnalyticsProvider />
+        <Suspense fallback={null}>
+          <AnalyticsProvider />
+        </Suspense>
       </body>
     </html>
   )
 }
-

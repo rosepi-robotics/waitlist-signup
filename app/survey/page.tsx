@@ -968,4 +968,3 @@ export default function Survey() {
     </main>
   )
 }
-

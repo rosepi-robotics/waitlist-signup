@@ -20,4 +20,3 @@ export function ClientSafeWrapper({ children, fallback = null }: ClientSafeWrapp
 
   return <Suspense fallback={fallback}>{children}</Suspense>
 }
-

@@ -18,4 +18,3 @@ export function Avatar({ initials, index }: AvatarProps) {
     </div>
   )
 }
-

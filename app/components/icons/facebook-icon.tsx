@@ -6,4 +6,3 @@ export function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-
