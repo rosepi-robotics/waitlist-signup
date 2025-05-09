@@ -45,17 +45,24 @@ export async function sendUpdateToSubscribers() {
       return { success: false, error: "No subscribers found" }
     }
 
+    console.log(`Found ${subscribers.length} subscribers to email`)
+
     // Send emails in batches to avoid rate limits
-    const batchSize = 50
+    const batchSize = 10 // Reduced batch size
     const results = []
     const timestamp = Date.now()
+    const allErrors = []
 
     for (let i = 0; i < subscribers.length; i += batchSize) {
       const batch = subscribers.slice(i, i + batchSize)
+      console.log(
+        `Processing batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(subscribers.length / batchSize)}, with ${batch.length} emails`,
+      )
 
       // Process each email in the batch
       for (const email of batch) {
         try {
+          console.log(`Attempting to send to: ${email}`)
           const unsubscribeUrl = `https://rallie.tennis/unsubscribe?email=${encodeURIComponent(email)}`
 
           const { data, error } = await resend.emails.send({
@@ -78,16 +85,19 @@ export async function sendUpdateToSubscribers() {
           // Store the result in Redis
           await redis.hset(`email:${timestamp}:${email}`, result)
           // Add to the list of sent emails
-          await redis.zadd("sent_emails", timestamp, `${timestamp}:${email}`)
+          await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
 
           if (error) {
             console.error(`Error sending to ${email}:`, error)
+            allErrors.push({ email, error: error.message })
             results.push({ email, success: false, error: error.message })
           } else {
+            console.log(`Successfully sent to ${email}`)
             results.push({ email, success: true, messageId: data?.id })
           }
         } catch (emailError) {
           console.error(`Exception sending to ${email}:`, emailError)
+          allErrors.push({ email, error: emailError instanceof Error ? emailError.message : "Unknown error" })
 
           const result = {
             email,
@@ -101,25 +111,36 @@ export async function sendUpdateToSubscribers() {
           // Store the result in Redis
           await redis.hset(`email:${timestamp}:${email}`, result)
           // Add to the list of sent emails
-          await redis.zadd("sent_emails", timestamp, `${timestamp}:${email}`)
+          await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
 
           results.push({ email, success: false, error: "An unexpected error occurred" })
         }
+
+        // Add a small delay between individual emails to avoid rate limits
+        await new Promise((resolve) => setTimeout(resolve, 300))
       }
 
-      // Add a small delay between batches to avoid rate limits
+      // Add a delay between batches to avoid rate limits
       if (i + batchSize < subscribers.length) {
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+        console.log("Pausing between batches...")
+        await new Promise((resolve) => setTimeout(resolve, 2000))
       }
     }
 
     const successCount = results.filter((r) => r.success).length
+    console.log(`Email sending complete. Success: ${successCount}, Failed: ${results.length - successCount}`)
+
+    if (allErrors.length > 0) {
+      console.log("Errors encountered:", allErrors)
+    }
+
     return {
       success: true,
       totalSent: subscribers.length,
       successCount,
       failureCount: subscribers.length - successCount,
       timestamp,
+      errors: allErrors.length > 0 ? allErrors : undefined,
     }
   } catch (error) {
     console.error("Error sending update to subscribers:", error)
@@ -159,7 +180,7 @@ export async function sendWinnerEmail(testEmail?: string) {
       }
 
       await redis.hset(`email:${timestamp}:${recipient}`, result)
-      await redis.zadd("sent_emails", timestamp, `${timestamp}:${recipient}`)
+      await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${recipient}` })
     }
 
     if (error) {
@@ -181,8 +202,9 @@ export async function getSentEmails(limit = 100) {
   try {
     const { redis } = await import("../lib/redis")
 
-    // Get the most recent sent emails
-    const emailKeys = await redis.zrevrange("sent_emails", 0, limit - 1)
+    // Get the most recent sent emails using zrange with REV flag
+    // Upstash Redis uses a different syntax for zrevrange
+    const emailKeys = await redis.zrange("sent_emails", 0, limit - 1, { rev: true })
 
     if (!emailKeys || emailKeys.length === 0) {
       return { success: true, emails: [] }
@@ -204,5 +226,88 @@ export async function getSentEmails(limit = 100) {
   } catch (error) {
     console.error("Error getting sent emails:", error)
     return { success: false, error: "Failed to retrieve sent emails" }
+  }
+}
+
+/**
+ * Get all subscribers from Redis
+ */
+export async function getSubscribers() {
+  try {
+    const { redis } = await import("../lib/redis")
+    const subscribers = await redis.smembers("waitlist_emails")
+    return { success: true, subscribers }
+  } catch (error) {
+    console.error("Error getting subscribers:", error)
+    return { success: false, error: "Failed to retrieve subscribers" }
+  }
+}
+
+/**
+ * Retry sending emails to failed recipients
+ */
+export async function retryFailedEmails(emails: string[]) {
+  try {
+    if (!emails || emails.length === 0) {
+      return { success: false, error: "No emails provided" }
+    }
+
+    const timestamp = Date.now()
+    const results = []
+    const { redis } = await import("../lib/redis")
+
+    for (const email of emails) {
+      try {
+        console.log(`Retrying email to: ${email}`)
+        const unsubscribeUrl = `https://rallie.tennis/unsubscribe?email=${encodeURIComponent(email)}`
+
+        const { data, error } = await resend.emails.send({
+          from: "Rallie Tennis <hello@updates.rallie.tennis>",
+          replyTo: "hello@rallie.tennis",
+          to: email,
+          subject: "Rallie Tennis - We Have a Winner for the Draw!",
+          html: ProgressUpdateMay({ unsubscribeUrl, isTest: false }),
+        })
+
+        const result = {
+          email,
+          timestamp,
+          success: !error,
+          messageId: data?.id || null,
+          error: error ? error.message : null,
+          campaign: "may-update-retry",
+        }
+
+        // Store the result in Redis
+        await redis.hset(`email:${timestamp}:${email}`, result)
+        // Add to the list of sent emails
+        await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
+
+        if (error) {
+          console.error(`Error sending to ${email}:`, error)
+          results.push({ email, success: false, error: error.message })
+        } else {
+          console.log(`Successfully sent to ${email}`)
+          results.push({ email, success: true, messageId: data?.id })
+        }
+
+        // Add a small delay between emails
+        await new Promise((resolve) => setTimeout(resolve, 300))
+      } catch (emailError) {
+        console.error(`Exception sending to ${email}:`, emailError)
+        results.push({ email, success: false, error: "An unexpected error occurred" })
+      }
+    }
+
+    const successCount = results.filter((r) => r.success).length
+    return {
+      success: true,
+      totalSent: emails.length,
+      successCount,
+      failureCount: emails.length - successCount,
+    }
+  } catch (error) {
+    console.error("Error retrying failed emails:", error)
+    return { success: false, error: "An unexpected error occurred" }
   }
 }
