@@ -5,10 +5,11 @@ import { Navbar } from "@/app/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { sendTestEmail, sendUpdateToSubscribers, sendWinnerEmail } from "@/app/actions/email"
-import { Loader2 } from "lucide-react"
+import { Loader2, List } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { logout } from "@/app/actions/auth"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export default function AdminEmailPage() {
   const [testEmail, setTestEmail] = useState("")
@@ -181,9 +182,17 @@ export default function AdminEmailPage() {
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold">Email Management</h1>
-            <Button onClick={handleLogout} variant="outline" className="border-white text-white hover:bg-white/10">
-              Logout
-            </Button>
+            <div className="flex space-x-4">
+              <Link href="/admin/emails">
+                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                  <List className="h-4 w-4 mr-2" />
+                  View Sent Emails
+                </Button>
+              </Link>
+              <Button onClick={handleLogout} variant="outline" className="border-white text-white hover:bg-white/10">
+                Logout
+              </Button>
+            </div>
           </div>
 
           <div className="space-y-8">
@@ -245,6 +254,11 @@ export default function AdminEmailPage() {
                       <p>Total subscribers: {bulkResult.totalSent}</p>
                       <p>Successfully sent: {bulkResult.successCount}</p>
                       <p>Failed: {bulkResult.failureCount}</p>
+                      <p className="mt-2">
+                        <Link href="/admin/emails" className="text-blue-300 hover:underline">
+                          View detailed results
+                        </Link>
+                      </p>
                     </div>
                   ) : (
                     <p className="text-red-400">{bulkResult.error}</p>

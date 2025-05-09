@@ -48,6 +48,7 @@ export async function sendUpdateToSubscribers() {
     // Send emails in batches to avoid rate limits
     const batchSize = 50
     const results = []
+    const timestamp = Date.now()
 
     for (let i = 0; i < subscribers.length; i += batchSize) {
       const batch = subscribers.slice(i, i + batchSize)
@@ -65,6 +66,20 @@ export async function sendUpdateToSubscribers() {
             html: ProgressUpdateMay({ unsubscribeUrl, isTest: false }),
           })
 
+          const result = {
+            email,
+            timestamp,
+            success: !error,
+            messageId: data?.id || null,
+            error: error ? error.message : null,
+            campaign: "may-update",
+          }
+
+          // Store the result in Redis
+          await redis.hset(`email:${timestamp}:${email}`, result)
+          // Add to the list of sent emails
+          await redis.zadd("sent_emails", timestamp, `${timestamp}:${email}`)
+
           if (error) {
             console.error(`Error sending to ${email}:`, error)
             results.push({ email, success: false, error: error.message })
@@ -73,6 +88,21 @@ export async function sendUpdateToSubscribers() {
           }
         } catch (emailError) {
           console.error(`Exception sending to ${email}:`, emailError)
+
+          const result = {
+            email,
+            timestamp,
+            success: false,
+            messageId: null,
+            error: emailError instanceof Error ? emailError.message : "Unknown error",
+            campaign: "may-update",
+          }
+
+          // Store the result in Redis
+          await redis.hset(`email:${timestamp}:${email}`, result)
+          // Add to the list of sent emails
+          await redis.zadd("sent_emails", timestamp, `${timestamp}:${email}`)
+
           results.push({ email, success: false, error: "An unexpected error occurred" })
         }
       }
@@ -89,6 +119,7 @@ export async function sendUpdateToSubscribers() {
       totalSent: subscribers.length,
       successCount,
       failureCount: subscribers.length - successCount,
+      timestamp,
     }
   } catch (error) {
     console.error("Error sending update to subscribers:", error)
@@ -103,6 +134,7 @@ export async function sendWinnerEmail(testEmail?: string) {
   try {
     const recipient = testEmail || "delice.wang@hotmail.com"
     const isTest = !!testEmail
+    const timestamp = Date.now()
 
     const { data, error } = await resend.emails.send({
       from: "Rallie Tennis <hello@updates.rallie.tennis>",
@@ -114,6 +146,22 @@ export async function sendWinnerEmail(testEmail?: string) {
       html: WinnerNotification({ winnerEmail: "delice.wang@hotmail.com", isTest }),
     })
 
+    if (!isTest) {
+      // Store the result in Redis
+      const { redis } = await import("../lib/redis")
+      const result = {
+        email: recipient,
+        timestamp,
+        success: !error,
+        messageId: data?.id || null,
+        error: error ? error.message : null,
+        campaign: "winner-notification",
+      }
+
+      await redis.hset(`email:${timestamp}:${recipient}`, result)
+      await redis.zadd("sent_emails", timestamp, `${timestamp}:${recipient}`)
+    }
+
     if (error) {
       console.error("Error sending winner email:", error)
       return { success: false, error: error.message }
@@ -123,5 +171,38 @@ export async function sendWinnerEmail(testEmail?: string) {
   } catch (error) {
     console.error("Exception sending winner email:", error)
     return { success: false, error: "An unexpected error occurred" }
+  }
+}
+
+/**
+ * Get the list of sent emails with their status
+ */
+export async function getSentEmails(limit = 100) {
+  try {
+    const { redis } = await import("../lib/redis")
+
+    // Get the most recent sent emails
+    const emailKeys = await redis.zrevrange("sent_emails", 0, limit - 1)
+
+    if (!emailKeys || emailKeys.length === 0) {
+      return { success: true, emails: [] }
+    }
+
+    const emails = []
+
+    for (const key of emailKeys) {
+      const emailData = await redis.hgetall(`email:${key}`)
+      if (emailData) {
+        emails.push({
+          ...emailData,
+          timestamp: Number.parseInt(emailData.timestamp || "0"),
+        })
+      }
+    }
+
+    return { success: true, emails }
+  } catch (error) {
+    console.error("Error getting sent emails:", error)
+    return { success: false, error: "Failed to retrieve sent emails" }
   }
 }
