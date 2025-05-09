@@ -54,7 +54,7 @@ export default function WinnerNotification({
       </div>
       
       <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-        Simply reply to this email to confirm your email address, and we'll send your gift card right away.
+        Simply reply to this email at <strong>hello@rallie.tennis</strong> to confirm your email address, and we'll send your gift card right away.
       </p>
       
       <p style="color: #374151; font-size: 16px; margin-bottom: 8px;">Best regards,</p>

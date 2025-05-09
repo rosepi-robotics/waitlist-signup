@@ -14,8 +14,9 @@ export async function sendTestEmail(email: string) {
   try {
     const { data, error } = await resend.emails.send({
       from: "Rallie Tennis <hello@updates.rallie.tennis>",
+      replyTo: "hello@rallie.tennis",
       to: email,
-      subject: "[TEST] Rallie Tennis - May Progress Update",
+      subject: "[TEST] Rallie Tennis - We Have a Winner for the Draw!",
       html: ProgressUpdateMay({ unsubscribeUrl: "https://rallie.tennis/unsubscribe", isTest: true }),
     })
 
@@ -58,6 +59,7 @@ export async function sendUpdateToSubscribers() {
 
           const { data, error } = await resend.emails.send({
             from: "Rallie Tennis <hello@updates.rallie.tennis>",
+            replyTo: "hello@rallie.tennis",
             to: email,
             subject: "Rallie Tennis - We Have a Winner for the Draw!",
             html: ProgressUpdateMay({ unsubscribeUrl, isTest: false }),
@@ -104,6 +106,7 @@ export async function sendWinnerEmail(testEmail?: string) {
 
     const { data, error } = await resend.emails.send({
       from: "Rallie Tennis <hello@updates.rallie.tennis>",
+      replyTo: "hello@rallie.tennis", // Add reply-to address
       to: recipient,
       subject: isTest
         ? "[TEST] Congratulations! You've Won the Rallie Tennis Draw"
