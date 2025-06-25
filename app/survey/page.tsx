@@ -307,8 +307,26 @@ export default function Survey() {
         background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
       }}
     >
+      {/* Flowing orb background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-blue-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+      </div>
+
+      {/* Grid pattern overlay */}
+      <div
+        className="fixed inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      ></div>
       <Navbar />
-      <div className="max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8 z-10">
         {/* Survey container - increased max-width from 4xl to 5xl */}
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">

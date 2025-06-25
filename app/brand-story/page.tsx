@@ -31,14 +31,107 @@ export default function BrandStory() {
   }, [])
 
   return (
-    <main
-      className="min-h-screen overflow-hidden"
-      style={{
-        background: "linear-gradient(165deg, #042d62 65%, #4ade80 100%)",
-      }}
-    >
+    <main className="min-h-screen bg-gray-800 text-white overflow-hidden relative">
+      {/* Background Grid Pattern */}
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: `
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+      `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      {/* Organic Flowing Shapes with Blended Orange & Blue */}
+      <div
+        className="absolute top-0 left-1/4 w-[700px] h-[500px] blur-3xl animate-slow-pulse opacity-85 transform rotate-12"
+        style={{
+          background: `radial-gradient(ellipse 80% 60% at 30% 40%, 
+        rgba(251, 146, 60, 0.8) 0%, 
+        rgba(59, 130, 246, 0.6) 45%, 
+        rgba(251, 146, 60, 0.4) 100%)`,
+          borderRadius: "60% 40% 30% 70%",
+        }}
+      />
+
+      <div
+        className="absolute top-1/3 right-1/6 w-[600px] h-[400px] blur-3xl opacity-90 transform -rotate-45"
+        style={{
+          background: `radial-gradient(ellipse 70% 90% at 60% 30%, 
+        rgba(59, 130, 246, 0.7) 0%, 
+        rgba(251, 146, 60, 0.8) 60%, 
+        rgba(147, 51, 234, 0.3) 100%)`,
+          borderRadius: "30% 70% 70% 30%",
+        }}
+      />
+
+      <div
+        className="absolute bottom-1/4 left-1/3 w-[550px] h-[450px] blur-3xl animate-slow-pulse opacity-80 transform rotate-45"
+        style={{
+          background: `radial-gradient(ellipse 85% 65% at 40% 60%, 
+        rgba(249, 115, 22, 0.9) 0%, 
+        rgba(29, 78, 216, 0.6) 50%, 
+        rgba(251, 146, 60, 0.4) 100%)`,
+          borderRadius: "40% 60% 60% 40%",
+        }}
+      />
+
+      <div
+        className="absolute bottom-0 right-1/4 w-[480px] h-[380px] blur-3xl opacity-85 transform -rotate-30"
+        style={{
+          background: `radial-gradient(ellipse 75% 85% at 50% 70%, 
+        rgba(251, 146, 60, 0.8) 0%, 
+        rgba(29, 78, 216, 0.7) 40%, 
+        rgba(249, 115, 22, 0.5) 100%)`,
+          borderRadius: "70% 30% 30% 70%",
+        }}
+      />
+
+      <div
+        className="absolute top-1/2 left-0 w-[420px] h-[350px] blur-3xl animate-slow-pulse opacity-75 transform rotate-75"
+        style={{
+          background: `radial-gradient(ellipse 90% 70% at 20% 50%, 
+        rgba(59, 130, 246, 0.7) 0%, 
+        rgba(251, 146, 60, 0.8) 80%)`,
+          borderRadius: "50% 50% 80% 20%",
+        }}
+      />
+
+      <div
+        className="absolute bottom-1/2 right-0 w-[460px] h-[320px] blur-3xl opacity-80 transform -rotate-60"
+        style={{
+          background: `radial-gradient(ellipse 80% 95% at 70% 30%, 
+        rgba(249, 115, 22, 0.8) 0%, 
+        rgba(29, 78, 216, 0.6) 70%)`,
+          borderRadius: "20% 80% 40% 60%",
+        }}
+      />
+
+      <div
+        className="absolute top-3/4 left-1/2 w-[380px] h-[280px] blur-3xl animate-slow-pulse opacity-70 transform rotate-15"
+        style={{
+          background: `radial-gradient(ellipse 65% 85% at 60% 40%, 
+        rgba(251, 146, 60, 0.7) 0%, 
+        rgba(59, 130, 246, 0.6) 100%)`,
+          borderRadius: "80% 20% 60% 40%",
+        }}
+      />
+
+      <div
+        className="absolute top-1/6 right-1/2 w-[340px] h-[260px] blur-3xl opacity-75 transform -rotate-75"
+        style={{
+          background: `radial-gradient(ellipse 70% 80% at 40% 60%, 
+        rgba(29, 78, 216, 0.6) 0%, 
+        rgba(251, 146, 60, 0.7) 50%, 
+        rgba(249, 115, 22, 0.4) 100%)`,
+          borderRadius: "60% 40% 20% 80%",
+        }}
+      />
+
       <Navbar />
-      <div className="max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8 z-10">
         {/* Combined article container - increased max-width from 3xl to 5xl to match survey page */}
         <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
           {/* Article header */}

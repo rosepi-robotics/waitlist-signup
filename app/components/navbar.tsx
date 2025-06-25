@@ -40,13 +40,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img
-              src="/images/rallie-logo-white.png"
-              alt="Rallie"
-              className={`h-8 w-auto transition-all duration-300 ${
-                showLogo ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
-              }`}
-            />
+            <img src="/images/rallie-logo-white.png" alt="Rallie" className="h-8 w-auto transition-all duration-300" />
           </Link>
 
           {/* Desktop Navigation */}
