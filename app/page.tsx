@@ -25,7 +25,7 @@ import {
 import { trackEvent } from "./utils/analytics"
 
 export default function Home() {
-  const [waitlistCount, setWaitlistCount] = useState(1247)
+  const [waitlistCount, setWaitlistCount] = useState(247)
   const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home() {
   }, [])
 
   const handleSuccess = (count: number) => {
-    setWaitlistCount(count + 1200)
+    setWaitlistCount(count + 200)
   }
 
   const toggleExpand = () => {
@@ -160,17 +160,13 @@ export default function Home() {
             {/* Left Column - Content */}
             <div className="space-y-8 max-w-4xl mx-auto text-center">
               <div className="space-y-6">
-                {/* Logo - Left Aligned and Smaller */}
-                <div className="mb-4 flex justify-start">
-                  <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto" />
-                </div>
+                <br></br>
 
                 <h2 className="text-5xl lg:text-6xl font-extralight text-gray-700 text-center">
                   Intelligent Tennis Training System
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
-                  Precision-engineered robotics meets artificial intelligence. Experience the future of autonomous
-                  tennis training.
+                  Precision-engineered robotics meets artificial intelligence. Experience the future of tennis training.
                 </p>
               </div>
 
@@ -181,16 +177,16 @@ export default function Home() {
                   <div className="text-sm text-gray-600 uppercase tracking-wide">MPH Launch Speed</div>
                 </div>
                 <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">360°</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Ball Placement</div>
+                  <div className="text-3xl font-light text-gray-900">Full Court</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Ball Placement Coverage</div>
                 </div>
                 <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">AI</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Computer Vision</div>
+                  <div className="text-3xl font-light text-gray-900">8.1m</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lob for Overhead Smashing</div>
                 </div>
                 <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">30%</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lighter Design</div>
+                  <div className="text-3xl font-light text-gray-900">30 lbs</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lightweight and Portable </div>
                 </div>
               </div>
 
@@ -223,11 +219,7 @@ export default function Home() {
               <div className="flex items-center justify-center space-x-8 pt-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-orange-500" />
-                  <span>{waitlistCount.toLocaleString()}+ EARLY ADOPTERS</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Award className="w-4 h-4 text-orange-500" />
-                  <span>UC BERKELEY ENGINEERED</span>
+                  <span>{waitlistCount.toLocaleString()} ON THE WAITLIST</span>
                 </div>
               </div>
             </div>
@@ -240,7 +232,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
               Breakthrough innovations in robotics, AI, and precision manufacturing.
             </p>
           </div>
@@ -250,10 +242,10 @@ export default function Home() {
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Cpu className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">TRIO-MOTOR SYSTEM</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">DUAL BRUSHLESS MOTOR SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
-                Independent motor control for topspin, backspin, and sidespin generation. Professional-grade accuracy
-                with variable speed control up to 80 MPH.
+                Independent motor control for topspin and backspin generation. Professional-grade accuracy with variable
+                speed control up to 80 MPH (yes we really mean covering the full court in less than 1s).
               </p>
             </div>
 
@@ -264,7 +256,7 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">AI VISION SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
                 Real-time computer vision tracks player position and movement patterns. Adaptive algorithms optimize
-                ball placement for personalized training.
+                ball placement for personalized training. AT NO ADDITIONAL HARDWARE COST!
               </p>
             </div>
 
@@ -274,8 +266,9 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">COMPACT ARCHITECTURE</h3>
               <p className="text-gray-600 leading-relaxed">
-                Internal oscillation system eliminates external moving parts. 30% reduction in size and weight compared
-                to traditional machines.
+                30% reduction in size and weight compared to traditional machines. With such top-of-industry specs, we
+                reduce machine weight to 30lbs/13kg, making it the most compact the portable high-performance ball
+                machine on the market.
               </p>
             </div>
           </div>
