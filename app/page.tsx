@@ -396,7 +396,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-700 mb-4">
-                    We'll be posting comparison videos of Rallie vs. other machines' top speed on YouTube.
+                    {"We'll be posting comparison videos of Rallie vs. other machines' top speed on YouTube."}
                     <a
                       href="https://www.youtube.com/channel/UCe2iDqdEYGT3k_F4HtWyajA"
                       target="_blank"
@@ -458,7 +458,7 @@ export default function Home() {
               <div className="mb-6">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <TrendingUp className="mr-2 h-5 w-5 text-orange-500" />
-                  WHAT'S NEXT
+                  {"WHAT'S NEXT"}
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <div className="space-y-4">
@@ -467,8 +467,9 @@ export default function Home() {
                       <div>
                         <h5 className="text-gray-900 font-medium mb-1">Pitch & Oscillation Testing</h5>
                         <p className="text-gray-600 text-sm">
-                          Next week we'll test the full court coverage system, designed to produce smashes up to 8
-                          meters. Watch our YouTube channel for test videos.
+                          {
+                            "Next week we'll test the full court coverage system, designed to produce smashes up to 8 meters. Watch our YouTube channel for test videos."
+                          }
                         </p>
                       </div>
                     </div>
@@ -477,8 +478,9 @@ export default function Home() {
                       <div>
                         <h5 className="text-gray-900 font-medium mb-1">Industrial Design Process</h5>
                         <p className="text-gray-600 text-sm">
-                          We've started the Industrial Design phase! Currently in ideation stage. Look for our ID
-                          preferences survey in early July.
+                          {
+                            "We've started the Industrial Design phase! Currently in ideation stage. Look for our ID preferences survey in early July."
+                          }
                         </p>
                       </div>
                     </div>

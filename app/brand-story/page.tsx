@@ -31,7 +31,7 @@ export default function BrandStory() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gray-800 text-white overflow-hidden relative">
+    <main className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
       {/* Background Grid Pattern */}
       <div
         className="absolute inset-0 opacity-40"
@@ -133,13 +133,13 @@ export default function BrandStory() {
       <Navbar />
       <div className="relative max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8 z-10">
         {/* Combined article container - increased max-width from 3xl to 5xl to match survey page */}
-        <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-white">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-gray-900">
           {/* Article header */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             The Rallie Story: A Tennis Ball Machine Built Out of Frustration
           </h1>
 
-          <div className="flex items-center text-white/80 mb-6 space-x-4">
+          <div className="flex items-center text-gray-600 mb-6 space-x-4">
             <div className="flex items-center">
               <Calendar className="h-4 w-4 mr-1" />
               <time dateTime="2025-03-13">March 13, 2025</time>
@@ -164,7 +164,7 @@ export default function BrandStory() {
           </div>
 
           {/* Article content - now in the same container */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-gray-700">
             <h2 className="text-2xl font-bold mt-8">From Factory Floors to Founding Startups</h2>
             <p>
               Hi, I'm Sophie Luo, creator of Rallie. My journey into hardware started early—my dad is a mechanical
@@ -382,7 +382,7 @@ export default function BrandStory() {
 
             <div className="space-y-6">
               {/* First glass bubble - Join the Community */}
-              <div className="bg-white/10 rounded-xl p-6 border border-white/20">
+              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-semibold mb-4">Join the Community and Get Involved in the Conversation</h3>
                 <ul className="list-none space-y-3">
                   <li className="flex items-start">
@@ -393,7 +393,7 @@ export default function BrandStory() {
                         href="https://discord.gg/ptaTkcbQ"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-300 hover:underline mx-1"
+                        className="text-blue-600 hover:underline mx-1"
                       >
                         Discord
                       </a>
@@ -402,7 +402,7 @@ export default function BrandStory() {
                         href="https://instagram.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-300 hover:underline mx-1"
+                        className="text-blue-600 hover:underline mx-1"
                       >
                         Instagram
                       </a>
@@ -411,7 +411,7 @@ export default function BrandStory() {
                         href="https://www.facebook.com/groups/963981362613884"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-300 hover:underline mx-1"
+                        className="text-blue-600 hover:underline mx-1"
                       >
                         Facebook
                       </a>
@@ -421,7 +421,7 @@ export default function BrandStory() {
                     <span className="text-white mr-2 font-bold">📩</span>
                     <span>
                       Email me at{" "}
-                      <a href="mailto:hello@rallie.tennis" className="text-blue-300 hover:underline">
+                      <a href="mailto:hello@rallie.tennis" className="text-blue-600 hover:underline">
                         hello@rallie.tennis
                       </a>{" "}
                       – I'll personally respond to every email!
@@ -440,13 +440,13 @@ export default function BrandStory() {
               </div>
 
               {/* Second glass bubble - Help understand painpoints */}
-              <div className="bg-white/10 rounded-xl p-6 border border-white/20">
+              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-semibold mb-4">Help me understand painpoints and build better products</h3>
                 <ul className="list-none space-y-3">
                   <li className="flex items-start">
                     <span className="text-white mr-2 font-bold">📋</span>
                     <span>
-                      <Link href="/survey" className="text-blue-300 hover:underline">
+                      <Link href="/survey" className="text-blue-600 hover:underline">
                         Let me know about your experience with ball machines
                       </Link>{" "}
                       - this will help me design a better product that addresses real tennis players' needs.
@@ -456,7 +456,7 @@ export default function BrandStory() {
               </div>
 
               {/* Third glass bubble - Connect with VCs */}
-              <div className="bg-white/10 rounded-xl p-6 border border-white/20">
+              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-semibold mb-4">Connect me with VCs or partners</h3>
                 <ul className="list-none space-y-3">
                   <li className="flex items-start">
@@ -465,7 +465,7 @@ export default function BrandStory() {
                       I've set aside some budget and raised a small amount from a Silicon Valley-based VC to bring
                       Rallie to life. But to perfect the product and stick to our timeline, I'll need more funding. If
                       you can introduce me to VCs or strategic partners, please reach out at{" "}
-                      <a href="mailto:hello@rallie.tennis" className="text-blue-300 hover:underline">
+                      <a href="mailto:hello@rallie.tennis" className="text-blue-600 hover:underline">
                         hello@rallie.tennis
                       </a>
                     </span>

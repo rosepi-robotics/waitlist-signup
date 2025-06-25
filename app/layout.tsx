@@ -18,7 +18,7 @@ const rajdhani = Rajdhani({
 })
 
 export const metadata: Metadata = {
-  title: "Rallie tenis ball machine",
+  title: "Rallie tennis ball machine",
   description: "Intelligent tennis ball machine.",
   generator: "Sophie Luo",
 }
