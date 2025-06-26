@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { WaitlistForm } from "./components/waitlist-form"
 import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
@@ -22,33 +21,26 @@ import {
   Target,
 } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
+import { getWaitlistCount } from "./actions/waitlist"
 
 export default function Home() {
   const [waitlistCount, setWaitlistCount] = useState(247)
-  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
 
-  const handleSuccess = (count: number) => {
-    setWaitlistCount(count + 200)
-  }
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded)
-
-    if (!isExpanded) {
-      setTimeout(() => {
-        const expandButton = document.getElementById("continue-reading-button")
-        if (expandButton) {
-          const yOffset = -100
-          const y = expandButton.getBoundingClientRect().top + window.pageYOffset + yOffset
-          window.scrollTo({ top: y, behavior: "smooth" })
-        }
-      }, 100)
+    // Load actual waitlist count
+    const loadWaitlistCount = async () => {
+      try {
+        const count = await getWaitlistCount()
+        setWaitlistCount(count || 247) // fallback to 247 if count fails
+      } catch (error) {
+        console.error("Failed to load waitlist count:", error)
+      }
     }
-  }
+
+    loadWaitlistCount()
+  }, [])
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
@@ -201,7 +193,7 @@ export default function Home() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Link href="/brand-story">
+                <Link href="https://www.youtube.com/@rallietennis">
                   <Button
                     variant="outline"
                     size="lg"
@@ -326,17 +318,6 @@ export default function Home() {
                 "Existing solutions failed to meet the precision and reliability standards required for serious
                 training. Rallie represents a complete reimagining of tennis ball machine technology."
               </blockquote>
-
-              <Link href="/brand-story">
-                <Button
-                  variant="outline"
-                  className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-lg"
-                  onClick={() => trackEvent("button_click", "founder", "read_story")}
-                >
-                  READ FULL STORY
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -408,7 +389,7 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-gray-700 text-sm">
-                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie’s
+                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
                         hardware development and will lead our path to scalable production.
                       </p>
                     </div>
@@ -546,7 +527,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Updated to remove email input */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-gray-900 mb-6">JOIN THE BETA PROGRAM</h2>
@@ -557,27 +538,24 @@ export default function Home() {
           <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto border border-gray-200 shadow-sm">
             <div className="mb-6">
               <h3 className="text-2xl font-medium text-gray-900 mb-2">EARLY ACCESS</h3>
-              <p className="text-gray-600">Exclusive updates and beta testing opportunities</p>
-            </div>
+              <p className="text-gray-600 mb-6">Exclusive updates and beta testing opportunities</p>
 
-            <WaitlistForm onSuccess={handleSuccess} />
+              {/* Updated to link to survey instead of email form */}
+              <Link href="/survey">
+                <Button
+                  size="lg"
+                  className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
+                  onClick={() => trackEvent("button_click", "cta", "join_waitlist")}
+                >
+                  JOIN WAITLIST
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
 
             <div className="mt-4 text-center">
               <p className="text-gray-500 font-medium text-sm">{waitlistCount.toLocaleString()}+ REGISTERED</p>
             </div>
-          </div>
-
-          <div className="mt-8">
-            <Link href="/survey">
-              <Button
-                variant="outline"
-                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-8 py-3 rounded-lg"
-                onClick={() => trackEvent("button_click", "cta", "survey")}
-              >
-                COMPLETE SURVEY - WIN $100 GIFT CARD
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

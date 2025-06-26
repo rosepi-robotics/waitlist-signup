@@ -20,10 +20,16 @@ export const Navbar = () => {
                 href="/brand-story"
                 className="text-white hover:bg-white/20 px-3 py-2 rounded-md text-sm font-medium"
               >
-                About
+                Story
               </Link>
               <Link href="/contact" className="text-white hover:bg-white/20 px-3 py-2 rounded-md text-sm font-medium">
                 Contact
+              </Link>
+              <Link
+                href="/survey"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Take Survey to Win $100
               </Link>
             </div>
           </div>

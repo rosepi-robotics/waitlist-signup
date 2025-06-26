@@ -5,6 +5,7 @@ import { Resend } from "resend"
 import { redis } from "../lib/redis"
 import { headers } from "next/headers"
 import { nanoid } from "nanoid"
+import { addToWaitlist } from "./waitlist"
 
 // Update the schema to include referral code field
 const surveySchema = z
@@ -185,6 +186,9 @@ export async function submitSurvey(formData: FormData) {
 
       // Add email to drawing participants list
       await redis.sadd("drawing_participants", email)
+
+      // Add email to waitlist
+      await addToWaitlist(email)
 
       // Add email to waitlist if not already there
       await redis.sadd("waitlist_emails", email)

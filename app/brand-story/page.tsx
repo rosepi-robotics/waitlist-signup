@@ -157,7 +157,7 @@ export default function BrandStory() {
 
           <div className="aspect-video w-full rounded-xl overflow-hidden mb-8">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-15%20at%208.21.23%E2%80%AFPM-HHmxhjFtggu36xEIJTy5CpbM1nfX9i.png"
+              src="/images/brand-story-hero.png"
               alt="Tennis ball machine in action"
               className="w-full h-full object-cover"
             />

@@ -24,7 +24,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
       return { success: false, message: result.error.errors[0].message }
     }
 
-    // Store email in Upstash Redis
+    // Store email in Upstash Redis waitlist
     await redis.sadd("waitlist_emails", email.toString())
 
     // Send welcome email using Resend with your verified subdomain
@@ -67,5 +67,16 @@ export async function getWaitlistCount() {
     return count
   } catch (error) {
     return 0
+  }
+}
+
+// New function to add email to waitlist (used by survey)
+export async function addToWaitlist(email: string) {
+  try {
+    await redis.sadd("waitlist_emails", email)
+    return true
+  } catch (error) {
+    console.error("Error adding to waitlist:", error)
+    return false
   }
 }

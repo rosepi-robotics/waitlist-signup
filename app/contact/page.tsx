@@ -1,7 +1,48 @@
+"use client"
+
+import { useState } from "react"
 import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
+import { submitContactForm } from "../actions/contact"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null
+    message: string
+  }>({ type: null, message: "" })
+
+  async function handleSubmit(formData: FormData) {
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: "" })
+
+    try {
+      const result = await submitContactForm(formData)
+
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: result.message || "Message sent successfully!",
+        })
+        // Reset form
+        const form = document.getElementById("contact-form") as HTMLFormElement
+        form?.reset()
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Failed to send message",
+        })
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An unexpected error occurred",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
       {/* Background Grid Pattern */}
@@ -102,9 +143,6 @@ export default function ContactPage() {
         }}
       />
 
-      {/* Grid pattern overlay */}
-      {/* <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" /> */}
-
       <Navbar />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -115,6 +153,19 @@ export default function ContactPage() {
           </p>
         </div>
 
+        {/* Success/Error Message */}
+        {submitStatus.type && (
+          <div
+            className={`mb-6 p-4 rounded-lg text-center ${
+              submitStatus.type === "success"
+                ? "bg-green-100 text-green-800 border border-green-200"
+                : "bg-red-100 text-red-800 border border-red-200"
+            }`}
+          >
+            {submitStatus.message}
+          </div>
+        )}
+
         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
@@ -123,19 +174,34 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-700">hello@rallie.com</p>
+                  <p className="text-gray-700">hello@rallie.tennis</p>
                 </div>
 
                 <div>
                   <h3 className="font-semibold text-gray-900">Follow Us</h3>
                   <div className="flex space-x-4 mt-2">
-                    <a href="#" className="text-blue-600 hover:text-blue-800">
+                    <a
+                      href="https://www.instagram.com/rallietennis"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800"
+                    >
                       Instagram
                     </a>
-                    <a href="#" className="text-blue-600 hover:text-blue-800">
-                      Twitter
+                    <a
+                      href="https://www.youtube.com/@rallietennis"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      YouTube
                     </a>
-                    <a href="#" className="text-blue-600 hover:text-blue-800">
+                    <a
+                      href="https://www.facebook.com/groups/963981362613884"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800"
+                    >
                       Facebook
                     </a>
                   </div>
@@ -147,7 +213,7 @@ export default function ContactPage() {
                     Join our waitlist to be the first to know about Rallie updates and get early access.
                   </p>
                   <a
-                    href="/#waitlist"
+                    href="/survey"
                     className="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Join Waitlist
@@ -158,51 +224,58 @@ export default function ContactPage() {
 
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Message</h2>
-              <form className="space-y-4">
+              <form id="contact-form" action={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                     placeholder="your@email.com"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
+                    Message *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                     placeholder="Tell us what's on your mind..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

@@ -3,9 +3,10 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.dev",
+  title: "Rallie | AI-Powered Tennis Ball Machine for Smarter Training",
+  description:
+    "Train like a pro with Rallie — the compact, intelligent tennis ball machine that uses AI and computer vision to personalize every shot. Lightweight, powerful, and endlessly customizable.",
+  generator: "Next.js",
 }
 
 export default function RootLayout({
