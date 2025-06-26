@@ -10,7 +10,6 @@ import Link from "next/link"
 import {
   ArrowRight,
   CheckCircle,
-  Smartphone,
   Award,
   Users,
   TrendingUp,
@@ -369,9 +368,41 @@ export default function Home() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-light text-gray-900 mb-6">FIRST FIELD TEST SUCCESS + NEW LOGO REVEAL</h3>
+              <h3 className="text-2xl font-light text-gray-900 mb-6">
+                TEAM EXPANSION + FIRST FIELD TEST SUCCESS + NEW LOGO REVEAL
+              </h3>
 
-              {/* Field Test Success with Video */}
+              {/* Team Expansion */}
+              <div className="mb-8">
+                <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
+                  <Users className="mr-2 h-5 w-5 text-green-500" />
+                  MAJOR TEAM EXPANSION
+                </h4>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <p className="mb-4 text-gray-700">
+                    The team expands! I'm super excited to announce that I've gathered an extremely talented,
+                    experienced team!
+                  </p>
+                  <div className="space-y-4">
+                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
+                      <h5 className="font-medium text-gray-900 mb-2">Lisa Wang - Co-founder & AI Lead</h5>
+                      <p className="text-gray-600 text-sm">
+                        A brilliant engineer and ex-Googler. Lisa will be leading AI development at Rallie. Stay
+                        tuned—exciting AI feature demos are coming soon!
+                      </p>
+                    </div>
+                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
+                      <h5 className="font-medium text-gray-900 mb-2">Ray Shen - Hardware & Manufacturing</h5>
+                      <p className="text-gray-600 text-sm">
+                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
+                        hardware development and will lead our path to scalable production.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Field Test Success with GIF */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
@@ -383,16 +414,17 @@ export default function Home() {
                     creating incredibly fast and strong balls with its compact design.
                   </p>
 
-                  {/* Field Test Video */}
+                  {/* Field Test GIF */}
                   <div className="mb-6">
-                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg p-4 border border-gray-200">
-                      <video
-                        src="/videos/rallie-field-test.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
+                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg p-4 border border-gray-200 max-w-sm mx-auto">
+                      <img
+                        src="/videos/rallie-field-test.gif"
+                        alt="Rallie field test demonstration showing the tennis ball machine in action"
                         className="w-full h-auto rounded-lg object-cover"
+                        loading="eager"
+                        style={{ maxWidth: "300px", height: "auto" }}
+                        onLoad={() => console.log("GIF loaded")}
+                        onError={() => console.log("GIF failed to load")}
                       />
                     </div>
                     <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
@@ -438,31 +470,6 @@ export default function Home() {
                     <div className="bg-white rounded-lg p-8 border border-gray-200">
                       <img src="/images/rallie-logo-black.png" alt="New Rallie Logo" className="h-16 w-auto" />
                     </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200 border-dashed">
-                      <p className="text-center text-gray-500 text-sm">More assets coming soon...</p>
-                    </div>
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200 border-dashed">
-                      <p className="text-center text-gray-500 text-sm">More assets coming soon...</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* AI Algorithm Progress */}
-              <div className="mb-8">
-                <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <Smartphone className="mr-2 h-5 w-5 text-blue-500" />
-                  AI ALGORITHM DEVELOPMENT
-                </h4>
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <p className="mb-4 text-gray-700">
-                    The AI algorithm is taking shape! Our computer vision system can now track player movements in
-                    real-time.
-                  </p>
-                  <div className="bg-white/70 p-4 rounded-lg border border-gray-200 border-dashed">
-                    <p className="text-center text-gray-500 text-sm">Player tracking demo GIF coming soon...</p>
                   </div>
                 </div>
               </div>

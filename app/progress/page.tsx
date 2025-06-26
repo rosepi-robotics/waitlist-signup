@@ -147,7 +147,36 @@ export default function ProgressPage() {
               June Update: First Field Test Success, New Logo, and AI Progress
             </h2>
 
-            {/* Field Test Success with Video */}
+            {/* Team Expansion */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                👥 Major Team Expansion - We're Growing!
+              </h3>
+              <p className="text-gray-700 mb-4">
+                The team expands! I started working on this all by myself back in March, now I've gathered a talented,
+                experienced team!
+              </p>
+
+              <div className="space-y-4">
+                <div className="bg-white/5 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-900 mb-2">Introducing Lisa Wang - Co-founder & AI Lead</h4>
+                  <p className="text-gray-700 text-sm">
+                    Really talented engineer and ex-Googler. Lisa will be in charge of the AI stuff for Rallie. We will
+                    soon share some exciting tests of our AI functions!
+                  </p>
+                </div>
+
+                <div className="bg-white/5 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-900 mb-2">Ray Shen - Hardware & Manufacturing Expert</h4>
+                  <p className="text-gray-700 text-sm">
+                    A veteran in motor control and manufacturing industry with 15 years experience. Ray brings deep
+                    expertise to our hardware development and will help us scale production.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Field Test Success with GIF */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 🎾 First Field Test - Complete Success!
@@ -158,16 +187,17 @@ export default function ProgressPage() {
                 - both worked flawlessly!
               </p>
 
-              {/* Field Test Video */}
+              {/* Field Test GIF */}
               <div className="mb-6">
-                <div className="bg-white/5 rounded-lg p-4 border border-gray-200">
-                  <video
-                    src="/videos/rallie-field-test.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                <div className="bg-white/5 rounded-lg p-4 border border-gray-200 max-w-sm mx-auto">
+                  <img
+                    src="/videos/rallie-field-test.gif"
+                    alt="Rallie field test demonstration showing the tennis ball machine in action"
                     className="w-full h-auto rounded-lg object-cover"
+                    loading="eager"
+                    style={{ maxWidth: "300px", height: "auto" }}
+                    onLoad={() => console.log("GIF loaded")}
+                    onError={() => console.log("GIF failed to load")}
                   />
                 </div>
                 <p className="text-xs text-center mt-2 text-gray-500">First field test footage - June 2025</p>
@@ -196,36 +226,6 @@ export default function ProgressPage() {
               <div className="bg-white/5 rounded-lg p-6 mb-4">
                 <img src="/images/rallie-logo-black.png" alt="New Rallie Logo" className="h-20 mx-auto mb-4" />
                 <p className="text-gray-500 text-center text-sm">Our fresh new logo design</p>
-              </div>
-
-              {/* Placeholder spots for more assets */}
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                <div className="bg-white/5 rounded-lg p-8 border-2 border-dashed border-gray-200 flex items-center justify-center">
-                  <p className="text-gray-400 text-sm text-center">More assets coming soon...</p>
-                </div>
-                <div className="bg-white/5 rounded-lg p-8 border-2 border-dashed border-gray-200 flex items-center justify-center">
-                  <p className="text-gray-400 text-sm text-center">More assets coming soon...</p>
-                </div>
-              </div>
-            </div>
-
-            {/* AI Algorithm Progress */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                🤖 AI Algorithm Taking Shape
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Our AI player tracking system is making incredible progress. Check out this demo of our player detection
-                and tracking algorithm in action:
-              </p>
-              <div className="bg-white/5 rounded-lg p-6">
-                <div className="bg-white/10 rounded-lg h-64 flex items-center justify-center border-2 border-dashed border-gray-200">
-                  <div className="text-center">
-                    <div className="animate-pulse mb-2">🎯</div>
-                    <p className="text-gray-500 text-sm">Player Tracking Demo GIF</p>
-                    <p className="text-gray-400 text-xs">(Coming soon)</p>
-                  </div>
-                </div>
               </div>
             </div>
 
