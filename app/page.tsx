@@ -18,10 +18,8 @@ import {
   Clock,
   Bot,
   Layers,
-  ScanEye,
+  Scan,
   Target,
-  ChevronDown,
-  ChevronUp,
 } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
 
@@ -267,7 +265,7 @@ export default function Home() {
             {/* 3. AI Vision System */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-blue-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                <ScanEye className="w-6 h-6 text-blue-600" />
+                <Scan className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">INTELLIGENT AI VISION&nbsp;SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
@@ -281,7 +279,7 @@ export default function Home() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                 <Target className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED CUSTOMIZABLE&nbsp;DRILLS</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED PROGRAMMABLE DRILLS</h3>
               <p className="text-gray-600 leading-relaxed">
                 Access curated NTRP-level training programmes or build <em>your own</em> custom drills and share them
                 with the community. Level-up together—beginner to pro.
@@ -368,41 +366,66 @@ export default function Home() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-light text-gray-900 mb-6">
-                TEAM EXPANSION + FIRST FIELD TEST SUCCESS + NEW LOGO REVEAL
-              </h3>
+              <h3 className="text-2xl font-light text-gray-900 mb-6">FIRST FIELD TEST SUCCESS + NEW LOGO REVEAL</h3>
 
-              {/* Team Expansion */}
+              {/* Team Update Section */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <Users className="mr-2 h-5 w-5 text-green-500" />
-                  MAJOR TEAM EXPANSION
+                  <Users className="mr-2 h-5 w-5 text-blue-500" />
+                  TEAM UPDATE
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <p className="mb-4 text-gray-700">
-                    The team expands! I'm super excited to announce that I've gathered an extremely talented,
-                    experienced team!
+                  <p className="mb-6 text-gray-700">
+                    My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to
+                    announce that I'm joined with incredibly talented engineers!
                   </p>
-                  <div className="space-y-4">
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                      <h5 className="font-medium text-gray-900 mb-2">Lisa Wang - Co-founder & AI Lead</h5>
-                      <p className="text-gray-600 text-sm">
-                        A brilliant engineer and ex-Googler. Lisa will be leading AI development at Rallie. Stay
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-blue-600 font-semibold text-lg">LW</span>
+                        </div>
+                        <div>
+                          <h5 className="text-lg font-medium text-gray-900">Lisa Wang</h5>
+                          <p className="text-sm text-gray-600">Co-founder & AI/Computer Vision Lead</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 text-sm">
+                        Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay
                         tuned—exciting AI feature demos are coming soon!
                       </p>
                     </div>
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                      <h5 className="font-medium text-gray-900 mb-2">Ray Shen - Hardware & Manufacturing</h5>
-                      <p className="text-gray-600 text-sm">
-                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
+
+                    <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-orange-600 font-semibold text-lg">RS</span>
+                        </div>
+                        <div>
+                          <h5 className="text-lg font-medium text-gray-900">Ray Shen</h5>
+                          <p className="text-sm text-gray-600">Hardware & Embedded Systems Engineering</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 text-sm">
+                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie’s
                         hardware development and will lead our path to scalable production.
                       </p>
                     </div>
                   </div>
+
+                  <p className="text-gray-700">
+                    We're also excited to announce partnerships with local tennis clubs for beta testing. If you're
+                    interested in hosting a beta test at your facility,
+                    <a href="/contact" className="text-orange-500 hover:text-orange-600 ml-1 underline">
+                      reach out to us
+                    </a>
+                    !
+                  </p>
                 </div>
               </div>
 
-              {/* Field Test Success with GIF */}
+              {/* Field Test Success with Optimized GIF */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
@@ -414,19 +437,20 @@ export default function Home() {
                     creating incredibly fast and strong balls with its compact design.
                   </p>
 
-                  {/* Field Test GIF */}
-                  <div className="mb-6">
-                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg p-4 border border-gray-200 flex justify-center">
-                      <img
-                        src="https://i.imgur.com/UNvBo5i.gif"
-                        alt="Field test"
-                        className="w-[300px] h-auto rounded-lg object-cover"
-                      />
-                    </div>
-                    <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
+                  {/* Optimized Field Test GIF */}
+                  <div className="mb-6 flex justify-center">
+                    <img
+                      src="https://i.imgur.com/UNvBo5i.gif"
+                      alt="Rallie field test demonstration showing the tennis ball machine in action"
+                      width={400}
+                      height={300}
+                      className="max-w-sm mx-auto"
+                      placeholder="/videos/field_test_preview.jpg"
+                    />
                   </div>
+                  <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 mt-6">
                     <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
                       <div className="text-2xl font-light text-gray-900 mb-2">✅ Topspin</div>
                       <div className="text-sm text-gray-600">Perfect spin generation</div>
@@ -503,24 +527,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Continue Reading Button */}
-            <div id="continue-reading-button" className="flex justify-center mt-6">
-              <button
-                onClick={toggleExpand}
-                className="flex items-center gap-2 bg-white hover:bg-gray-50 transition-colors px-6 py-3 rounded-lg text-gray-700 font-medium border border-gray-200"
-              >
-                {isExpanded ? (
-                  <>
-                    SHOW LESS <ChevronUp className="h-5 w-5" />
-                  </>
-                ) : (
-                  <>
-                    CONTINUE READING <ChevronDown className="h-5 w-5" />
-                  </>
-                )}
-              </button>
             </div>
 
             {/* Call to action for full progress */}

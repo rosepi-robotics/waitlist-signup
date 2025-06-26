@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { ToggleText } from "./toggle-text"
 import { Rajdhani } from "next/font/google"
-import { GraduationCap, Building2, Turtle } from "lucide-react"
+import { GraduationCap, Building2, TurtleIcon as Tennis } from "lucide-react"
 // Import the trackEvent function at the top of the file
 import { trackEvent } from "../utils/analytics"
 
@@ -192,7 +192,7 @@ export function WaitlistSignup() {
                             <span>Serial entrepreneur based in San Francisco</span>
                           </li>
                           <li className="flex items-center gap-2">
-                            <Turtle className="h-5 w-5 text-white/80 flex-shrink-0" />
+                            <Tennis className="h-5 w-5 text-white/80 flex-shrink-0" />
                             <span>Passionate tennis player</span>
                           </li>
                         </ul>
