@@ -423,15 +423,14 @@ export default function Home() {
                     structural components that need refinement.
                   </p>
 
-                  {/* Optimized Field Test Video */}
+                  {/* YouTube Field Test Video */}
                   <div className="mb-6 flex justify-center">
-                    <video
-                      src="/videos/output_mobile.mp4"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full max-w-[300px] mx-auto rounded-lg object-cover"
+                    <iframe
+                      src="https://www.youtube.com/embed/3w82jRrf7nw"
+                      title="Rallie Tennis Ball Machine First Test"
+                      className="w-full max-w-[300px] mx-auto rounded-lg aspect-video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
                     />
                   </div>
                   <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
