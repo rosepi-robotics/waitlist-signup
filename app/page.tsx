@@ -409,7 +409,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Chnage Field Test Success to Video for Mobile Playing */}
+              {/* Change Field Test Success to Video for Mobile Playing */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
@@ -426,7 +426,7 @@ export default function Home() {
                   {/* Optimized Field Test Video */}
                   <div className="mb-6 flex justify-center">
                     <video
-                      src="/videos/first_field_test.mp4"
+                      src="/videos/output_mobile.mp4"
                       autoPlay
                       muted
                       loop
