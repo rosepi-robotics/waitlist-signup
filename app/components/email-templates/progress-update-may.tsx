@@ -63,10 +63,13 @@ export default function ProgressUpdateMay({ unsubscribeUrl = "#", isTest = false
       <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
         Based on these learnings, we're now advancing to the next development phase with custom motors and a new flywheel design that promises to further reduce the overall volume and weight of the machine.
       </p>
-      
-      <h3 style="color: #042d62; font-size: 18px; margin-bottom: 12px;">Software</h3>
+
+      <h3 style="color: #042d62; font-size: 18px; margin-bottom: 12px;">Team Expansion</h3>
+      <p style="color: #374151; font-size: 16px; margin-bottom: 16px;">
+        The team expands! I started working on this all by myself back in March, now I've gathered a talented, experienced team! Introducing my cofounder - Lisa Wang, a really talented engineer, ex-Googler. Lisa will be in charge of the AI stuff for Rallie. We will soon share some exciting tests of our AI functions!
+      </p>
       <p style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-        On the software front, we've developed a functional app that can detect player position and poses in real-time, and through our custom reasoning module, determine the optimal ball placement for your practice session.
+        On the hardware and manufacturing side, we've got Ray Shen, a veteran in motor control and in the manufacturing industry with 15 years experience.
       </p>
       
       <h3 style="color: #042d62; font-size: 18px; margin-bottom: 12px;">Other Updates</h3>
