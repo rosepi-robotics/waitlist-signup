@@ -164,8 +164,8 @@ export default function Home() {
               {/* Technical Specs */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">80</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">MPH Launch Speed</div>
+                  <div className="text-3xl font-light text-gray-900">80mph</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Launch Speed</div>
                 </div>
                 <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
                   <div className="text-3xl font-light text-gray-900">Full Court</div>
@@ -236,9 +236,9 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">MULTI-MOTOR&nbsp;SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
-                Premium brushless motors deliver ultra-precise topspin and backspin at speeds up to 80&nbsp;MPH —
-                covering the full court in one second. Servo-driven oscillation ensures pinpoint ball placement anywhere
-                on the court.
+                Premium brushless motors deliver ultra-precise topspin and backspin at speeds up to{" "}
+                <span className="font-semibold text-orange-600">80&nbsp;MPH</span> — covering the full court in one
+                second. Servo-driven oscillation ensures pinpoint ball placement anywhere on the court.
               </p>
             </div>
 
@@ -249,7 +249,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">COMPACT ARCHITECTURE</h3>
               <p className="text-gray-600 leading-relaxed">
-                30 % smaller and lighter than traditional machines—just 30 lbs&nbsp;(13 kg) with zero performance
+                30% smaller and lighter than traditional machines—just{" "}
+                <span className="font-semibold text-orange-600">30 lbs&nbsp;(13 kg)</span> with zero performance
                 compromise. Rallie Potrero is the most portable high-performance tennis ball machine on the market.
               </p>
             </div>
@@ -262,7 +263,8 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">INTELLIGENT AI VISION&nbsp;SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
                 Real-time computer vision tracks player position and movement. Adaptive algorithms optimise ball
-                placement for fully personalised training—<span className="font-medium">with no extra hardware.</span>
+                placement for fully personalised training—
+                <span className="font-semibold text-orange-600">with no extra hardware.</span>
               </p>
             </div>
 
@@ -273,8 +275,9 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED PROGRAMMABLE DRILLS</h3>
               <p className="text-gray-600 leading-relaxed">
-                Access curated NTRP-level training programmes or build <em>your own</em> custom drills and share them
-                with the community. Level-up together—beginner to pro.
+                Access curated NTRP-level training programmes or build{" "}
+                <span className="font-semibold text-orange-600">your own custom drills</span> and share them with the
+                community. Level-up together—beginner to pro.
               </p>
             </div>
           </div>
@@ -357,8 +360,8 @@ export default function Home() {
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to
-                    announce that I'm joined with incredibly talented engineers!
+                    My team is growing! Finally it's not my one man shop anymore! I'm super excited to announce that I'm
+                    joined with incredibly talented engineers!
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -406,7 +409,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Field Test Success with Optimized GIF */}
+              {/* Chnage Field Test Success to Video for Mobile Playing */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
@@ -414,19 +417,21 @@ export default function Home() {
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    We did our first field test and the results exceeded expectations! The system is working perfectly,
-                    creating incredibly fast and strong balls with its compact design.
+                    We did our first field test and the results exceeded expectations! The system is working well,
+                    creating incredibly fast and strong balls with its compact design. However, the test also revealed
+                    some areas for improvement, including noise levels that were higher than expected and some
+                    structural components that need refinement.
                   </p>
 
-                  {/* Optimized Field Test GIF */}
+                  {/* Optimized Field Test Video */}
                   <div className="mb-6 flex justify-center">
-                    <img
-                      src="https://i.imgur.com/UNvBo5i.gif"
-                      alt="Rallie field test demonstration showing the tennis ball machine in action"
-                      width={400}
-                      height={300}
-                      className="max-w-sm mx-auto"
-                      placeholder="/videos/field_test_preview.jpg"
+                    <video
+                      src="/videos/first_field_test.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full max-w-[300px] mx-auto rounded-lg object-cover"
                     />
                   </div>
                   <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
@@ -434,13 +439,44 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 mt-6">
                     <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
                       <div className="text-2xl font-light text-gray-900 mb-2">✅ Topspin</div>
-                      <div className="text-sm text-gray-600">Perfect spin generation</div>
+                      <div className="text-sm text-gray-600">Great spin generation</div>
                     </div>
                     <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
                       <div className="text-2xl font-light text-gray-900 mb-2">✅ Backspin</div>
                       <div className="text-sm text-gray-600">Precise control achieved</div>
                     </div>
                   </div>
+
+                  <div className="mt-6 mb-4">
+                    <h5 className="text-gray-900 font-medium mb-3">Areas for Improvement</h5>
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <span className="text-gray-700 text-sm">
+                            <strong>Noise Reduction:</strong> Current prototype operates louder than target levels
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <span className="text-gray-700 text-sm">
+                            <strong>Structural Refinements:</strong> Some components need optimization for durability
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-4">
+                    <p className="text-blue-800 text-sm">
+                      <strong>Good news:</strong> We already have solid engineering plans to address these issues. Our
+                      team is confident these improvements will be implemented well before Fall 2025 beta testing
+                      begins.
+                    </p>
+                  </div>
+
                   <p className="text-gray-700 mb-4">
                     {"We'll be posting comparison videos of Rallie vs. other machines' top speed on YouTube."}
                     <a
@@ -532,7 +568,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-gray-900 mb-6">JOIN THE BETA PROGRAM</h2>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Limited access to early testing phase. Summer 2025 deployment.
+            Limited access to early testing phase. Fall 2025 deployment.
           </p>
 
           <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto border border-gray-200 shadow-sm">
