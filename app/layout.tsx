@@ -18,9 +18,10 @@ const rajdhani = Rajdhani({
 })
 
 export const metadata: Metadata = {
-  title: "Rallie tennis ball machine",
-  description: "Intelligent tennis ball machine.",
-  generator: "Sophie Luo",
+  title: "Rallie | AI-Powered Tennis Ball Machine for Smarter Training",
+  description:
+    "Train like a pro with Rallie — the compact, intelligent tennis ball machine that uses AI and computer vision to personalize every shot. Lightweight, powerful, and endlessly customizable.",
+  generator: "Next.js",
 }
 
 export default function RootLayout({

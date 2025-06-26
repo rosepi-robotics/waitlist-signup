@@ -17,10 +17,12 @@ import {
   Play,
   Calendar,
   Clock,
-  Cpu,
+  Bot,
+  Layers,
+  ScanEye,
+  Target,
   ChevronDown,
   ChevronUp,
-  Layers,
 } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
 
@@ -237,38 +239,53 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* 1. Multi-Motor System */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
-                <Cpu className="w-6 h-6 text-orange-600" />
+                <Bot className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">DUAL BRUSHLESS MOTOR SYSTEM</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">MULTI-MOTOR&nbsp;SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
-                Independent motor control for topspin and backspin generation. Professional-grade accuracy with variable
-                speed control up to 80 MPH (yes we really mean covering the full court in less than 1s).
+                Premium brushless motors deliver ultra-precise topspin and backspin at speeds up to 80&nbsp;MPH —
+                covering the full court in one second. Servo-driven oscillation ensures pinpoint ball placement anywhere
+                on the court.
               </p>
             </div>
 
-            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-blue-300 transition-colors shadow-sm">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                <Smartphone className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">AI VISION SYSTEM</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Real-time computer vision tracks player position and movement patterns. Adaptive algorithms optimize
-                ball placement for personalized training. AT NO ADDITIONAL HARDWARE COST!
-              </p>
-            </div>
-
+            {/* 2. Compact Architecture */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Layers className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">COMPACT ARCHITECTURE</h3>
               <p className="text-gray-600 leading-relaxed">
-                30% reduction in size and weight compared to traditional machines. With such top-of-industry specs, we
-                reduce machine weight to 30lbs/13kg, making it the most compact the portable high-performance ball
-                machine on the market.
+                30 % smaller and lighter than traditional machines—just 30 lbs&nbsp;(13 kg) with zero performance
+                compromise. Rallie Potrero is the most portable high-performance tennis ball machine on the market.
+              </p>
+            </div>
+
+            {/* 3. AI Vision System */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-blue-300 transition-colors shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                <ScanEye className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">INTELLIGENT AI VISION&nbsp;SYSTEM</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Real-time computer vision tracks player position and movement. Adaptive algorithms optimise ball
+                placement for fully personalised training—<span className="font-medium">with no extra hardware.</span>
+              </p>
+            </div>
+
+            {/* 4. Unlimited Drills */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <Target className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED CUSTOMIZABLE&nbsp;DRILLS</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Access curated NTRP-level training programmes or build <em>your own</em> custom drills and share them
+                with the community. Level-up together—beginner to pro.
               </p>
             </div>
           </div>
@@ -281,9 +298,9 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
-                src="/placeholder.svg?height=500&width=400"
-                alt="Sophie Luo, Founder & Chief Engineer"
-                className="w-full max-w-md mx-auto rounded-lg"
+                src="/images/sophie-founder-collage.png"
+                alt="Sophie Luo working on Rallie tennis ball machine development and testing"
+                className="w-full max-w-md mx-auto rounded-lg shadow-lg"
               />
             </div>
 
@@ -300,11 +317,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700">Former Product Manager, Rokid (AR/AI Unicorn)</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700">Founded RosePi Robotics (Autonomous Systems)</span>
+                  <span className="text-gray-700">Early team member @ Rokid (AR/AI Unicorn)</span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
