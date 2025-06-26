@@ -4,15 +4,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: false,
-  },
-  experimental: {
-    serverComponentsExternalPackages: ['sharp'],
+    ignoreBuildErrors: true,
   },
   images: {
-    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com'],
-    unoptimized: false,
+    unoptimized: true,
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

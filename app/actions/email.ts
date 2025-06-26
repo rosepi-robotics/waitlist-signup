@@ -217,7 +217,7 @@ export async function getSentEmails(limit = 100) {
       if (emailData) {
         emails.push({
           ...emailData,
-          timestamp: Number.parseInt(emailData.timestamp || "0"),
+          timestamp: Number.parseInt(String(emailData.timestamp || "0")),
         })
       }
     }
