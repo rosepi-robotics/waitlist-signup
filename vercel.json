@@ -1,0 +1,4 @@
+{
+  // Use a regular install so the lock-file is refreshed automatically
+  "installCommand": "pnpm install --no-frozen-lockfile"
+}
