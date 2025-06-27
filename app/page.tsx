@@ -12,7 +12,6 @@ import {
   Award,
   Users,
   TrendingUp,
-  Play,
   Calendar,
   Clock,
   Bot,
@@ -159,13 +158,14 @@ export default function Home() {
                 <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
                   Tennis meets real AI.
                   <div>
-                  The first AI tennis coach that knows your game, adapts to your skill and style - and actually helps you level up.
+                    The first AI tennis coach that knows your game, adapts to your skill and style - and actually helps
+                    you level up.
                   </div>
                 </p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+              <div className="flex justify-center pt-4">
                 <Link href="/survey">
                   <Button
                     size="lg"
@@ -176,45 +176,167 @@ export default function Home() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Link href="https://www.youtube.com/@rallietennis">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300"
-                    onClick={() => trackEvent("button_click", "hero", "learn_more")}
-                  >
-                    <Play className="mr-2 w-5 h-5" />
-                    WATCH DEMO
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Technical Specs */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">80mph</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Launch Speed</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">Full Court</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Ball Placement Coverage</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">8.1m</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lob for Overhead Smashing</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">30 lbs</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lightweight and Portable </div>
-                </div>
               </div>
 
               {/* Social Proof */}
               <div className="flex items-center justify-center space-x-8 pt-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-orange-500" />
-                  <span>{waitlistCount.toLocaleString()} ON THE WAITLIST</span>
+                  <span>{waitlistCount.toLocaleString()}</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beyond a Ball Machine Section */}
+      <section className="py-20 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-light text-gray-900 mb-4">BEYOND A BALL MACHINE</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Ball machines should help you train & improve your game in a systematic way
+            </p>
+          </div>
+
+          <div className="space-y-20">
+            {/* Point 1: rallie. observes - Image left, text right */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=400&width=600"
+                  alt="Rallie observes your position, poses, and footwork"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
+                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    OBSERVES
+                  </h3>
+                  <p className="text-xl text-gray-600">Real-time analysis of your tennis technique</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Player position and court movement patterns</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Swing mechanics and body positioning</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Footwork timing and balance points</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Point 2: rallie. analyzes - Text left, image right */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-6 lg:order-1 lg:pl-16">
+                <div>
+                  <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
+                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    ANALYZES
+                  </h3>
+                  <p className="text-xl text-gray-600">Deep insights into your playing patterns</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Identifies strengths and improvement areas</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Tracks performance trends over time</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Compares against skill level benchmarks</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative lg:order-2">
+                <img
+                  src="/placeholder.svg?height=400&width=600"
+                  alt="Rallie analyzes your patterns and performance"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
+
+            {/* Point 3: rallie. acts - Image left, text right */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="relative">
+                <img
+                  src="/placeholder.svg?height=400&width=600"
+                  alt="Rallie acts with smart adaptive drills"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
+                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    ACTS
+                  </h3>
+                  <p className="text-xl text-gray-600">Intelligent training that adapts in real-time</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Dynamic drill adjustment based on performance</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Personalized shot placement and timing</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Progressive difficulty scaling</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Point 4: rallie. summarizes - Text left, image right */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-6 lg:order-1 lg:pl-16">
+                <div>
+                  <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
+                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    SUMMARIZES
+                  </h3>
+                  <p className="text-xl text-gray-600">Comprehensive insights and future planning</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Detailed session statistics and progress reports</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Personalized training recommendations</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Long-term skill development roadmap</span>
+                  </div>
+                </div>
+                <blockquote className="border-l-4 border-orange-500 pl-6 italic text-gray-700 text-lg">
+                  "Every session builds on the last, creating a systematic path to tennis mastery."
+                </blockquote>
+              </div>
+              <div className="relative lg:order-2">
+                <img
+                  src="/placeholder.svg?height=400&width=600"
+                  alt="Rallie summarizes your progress and plans next steps"
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
               </div>
             </div>
           </div>
@@ -282,48 +404,6 @@ export default function Home() {
                 <span className="font-semibold text-orange-600">your own custom drills</span> and share them with the
                 community. Level-up together—beginner to pro.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="py-20 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <img
-                src="/images/sophie-founder-collage.png"
-                alt="Sophie Luo working on Rallie tennis ball machine development and testing"
-                className="w-full max-w-md mx-auto rounded-lg shadow-lg"
-              />
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl font-light text-gray-900 mb-4">ENGINEERED BY EXPERTS</h2>
-                <p className="text-xl text-gray-600">Sophie Luo, Robotics Engineer & Tennis Enthusiast</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700">UC Berkeley & UPenn Robotics Engineering</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700">Early team member @ Rokid (AR/AI Unicorn)</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700">Manufacturing partnerships: Foxconn, Flextronics, Goertek</span>
-                </div>
-              </div>
-
-              <blockquote className="border-l-4 border-orange-500 pl-6 italic text-gray-700 text-lg">
-                "Existing solutions failed to meet the precision and reliability standards required for serious
-                training. Rallie represents a complete reimagining of tennis ball machine technology."
-              </blockquote>
             </div>
           </div>
         </div>
@@ -553,7 +633,7 @@ export default function Home() {
               <Link href="/progress">
                 <Button
                   variant="outline"
-                  className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-lg"
+                  className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-lg bg-transparent"
                   onClick={() => trackEvent("button_click", "progress", "view_all")}
                 >
                   VIEW ALL UPDATES
