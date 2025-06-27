@@ -27,7 +27,6 @@ export default function BlogPage() {
           borderRadius: "60% 40% 30% 70%",
         }}
       />
-
       <div
         className="absolute top-1/3 right-1/6 w-[600px] h-[400px] blur-3xl opacity-85 transform -rotate-45"
         style={{
@@ -39,100 +38,102 @@ export default function BlogPage() {
         }}
       />
 
-      <div
-        className="absolute bottom-1/4 left-1/3 w-[550px] h-[450px] blur-3xl animate-slow-pulse opacity-75 transform rotate-45"
-        style={{
-          background: `radial-gradient(ellipse 85% 65% at 40% 60%, 
-            rgba(34, 197, 94, 1.0) 0%, 
-            rgba(59, 130, 246, 0.8) 50%, 
-            rgba(251, 146, 60, 0.8) 100%)`,
-          borderRadius: "40% 60% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-0 right-1/4 w-[480px] h-[380px] blur-3xl opacity-80 transform -rotate-30"
-        style={{
-          background: `radial-gradient(ellipse 75% 85% at 50% 70%, 
-            rgba(251, 146, 60, 1.0) 0%, 
-            rgba(34, 197, 94, 0.8) 40%, 
-            rgba(59, 130, 246, 0.8) 100%)`,
-          borderRadius: "70% 30% 30% 70%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/2 left-0 w-[420px] h-[350px] blur-3xl animate-slow-pulse opacity-70 transform rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 90% 70% at 20% 50%, 
-            rgba(168, 85, 247, 1.0) 0%, 
-            rgba(251, 146, 60, 1.0) 80%)`,
-          borderRadius: "50% 50% 80% 20%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-1/2 right-0 w-[460px] h-[320px] blur-3xl opacity-75 transform -rotate-60"
-        style={{
-          background: `radial-gradient(ellipse 80% 95% at 70% 30%, 
-            rgba(34, 197, 94, 1.0) 0%, 
-            rgba(59, 130, 246, 0.8) 70%)`,
-          borderRadius: "20% 80% 40% 60%",
-        }}
-      />
-
-      <div
-        className="absolute top-3/4 left-1/2 w-[380px] h-[280px] blur-3xl animate-slow-pulse opacity-70 transform rotate-15"
-        style={{
-          background: `radial-gradient(ellipse 65% 85% at 60% 40%, 
-            rgba(251, 146, 60, 1.0) 0%, 
-            rgba(168, 85, 247, 0.8) 100%)`,
-          borderRadius: "80% 20% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/6 right-1/2 w-[340px] h-[260px] blur-3xl opacity-75 transform -rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 70% 80% at 40% 60%, 
-            rgba(59, 130, 246, 0.8) 0%, 
-            rgba(34, 197, 94, 1.0) 50%, 
-            rgba(251, 146, 60, 0.8) 100%)`,
-          borderRadius: "60% 40% 20% 80%",
-        }}
-      />
-
       <Navbar />
 
       <div className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-extralight text-gray-700 mb-6">Blog</h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Insights, updates, and stories from the world of AI-powered tennis training
-          </p>
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-200 shadow-lg">
+            <article className="prose lg:prose-xl max-w-none text-gray-800">
+              <header className="mb-12 text-center">
+                <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+                  What a Real AI Tennis Coach Should Look Like
+                </h1>
+                <p className="mt-4 text-lg text-gray-600">
+                  Beyond just launching balls: The case for a machine that actually thinks.
+                </p>
+              </header>
 
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-12 border border-gray-200 shadow-sm">
-            <div className="text-6xl mb-6">🚧</div>
-            <h2 className="text-3xl font-light text-gray-900 mb-4">Coming Soon</h2>
-            <p className="text-gray-600 text-lg mb-8">
-              We're working hard to bring you the latest insights on tennis training, AI technology, and product
-              development. Stay tuned for exciting content!
-            </p>
+              <p className="lead">
+                Most tennis ball machines today fall into two camps: affordable but static machines that just feed balls
+                at set intervals, or high-end machines that track players, move around, and even collect balls. While
+                the newer generation of machines seems more advanced, they’re still missing the point.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/survey"
-                className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg"
-              >
-                Join Beta Program
-              </a>
-              <a
-                href="/"
-                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 rounded-lg font-medium transition-all duration-300"
-              >
-                Back to Home
-              </a>
-            </div>
+              <h2>The Real Problem: Machines That Don’t Think</h2>
+              <p>
+                Whether it’s a basic feeder or a fancy rover that moves and catches balls, most machines still treat
+                training as a game of volume and automation, not understanding and adaptation.
+              </p>
+              <p>Even machines that offer “rally mode” or automated ball collection don’t ask:</p>
+              <ul>
+                <li>How is the player performing?</li>
+                <li>What kind of feedback do they need next?</li>
+                <li>How should the next ball be adjusted to help them improve — not just stay busy?</li>
+              </ul>
+              <p>They’re optimizing logistics — not coaching.</p>
+
+              <blockquote className="border-l-4 border-orange-500 pl-4 italic text-gray-600 my-6">
+                Imagine if your coach only focused on running around and feeding balls without watching how you’re
+                hitting them. That’s what most machines today are doing.
+              </blockquote>
+
+              <h2>Think of Your Coach</h2>
+              <p>
+                A real coach pays attention. They analyze your form, footwork, and shot quality. They tweak the next
+                feed:
+              </p>
+              <ul>
+                <li>Slower if you’re late.</li>
+                <li>Wider if your recovery is weak.</li>
+                <li>Spinnier if you’re starting to find your rhythm.</li>
+              </ul>
+              <p>That’s what an AI tennis coach should do, too.</p>
+
+              <h2>What Players Actually Need</h2>
+              <p>Players don’t want a glorified ball launcher. They want to:</p>
+              <ul>
+                <li>Fix bad habits.</li>
+                <li>Reinforce good form.</li>
+                <li>Receive actionable feedback.</li>
+                <li>See measurable progress.</li>
+              </ul>
+              <p>They want a system that helps them train smarter, not just sweat harder.</p>
+
+              <h2>The Vision: A True AI Coach</h2>
+              <p>Imagine this: You say into the Rallie app:</p>
+              <div className="bg-gray-900 text-white p-4 rounded-lg my-6 font-mono">
+                <p>“I want to improve my topspin forehand.”</p>
+              </div>
+              <p>Rallie responds by creating an adaptive training session:</p>
+              <ul>
+                <li>Launches a smart sequence of shots.</li>
+                <li>Tracks your position and timing.</li>
+                <li>Slows down when you struggle.</li>
+                <li>Pushes further when you improve.</li>
+                <li>Gives visual feedback and coaching insights after each set.</li>
+              </ul>
+              <p>Now try:</p>
+              <div className="bg-gray-900 text-white p-4 rounded-lg my-6 font-mono">
+                <p>“I want to practice running up for a drop shot, then backing up for a lob.”</p>
+              </div>
+              <p>Rallie understands. It doesn’t just follow — it coaches.</p>
+
+              <h2>True AI ≠ Fancy Mechanics</h2>
+              <p>
+                The future isn’t just about automation. It’s about intelligence. We don’t believe adding wheels or a net
+                to catch balls is the solution. We believe the solution is to understand the player and deliver
+                contextual, adaptive feedback that drives real improvement.
+              </p>
+
+              <hr className="my-8" />
+
+              <p className="font-semibold text-center text-xl">
+                Rallie is building the first AI-powered tennis coach that actually coaches.
+              </p>
+              <p className="text-center text-lg text-gray-600">
+                Because you don’t just need someone (or something) to feed balls — you need a partner in your progress.
+              </p>
+            </article>
           </div>
         </div>
       </div>

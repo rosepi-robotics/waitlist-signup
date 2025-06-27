@@ -38,10 +38,10 @@ export const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                href="/"
+                href="/blog"
                 className="text-white hover:bg-white/20 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
-                Home
+                Blog
               </Link>
               <Link
                 href="/brand-story"
@@ -81,11 +81,11 @@ export const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-md rounded-lg mt-2 border border-white/10">
               <Link
-                href="/"
+                href="/blog"
                 className="text-white hover:bg-white/20 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                 onClick={closeMenu}
               >
-                Home
+                Blog
               </Link>
               <Link
                 href="/brand-story"
@@ -115,5 +115,3 @@ export const Navbar = () => {
     </nav>
   )
 }
-
-export default Navbar

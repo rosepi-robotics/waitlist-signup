@@ -249,7 +249,7 @@ export default function Home() {
               <div className="flex items-center justify-center space-x-8 pt-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-orange-500" />
-                  <span>{waitlistCount.toLocaleString()} are already on the waitlist</span>
+                  <span>{waitlistCount.toLocaleString()} tennis players are already on the waitlist</span>
                 </div>
               </div>
             </div>
@@ -547,7 +547,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-light text-gray-900 mb-6">FIRST FIELD TEST SUCCESS + NEW LOGO REVEAL</h3>
+              <h3 className="text-2xl font-light text-gray-900 mb-6">TEAM ADDITION + FIRST FIELD TEST SUCCESS</h3>
 
               {/* Team Update Section */}
               <div className="mb-8">
@@ -688,25 +688,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* New Logo Section */}
-              <div className="mb-8">
-                <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <Award className="mr-2 h-5 w-5 text-orange-500" />
-                  NEW LOGO REVEAL
-                </h4>
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <p className="mb-6 text-gray-700">
-                    Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern
-                    design.
-                  </p>
-                  <div className="flex justify-center mb-6">
-                    <div className="bg-white rounded-lg p-8 border border-gray-200">
-                      <img src="/images/rallie-logo-black.png" alt="New Rallie Logo" className="h-16 w-auto" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* What's Next */}
               <div className="mb-6">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
@@ -792,7 +773,7 @@ export default function Home() {
             </div>
 
             <div className="mt-4 text-center">
-              <p className="text-gray-500 font-medium text-sm">{waitlistCount.toLocaleString()}+ REGISTERED</p>
+              <p className="text-gray-500 font-medium text-sm">{waitlistCount.toLocaleString()} TENNIS ENTHUSIASTS REGISTERED</p>
             </div>
           </div>
         </div>
