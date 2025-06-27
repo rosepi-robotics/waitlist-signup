@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -14,16 +15,24 @@ import {
   TrendingUp,
   Calendar,
   Clock,
-  Bot,
   Layers,
-  Scan,
-  Target,
+  Zap,
+  Settings,
+  Brain,
 } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
-import { getWaitlistCount } from "./actions/waitlist"
+import { getWaitlistCount, joinWaitlist } from "./actions/waitlist"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Home() {
   const [waitlistCount, setWaitlistCount] = useState(247)
+  const [heroEmail, setHeroEmail] = useState("")
+  const [aiCtaEmail, setAiCtaEmail] = useState("")
+  const [finalCtaEmail, setFinalCtaEmail] = useState("")
+  const [heroLoading, setHeroLoading] = useState(false)
+  const [aiCtaLoading, setAiCtaLoading] = useState(false)
+  const [finalCtaLoading, setFinalCtaLoading] = useState(false)
+  const { toast } = useToast()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -40,6 +49,56 @@ export default function Home() {
 
     loadWaitlistCount()
   }, [])
+
+  const handleWaitlistSubmit = async (
+    email: string,
+    setEmail: (email: string) => void,
+    setLoading: (loading: boolean) => void,
+    source: string,
+  ) => {
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address",
+        variant: "destructive",
+      })
+      return
+    }
+
+    setLoading(true)
+    try {
+      const formData = new FormData()
+      formData.append("email", email)
+
+      const result = await joinWaitlist(null, formData)
+
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: result.message,
+        })
+        setEmail("")
+        if (result.count) {
+          setWaitlistCount(result.count)
+        }
+        trackEvent("waitlist_join", source, email)
+      } else {
+        toast({
+          title: "Error",
+          description: result.message,
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
@@ -153,9 +212,8 @@ export default function Home() {
                 <br></br>
 
                 <h2 className="text-5xl lg:text-6xl font-extralight text-gray-700 text-center">
-                  Meet your new tennis coach. 
-                  <div>AI-native. Always ready.
-                  </div>
+                  Meet your new tennis coach.
+                  <div>AI-native. Always ready.</div>
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
                   <div>
@@ -165,18 +223,26 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex justify-center pt-4">
-                <Link href="/survey">
+              {/* CTA with Email Input */}
+              <div className="flex flex-col items-center pt-4 space-y-4">
+                <div className="flex flex-col gap-3 w-full max-w-md">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={heroEmail}
+                    onChange={(e) => setHeroEmail(e.target.value)}
+                    className="w-full"
+                  />
                   <Button
                     size="lg"
-                    className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg"
-                    onClick={() => trackEvent("button_click", "hero", "survey_cta")}
+                    className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-3 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
+                    onClick={() => handleWaitlistSubmit(heroEmail, setHeroEmail, setHeroLoading, "hero")}
+                    disabled={heroLoading}
                   >
-                    JOIN BETA PROGRAM
+                    {heroLoading ? "JOINING..." : "JOIN BETA PROGRAM"}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                </Link>
+                </div>
               </div>
 
               {/* Social Proof */}
@@ -197,7 +263,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">BEYOND A BALL MACHINE</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ball machines should help you train & improve your game in a systematic way, not just headlessly shoot balls at you.
+              Ball machines should help you train & improve your game in a systematic way, not just headlessly shoot
+              balls at you.
             </p>
           </div>
 
@@ -350,69 +417,111 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              A solid, high-performance, beautiful machine engineered by experts in mechanical engineering and motor control.
+              Breakthrough innovations in robotics, AI, and precision manufacturing that redefine what's possible in
+              tennis training.
             </p>
-          </div>   
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            {/* 1. Compact Architecture */}
+            {/* 1. Ultra-Portable Design */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Layers className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">COMPACT ARCHITECTURE</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">ULTRA-PORTABLE DESIGN</h3>
               <p className="text-gray-600 leading-relaxed">
-                Most portable high-performance tennis ball machine on the market.
-                <span className="font-semibold text-orange-600">30 lbs&nbsp;(13 kg)</span> with zero performance
-                compromise. 
+                <span className="font-semibold text-orange-600">30 lbs (13.6 kg)</span> total weight with
+                <span className="font-semibold text-orange-600"> 150-ball capacity</span>. Aluminum frame construction
+                with quick-release legs. Setup time under 90 seconds.
               </p>
             </div>
 
-            {/* 2. Multi-Motor System */}
+            {/* 2. Precision Motor System */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
-                <Bot className="w-6 h-6 text-orange-600" />
+                <Zap className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">MULTI-MOTOR&nbsp;SYSTEM</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">DUAL MOTOR SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
-                Flat, topspin, backspin, lob, internal oscilation - any ball type you need.
-                <span className="font-semibold text-orange-600">80&nbsp;MPH</span> top speed — covering the full court in one
-                second.
+                Twin brushless DC motors with <span className="font-semibold text-orange-600">3000 RPM max speed</span>.
+                Variable spin control: flat, topspin, backspin, slice. Ball speed range
+                <span className="font-semibold text-orange-600">10-85 MPH</span>.
               </p>
             </div>
 
-            {/* 3. Precision Placement */}
+            {/* 3. Precision Ball Placement */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-blue-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                <Scan className="w-6 h-6 text-blue-600" />
+                <Settings className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">PRECISION BALL PLACEMENT</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">SERVO-CONTROLLED OSCILLATION</h3>
               <p className="text-gray-600 leading-relaxed">
-                Full court coverage with high precision in every ball placement.
-                <span className="font-semibold text-orange-600">High resolution motor control</span>
+                <span className="font-semibold text-orange-600">±45° horizontal</span> and
+                <span className="font-semibold text-orange-600">±30° vertical</span> range. Stepper motor precision with
+                0.1° accuracy. Full court coverage from baseline position.
               </p>
             </div>
 
-            {/* 4. Unlimited Drills */}
+            {/* 4. Smart Control System */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <Target className="w-6 h-6 text-green-600" />
+                <Brain className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED PROGRAMMABLE DRILLS</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">PROGRAMMABLE CONTROL</h3>
               <p className="text-gray-600 leading-relaxed">
-                Curated NTRP-level training programmes or build{" "}
-                <span className="font-semibold text-orange-600">your own custom drills</span> and share them with the
-                community. Level-up together—beginner to pro.
+                <span className="font-semibold text-orange-600">32GB onboard storage</span> for drill sequences. WiFi
+                connectivity, mobile app control. Battery life:
+                <span className="font-semibold text-orange-600">4+ hours continuous use</span>.
               </p>
             </div>
           </div>
         </div>
       </section>
-      
-      {/* AI Section */}
-      
 
+      {/* AI CTA Section - Enhanced */}
+      <section className="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 border-t border-gray-200 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-8">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Tennis meets real AI</h2>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              The future of tennis training is here. Intelligent. Adaptive. Personal.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <p className="text-2xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
+              Rallie is rapidly evolving. Join us in shaping the future of tennis training.
+            </p>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
+              <div className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={aiCtaEmail}
+                  onChange={(e) => setAiCtaEmail(e.target.value)}
+                  className="bg-white/90 border-white/30 text-gray-900 placeholder:text-gray-600"
+                />
+                <Button
+                  size="lg"
+                  className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
+                  onClick={() => handleWaitlistSubmit(aiCtaEmail, setAiCtaEmail, setAiCtaLoading, "ai_cta")}
+                  disabled={aiCtaLoading}
+                >
+                  {aiCtaLoading ? "JOINING..." : "JOIN WAITLIST"}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Progress Section */}
       <section id="progress" className="py-20 border-t border-gray-200">
@@ -497,7 +606,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Change Field Test Success to Video for Mobile Playing */}
+              {/* Field Test Success */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
@@ -642,7 +751,7 @@ export default function Home() {
                   onClick={() => trackEvent("button_click", "progress", "view_all")}
                 >
                   VIEW ALL UPDATES
-                  <ArrowRight className="ml-2 w-4 w-4" />
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -650,7 +759,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - Updated to remove email input */}
+      {/* Final CTA Section */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-gray-900 mb-6">JOIN THE BETA PROGRAM</h2>
@@ -663,17 +772,23 @@ export default function Home() {
               <h3 className="text-2xl font-medium text-gray-900 mb-2">EARLY ACCESS</h3>
               <p className="text-gray-600 mb-6">Exclusive updates and beta testing opportunities</p>
 
-              {/* Updated to link to survey instead of email form */}
-              <Link href="/survey">
+              <div className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={finalCtaEmail}
+                  onChange={(e) => setFinalCtaEmail(e.target.value)}
+                />
                 <Button
                   size="lg"
                   className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
-                  onClick={() => trackEvent("button_click", "cta", "join_waitlist")}
+                  onClick={() => handleWaitlistSubmit(finalCtaEmail, setFinalCtaEmail, setFinalCtaLoading, "final_cta")}
+                  disabled={finalCtaLoading}
                 >
-                  JOIN WAITLIST
+                  {finalCtaLoading ? "JOINING..." : "JOIN WAITLIST"}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </Link>
+              </div>
             </div>
 
             <div className="mt-4 text-center">
