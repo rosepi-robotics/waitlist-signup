@@ -154,31 +154,14 @@ export default function Home() {
                 <br></br>
 
                 <h2 className="text-5xl lg:text-6xl font-extralight text-gray-700 text-center">
-                  Intelligent Tennis Training System
+                  Meet your new tennis coach. AI-powered. Always ready.
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
-                  Precision-engineered robotics meets artificial intelligence. Experience the future of tennis training.
+                  Tennis meets real AI.
+                  <div>
+                  The first AI tennis coach that knows your game, adapts to your skill and style - and actually helps you level up.
+                  </div>
                 </p>
-              </div>
-
-              {/* Technical Specs */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">80mph</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Launch Speed</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">Full Court</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Ball Placement Coverage</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">8.1m</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lob for Overhead Smashing</div>
-                </div>
-                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-light text-gray-900">30 lbs</div>
-                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lightweight and Portable </div>
-                </div>
               </div>
 
               {/* CTA Buttons */}
@@ -204,6 +187,26 @@ export default function Home() {
                     WATCH DEMO
                   </Button>
                 </Link>
+              </div>
+
+              {/* Technical Specs */}
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
+                  <div className="text-3xl font-light text-gray-900">80mph</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Launch Speed</div>
+                </div>
+                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
+                  <div className="text-3xl font-light text-gray-900">Full Court</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Ball Placement Coverage</div>
+                </div>
+                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
+                  <div className="text-3xl font-light text-gray-900">8.1m</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lob for Overhead Smashing</div>
+                </div>
+                <div className="space-y-2 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
+                  <div className="text-3xl font-light text-gray-900">30 lbs</div>
+                  <div className="text-sm text-gray-600 uppercase tracking-wide">Lightweight and Portable </div>
+                </div>
               </div>
 
               {/* Social Proof */}
