@@ -153,10 +153,11 @@ export default function Home() {
                 <br></br>
 
                 <h2 className="text-5xl lg:text-6xl font-extralight text-gray-700 text-center">
-                  Meet your new tennis coach. AI-powered. Always ready.
+                  Meet your new tennis coach. 
+                  <div>AI-native. Always ready.
+                  </div>
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
-                  Tennis meets real AI.
                   <div>
                     The first AI tennis coach that knows your game, adapts to your skill and style - and actually helps
                     you level up.
@@ -182,7 +183,7 @@ export default function Home() {
               <div className="flex items-center justify-center space-x-8 pt-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-orange-500" />
-                  <span>{waitlistCount.toLocaleString()}</span>
+                  <span>{waitlistCount.toLocaleString()} are already on the waitlist</span>
                 </div>
               </div>
             </div>
@@ -196,7 +197,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">BEYOND A BALL MACHINE</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ball machines should help you train & improve your game in a systematic way
+              Ball machines should help you train & improve your game in a systematic way, not just headlessly shoot balls at you.
             </p>
           </div>
 
@@ -289,7 +290,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Dynamic drill adjustment based on performance</span>
+                    <span className="text-gray-700">Dynamic drill adjustment based on real time performance</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
@@ -343,53 +344,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Technology Section */}
+      {/* Hardware Section */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Breakthrough innovations in robotics, AI, and precision manufacturing.
+              A solid, high-performance, beautiful machine engineered by experts in mechanical engineering and motor control.
             </p>
-          </div>
+          </div>   
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* 1. Multi-Motor System */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
-                <Bot className="w-6 h-6 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">MULTI-MOTOR&nbsp;SYSTEM</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Premium brushless motors deliver ultra-precise topspin and backspin at speeds up to{" "}
-                <span className="font-semibold text-orange-600">80&nbsp;MPH</span> — covering the full court in one
-                second. Servo-driven oscillation ensures pinpoint ball placement anywhere on the court.
-              </p>
-            </div>
 
-            {/* 2. Compact Architecture */}
+            {/* 1. Compact Architecture */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Layers className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">COMPACT ARCHITECTURE</h3>
               <p className="text-gray-600 leading-relaxed">
-                30% smaller and lighter than traditional machines—just{" "}
+                Most portable high-performance tennis ball machine on the market.
                 <span className="font-semibold text-orange-600">30 lbs&nbsp;(13 kg)</span> with zero performance
-                compromise. Rallie Potrero is the most portable high-performance tennis ball machine on the market.
+                compromise. 
               </p>
             </div>
 
-            {/* 3. AI Vision System */}
+            {/* 2. Multi-Motor System */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-orange-300 transition-colors shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                <Bot className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">MULTI-MOTOR&nbsp;SYSTEM</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Flat, topspin, backspin, lob, internal oscilation - any ball type you need.
+                <span className="font-semibold text-orange-600">80&nbsp;MPH</span> top speed — covering the full court in one
+                second.
+              </p>
+            </div>
+
+            {/* 3. Precision Placement */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 hover:border-blue-300 transition-colors shadow-sm">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Scan className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-medium text-gray-900 mb-4">INTELLIGENT AI VISION&nbsp;SYSTEM</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-4">PRECISION BALL PLACEMENT</h3>
               <p className="text-gray-600 leading-relaxed">
-                Real-time computer vision tracks player position and movement. Adaptive algorithms optimise ball
-                placement for fully personalised training—
-                <span className="font-semibold text-orange-600">with no extra hardware.</span>
+                Full court coverage with high precision in every ball placement.
+                <span className="font-semibold text-orange-600">High resolution motor control</span>
               </p>
             </div>
 
@@ -400,7 +401,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">UNLIMITED PROGRAMMABLE DRILLS</h3>
               <p className="text-gray-600 leading-relaxed">
-                Access curated NTRP-level training programmes or build{" "}
+                Curated NTRP-level training programmes or build{" "}
                 <span className="font-semibold text-orange-600">your own custom drills</span> and share them with the
                 community. Level-up together—beginner to pro.
               </p>
@@ -408,6 +409,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* AI Section */}
+      
+
 
       {/* Progress Section */}
       <section id="progress" className="py-20 border-t border-gray-200">
