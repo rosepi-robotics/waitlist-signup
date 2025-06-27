@@ -431,8 +431,7 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">ULTRA-PORTABLE DESIGN</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600">30 lbs (13.6 kg)</span> total weight with
-                <span className="font-semibold text-orange-600"> 150-ball capacity</span>. Aluminum frame construction
-                with quick-release legs. Setup time under 90 seconds.
+                <span className="font-semibold text-orange-600"> 150-ball capacity</span>. The most portable high-performance ball machine on the market.
               </p>
             </div>
 
@@ -443,9 +442,9 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">DUAL MOTOR SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
-                Twin brushless DC motors with <span className="font-semibold text-orange-600">3000 RPM max speed</span>.
+                Twin brushless DC motors with <span className="font-semibold text-orange-600">6600 RPM max speed</span>.
                 Variable spin control: flat, topspin, backspin, slice. Ball speed range
-                <span className="font-semibold text-orange-600">10-85 MPH</span>.
+                <span className="font-semibold text-orange-600">10-80 MPH</span>.
               </p>
             </div>
 
@@ -456,9 +455,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">SERVO-CONTROLLED OSCILLATION</h3>
               <p className="text-gray-600 leading-relaxed">
-                <span className="font-semibold text-orange-600">±45° horizontal</span> and
-                <span className="font-semibold text-orange-600">±30° vertical</span> range. Stepper motor precision with
-                0.1° accuracy. Full court coverage from baseline position.
+                <span className="font-semibold text-orange-600"> ±45° horizontal</span> and
+                <span className="font-semibold text-orange-600"> +5° - 50° vertical</span> range. Full court coverage from baseline position.
               </p>
             </div>
 
@@ -469,9 +467,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">PROGRAMMABLE CONTROL</h3>
               <p className="text-gray-600 leading-relaxed">
-                <span className="font-semibold text-orange-600">32GB onboard storage</span> for drill sequences. WiFi
-                connectivity, mobile app control. Battery life:
-                <span className="font-semibold text-orange-600">4+ hours continuous use</span>.
+                <span className="font-semibold text-orange-600">Unlimited programmable drills. </span> Choose from pre-set NTRP training drills, edit your own, or try a community-shared drill
               </p>
             </div>
           </div>
@@ -490,13 +486,13 @@ export default function Home() {
           <div className="mb-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Tennis meets real AI</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              The future of tennis training is here. Intelligent. Adaptive. Personal.
+              Your real AI coach should be able to know you, to see you in real time, to understand how to help you improve, and to launch that best ball to you.
             </p>
           </div>
 
           <div className="space-y-8">
-            <p className="text-2xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
-              Rallie is rapidly evolving. Join us in shaping the future of tennis training.
+            <p className="text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
+              We are early in our journey. Rallie is rapidly evolving. Join us in shaping the future of tennis training.
             </p>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
