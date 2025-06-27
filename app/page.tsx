@@ -431,7 +431,8 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">ULTRA-PORTABLE DESIGN</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600">30 lbs (13.6 kg)</span> total weight with
-                <span className="font-semibold text-orange-600"> 150-ball capacity</span>. The most portable high-performance ball machine on the market.
+                <span className="font-semibold text-orange-600"> 150-ball capacity</span>. The most portable
+                high-performance ball machine on the market.
               </p>
             </div>
 
@@ -456,7 +457,8 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">SERVO-CONTROLLED OSCILLATION</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600"> ±45° horizontal</span> and
-                <span className="font-semibold text-orange-600"> +5° - 50° vertical</span> range. Full court coverage from baseline position.
+                <span className="font-semibold text-orange-600"> +5° - 50° vertical</span> range. Full court coverage
+                from baseline position.
               </p>
             </div>
 
@@ -467,7 +469,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">PROGRAMMABLE CONTROL</h3>
               <p className="text-gray-600 leading-relaxed">
-                <span className="font-semibold text-orange-600">Unlimited programmable drills. </span> Choose from pre-set NTRP training drills, edit your own, or try a community-shared drill
+                <span className="font-semibold text-orange-600">Unlimited programmable drills. </span> Choose from
+                pre-set NTRP training drills, edit your own, or try a community-shared drill
               </p>
             </div>
           </div>
@@ -486,16 +489,18 @@ export default function Home() {
           <div className="mb-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Tennis meets real AI</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Your real AI coach should be able to know you, to see you in real time, to understand how to help you improve, and to launch that best ball to you.
+              Your real AI coach should be able to know you, to see you in real time, to understand how to help you
+              improve, and to launch that best ball to you.
             </p>
           </div>
 
-          <div className="space-y-8">
-            <p className="text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
-              We are early in our journey. Rallie is rapidly evolving. Join us in shaping the future of tennis training.
-            </p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
+            <div className="space-y-6">
+              <p className="text-lg text-white font-medium leading-relaxed">
+                We are early in our journey. Rallie is rapidly evolving. Join us in shaping the future of tennis
+                training.
+              </p>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
               <div className="space-y-4">
                 <Input
                   type="email"
