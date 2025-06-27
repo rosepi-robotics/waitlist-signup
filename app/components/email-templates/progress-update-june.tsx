@@ -66,10 +66,6 @@ export const ProgressUpdateJune = ({ firstName }: ProgressUpdateJuneProps) => (
                 <Text className="text-black text-base">Manufacturing partners for production scaling</Text>
               </li>
             </ul>
-            <Text className="text-black text-base mt-4">
-              We're also excited to announce partnerships with local tennis clubs for beta testing. If you're interested
-              in hosting a beta test at your facility, reach out to us!
-            </Text>
           </Section>
 
           <Text className="text-black text-base mt-5">

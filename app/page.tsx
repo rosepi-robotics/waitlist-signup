@@ -417,8 +417,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Breakthrough innovations in robotics, AI, and precision manufacturing that redefine what's possible in
-              tennis training.
+              A solid, high-performance, beatiful machine engineered by the best talents in mechanical engineering and motor control.
             </p>
           </div>
 
@@ -430,7 +429,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">ULTRA-PORTABLE DESIGN</h3>
               <p className="text-gray-600 leading-relaxed">
-                <span className="font-semibold text-orange-600">30 lbs (13.6 kg)</span> total weight with
+                <span className="font-semibold text-orange-600">30 lbs (13kg)</span> total weight with
                 <span className="font-semibold text-orange-600"> 150-ball capacity</span>. The most portable
                 high-performance ball machine on the market.
               </p>
@@ -444,8 +443,8 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">DUAL MOTOR SYSTEM</h3>
               <p className="text-gray-600 leading-relaxed">
                 Twin brushless DC motors with <span className="font-semibold text-orange-600">6600 RPM max speed</span>.
-                Variable spin control: flat, topspin, backspin, slice. Ball speed range
-                <span className="font-semibold text-orange-600">10-80 MPH</span>.
+                Variable spin control: flat, topspin, backspin, slice. Speed range
+                <span className="font-semibold text-orange-600"> 10-80 MPH</span>.
               </p>
             </div>
 
@@ -457,7 +456,7 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">SERVO-CONTROLLED OSCILLATION</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600"> ±45° horizontal</span> and
-                <span className="font-semibold text-orange-600"> +5° - 50° vertical</span> range. Full court coverage
+                <span className="font-semibold text-orange-600"> 5° - 50° vertical</span> range. No random oscilation. Full court coverage
                 from baseline position.
               </p>
             </div>
@@ -470,7 +469,7 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">PROGRAMMABLE CONTROL</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600">Unlimited programmable drills. </span> Choose from
-                pre-set NTRP training drills, edit your own, or try a community-shared drill
+                pre-set NTRP training drills, edit your own, or try a community-shared drill.
               </p>
             </div>
           </div>
@@ -490,7 +489,7 @@ export default function Home() {
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Tennis meets real AI</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               Your real AI coach should be able to know you, to see you in real time, to understand how to help you
-              improve, and to launch that best ball to you.
+              improve, and to launch that best ball to you at the right time.
             </p>
           </div>
 
