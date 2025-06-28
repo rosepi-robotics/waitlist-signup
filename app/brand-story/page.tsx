@@ -47,7 +47,7 @@ export default function BrandStoryPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Story</h1>
           <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto">
-            Revolutionizing tennis training through AI-powered coaching and intelligent ball machines
+            Revolutionizing tennis training through AI coaching and intelligent ball machines
           </p>
         </div>
       </div>
@@ -141,59 +141,6 @@ export default function BrandStoryPage() {
             </Card>
           </div>
 
-          {/* Problem & Solution */}
-          <Card>
-            <CardContent className="p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-12">
-                <div>
-                  <Badge className="mb-4 bg-red-100 text-red-800">The Problem</Badge>
-                  <h3 className="text-2xl font-bold mb-6">Traditional Tennis Training Challenges</h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-600">Expensive private coaching sessions</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-600">Inconsistent feedback between sessions</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-600">Limited access to expert-level analysis</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-600">Ball machines that only shoot predictable patterns</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <Badge className="mb-4 bg-emerald-100 text-emerald-800">Our Solution</Badge>
-                  <h3 className="text-2xl font-bold mb-6">AI-Powered Tennis Coaching System</h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">24/7 available AI coach for instant feedback</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">Intelligent ball machine that adapts to your skill level</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">Real-time technique analysis and correction</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">Comprehensive progress tracking and analytics</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Technology Approach */}
           <Card>
             <CardContent className="p-8 md:p-12">
@@ -213,7 +160,7 @@ export default function BrandStoryPage() {
                   </div>
                   <h4 className="font-bold mb-2">Capture</h4>
                   <p className="text-gray-600 text-sm">
-                    Computer vision cameras track your movement and ball trajectory in real-time
+                    Computer vision tracks your movement, posture, footwork and ball trajectory in real-time
                   </p>
                 </div>
 
@@ -223,7 +170,7 @@ export default function BrandStoryPage() {
                   </div>
                   <h4 className="font-bold mb-2">Analyze</h4>
                   <p className="text-gray-600 text-sm">
-                    AI analyzes your technique, identifies weaknesses, and determines optimal training patterns
+                    AI analyzes your technique and hitting patterns, identifies weaknesses, and determines optimal training patterns
                   </p>
                 </div>
 
@@ -233,7 +180,7 @@ export default function BrandStoryPage() {
                   </div>
                   <h4 className="font-bold mb-2">Adapt</h4>
                   <p className="text-gray-600 text-sm">
-                    Smart ball machine adjusts speed, spin, and placement based on AI recommendations
+                    Smart ball machine adjusts speed, spin, and placement based on AI recommendations in real time
                   </p>
                 </div>
 
@@ -242,7 +189,7 @@ export default function BrandStoryPage() {
                     <span className="text-2xl font-bold text-emerald-600">4</span>
                   </div>
                   <h4 className="font-bold mb-2">Improve</h4>
-                  <p className="text-gray-600 text-sm">Receive personalized feedback and targeted practice sessions</p>
+                  <p className="text-gray-600 text-sm">You receive personalized feedback post-training and targeted practice sessions</p>
                 </div>
               </div>
 
@@ -255,7 +202,7 @@ export default function BrandStoryPage() {
                       <li>• Computer vision for movement tracking</li>
                       <li>• Machine learning for technique analysis</li>
                       <li>• Adaptive training algorithms</li>
-                      <li>• Real-time performance feedback</li>
+                      <li>• Real-time and post-game performance feedback</li>
                     </ul>
                   </div>
                   <div>
@@ -264,7 +211,7 @@ export default function BrandStoryPage() {
                       <li>• Precision ball delivery system</li>
                       <li>• Variable speed and spin control</li>
                       <li>• Intelligent court positioning</li>
-                      <li>• Compact, portable design</li>
+                      <li>• Compact, durable and portable design</li>
                     </ul>
                   </div>
                 </div>

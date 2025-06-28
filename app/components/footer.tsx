@@ -15,7 +15,7 @@ function Footer() {
               <Image src="/images/rallie-logo-black.png" alt="Rallie Logo" width={120} height={40} className="mr-2" />
             </Link>
             <p className="text-gray-600 mt-4 text-sm">
-              Rallie is an AI-powered tennis training system combining smart hardware and adaptive software to help
+              Rallie is an tennis training system combining high-performance hardware and AI native software to help
               players train smarter—anytime, anywhere.
             </p>
           </div>

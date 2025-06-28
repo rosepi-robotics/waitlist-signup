@@ -51,7 +51,7 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">FAQ</h1>
           <p className="text-xl md:text-2xl text-amber-100 max-w-3xl mx-auto">
-            Frequently asked questions about Rallie and AI-powered tennis coaching
+            Frequently asked questions about Rallie and AI tennis coaching
           </p>
         </div>
       </div>
@@ -67,7 +67,7 @@ export default function FAQPage() {
                 <HelpCircle className="h-16 w-16 text-orange-600 mx-auto mb-6" />
                 <h2 className="text-3xl font-bold mb-4">FAQ Section Coming Soon</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  We're currently compiling the most frequently asked questions about Rallie and AI-powered tennis
+                  We're currently compiling the most frequently asked questions about Rallie and AI tennis
                   coaching. This section will be available soon with comprehensive answers to help you understand how
                   Rallie can transform your tennis training.
                 </p>
@@ -138,7 +138,7 @@ export default function FAQPage() {
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Game?</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join thousands of tennis players who are already improving their game with AI-powered coaching. Be among
+                Join thousands of tennis players who are already improving their game with AI tennis coaching. Be among
                 the first to experience the future of tennis training.
               </p>
 

@@ -179,17 +179,8 @@ export default function ContactPage() {
                       <Mail className="h-6 w-6 text-purple-600 mt-1" />
                       <div>
                         <h4 className="font-semibold">Email</h4>
-                        <p className="text-gray-600">hello@rallie.ai</p>
+                        <p className="text-gray-600">hello@rallie.tennis</p>
                         <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <Phone className="h-6 w-6 text-purple-600 mt-1" />
-                      <div>
-                        <h4 className="font-semibold">Phone</h4>
-                        <p className="text-gray-600">Coming soon</p>
-                        <p className="text-sm text-gray-500">Currently email only</p>
                       </div>
                     </div>
 
@@ -197,8 +188,7 @@ export default function ContactPage() {
                       <MapPin className="h-6 w-6 text-purple-600 mt-1" />
                       <div>
                         <h4 className="font-semibold">Location</h4>
-                        <p className="text-gray-600">San Francisco, CA</p>
-                        <p className="text-sm text-gray-500">Remote-first team</p>
+                        <p className="text-gray-600">303 Twin Dolpine Drive, Redwood City, CA</p>
                       </div>
                     </div>
                   </div>
@@ -236,7 +226,7 @@ export default function ContactPage() {
               <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Tennis Training?</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
                 Join thousands of tennis players who are already part of the Rallie community and be the first to
-                experience AI-powered coaching.
+                experience AI coaching.
               </p>
 
               <form onSubmit={handleWaitlistSubmit} className="max-w-md mx-auto">
