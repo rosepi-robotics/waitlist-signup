@@ -56,11 +56,11 @@ export default function UpdatesPage() {
   const progress = [
     {
       id: "first-field-test",
-      title: "First Field Test",
+      title: "First Field Test Success + New Logo Reveal",
       excerpt:
-        "We did our first field test! The compact machine was able to launch balls at incredibly fast speed. Read more for details.",
-      date: "2025-06-20",
-      readTime: "3 min read",
+        "We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.",
+      date: "2025-06-23",
+      readTime: "8 min read",
       author: "Development Team",
       category: "progress",
       slug: "/progress/first-field-test",

@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { ArrowLeft, Calendar, User } from "lucide-react"
+import { ArrowLeft, Calendar, User, CheckCircle, Award, Users, TrendingUp } from "lucide-react"
 import { Navbar } from "../../components/navbar"
+import { Footer } from "../../components/footer"
 
 export default function FirstFieldTestPage() {
   return (
@@ -10,10 +11,7 @@ export default function FirstFieldTestPage() {
       <div className="container mx-auto px-4 py-16">
         {/* Back Navigation */}
         <div className="mb-8">
-          <Link
-            href="/updates"
-            className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium"
-          >
+          <Link href="/updates" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Updates
           </Link>
@@ -25,146 +23,206 @@ export default function FirstFieldTestPage() {
             <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">PROGRESS</span>
             <div className="flex items-center text-gray-500 text-sm">
               <Calendar className="w-4 h-4 mr-1" />
-              December 10, 2024
+              June 23, 2025
             </div>
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            First Field Test: Rallie Prototype in Action
+            First Field Test Success + New Logo Reveal
           </h1>
 
           <div className="flex items-center text-gray-600 mb-6">
             <User className="w-4 h-4 mr-2" />
-            Rallie Team
+            Development Team
           </div>
 
           <p className="text-xl text-gray-600 leading-relaxed">
-            We took our first working prototype to the court for real-world testing. Here's what we learned and what's
-            coming next.
+            We did our first field test and the results exceeded expectations! The system is working perfectly, creating
+            incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
           </p>
         </div>
 
         {/* Article Content */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           <div className="prose prose-lg max-w-none">
-            <p>
-              After months of development, we finally had our first working prototype ready for field testing. The
-              excitement was palpable as our team gathered at the local tennis court, equipment in hand, ready to see
-              our vision come to life.
-            </p>
+            {/* Team Update Section - MOVED TO TOP */}
+            <div className="mb-8">
+              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
+                <Users className="mr-2 h-5 w-5 text-blue-500" />
+                TEAM UPDATE
+              </h3>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <p className="mb-6 text-gray-700">
+                  My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce
+                  that I'm joined with incredibly talented engineers!
+                </p>
 
-            <h2>The Setup</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-blue-600 font-semibold text-lg">LW</span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-900">Lisa Wang</h4>
+                        <p className="text-sm text-gray-600">Co-founder & AI/Computer Vision Lead</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-sm mb-3">
+                      Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay
+                      tuned—exciting AI feature demos are coming soon!
+                    </p>
+                  </div>
 
-            <p>
-              Our prototype consists of three main components: a computer vision system with high-speed cameras, an
-              AI-powered ball delivery mechanism, and a real-time feedback interface. Setting up the system took about
-              30 minutes – longer than we'd like for the final product, but reasonable for a first prototype.
-            </p>
+                  <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-orange-600 font-semibold text-lg">RS</span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-900">Ray Shen</h4>
+                        <p className="text-sm text-gray-600">Hardware & Embedded Systems Engineering</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-sm mb-3">
+                      A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
+                      hardware development and will lead our path to scalable production.
+                    </p>
+                  </div>
+                </div>
 
-            <p>
-              The cameras were positioned at strategic points around the court to capture multiple angles of the
-              player's movement and ball trajectory. Our machine learning models, trained on thousands of hours of
-              tennis footage, were ready to analyze technique in real-time.
-            </p>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 className="font-medium text-blue-900 mb-2">Beta Testing Program</h4>
+                  <p className="text-blue-800 text-sm">
+                    We're looking for 10 tennis facilities to participate in our beta program. Selected partners will
+                    receive early access to Rallie units and direct input into the final product design.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-            <h2>First Impressions</h2>
+            {/* Field Test Success */}
+            <div className="mb-8">
+              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
+                <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
+                FIELD TEST BREAKTHROUGH
+              </h3>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <p className="mb-6 text-gray-700">
+                  We did our first field test and the results exceeded expectations! The system is working perfectly,
+                  creating incredibly fast and strong balls with its compact design.
+                </p>
 
-            <p>
-              Sophie, our founder and lead tester, stepped onto the court first. As she began hitting balls delivered by
-              our prototype, the system immediately started providing feedback on her form, timing, and shot placement.
-            </p>
+                <div className="mb-6 flex justify-center">
+                  <img
+                    src="https://i.imgur.com/UNvBo5i.gif"
+                    alt="Rallie field test demonstration showing the tennis ball machine in action"
+                    className="max-w-sm mx-auto rounded-lg"
+                  />
+                </div>
+                <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
 
-            <p>
-              "It's incredible," she said after the first few minutes. "The feedback is so detailed and immediate. I can
-              see exactly what I'm doing wrong with my backhand follow-through."
-            </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 mt-6">
+                  <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
+                    <div className="text-2xl font-light text-gray-900 mb-2">✅ Topspin</div>
+                    <div className="text-sm text-gray-600">Perfect spin generation</div>
+                  </div>
+                  <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
+                    <div className="text-2xl font-light text-gray-900 mb-2">✅ Backspin</div>
+                    <div className="text-sm text-gray-600">Precise control achieved</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <p>
-              The AI successfully identified several technical issues that even experienced coaches might miss, including
-              subtle timing problems and inconsistencies in racket angle at contact.
-            </p>
+            {/* New Logo Section */}
+            <div className="mb-8">
+              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
+                <Award className="mr-2 h-5 w-5 text-orange-500" />
+                NEW LOGO REVEAL
+              </h3>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <p className="mb-6 text-gray-700">
+                  Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern design.
+                </p>
+                <div className="flex justify-center mb-6">
+                  <div className="bg-white rounded-lg p-8 border border-gray-200">
+                    <img src="/images/rallie-logo-black.png" alt="New Rallie Logo" className="h-16 w-auto" />
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <h2>What Worked Well</h2>
+            {/* What's Next */}
+            <div className="mb-6">
+              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
+                <TrendingUp className="mr-2 h-5 w-5 text-orange-500" />
+                WHAT'S NEXT
+              </h3>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="text-gray-900 font-medium mb-1">Pitch & Oscillation Testing</h4>
+                      <p className="text-gray-600 text-sm">
+                        Next week we'll test the full court coverage system, designed to produce smashes up to 8 meters.
+                        Watch our YouTube channel for test videos.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="text-gray-900 font-medium mb-1">Industrial Design Process</h4>
+                      <p className="text-gray-600 text-sm">
+                        We've started the Industrial Design phase! Currently in ideation stage. Look for our ID
+                        preferences survey in early July.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="text-gray-900 font-medium mb-1">Beta Partner Selection</h4>
+                      <p className="text-gray-600 text-sm">
+                        Finalizing partnerships with tennis facilities for comprehensive beta testing program.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <ul>
-              <li>
-                <strong>Accuracy:</strong> The computer vision system tracked ball and player movement with impressive
-                precision, even in varying lighting conditions.
-              </li>
-              <li>
-                <strong>Real-time feedback:</strong> Players received immediate analysis of their shots, allowing for
-                quick adjustments and improvement.
-              </li>
-              <li>
-                <strong>Adaptive difficulty:</strong> The system successfully adjusted ball speed and placement based on
-                the player's skill level and performance.
-              </li>
-              <li>
-                <strong>User interface:</strong> The feedback display was clear and easy to understand, even during
-                intense practice sessions.
-              </li>
-            </ul>
+        {/* Related Articles */}
+        <div className="bg-white rounded-2xl shadow-lg p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Continue Reading</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/updates" className="group">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                  View All Updates
+                </h4>
+                <p className="text-gray-600 text-sm">
+                  Explore more insights and progress updates from the Rallie team.
+                </p>
+              </div>
+            </Link>
+            <Link href="/insights/ai-tennis-coach" className="group">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                  Why Tennis Needs AI Coaching
+                </h4>
+                <p className="text-gray-600 text-sm">Learn about the vision behind AI-powered tennis training.</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
 
-            <h2>Areas for Improvement</h2>
-
-            <p>
-              While the test was largely successful, we identified several areas that need refinement:
-            </p>
-
-            <ul>
-              <li>
-                <strong>Setup time:</strong> 30 minutes is too long for regular use. We're working on a more streamlined
-                setup process.
-              </li>
-              <li>
-                <strong>Wind sensitivity:</strong> Outdoor conditions affected ball trajectory calculations. We need
-                better environmental compensation.
-              </li>
-              <li>
-                <strong>Battery life:</strong> The current system runs for about 2 hours on battery power. We're
-                targeting 4+ hours for the final version.
-              </li>
-              <li>
-                <strong>Portability:</strong> While functional, the prototype is still too bulky for easy transport.
-              </li>
-            </ul>
-
-            <h2>Player Feedback</h2>
-
-            <p>
-              We invited several local tennis players to try the system, ranging from beginners to advanced club
-              players. The feedback was overwhelmingly positive:
-            </p>
-
-            <blockquote>
-              <p>
-                "I've been playing for 10 years, and this system showed me things about my serve that I never knew. The
-                instant feedback is game-changing." - Mark, Club Player
-              </p>
-            </blockquote>
-
-            <blockquote>
-              <p>
-                "As a beginner, I found the patient, consistent coaching incredibly helpful. It never gets frustrated
-                with me like human coaches sometimes do!" - Lisa, Beginner
-              </p>
-            </blockquote>
-
-            <blockquote>
-              <p>
-                "The variety in shot placement and speed kept me engaged throughout the entire session. It felt like
-                playing against a real opponent." - Carlos, Intermediate Player
-              </p>
-            </blockquote>
-
-            <h2>Technical Insights</h2>
-
-            <p>
-              From a technical perspective, the field test validated many of our design decisions while revealing areas
-              for optimization:
-            </p>
-
-            <p>
-              Our machine learning models performed exceptionally well in real-world conditions, with shot analysis
-              accuracy exceeding 95%. The computer vision system successfully tracked multiple objects simultaneously,
-              even during fast\
+      <Footer />
+    </div>
+  )
+}

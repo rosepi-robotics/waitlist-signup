@@ -1,55 +1,53 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://rallie.tennis"
-
   return [
     {
-      url: baseUrl,
+      url: "https://rallie.tennis",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/brand-story`,
+      url: "https://rallie.tennis/brand-story",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/updates`,
+      url: "https://rallie.tennis/updates",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/insights/ai-tennis-coach`,
-      lastModified: new Date("2024-12-15"),
+      url: "https://rallie.tennis/insights/ai-tennis-coach",
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/progress/first-field-test`,
-      lastModified: new Date("2024-12-10"),
+      url: "https://rallie.tennis/progress/first-field-test",
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: "https://rallie.tennis/faq",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/faq`,
+      url: "https://rallie.tennis/contact",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/survey`,
+      url: "https://rallie.tennis/survey",
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 0.8,
     },
   ]

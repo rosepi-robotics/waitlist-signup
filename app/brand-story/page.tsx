@@ -47,7 +47,7 @@ export default function BrandStoryPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Story</h1>
           <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto">
-            Revolutionizing tennis training through AI-powered coaching and personalized development
+            Revolutionizing tennis training through AI-powered coaching and intelligent ball machines
           </p>
         </div>
       </div>
@@ -61,30 +61,35 @@ export default function BrandStoryPage() {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <Badge className="mb-4 bg-emerald-100 text-emerald-800">Founder Story</Badge>
-                  <h2 className="text-3xl font-bold mb-6">Hi, I’m Sophie — and I started Rallie because I couldn’t find what I needed.</h2>
+                  <h2 className="text-3xl font-bold mb-6">
+                    Hi, I'm Sophie — and I started Rallie because I couldn't find what I needed.
+                  </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     A year ago, I got really into tennis. I was hooked — but also frustrated.
                   </p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    Coaching was crazy expensive. Hitting partners flaked. And ball machines? The ones I tried felt like relics from the 90s. 
+                    Coaching was crazy expensive. Hitting partners flaked. And ball machines? The ones I tried felt like
+                    relics from the 90s.
+                  </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">So I decided to build it myself.</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    My background is in AI and robotics. I studied computer science at UPenn, and I've always been a
+                    builder — from side projects in personal robotics to leading product at an AI + AR glasses startup
+                    that eventually became a unicorn. I took that product from prototype to mass production, working
+                    with amazing partners like Foxconn and Flex.
+                  </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">But Rallie is different. This one is personal.</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    I started alone in March 2025 — hacking together early prototypes, writing code, and 3D-printing
+                    parts on my living room floor. Now, I'm joined by an incredible team of engineers who are just as
+                    obsessed as I am about building something that actually thinks, adapts, and helps you improve.
                   </p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    So I decided to build it myself.
-                  </p>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    My background is in AI and robotics. I studied computer science at UPenn, and I’ve always been a builder — from side projects in personal robotics to leading product at an AI + AR glasses startup that eventually became a unicorn. I took that product from prototype to mass production, working with amazing partners like Foxconn and Flex.
+                    Because players don't need a glorified ball launcher. We need a partner. A coach. A system that pays
+                    attention, gives feedback, and evolves with us.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    But Rallie is different. This one is personal.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                  I started alone in March 2025 — hacking together early prototypes, writing code, and 3D-printing parts on my living room floor. Now, I’m joined by an incredible team of engineers who are just as obsessed as I am about building something that actually thinks, adapts, and helps you improve.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                  Because players don’t need a glorified ball launcher. We need a partner. A coach. A system that pays attention, gives feedback, and evolves with us
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                  That’s what we’re building with Rallie — and we’re just getting started.
+                    That's what we're building with Rallie — and we're just getting started.
                   </p>
                 </div>
                 <div className="relative">
@@ -158,14 +163,14 @@ export default function BrandStoryPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-600">Difficulty tracking long-term progress</span>
+                      <span className="text-gray-600">Ball machines that only shoot predictable patterns</span>
                     </li>
                   </ul>
                 </div>
 
                 <div>
                   <Badge className="mb-4 bg-emerald-100 text-emerald-800">Our Solution</Badge>
-                  <h3 className="text-2xl font-bold mb-6">AI-Powered Tennis Coaching</h3>
+                  <h3 className="text-2xl font-bold mb-6">AI-Powered Tennis Coaching System</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
@@ -173,11 +178,11 @@ export default function BrandStoryPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">Consistent, data-driven analysis every session</span>
+                      <span className="text-gray-600">Intelligent ball machine that adapts to your skill level</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">Professional-level insights at an affordable price</span>
+                      <span className="text-gray-600">Real-time technique analysis and correction</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
@@ -196,18 +201,20 @@ export default function BrandStoryPage() {
                 <Badge className="mb-4 bg-blue-100 text-blue-800">Technology</Badge>
                 <h3 className="text-3xl font-bold mb-4">How Rallie Works</h3>
                 <p className="text-gray-600 max-w-3xl mx-auto">
-                  Our AI combines computer vision, machine learning, and tennis expertise to provide real-time analysis
-                  and personalized coaching recommendations.
+                  Our integrated system combines AI-powered analysis with intelligent hardware to create a complete
+                  tennis training solution that thinks, learns, and adapts.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <div className="grid md:grid-cols-4 gap-8 mt-12">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-emerald-600">1</span>
                   </div>
                   <h4 className="font-bold mb-2">Capture</h4>
-                  <p className="text-gray-600 text-sm">Record your tennis sessions using any smartphone or camera</p>
+                  <p className="text-gray-600 text-sm">
+                    Computer vision cameras track your movement and ball trajectory in real-time
+                  </p>
                 </div>
 
                 <div className="text-center">
@@ -216,7 +223,7 @@ export default function BrandStoryPage() {
                   </div>
                   <h4 className="font-bold mb-2">Analyze</h4>
                   <p className="text-gray-600 text-sm">
-                    AI analyzes your technique, form, and performance in real-time
+                    AI analyzes your technique, identifies weaknesses, and determines optimal training patterns
                   </p>
                 </div>
 
@@ -224,8 +231,42 @@ export default function BrandStoryPage() {
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-emerald-600">3</span>
                   </div>
+                  <h4 className="font-bold mb-2">Adapt</h4>
+                  <p className="text-gray-600 text-sm">
+                    Smart ball machine adjusts speed, spin, and placement based on AI recommendations
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-emerald-600">4</span>
+                  </div>
                   <h4 className="font-bold mb-2">Improve</h4>
-                  <p className="text-gray-600 text-sm">Receive personalized feedback and training recommendations</p>
+                  <p className="text-gray-600 text-sm">Receive personalized feedback and targeted practice sessions</p>
+                </div>
+              </div>
+
+              <div className="mt-12 bg-gray-50 rounded-lg p-8">
+                <h4 className="text-xl font-bold mb-6 text-center">Integrated Hardware + Software</h4>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h5 className="font-semibold mb-3 text-emerald-600">AI Software</h5>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li>• Computer vision for movement tracking</li>
+                      <li>• Machine learning for technique analysis</li>
+                      <li>• Adaptive training algorithms</li>
+                      <li>• Real-time performance feedback</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-3 text-emerald-600">Smart Hardware</h5>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li>• Precision ball delivery system</li>
+                      <li>• Variable speed and spin control</li>
+                      <li>• Intelligent court positioning</li>
+                      <li>• Compact, portable design</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </CardContent>
