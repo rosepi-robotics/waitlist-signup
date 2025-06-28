@@ -44,10 +44,10 @@ export default function UpdatesPage() {
       id: "ai-tennis-coach",
       title: "The Future of Tennis Coaching: How AI is Revolutionizing the Game",
       excerpt:
-        "Discover how artificial intelligence is transforming tennis training, making professional-level coaching accessible to players of all skill levels.",
-      date: "2024-01-15",
+        "Discover how artificial intelligence and robotics is transforming tennis training, making professional-level coaching accessible to players of all skill levels.",
+      date: "2025-06-28",
       readTime: "5 min read",
-      author: "Sophie Chen",
+      author: "Sophie Luo",
       category: "insights",
       slug: "/insights/ai-tennis-coach",
     },
@@ -56,10 +56,10 @@ export default function UpdatesPage() {
   const progress = [
     {
       id: "first-field-test",
-      title: "First Field Test Results: 89% Accuracy in Shot Analysis",
+      title: "First Field Test",
       excerpt:
-        "Our AI successfully analyzed over 1,000 tennis shots with remarkable accuracy. Here's what we learned from our initial field testing.",
-      date: "2024-01-10",
+        "We did our first field test! The compact machine was able to launch balls at incredibly fast speed. Read more for details.",
+      date: "2025-06-20",
       readTime: "3 min read",
       author: "Development Team",
       category: "progress",

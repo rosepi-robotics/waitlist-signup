@@ -61,20 +61,30 @@ export default function BrandStoryPage() {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <Badge className="mb-4 bg-emerald-100 text-emerald-800">Founder Story</Badge>
-                  <h2 className="text-3xl font-bold mb-6">Meet Sophie, Founder & CEO</h2>
+                  <h2 className="text-3xl font-bold mb-6">Hi, I’m Sophie — and I started Rallie because I couldn’t find what I needed.</h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    As a former collegiate tennis player and coach, Sophie experienced firsthand the limitations of
-                    traditional tennis training. Despite having access to top coaches, she noticed that personalized
-                    feedback was often inconsistent and expensive.
+                    A year ago, I got really into tennis. I was hooked — but also frustrated.
                   </p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    After completing her degree in Computer Science and AI, Sophie realized that technology could bridge
-                    this gap. She envisioned a world where every tennis player, regardless of skill level or budget,
-                    could access world-class coaching.
+                    Coaching was crazy expensive. Hitting partners flaked. And ball machines? The ones I tried felt like relics from the 90s. 
+                  </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    So I decided to build it myself.
+                  </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    My background is in AI and robotics. I studied computer science at UPenn, and I’ve always been a builder — from side projects in personal robotics to leading product at an AI + AR glasses startup that eventually became a unicorn. I took that product from prototype to mass production, working with amazing partners like Foxconn and Flex.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    That vision became Rallie - an AI-powered tennis coach that provides instant, personalized feedback
-                    to help players improve faster than ever before.
+                    But Rallie is different. This one is personal.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                  I started alone in March 2025 — hacking together early prototypes, writing code, and 3D-printing parts on my living room floor. Now, I’m joined by an incredible team of engineers who are just as obsessed as I am about building something that actually thinks, adapts, and helps you improve.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                  Because players don’t need a glorified ball launcher. We need a partner. A coach. A system that pays attention, gives feedback, and evolves with us
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                  That’s what we’re building with Rallie — and we’re just getting started.
                   </p>
                 </div>
                 <div className="relative">

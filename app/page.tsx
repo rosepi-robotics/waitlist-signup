@@ -417,7 +417,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              A solid, high-performance, beatiful machine engineered by the best talents in mechanical engineering and motor control.
+              Besides all the AI features, Rallie is a solid, high-performance, beatiful machine engineered by the best talents in mechanical engineering and motor control.
             </p>
           </div>
 
@@ -573,7 +573,7 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-gray-700 text-sm">
-                        Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay
+                        Lisa, a brilliant engineer and ex-Googler, is leading AI development at Rallie. Stay
                         tuned—exciting AI feature demos are coming soon!
                       </p>
                     </div>
