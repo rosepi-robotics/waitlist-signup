@@ -50,7 +50,7 @@ export default function BrandStoryPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 text-white py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-emerald-100 text-emerald-800">OUR STORY</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Story</h1>
             <p className="text-xl text-emerald-100 leading-relaxed">

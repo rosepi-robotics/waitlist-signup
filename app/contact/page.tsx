@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Mail, MessageSquare, Send, MapPin, Clock } from "lucide-react"
+import { Mail, MessageSquare, Send, MapPin } from "lucide-react"
 import { FacebookIcon } from "../components/icons/facebook-icon"
 import { InstagramIcon } from "../components/icons/instagram-icon"
 import { YouTubeIcon } from "../components/icons/youtube-icon"
@@ -87,7 +87,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-purple-100 text-purple-800">CONTACT</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h1>
             <p className="text-xl text-purple-100 leading-relaxed">
@@ -205,7 +205,7 @@ export default function ContactPage() {
 
                   <div className="flex gap-3 mb-6">
                     <a
-                      href="https://www.facebook.com/groups/rallietennis"
+                      href="https://www.facebook.com/groups/963981362613884"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"

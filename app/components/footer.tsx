@@ -10,16 +10,15 @@ function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Logo and Description */}
-          <div>
-            <Link href="/" className="flex items-center">
-              <Image src="/images/rallie-logo-black.png" alt="Rallie Logo" width={120} height={40} className="mr-2" />
-            </Link>
-            <p className="text-gray-600 mt-4 text-sm">
-              Rallie is an tennis training system combining high-performance hardware and AI native software to help
-              players train smarter—anytime, anywhere.
-            </p>
-          </div>
-
+            <div className="pl-4">
+              <Link href="/" className="flex items-center">
+                <Image src="/images/rallie-logo-black.png" alt="Rallie Logo" width={120} height={40} className="mr-2" />
+              </Link>
+              <p className="text-gray-600 mt-4 text-sm">
+                Rallie is an tennis training system combining high-performance hardware and AI native software to help
+                players train smarter—anytime, anywhere.
+              </p>
+            </div>
           {/* Column 2: Quick Links */}
           <div>
             <h6 className="font-semibold text-gray-800 mb-4">Quick Links</h6>

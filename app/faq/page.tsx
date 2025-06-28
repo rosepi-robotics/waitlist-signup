@@ -50,7 +50,7 @@ export default function FAQPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 text-white py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-amber-100 text-amber-800">FAQ</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">FAQ</h1>
             <p className="text-xl text-amber-100 leading-relaxed">

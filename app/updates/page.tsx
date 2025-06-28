@@ -50,7 +50,7 @@ export default function UpdatesPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-orange-100 text-orange-800">UPDATES</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Latest Updates</h1>
             <p className="text-xl text-orange-100 leading-relaxed">
@@ -89,15 +89,15 @@ export default function UpdatesPage() {
                   <h2 className="text-2xl font-bold mb-4">Why Tennis Players Need a Ball Machine That Thinks</h2>
 
                   <p className="text-base font-medium text-gray-700 mb-6">
-                    Most tennis ball machines today fall into two categories, but they all miss the mark in a fundamental
-                    way.
+                    Most tennis ball machines today fall into two categories, but they all miss the mark in a
+                    fundamental way.
                   </p>
 
                   <div className="space-y-4 text-gray-600 mb-6">
                     <p>
                       On one end, there are the affordable, static feeders — machines that shoot balls at regular
-                      intervals, often with just topspin and minimal control. On the other end, you'll find more expensive
-                      models with oscillation, multiple shot types, and even a handful of programmable drills.
+                      intervals, often with just topspin and minimal control. On the other end, you'll find more
+                      expensive models with oscillation, multiple shot types, and even a handful of programmable drills.
                     </p>
                     <p>
                       Recently, a new class of machines has started to emerge: ones that claim to rally with you, move
@@ -107,19 +107,16 @@ export default function UpdatesPage() {
                     </p>
                   </div>
 
-                  <Link
-                    href="/insights/ai-tennis-coach"
-                    className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium"
-                  >
+                  <span className="inline-flex items-center text-purple-600 group-hover:text-purple-700 font-medium">
                     Read More
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </span>
                 </CardContent>
               </Card>
             </Link>
 
             {/* Progress Card */}
-            <Link href="/insights/ai-tennis-coach" className="block group">
+            <Link href="/progress/first-field-test" className="block group">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
@@ -148,9 +145,9 @@ export default function UpdatesPage() {
 
                   <div className="space-y-4 text-gray-600 mb-6">
                     <p>
-                      After months of engineering and development, seeing Rallie perform on an actual tennis court was an
-                      incredible milestone for our team. The field test validated our core engineering decisions, from the
-                      dual motor system to the servo-controlled oscillation mechanism.
+                      After months of engineering and development, seeing Rallie perform on an actual tennis court was
+                      an incredible milestone for our team. The field test validated our core engineering decisions,
+                      from the dual motor system to the servo-controlled oscillation mechanism.
                     </p>
                     <p>
                       We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating
@@ -159,13 +156,10 @@ export default function UpdatesPage() {
                     </p>
                   </div>
 
-                  <Link
-                    href="/progress/first-field-test"
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                  >
+                  <span className="inline-flex items-center text-blue-600 group-hover:text-blue-700 font-medium">
                     Read More
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </span>
                 </CardContent>
               </Card>
             </Link>

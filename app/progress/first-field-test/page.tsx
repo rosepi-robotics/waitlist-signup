@@ -3,15 +3,15 @@
 import type React from "react"
 
 import { useState } from "react"
-import Image from "next/image"
+import { Navbar } from "../../components/navbar"
+import { Footer } from "../../components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, User, ArrowRight, Mail, CheckCircle, Zap, Target } from "lucide-react"
-import { Navbar } from "@/app/components/navbar"
-import { Footer } from "@/app/components/footer"
-import { joinWaitlist } from "@/app/actions/waitlist"
+import { ArrowLeft, Calendar, Clock, User, Mail, ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { joinWaitlist } from "../../actions/waitlist"
 
 export default function FirstFieldTestPage() {
   const [email, setEmail] = useState("")
@@ -50,21 +50,28 @@ export default function FirstFieldTestPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <Link
+            href="/updates"
+            className="inline-flex items-center text-blue-100 hover:text-white mb-8 transition-colors"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Updates
+          </Link>
+
+          <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-blue-100 text-blue-800">PROGRESS</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">First Field Test Success + New Logo Reveal</h1>
-            <div className="flex items-center gap-6 text-blue-100">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
-                <span>6/23/2025</span>
+            <div className="flex flex-wrap items-center gap-6 text-blue-100 mb-8">
+              <div className="flex items-center">
+                <Calendar className="mr-2 h-4 w-4" />
+                6/23/2025
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>8 min read</span>
+              <div className="flex items-center">
+                <Clock className="mr-2 h-4 w-4" />8 min read
               </div>
-              <div className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                <span>Development Team</span>
+              <div className="flex items-center">
+                <User className="mr-2 h-4 w-4" />
+                Development Team
               </div>
             </div>
           </div>
@@ -75,103 +82,105 @@ export default function FirstFieldTestPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none">
-            <div className="space-y-6 text-gray-700 leading-relaxed">
-              <p className="text-xl font-medium text-gray-800">
-                We did our first field test and the results exceeded expectations! The system is working great,
-                creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
-              </p>
+            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              We did our first field test and the results exceeded expectations! The system is working perfectly,
+              creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
+            </p>
 
-              <p>
-                After months of engineering and development, seeing Rallie perform on an actual tennis court was an
-                incredible milestone for our team. The field test validated our core engineering decisions, from the
-                dual motor system to the servo-controlled oscillation mechanism.
-              </p>
+            <p className="mb-6">
+              After months of engineering and development, seeing Rallie perform on an actual tennis court was an
+              incredible milestone for our team.
+            </p>
 
-              <p>
-                We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating both
-                topspin and backspin capabilities that rival much larger, more expensive machines. The compact 30-pound
-                design proved its portability advantage while maintaining the power and precision needed for serious
-                training.
-              </p>
+            <h2 className="text-2xl font-bold mt-12 mb-6">Field Test Breakthrough</h2>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Test Results</h2>
+            <p className="mb-6">
+              We did our first field test and the results exceeded expectations! The system is working perfectly,
+              creating incredibly fast and strong balls with its compact design.
+            </p>
 
-              <div className="grid md:grid-cols-3 gap-6 my-8">
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <Zap className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Speed Range</h3>
-                    <p className="text-gray-600">10-80 MPH with consistent accuracy across all speeds</p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <CheckCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Portability</h3>
-                    <p className="text-gray-600">30 lbs total weight by design, with possibility to further reduce the weight</p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Engineering Breakthroughs</h2>
-
-              <p>
-                The dual motor system we developed allows for independent control of ball speed and spin, something that
-                traditional single-motor machines struggle with. Our servo-controlled oscillation mechanism provides
-                smooth, precise movement patterns that can be programmed for specific training drills.
-              </p>
-
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">New Logo Reveal</h2>
-
-              <div className="bg-gray-50 rounded-lg p-8 my-8 text-center">
-                <Image
-                  src="/images/rallie-logo-black.png"
-                  alt="New Rallie Logo"
-                  width={200}
-                  height={80}
-                  className="mx-auto mb-4"
-                />
-                <p className="text-gray-600">
-                  Our new logo reflects our commitment to precision, innovation, and the dynamic nature of tennis. The
-                  clean, modern design represents the intersection of technology and sport.
-                </p>
-              </div>
-
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">What's Next</h2>
-
-              <p>
-                With the successful field test behind us, we're now focusing on integrating the AI coaching features
-                that will set Rallie apart from traditional ball machines. The next phase involves implementing computer
-                vision for real-time technique analysis and adaptive training algorithms.
-              </p>
-
-              <p>
-                We're also working on the mobile app that will allow players to customize their training sessions, track
-                progress, and receive personalized coaching insights. The app will seamlessly connect with the machine
-                to create a complete training ecosystem.
-              </p>
-
-              <p>
-                Our beta testing program will begin in Q3 2025, and we're looking for passionate tennis players to help
-                us refine the experience. If you're interested in being part of this journey, join our waitlist below.
-              </p>
-
-              <div className="bg-blue-50 rounded-lg p-6 my-8">
-                <h3 className="text-lg font-bold mb-3">Beta Program Benefits</h3>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Early access to Rallie before public launch</li>
-                  <li>Direct input on features and functionality</li>
-                  <li>Exclusive pricing for beta participants</li>
-                  <li>One-on-one support from our development team</li>
-                </ul>
-              </div>
-
-              <p>
-                The future of tennis training is here, and we're excited to share it with players who are as passionate
-                about improvement as we are about innovation.
-              </p>
+            <div className="mb-6 flex justify-center">
+              <img
+                src="https://i.imgur.com/UNvBo5i.gif"
+                alt="Rallie field test demonstration showing the tennis ball machine in action"
+                className="max-w-sm mx-auto rounded-lg"
+              />
             </div>
+            <p className="text-xs text-center mt-2 text-gray-500 mb-8">FIRST FIELD TEST - JUNE 2025</p>
+
+            <p className="mb-6">
+              The field test validated our core engineering decisions, from the dual motor system to the
+              servo-controlled oscillation mechanism. We achieved consistent ball speeds ranging from 10-80 MPH with
+              precise spin control, demonstrating both topspin and backspin capabilities that exceeded our initial
+              specifications.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-12 mb-6">Team Update</h2>
+
+            <p className="mb-6">
+              My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce that
+              I'm joined with incredibly talented engineers!
+            </p>
+
+            <p className="mb-6">
+              <strong>Lisa Wang</strong> - Co-founder & AI/Computer Vision Lead: Lisa, a brilliant engineer and former
+              Googler, is leading AI development at Rallie. Stay tuned—exciting AI feature demos are coming soon!
+            </p>
+
+            <p className="mb-6">
+              <strong>Ray Shen</strong> - Hardware & Embedded Systems Engineering: A 15-year veteran in motor control
+              and manufacturing, Ray brings deep expertise to Rallie's hardware development and will lead our path to
+              scalable production.
+            </p>
+
+            <p className="mb-6">
+              We're looking for 10 tennis facilities to participate in our beta program. Selected partners will receive
+              early access to Rallie units and direct input into the final product design.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-12 mb-6">New Logo Reveal</h2>
+
+            <p className="mb-6">
+              Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern design.
+            </p>
+
+            <div className="flex justify-center space-x-8 mb-8">
+              <div className="text-center">
+                <img src="/images/rallie-logo-black.png" alt="Rallie logo in black" className="h-16 mx-auto mb-2" />
+                <p className="text-sm text-gray-600">Black version</p>
+              </div>
+              <div className="text-center bg-gray-900 p-4 rounded-lg">
+                <img src="/images/rallie-logo-white.png" alt="Rallie logo in white" className="h-16 mx-auto mb-2" />
+                <p className="text-sm text-gray-300">White version</p>
+              </div>
+            </div>
+
+            <p className="mb-6">
+              The new logo captures the dynamic energy of tennis while maintaining the clean, tech-forward aesthetic
+              that represents our AI-powered approach to training.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-12 mb-6">What's Next</h2>
+
+            <p className="mb-6">
+              With the successful field test behind us, we're now focusing on refining the AI coaching algorithms and
+              preparing for our beta program launch. The next few months will be crucial as we work toward bringing
+              Rallie to tennis facilities and players worldwide.
+            </p>
+
+            <p className="mb-6">Key milestones ahead:</p>
+
+            <ul className="mb-6 space-y-2">
+              <li>• AI coaching system integration</li>
+              <li>• Beta program launch with select tennis facilities</li>
+              <li>• User interface and mobile app development</li>
+              <li>• Production planning and manufacturing partnerships</li>
+            </ul>
+
+            <p className="mb-8">
+              We're incredibly excited about what's coming next and grateful for the support from our growing community
+              of tennis players and coaches who believe in the future of AI-powered training.
+            </p>
           </div>
 
           {/* CTA Section */}
@@ -179,8 +188,8 @@ export default function FirstFieldTestPage() {
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Join the Beta Program</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Be among the first to experience Rallie's revolutionary AI tennis coaching. Join our beta program and
-                help shape the future of tennis training.
+                Be among the first to experience Rallie's AI-powered tennis coaching. Join our beta program and help
+                shape the future of tennis training.
               </p>
 
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
