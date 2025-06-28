@@ -47,13 +47,8 @@ function Footer() {
             <h6 className="font-semibold text-gray-800 mb-4">Resources</h6>
             <ul className="text-gray-600">
               <li className="mb-2">
-                <Link href="/blog" className="hover:text-blue-500 cursor-pointer block">
-                  Blog
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/progress" className="hover:text-blue-500 cursor-pointer block">
-                  Progress Updates
+                <Link href="/updates" className="hover:text-blue-500 cursor-pointer block">
+                  Updates
                 </Link>
               </li>
               <li className="mb-2">

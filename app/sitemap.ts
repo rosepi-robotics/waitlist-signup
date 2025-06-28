@@ -11,20 +11,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/survey`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/progress`,
+      url: `${baseUrl}/brand-story`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/brand-story`,
+      url: `${baseUrl}/updates`,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/insights/ai-tennis-coach`,
+      lastModified: new Date("2024-12-15"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/progress/first-field-test`,
+      lastModified: new Date("2024-12-10"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
@@ -41,16 +47,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/survey`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/admin/login`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.1,
+      priority: 0.8,
     },
   ]
 }

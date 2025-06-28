@@ -1,285 +1,276 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
 import { submitContactForm } from "../actions/contact"
+import { joinWaitlist } from "../actions/waitlist"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Mail, Phone, MapPin, Send, ArrowRight } from "lucide-react"
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null
-    message: string
-  }>({ type: null, message: "" })
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const [waitlistEmail, setWaitlistEmail] = useState("")
+  const [isContactSubmitting, setIsContactSubmitting] = useState(false)
+  const [isWaitlistSubmitting, setIsWaitlistSubmitting] = useState(false)
+  const [contactMessage, setContactMessage] = useState("")
+  const [waitlistMessage, setWaitlistMessage] = useState("")
 
-  async function handleSubmit(formData: FormData) {
-    setIsSubmitting(true)
-    setSubmitStatus({ type: null, message: "" })
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsContactSubmitting(true)
+    setContactMessage("")
 
     try {
+      const formData = new FormData(e.currentTarget)
       const result = await submitContactForm(formData)
 
       if (result.success) {
-        setSubmitStatus({
-          type: "success",
-          message: result.message || "Message sent successfully!",
-        })
-        // Reset form
-        const form = document.getElementById("contact-form") as HTMLFormElement
-        form?.reset()
+        setContactMessage("Thanks for reaching out! We'll get back to you soon.")
+        setContactForm({ name: "", email: "", message: "" })
       } else {
-        setSubmitStatus({
-          type: "error",
-          message: result.error || "Failed to send message",
-        })
+        setContactMessage(result.error || "Something went wrong. Please try again.")
       }
     } catch (error) {
-      setSubmitStatus({
-        type: "error",
-        message: "An unexpected error occurred",
-      })
+      setContactMessage("Something went wrong. Please try again.")
     } finally {
-      setIsSubmitting(false)
+      setIsContactSubmitting(false)
+    }
+  }
+
+  const handleWaitlistSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!waitlistEmail) return
+
+    setIsWaitlistSubmitting(true)
+    setWaitlistMessage("")
+
+    try {
+      const formData = new FormData()
+      formData.append("email", waitlistEmail)
+      const result = await joinWaitlist(formData)
+
+      if (result.success) {
+        setWaitlistMessage("Thanks for joining! We'll be in touch soon.")
+        setWaitlistEmail("")
+      } else {
+        setWaitlistMessage(result.error || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setWaitlistMessage("Something went wrong. Please try again.")
+    } finally {
+      setIsWaitlistSubmitting(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
-      {/* Background Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: `
-      linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(251, 146, 60, 0.3) 1px, transparent 1px)
-    `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Organic Flowing Shapes with Bright Colors */}
-      <div
-        className="absolute top-0 left-1/4 w-[700px] h-[500px] blur-3xl animate-slow-pulse opacity-80 transform rotate-12"
-        style={{
-          background: `radial-gradient(ellipse 80% 60% at 30% 40%, 
-      rgba(251, 146, 60, 1.0) 0%, 
-      rgba(59, 130, 246, 0.8) 45%, 
-      rgba(34, 197, 94, 0.8) 100%)`,
-          borderRadius: "60% 40% 30% 70%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/3 right-1/6 w-[600px] h-[400px] blur-3xl opacity-85 transform -rotate-45"
-        style={{
-          background: `radial-gradient(ellipse 70% 90% at 60% 30%, 
-      rgba(59, 130, 246, 1.0) 0%, 
-      rgba(251, 146, 60, 1.0) 60%, 
-      rgba(168, 85, 247, 0.8) 100%)`,
-          borderRadius: "30% 70% 70% 30%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-1/4 left-1/3 w-[550px] h-[450px] blur-3xl animate-slow-pulse opacity-75 transform rotate-45"
-        style={{
-          background: `radial-gradient(ellipse 85% 65% at 40% 60%, 
-      rgba(34, 197, 94, 1.0) 0%, 
-      rgba(59, 130, 246, 0.8) 50%, 
-      rgba(251, 146, 60, 0.8) 100%)`,
-          borderRadius: "40% 60% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-0 right-1/4 w-[480px] h-[380px] blur-3xl opacity-80 transform -rotate-30"
-        style={{
-          background: `radial-gradient(ellipse 75% 85% at 50% 70%, 
-      rgba(251, 146, 60, 1.0) 0%, 
-      rgba(34, 197, 94, 0.8) 40%, 
-      rgba(59, 130, 246, 0.8) 100%)`,
-          borderRadius: "70% 30% 30% 70%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/2 left-0 w-[420px] h-[350px] blur-3xl animate-slow-pulse opacity-70 transform rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 90% 70% at 20% 50%, 
-      rgba(168, 85, 247, 1.0) 0%, 
-      rgba(251, 146, 60, 1.0) 80%)`,
-          borderRadius: "50% 50% 80% 20%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-1/2 right-0 w-[460px] h-[320px] blur-3xl opacity-75 transform -rotate-60"
-        style={{
-          background: `radial-gradient(ellipse 80% 95% at 70% 30%, 
-      rgba(34, 197, 94, 1.0) 0%, 
-      rgba(59, 130, 246, 0.8) 70%)`,
-          borderRadius: "20% 80% 40% 60%",
-        }}
-      />
-
-      <div
-        className="absolute top-3/4 left-1/2 w-[380px] h-[280px] blur-3xl animate-slow-pulse opacity-70 transform rotate-15"
-        style={{
-          background: `radial-gradient(ellipse 65% 85% at 60% 40%, 
-      rgba(251, 146, 60, 1.0) 0%, 
-      rgba(168, 85, 247, 0.8) 100%)`,
-          borderRadius: "80% 20% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/6 right-1/2 w-[340px] h-[260px] blur-3xl opacity-75 transform -rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 70% 80% at 40% 60%, 
-      rgba(59, 130, 246, 0.8) 0%, 
-      rgba(34, 197, 94, 1.0) 50%, 
-      rgba(251, 146, 60, 0.8) 100%)`,
-          borderRadius: "60% 40% 20% 80%",
-        }}
-      />
-
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Get in Touch</h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Have questions about Rallie? We'd love to hear from you.
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Get in Touch</h1>
+          <p className="text-xl md:text-2xl text-violet-100 max-w-3xl mx-auto">
+            Have questions about Rallie? We'd love to hear from you and help you get started
           </p>
         </div>
+      </div>
 
-        {/* Success/Error Message */}
-        {submitStatus.type && (
-          <div
-            className={`mb-6 p-4 rounded-lg text-center ${
-              submitStatus.type === "success"
-                ? "bg-green-100 text-green-800 border border-green-200"
-                : "bg-red-100 text-red-800 border border-red-200"
-            }`}
-          >
-            {submitStatus.message}
-          </div>
-        )}
-
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-700">hello@rallie.tennis</p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-gray-900">Follow Us</h3>
-                  <div className="flex space-x-4 mt-2">
-                    <a
-                      href="https://www.instagram.com/rallietennis"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800"
-                    >
-                      Instagram
-                    </a>
-                    <a
-                      href="https://www.youtube.com/@rallietennis"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800"
-                    >
-                      YouTube
-                    </a>
-                    <a
-                      href="https://www.facebook.com/groups/963981362613884"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800"
-                    >
-                      Facebook
-                    </a>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-gray-900">Join Our Community</h3>
-                  <p className="text-gray-700">
-                    Join our waitlist to be the first to know about Rallie updates and get early access.
+      {/* Content Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Contact Form and Info */}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <Card>
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <Badge className="mb-4 bg-purple-100 text-purple-800">Contact</Badge>
+                  <h2 className="text-3xl font-bold mb-4">Send us a Message</h2>
+                  <p className="text-gray-600">
+                    Fill out the form below and we'll get back to you as soon as possible.
                   </p>
-                  <a
-                    href="/survey"
-                    className="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                </div>
+
+                <form onSubmit={handleContactSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={contactForm.name}
+                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                      required
+                      className="w-full"
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={contactForm.email}
+                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                      required
+                      className="w-full"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={contactForm.message}
+                      onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                      required
+                      className="w-full min-h-[120px]"
+                      placeholder="Tell us about your tennis goals and how we can help..."
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isContactSubmitting}
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                   >
-                    Join Waitlist
-                  </a>
-                </div>
-              </div>
-            </div>
+                    {isContactSubmitting ? "Sending..." : "Send Message"}
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
 
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Message</h2>
-              <form id="contact-form" action={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    disabled={isSubmitting}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
-                    placeholder="Your name"
-                  />
-                </div>
+                  {contactMessage && (
+                    <p className={`text-sm ${contactMessage.includes("Thanks") ? "text-purple-600" : "text-red-600"}`}>
+                      {contactMessage}
+                    </p>
+                  )}
+                </form>
+              </CardContent>
+            </Card>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    disabled={isSubmitting}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
-                    placeholder="your@email.com"
-                  />
-                </div>
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <Card>
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <Mail className="h-6 w-6 text-purple-600 mt-1" />
+                      <div>
+                        <h4 className="font-semibold">Email</h4>
+                        <p className="text-gray-600">hello@rallie.ai</p>
+                        <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                      </div>
+                    </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
-                    placeholder="Tell us what's on your mind..."
-                  />
-                </div>
+                    <div className="flex items-start space-x-4">
+                      <Phone className="h-6 w-6 text-purple-600 mt-1" />
+                      <div>
+                        <h4 className="font-semibold">Phone</h4>
+                        <p className="text-gray-600">Coming soon</p>
+                        <p className="text-sm text-gray-500">Currently email only</p>
+                      </div>
+                    </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
-              </form>
+                    <div className="flex items-start space-x-4">
+                      <MapPin className="h-6 w-6 text-purple-600 mt-1" />
+                      <div>
+                        <h4 className="font-semibold">Location</h4>
+                        <p className="text-gray-600">San Francisco, CA</p>
+                        <p className="text-sm text-gray-500">Remote-first team</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-r from-purple-50 to-fuchsia-50 border-purple-200">
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold mb-4">Join Our Community</h3>
+                  <p className="text-gray-600 mb-4">
+                    Connect with other tennis players and stay updated on Rallie's development.
+                  </p>
+                  <div className="space-y-3">
+                    <Button
+                      variant="outline"
+                      className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent"
+                    >
+                      Join Discord Community
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent"
+                    >
+                      Follow on Twitter
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
+
+          {/* CTA Section */}
+          <Card className="bg-gradient-to-r from-violet-50 to-purple-50 border-violet-200">
+            <CardContent className="p-8 md:p-12 text-center">
+              <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Tennis Training?</h3>
+              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Join thousands of tennis players who are already part of the Rallie community and be the first to
+                experience AI-powered coaching.
+              </p>
+
+              <form onSubmit={handleWaitlistSubmit} className="max-w-md mx-auto">
+                <div className="flex gap-3">
+                  <div className="flex-1 relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={waitlistEmail}
+                      onChange={(e) => setWaitlistEmail(e.target.value)}
+                      className="pl-10"
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isWaitlistSubmitting}
+                    className="bg-violet-600 hover:bg-violet-700 text-white px-6"
+                  >
+                    {isWaitlistSubmitting ? "Joining..." : "Join Waitlist"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+                {waitlistMessage && (
+                  <p
+                    className={`mt-3 text-sm ${waitlistMessage.includes("Thanks") ? "text-violet-600" : "text-red-600"}`}
+                  >
+                    {waitlistMessage}
+                  </p>
+                )}
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

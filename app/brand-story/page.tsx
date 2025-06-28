@@ -1,495 +1,269 @@
 "use client"
 
-import { useEffect } from "react"
-import Link from "next/link"
-import { Calendar, User, ArrowRight } from "lucide-react"
-import { Navbar } from "../components/navbar"
-import { Footer } from "../components/footer"
-import { Rajdhani } from "next/font/google"
-import { WaitlistForm } from "../components/waitlist-form"
+import type React from "react"
 
-const rajdhani = Rajdhani({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-rajdhani",
-})
+import { useState } from "react"
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { CheckCircle, Target, Users, Zap, ArrowRight, Mail } from "lucide-react"
+import { Navbar } from "@/app/components/navbar"
+import { Footer } from "@/app/components/footer"
+import { joinWaitlist } from "@/app/actions/waitlist"
 
-// Define the gradient style for the logo
-const logoGradientStyle = {
-  background: "linear-gradient(to right, #c64f34, #ffd700)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  textFillColor: "transparent",
-  display: "inline-block",
-}
+export default function BrandStoryPage() {
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState("")
 
-export default function BrandStory() {
-  useEffect(() => {
-    // Scroll to top when the page loads
-    window.scrollTo(0, 0)
-  }, [])
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    setIsSubmitting(true)
+    try {
+      const result = await joinWaitlist(email)
+      if (result.success) {
+        setMessage("Thanks for joining! We'll be in touch soon.")
+        setEmail("")
+      } else {
+        setMessage(result.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setMessage("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-orange-200 text-gray-900 overflow-hidden relative">
-      {/* Background Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: `
-        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-      `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Organic Flowing Shapes with Blended Orange & Blue */}
-      <div
-        className="absolute top-0 left-1/4 w-[700px] h-[500px] blur-3xl animate-slow-pulse opacity-85 transform rotate-12"
-        style={{
-          background: `radial-gradient(ellipse 80% 60% at 30% 40%, 
-        rgba(251, 146, 60, 0.8) 0%, 
-        rgba(59, 130, 246, 0.6) 45%, 
-        rgba(251, 146, 60, 0.4) 100%)`,
-          borderRadius: "60% 40% 30% 70%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/3 right-1/6 w-[600px] h-[400px] blur-3xl opacity-90 transform -rotate-45"
-        style={{
-          background: `radial-gradient(ellipse 70% 90% at 60% 30%, 
-        rgba(59, 130, 246, 0.7) 0%, 
-        rgba(251, 146, 60, 0.8) 60%, 
-        rgba(147, 51, 234, 0.3) 100%)`,
-          borderRadius: "30% 70% 70% 30%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-1/4 left-1/3 w-[550px] h-[450px] blur-3xl animate-slow-pulse opacity-80 transform rotate-45"
-        style={{
-          background: `radial-gradient(ellipse 85% 65% at 40% 60%, 
-        rgba(249, 115, 22, 0.9) 0%, 
-        rgba(29, 78, 216, 0.6) 50%, 
-        rgba(251, 146, 60, 0.4) 100%)`,
-          borderRadius: "40% 60% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-0 right-1/4 w-[480px] h-[380px] blur-3xl opacity-85 transform -rotate-30"
-        style={{
-          background: `radial-gradient(ellipse 75% 85% at 50% 70%, 
-        rgba(251, 146, 60, 0.8) 0%, 
-        rgba(29, 78, 216, 0.7) 40%, 
-        rgba(249, 115, 22, 0.5) 100%)`,
-          borderRadius: "70% 30% 30% 70%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/2 left-0 w-[420px] h-[350px] blur-3xl animate-slow-pulse opacity-75 transform rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 90% 70% at 20% 50%, 
-        rgba(59, 130, 246, 0.7) 0%, 
-        rgba(251, 146, 60, 0.8) 80%)`,
-          borderRadius: "50% 50% 80% 20%",
-        }}
-      />
-
-      <div
-        className="absolute bottom-1/2 right-0 w-[460px] h-[320px] blur-3xl opacity-80 transform -rotate-60"
-        style={{
-          background: `radial-gradient(ellipse 80% 95% at 70% 30%, 
-        rgba(249, 115, 22, 0.8) 0%, 
-        rgba(29, 78, 216, 0.6) 70%)`,
-          borderRadius: "20% 80% 40% 60%",
-        }}
-      />
-
-      <div
-        className="absolute top-3/4 left-1/2 w-[380px] h-[280px] blur-3xl animate-slow-pulse opacity-70 transform rotate-15"
-        style={{
-          background: `radial-gradient(ellipse 65% 85% at 60% 40%, 
-        rgba(251, 146, 60, 0.7) 0%, 
-        rgba(59, 130, 246, 0.6) 100%)`,
-          borderRadius: "80% 20% 60% 40%",
-        }}
-      />
-
-      <div
-        className="absolute top-1/6 right-1/2 w-[340px] h-[260px] blur-3xl opacity-75 transform -rotate-75"
-        style={{
-          background: `radial-gradient(ellipse 70% 80% at 40% 60%, 
-        rgba(29, 78, 216, 0.6) 0%, 
-        rgba(251, 146, 60, 0.7) 50%, 
-        rgba(249, 115, 22, 0.4) 100%)`,
-          borderRadius: "60% 40% 20% 80%",
-        }}
-      />
-
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="relative max-w-5xl mx-auto px-4 pt-52 pb-12 sm:px-6 lg:px-8 z-10">
-        {/* Combined article container - increased max-width from 3xl to 5xl to match survey page */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-gray-900">
-          {/* Article header */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            The Rallie Story: A Tennis Ball Machine Built Out of Frustration
-          </h1>
 
-          <div className="flex items-center text-gray-600 mb-6 space-x-4">
-            <div className="flex items-center">
-              <Calendar className="h-4 w-4 mr-1" />
-              <time dateTime="2025-03-13">March 13, 2025</time>
-            </div>
-            <div className="flex items-center">
-              <User className="h-4 w-4 mr-1" />
-              <span>
-                Sophie Luo, Creator of{" "}
-                <span className={`${rajdhani.className} font-bold text-2xl`} style={logoGradientStyle}>
-                  rallie
-                </span>
-              </span>
-            </div>
-          </div>
-
-          <div className="aspect-video w-full rounded-xl overflow-hidden mb-8">
-            <img
-              src="/images/brand-story-hero.png"
-              alt="Tennis ball machine in action"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Article content - now in the same container */}
-          <div className="space-y-6 text-gray-700">
-            <h2 className="text-2xl font-bold mt-8">From Factory Floors to Founding Startups</h2>
-            <p>
-              Hi, I'm Sophie Luo, creator of Rallie. My journey into hardware started early—my dad is a mechanical
-              engineer, and I grew up breaking and fixing things in his garage. As a kid, I'd walk factory floors with
-              him during his overtime shifts, fascinated by how things were built. I always knew I wanted to create
-              something of my own.
-            </p>
-
-            <p>
-              I went on to study Computer Science at UC Berkeley and the University of Pennsylvania, but my passion for
-              building physical products never faded. My first real dive into hardware was at Rokid, a startup where I
-              became the first product manager. We developed AR+AI glasses years before Meta's Ray-Ban glasses were even
-              a thing, and today, Rokid is a unicorn.
-            </p>
-
-            <p>
-              Later, I founded RosePi Robotics, where I built AI-powered autonomous robots to improve efficiency in
-              utility-scale solar farms. But despite our efforts, the market was tough, and we eventually ran out of
-              cash. It was a painful but invaluable learning experience.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-              <img
-                src="/placeholder.svg?height=300&width=400"
-                alt="Early prototype"
-                className="rounded-xl w-full h-auto"
-              />
-              <img
-                src="/placeholder.svg?height=300&width=400"
-                alt="Testing phase"
-                className="rounded-xl w-full h-auto"
-              />
-            </div>
-
-            <h2 className="text-2xl font-bold mt-8">From Startup Failure to Tennis Obsession</h2>
-            <p>
-              After that, I took a break—and finally had time to dive into something I'd always wanted to pursue:
-              tennis.
-            </p>
-
-            <p>But I quickly ran into three big frustrations:</p>
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="bg-white/20 rounded-full px-2 py-0.5 text-sm mr-2 font-bold">1️⃣</span>
-                <span>
-                  Coaching was ridiculously expensive—$120+ per hour for private lessons or $50 for group sessions in
-                  the Bay Area.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-white/20 rounded-full px-2 py-0.5 text-sm mr-2 font-bold">2️⃣</span>
-                <span>Finding hitting partners was hard—especially ones at my level.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-white/20 rounded-full px-2 py-0.5 text-sm mr-2 font-bold">3️⃣</span>
-                <span>My schedule was too unpredictable—so it was tough to commit to regular practice.</span>
-              </li>
-            </ul>
-
-            <p>
-              Still, I loved the game. That winter, I was on the court every single day, taking lessons and training
-              whenever I could. I quickly progressed from a beginner to a 2.5, but then I hit a wall. I didn't want to
-              keep spending thousands on lessons, but I knew I needed repetitive practice to refine my strokes. That's
-              when I started looking into tennis ball machines.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-8">Why Do All Ball Machines… Suck?</h2>
-            <p>
-              I thought a ball machine would be the perfect solution—after all, even professional players use them for
-              training. But when I started testing different models, I was shocked at how bad they were.
-            </p>
-
-            <p>I bought one of the most popular brands and immediately ran into problems:</p>
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="text-red-400 mr-2 font-bold">❌</span>
-                <span>It only had one motor, so it could only serve topspin</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-400 mr-2 font-bold">❌</span>
-                <span>
-                  It was way too heavy and too bulky, loading and unloading into my car and pulling it to the tennis
-                  court (1/2 mile walk) was a workout in itself
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-400 mr-2 font-bold">❌</span>
-                <span>
-                  The shots were inconsistent—balls got stuck, and I never knew what to expect on the other side of the
-                  court
-                </span>
-              </li>
-            </ul>
-
-            <p>
-              I then rented and borrowed models from Lobster, Spinfire, and even newer brands. They were even heavier,
-              bulkier, and cost $1,500+—and still weren't great. I even looked into crowdfunded ball machines, only to
-              find that many of them never actually shipped.
-            </p>
-
-            <blockquote className="border-l-4 border-white/50 pl-4 italic my-8">
-              "That's when I thought: 'Why don't I build my own?'"
-            </blockquote>
-
-            <h2 className="text-2xl font-bold mt-8">Bringing Rallie to Life</h2>
-            <p>
-              With years of experience in hardware, manufacturing, and shipping consumer products, combined with my
-              passion for tennis, I knew I was in a unique position to build something better.
-            </p>
-
-            <p>
-              I started by tearing down my own machine, studying its mechanical structure and electrical controls, and
-              reimagining what a ball machine should be.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-8">What Makes Rallie Different?</h2>
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">✅</span>
-                <span>Trio-Motor System – It can launch topspin, backspin, and even sidespin</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">✅</span>
-                <span>80 MPH Top Speed – Train like a pro</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">✅</span>
-                <span>Internal Oscillation – For unpredictable, realistic ball placement</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">✅</span>
-                <span>30% Smaller & 30% Lighter – More portable than any mainstream ball machine</span>
-              </li>
-            </ul>
-
-            <p className="mt-4">I was able to achieve all this with:</p>
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Precision motor control (servo-based for accuracy)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Higher-quality materials (no cheap parts that break easily)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>A smarter, more efficient design</span>
-              </li>
-            </ul>
-
-            <h2 className="text-2xl font-bold mt-8">What's Next?</h2>
-            <p>
-              I'm now waiting for custom parts to arrive so I can begin assembly and testing of the prototype. Over the
-              next few months, I'll be:
-            </p>
-
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Iterating on the design through multiple rounds of prototyping</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Finalizing the EVT (Engineering Validation Testing) by Summer 2025</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Moving into DVT (Design Validation Testing) – optimizing for mass production</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2 font-bold">🔹</span>
-                <span>Hosting live test events in SF & LA for real users to try the machine</span>
-              </li>
-            </ul>
-
-            <p className="mt-4">
-              If everything goes according to plan, we'll begin production in early 2026 and start shipping by March
-              2026. Having worked with top-tier OEMs like Foxconn, Flextronics, and Goertek, I know how to navigate mass
-              production, and I'm confident in delivering Rallie on time.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-8">Future Product Plans</h2>
-            <p>
-              While our initial focus is on creating the perfect tennis ball machine, we have ambitious plans to make it
-              a real smart robot in the future:
-            </p>
-
-            <ul className="list-none space-y-2 pl-4">
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">🎯</span>
-                <span>Knows where the player is on the court, and serves the ball accordingly</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">🎯</span>
-                <span>Adapts difficulty level of drills automatically according to how you play</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">🎯</span>
-                <span>Cloud-based drill sharing platform for coaches and players</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2 font-bold">🎯</span>
-                <span>Real-time analytics and coaching (yes, the real AI coach)</span>
-              </li>
-            </ul>
-
-            <h2 className="text-2xl font-bold mt-8">How You Can Help & Get Involved</h2>
-
-            <p className="mt-4 mb-6">
-              Thanks for making it this far! And thanks for your interest in my story and in rallie! I really hope to
-              involve people who really love tennis and really care about the future of tennis training in my process of
-              building my machine. I need your help with:
-            </p>
-
-            <div className="space-y-6">
-              {/* First glass bubble - Join the Community */}
-              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
-                <h3 className="text-xl font-semibold mb-4">Join the Community and Get Involved in the Conversation</h3>
-                <ul className="list-none space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-white mr-2 font-bold">📢</span>
-                    <span>
-                      Join the conversation on
-                      <a
-                        href="https://discord.gg/ptaTkcbQ"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline mx-1"
-                      >
-                        Discord
-                      </a>
-                      /
-                      <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline mx-1"
-                      >
-                        Instagram
-                      </a>
-                      /
-                      <a
-                        href="https://www.facebook.com/groups/963981362613884"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline mx-1"
-                      >
-                        Facebook
-                      </a>
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-white mr-2 font-bold">📩</span>
-                    <span>
-                      Email me at{" "}
-                      <a href="mailto:hello@rallie.tennis" className="text-blue-600 hover:underline">
-                        hello@rallie.tennis
-                      </a>{" "}
-                      – I'll personally respond to every email!
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-white mr-2 font-bold">📝</span>
-                    <span>
-                      Join our waitlist to get updates on our progress:
-                      <div className="mt-3">
-                        <WaitlistForm onSuccess={() => {}} />
-                      </div>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Second glass bubble - Help understand painpoints */}
-              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
-                <h3 className="text-xl font-semibold mb-4">Help me understand painpoints and build better products</h3>
-                <ul className="list-none space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-white mr-2 font-bold">📋</span>
-                    <span>
-                      <Link href="/survey" className="text-blue-600 hover:underline">
-                        Let me know about your experience with ball machines
-                      </Link>{" "}
-                      - this will help me design a better product that addresses real tennis players' needs.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Third glass bubble - Connect with VCs */}
-              <div className="bg-white/70 rounded-xl p-6 border border-white/20">
-                <h3 className="text-xl font-semibold mb-4">Connect me with VCs or partners</h3>
-                <ul className="list-none space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-white mr-2 font-bold">🤝</span>
-                    <span>
-                      I've set aside some budget and raised a small amount from a Silicon Valley-based VC to bring
-                      Rallie to life. But to perfect the product and stick to our timeline, I'll need more funding. If
-                      you can introduce me to VCs or strategic partners, please reach out at{" "}
-                      <a href="mailto:hello@rallie.tennis" className="text-blue-600 hover:underline">
-                        hello@rallie.tennis
-                      </a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <Link
-                href="/survey"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-black bg-white hover:bg-white/90 transition-colors"
-              >
-                Take Survey and Win $100 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-
-            <p className="text-center text-xl font-bold mt-12">
-              🚀 Let's build the future of tennis training together.
-            </p>
-          </div>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 text-white py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Story</h1>
+          <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto">
+            Revolutionizing tennis training through AI-powered coaching and personalized development
+          </p>
         </div>
       </div>
+
+      {/* Content Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-6xl mx-auto space-y-16">
+          {/* Founder Story */}
+          <Card className="overflow-hidden">
+            <CardContent className="p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <Badge className="mb-4 bg-emerald-100 text-emerald-800">Founder Story</Badge>
+                  <h2 className="text-3xl font-bold mb-6">Meet Sophie, Founder & CEO</h2>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    As a former collegiate tennis player and coach, Sophie experienced firsthand the limitations of
+                    traditional tennis training. Despite having access to top coaches, she noticed that personalized
+                    feedback was often inconsistent and expensive.
+                  </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    After completing her degree in Computer Science and AI, Sophie realized that technology could bridge
+                    this gap. She envisioned a world where every tennis player, regardless of skill level or budget,
+                    could access world-class coaching.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    That vision became Rallie - an AI-powered tennis coach that provides instant, personalized feedback
+                    to help players improve faster than ever before.
+                  </p>
+                </div>
+                <div className="relative">
+                  <Image
+                    src="/images/sophie-founder-collage.png"
+                    alt="Sophie, Founder of Rallie"
+                    width={500}
+                    height={400}
+                    className="rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Mission, Vision, Values */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <Target className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-4">Our Mission</h3>
+                <p className="text-gray-600">
+                  To democratize access to world-class tennis coaching through AI technology, making expert training
+                  available to every player.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <Zap className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-4">Our Vision</h3>
+                <p className="text-gray-600">
+                  A world where every tennis player can reach their full potential with personalized, intelligent
+                  coaching that adapts to their unique style.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <Users className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-4">Our Values</h3>
+                <p className="text-gray-600">
+                  Innovation, accessibility, and player-first design drive everything we do. We believe technology
+                  should enhance, not replace, the joy of tennis.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Problem & Solution */}
+          <Card>
+            <CardContent className="p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <Badge className="mb-4 bg-red-100 text-red-800">The Problem</Badge>
+                  <h3 className="text-2xl font-bold mb-6">Traditional Tennis Training Challenges</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-600">Expensive private coaching sessions</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-600">Inconsistent feedback between sessions</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-600">Limited access to expert-level analysis</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-600">Difficulty tracking long-term progress</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <Badge className="mb-4 bg-emerald-100 text-emerald-800">Our Solution</Badge>
+                  <h3 className="text-2xl font-bold mb-6">AI-Powered Tennis Coaching</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-600">24/7 available AI coach for instant feedback</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-600">Consistent, data-driven analysis every session</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-600">Professional-level insights at an affordable price</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                      <span className="text-gray-600">Comprehensive progress tracking and analytics</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Technology Approach */}
+          <Card>
+            <CardContent className="p-8 md:p-12">
+              <div className="text-center mb-8">
+                <Badge className="mb-4 bg-blue-100 text-blue-800">Technology</Badge>
+                <h3 className="text-3xl font-bold mb-4">How Rallie Works</h3>
+                <p className="text-gray-600 max-w-3xl mx-auto">
+                  Our AI combines computer vision, machine learning, and tennis expertise to provide real-time analysis
+                  and personalized coaching recommendations.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8 mt-12">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-emerald-600">1</span>
+                  </div>
+                  <h4 className="font-bold mb-2">Capture</h4>
+                  <p className="text-gray-600 text-sm">Record your tennis sessions using any smartphone or camera</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-emerald-600">2</span>
+                  </div>
+                  <h4 className="font-bold mb-2">Analyze</h4>
+                  <p className="text-gray-600 text-sm">
+                    AI analyzes your technique, form, and performance in real-time
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-emerald-600">3</span>
+                  </div>
+                  <h4 className="font-bold mb-2">Improve</h4>
+                  <p className="text-gray-600 text-sm">Receive personalized feedback and training recommendations</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* CTA Section */}
+          <Card className="bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200">
+            <CardContent className="p-8 md:p-12 text-center">
+              <h3 className="text-3xl font-bold mb-4">Join Us on This Journey</h3>
+              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                We're building the future of tennis training, and we want you to be part of it. Join our waitlist and
+                help shape Rallie.
+              </p>
+
+              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                <div className="flex gap-3">
+                  <div className="flex-1 relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="pl-10"
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-6"
+                  >
+                    {isSubmitting ? "Joining..." : "Join Waitlist"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+                {message && (
+                  <p className={`mt-3 text-sm ${message.includes("Thanks") ? "text-emerald-600" : "text-red-600"}`}>
+                    {message}
+                  </p>
+                )}
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
       <Footer />
-    </main>
+    </div>
   )
 }
