@@ -1,366 +1,307 @@
-export function ProgressUpdateJune() {
-  return (
-    <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        lineHeight: "1.6",
-        color: "#333",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        minHeight: "100vh",
-        padding: "40px 20px",
-      }}
-    >
-      {/* Header Card */}
-      <div
-        style={{
-          maxWidth: "600px",
-          margin: "0 auto 30px auto",
-          backgroundColor: "white",
-          borderRadius: "16px",
-          padding: "40px 30px",
-          textAlign: "center",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "28px",
-            fontWeight: "bold",
-            color: "#1e3a8a",
-            margin: "0 0 10px 0",
-          }}
-        >
-          Rallie Progress Update - June 2025
-        </h1>
-        <div
-          style={{
-            width: "60px",
-            height: "4px",
-            background: "linear-gradient(90deg, #f59e0b, #f97316)",
-            margin: "0 auto",
-            borderRadius: "2px",
-          }}
-        ></div>
+export interface ProgressUpdateJuneProps {
+  unsubscribeUrl: string
+  isTest?: boolean
+}
+
+export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: ProgressUpdateJuneProps): string {
+  const testPrefix = isTest ? "[TEST] " : ""
+
+  return /* html */ `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${testPrefix}Rallie Progress Update - June 2025</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #374151;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      .wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 40px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .header-card {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .logo {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #1e3a8a;
+        margin: 0 0 10px 0;
+      }
+      .underline {
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #f59e0b, #f97316);
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+      .highlight-box {
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      .blue-box { background: #f0f9ff; }
+      .green-box { background: #f0fdf4; }
+      .yellow-box { 
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+      }
+      .purple-box { background: #faf5ff; }
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .blue-title { color: #1e40af; }
+      .green-title { color: #166534; }
+      .yellow-title { color: #92400e; }
+      .purple-title { color: #7c3aed; }
+      .checkmark-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .checkmark-item {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+      .checkmark-item:last-child {
+        margin-bottom: 0;
+      }
+      .checkmark {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #10b981;
+        font-weight: bold;
+      }
+      .video-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .video-thumbnail {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .cta-button {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .social-section {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .social-link {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .facebook { color: #1877f2; }
+      .instagram { color: #e4405f; }
+      .youtube { color: #ff0000; }
+      .signature {
+        border-top: 1px solid #e5e7eb;
+        padding-top: 20px;
+        text-align: left;
+      }
+      .footer {
+        text-align: center;
+        color: rgba(255,255,255,0.8);
+        font-size: 12px;
+        margin-top: 30px;
+      }
+      .unsubscribe {
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255,255,255,0.6);
+        margin-top: 10px;
+      }
+      .unsubscribe a {
+        color: rgba(255,255,255,0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      
+      <!-- Header with New Logo -->
+      <div class="card header-card">
+        <img src="https://rallie.tennis/images/rallie-logo-black.png" alt="Rallie Tennis" class="logo" />
+        <h1 class="title">Progress Update - June 2025</h1>
+        <div class="underline"></div>
       </div>
 
-      {/* Main Content Card */}
-      <div
-        style={{
-          maxWidth: "600px",
-          margin: "0 auto",
-          backgroundColor: "white",
-          borderRadius: "16px",
-          padding: "40px 30px",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "16px",
-            marginBottom: "30px",
-            color: "#374151",
-          }}
-        >
-          Hi there! We're excited to share our latest progress on Rallie, your future AI-powered tennis training
-          companion.
+      <!-- Main Content -->
+      <div class="card">
+        <p style="font-size: 16px; margin-bottom: 30px;">
+          Hi there! We're excited to share our latest progress on Rallie, your future AI-powered tennis training companion. This month has been incredible with major milestones reached!
         </p>
 
-        {/* Development Progress */}
-        <div
-          style={{
-            backgroundColor: "#f0f9ff",
-            borderRadius: "12px",
-            padding: "25px",
-            marginBottom: "30px",
-          }}
-        >
-          <h3
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#1e40af",
-              marginBottom: "15px",
-            }}
-          >
-            🚀 Development Highlights
-          </h3>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: "0",
-              margin: "0",
-            }}
-          >
-            <li style={{ marginBottom: "10px", paddingLeft: "20px", position: "relative" }}>
-              <span
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "0",
-                  color: "#10b981",
-                  fontWeight: "bold",
-                }}
-              >
-                ✓
-              </span>
+        <!-- Development Progress -->
+        <div class="highlight-box blue-box">
+          <h3 class="section-title blue-title">🚀 Development Highlights</h3>
+          <ul class="checkmark-list">
+            <li class="checkmark-item">
+              <span class="checkmark">✓</span>
               Completed hardware prototype testing with 95% accuracy
             </li>
-            <li style={{ marginBottom: "10px", paddingLeft: "20px", position: "relative" }}>
-              <span
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "0",
-                  color: "#10b981",
-                  fontWeight: "bold",
-                }}
-              >
-                ✓
-              </span>
+            <li class="checkmark-item">
+              <span class="checkmark">✓</span>
               AI training algorithms now adapt to individual playing styles
             </li>
-            <li style={{ marginBottom: "10px", paddingLeft: "20px", position: "relative" }}>
-              <span
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "0",
-                  color: "#10b981",
-                  fontWeight: "bold",
-                }}
-              >
-                ✓
-              </span>
+            <li class="checkmark-item">
+              <span class="checkmark">✓</span>
               Mobile app beta version ready for testing
             </li>
-            <li style={{ marginBottom: "0", paddingLeft: "20px", position: "relative" }}>
-              <span
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "0",
-                  color: "#10b981",
-                  fontWeight: "bold",
-                }}
-              >
-                ✓
-              </span>
+            <li class="checkmark-item">
+              <span class="checkmark">✓</span>
               Compact design achieved - 40% smaller than traditional machines
             </li>
           </ul>
         </div>
 
-        {/* Team Update */}
-        <div
-          style={{
-            backgroundColor: "#f0fdf4",
-            borderRadius: "12px",
-            padding: "25px",
-            marginBottom: "30px",
-          }}
-        >
-          <h3
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#166534",
-              marginBottom: "15px",
-            }}
-          >
-            👥 Team Growth
-          </h3>
-          <p
-            style={{
-              margin: "0",
-              fontSize: "14px",
-              color: "#166534",
-            }}
-          >
-            We've expanded our team with two new engineers specializing in AI and robotics. This addition accelerates
-            our development timeline and enhances our technical capabilities.
+        <!-- Team Update -->
+        <div class="highlight-box green-box">
+          <h3 class="section-title green-title">👥 Team Growth</h3>
+          <p style="margin: 0; font-size: 14px; color: #166534;">
+            We've expanded our team with two new engineers specializing in AI and robotics, plus a new product designer who's helping us perfect the user experience. This addition accelerates our development timeline and enhances our technical capabilities significantly.
           </p>
         </div>
 
-        {/* Beta Program */}
-        <div
-          style={{
-            backgroundColor: "#fef3c7",
-            borderLeft: "4px solid #f59e0b",
-            borderRadius: "8px",
-            padding: "20px",
-            marginBottom: "30px",
-          }}
-        >
-          <h3
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#92400e",
-              marginBottom: "10px",
-            }}
-          >
-            🎾 Beta Program Launch - July 2025
-          </h3>
-          <p
-            style={{
-              margin: "0",
-              fontSize: "14px",
-              color: "#92400e",
-            }}
-          >
-            We're launching our beta program next month! Selected participants will receive early access to test Rallie
-            and provide feedback that shapes the final product. Stay tuned for selection details.
+        <!-- First Field Test Update -->
+        <div class="highlight-box purple-box">
+          <h3 class="section-title purple-title">🎾 First Field Test Results</h3>
+          <p style="margin: 0 0 20px 0; font-size: 14px; color: #7c3aed;">
+            We conducted our first real-world field test at a local tennis club, and the results exceeded our expectations! Players loved the precision and adaptability of Rallie's ball delivery system.
+          </p>
+          
+          <div class="video-container">
+            <a href="https://www.youtube.com/@rallietennis" target="_blank">
+              <img src="/placeholder.svg?height=300&width=500&text=Field+Test+Video" 
+                   alt="Rallie Field Test Video" 
+                   class="video-thumbnail" />
+            </a>
+            <p style="margin: 10px 0 0 0; font-size: 12px; color: #7c3aed;">
+              Click to watch our first field test in action!
+            </p>
+          </div>
+        </div>
+
+        <!-- New Logo Announcement -->
+        <div class="highlight-box yellow-box">
+          <h3 class="section-title yellow-title">🎨 Brand Refresh</h3>
+          <p style="margin: 0; font-size: 14px; color: #92400e;">
+            You might have noticed our fresh new logo at the top of this email! We've refined our brand identity to better reflect Rallie's innovative and approachable nature. The new design represents precision, movement, and the joy of tennis.
           </p>
         </div>
 
-        {/* Survey CTA */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "16px",
-              marginBottom: "20px",
-              color: "#374151",
-            }}
-          >
-            Haven't taken our survey yet? Complete it now to join the beta program and win a $100 Tennis Warehouse gift
-            card!
+        <!-- Beta Program -->
+        <div class="highlight-box yellow-box">
+          <h3 class="section-title yellow-title">🎾 Beta Program Launch - July 2025</h3>
+          <p style="margin: 0; font-size: 14px; color: #92400e;">
+            We're launching our beta program next month! Selected participants will receive early access to test Rallie and provide feedback that shapes the final product. Stay tuned for selection details.
           </p>
-          <a
-            href="https://rallie.tennis/survey"
-            style={{
-              display: "inline-block",
-              backgroundColor: "#2563eb",
-              color: "white",
-              padding: "12px 24px",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              fontSize: "14px",
-            }}
-          >
+        </div>
+
+        <!-- Survey CTA -->
+        <div style="text-align: center; margin-bottom: 30px;">
+          <p style="font-size: 16px; margin-bottom: 20px;">
+            Haven't taken our survey yet? Complete it now to join the beta program and win a $100 Tennis Warehouse gift card!
+          </p>
+          <a href="https://rallie.tennis/survey" class="cta-button">
             Take Survey Now
           </a>
         </div>
 
-        {/* Social Media Section */}
-        <div
-          style={{
-            backgroundColor: "#f8fafc",
-            borderRadius: "12px",
-            padding: "25px",
-            textAlign: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "16px",
-              marginBottom: "20px",
-              color: "#374151",
-            }}
-          >
+        <!-- Social Media Section -->
+        <div class="social-section">
+          <p style="font-size: 16px; margin: 0 0 20px 0;">
             Follow our journey on social media for behind-the-scenes updates:
           </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "20px",
-              flexWrap: "wrap",
-            }}
-          >
-            <a
-              href="https://www.facebook.com/groups/963981362613884"
-              style={{
-                color: "#1877f2",
-                textDecoration: "none",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
+          <div class="social-links">
+            <a href="https://www.facebook.com/groups/963981362613884" class="social-link facebook">
               Facebook Community
             </a>
-            <a
-              href="https://www.instagram.com/rallie.tennis/"
-              style={{
-                color: "#e4405f",
-                textDecoration: "none",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
+            <a href="https://www.instagram.com/rallie.tennis/" class="social-link instagram">
               Instagram
             </a>
-            <a
-              href="https://www.youtube.com/@rallietennis"
-              style={{
-                color: "#ff0000",
-                textDecoration: "none",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
+            <a href="https://www.youtube.com/@rallietennis" class="social-link youtube">
               YouTube
             </a>
           </div>
         </div>
 
-        {/* Signature */}
-        <div
-          style={{
-            borderTop: "1px solid #e5e7eb",
-            paddingTop: "20px",
-            textAlign: "left",
-          }}
-        >
-          <p
-            style={{
-              margin: "0 0 5px 0",
-              fontSize: "16px",
-              color: "#374151",
-            }}
-          >
+        <!-- Signature -->
+        <div class="signature">
+          <p style="margin: 0 0 5px 0; font-size: 16px;">
             Thanks for your continued support,
           </p>
-          <p
-            style={{
-              margin: "0 0 5px 0",
-              fontSize: "16px",
-              fontWeight: "600",
-              color: "#1f2937",
-            }}
-          >
+          <p style="margin: 0 0 5px 0; font-size: 16px; font-weight: 600; color: #1f2937;">
             Sophie Luo
           </p>
-          <p
-            style={{
-              margin: "0",
-              fontSize: "14px",
-              color: "#6b7280",
-            }}
-          >
+          <p style="margin: 0; font-size: 14px; color: #6b7280;">
             Creator of Rallie Tennis
           </p>
         </div>
       </div>
 
-      {/* Footer */}
-      <div
-        style={{
-          maxWidth: "600px",
-          margin: "30px auto 0 auto",
-          textAlign: "center",
-          color: "rgba(255,255,255,0.8)",
-          fontSize: "12px",
-        }}
-      >
-        <p style={{ margin: "0" }}>© 2025 Rallie Tennis. All rights reserved.</p>
+      <!-- Footer -->
+      <div class="footer">
+        <p style="margin: 0;">© 2025 Rallie Tennis. All rights reserved.</p>
+      </div>
+      
+      <!-- Unsubscribe -->
+      <div class="unsubscribe">
+        <p style="margin: 0;">
+          <a href="${unsubscribeUrl}">Unsubscribe</a> from these updates
+        </p>
       </div>
     </div>
-  )
+  </body>
+</html>`
 }
