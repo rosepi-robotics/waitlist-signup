@@ -12,221 +12,237 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${testPrefix}Rallie Progress Update - June 2025</title>
+    <title>${testPrefix}First Field Test Success + New Logo Reveal</title>
     <style>
       body {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background-color: #ffffff;
+        background-color: #f9fafb;
         color: #1f2937;
         line-height: 1.6;
       }
       .wrapper {
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
         background-color: #ffffff;
       }
       
-      /* Header */
-      .header {
-        background: linear-gradient(135deg, #042d62 0%, #4ade80 100%);
-        padding: 40px 30px;
-        text-align: center;
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
         color: white;
-      }
-      .logo {
-        max-width: 120px;
-        height: auto;
-        margin-bottom: 20px;
-      }
-      .header-title {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 0 0 10px 0;
-        color: white;
-      }
-      .header-subtitle {
-        font-size: 16px;
-        margin: 0;
-        color: #4ade80;
-        opacity: 0.9;
-      }
-      
-      /* Content */
-      .content {
-        padding: 40px 30px;
-      }
-      .intro {
-        font-size: 16px;
-        margin-bottom: 30px;
-        color: #374151;
-      }
-      
-      /* Sections */
-      .section {
-        margin-bottom: 30px;
-      }
-      .section-title {
-        font-size: 20px;
-        font-weight: 600;
-        color: #042d62;
-        margin: 0 0 15px 0;
-        border-bottom: 2px solid #4ade80;
-        padding-bottom: 8px;
-      }
-      
-      /* Highlight boxes */
-      .highlight-box {
-        background: #f0fdf4;
-        border-left: 4px solid #4ade80;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 20px 0;
-      }
-      .highlight-box h3 {
-        color: #042d62;
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 10px 0;
-      }
-      .highlight-box p {
-        margin: 0;
-        color: #374151;
-        font-size: 14px;
-      }
-      
-      /* Checkmark list */
-      .checkmark-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .checkmark-item {
-        margin-bottom: 8px;
-        padding-left: 20px;
-        position: relative;
-        color: #374151;
-        font-size: 14px;
-      }
-      .checkmark-item:last-child {
-        margin-bottom: 0;
-      }
-      .checkmark {
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: #4ade80;
-        font-weight: bold;
-      }
-      
-      /* Video container */
-      .video-container {
+        padding: 96px 16px;
         text-align: center;
-        margin: 20px 0;
-        background: #f8fafc;
-        border-radius: 8px;
-        padding: 20px;
       }
-      .video-thumbnail {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        border: 2px solid #042d62;
-        cursor: pointer;
-        transition: transform 0.2s;
+      .hero-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 16px;
       }
-      .video-thumbnail:hover {
-        transform: scale(1.02);
-      }
-      .video-caption {
-        margin: 10px 0 0 0;
-        font-size: 12px;
-        color: #042d62;
-        font-weight: 500;
-      }
-      
-      /* CTA Button */
-      .cta-section {
-        text-align: center;
-        margin: 30px 0;
-        padding: 25px;
-        background: #f8fafc;
-        border-radius: 8px;
-      }
-      .cta-button {
+      .badge {
         display: inline-block;
-        background: linear-gradient(135deg, #042d62 0%, #4ade80 100%);
-        color: white;
-        padding: 14px 28px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        transition: transform 0.2s;
+        background: rgba(219, 234, 254, 1);
+        color: #1e40af;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 24px;
       }
-      .cta-button:hover {
-        transform: translateY(-2px);
-        color: white;
+      .hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin: 0 0 24px 0;
+        line-height: 1.1;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+        justify-content: center;
+        color: rgba(219, 234, 254, 1);
+        margin-bottom: 32px;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
       }
       
-      /* Social section */
-      .social-section {
-        background: #042d62;
-        color: white;
-        padding: 30px;
+      /* Article Content */
+      .article {
+        padding: 64px 16px;
+        background: white;
+      }
+      .article-container {
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+      .prose {
+        max-width: none;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+      .prose p {
+        margin: 0 0 24px 0;
+        color: #4b5563;
+      }
+      .prose .lead {
+        font-size: 20px;
+        color: #4b5563;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+      .prose h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1f2937;
+        margin: 48px 0 24px 0;
+        line-height: 1.2;
+      }
+      .prose h2:first-of-type {
+        margin-top: 48px;
+      }
+      .prose strong {
+        font-weight: 600;
+        color: #1f2937;
+      }
+      .prose ul {
+        margin: 24px 0;
+        padding-left: 0;
+        list-style: none;
+      }
+      .prose li {
+        margin-bottom: 8px;
+        color: #4b5563;
+      }
+      
+      /* Image sections */
+      .image-section {
+        margin: 24px 0;
         text-align: center;
       }
-      .social-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-        color: white;
+      .field-test-gif {
+        max-width: 384px;
+        margin: 0 auto;
+        border-radius: 8px;
+        width: 100%;
+        height: auto;
       }
-      .social-links {
+      .image-caption {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 8px;
+        color: #6b7280;
+        margin-bottom: 32px;
+      }
+      
+      /* Logo section */
+      .logo-section {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 32px;
+        margin: 32px 0;
         flex-wrap: wrap;
-        margin-top: 20px;
       }
-      .social-link {
-        text-decoration: none;
+      .logo-item {
+        text-align: center;
+      }
+      .logo-item img {
+        height: 64px;
+        margin: 0 auto 8px auto;
+      }
+      .logo-item.dark {
+        background: #111827;
+        padding: 16px;
+        border-radius: 8px;
+      }
+      .logo-item p {
         font-size: 14px;
-        font-weight: 500;
-        padding: 10px 16px;
-        border-radius: 6px;
-        background: rgba(255,255,255,0.1);
-        color: #4ade80;
-        transition: background 0.2s;
+        color: #4b5563;
+        margin: 0;
       }
-      .social-link:hover {
-        background: rgba(255,255,255,0.2);
-        color: #4ade80;
+      .logo-item.dark p {
+        color: #d1d5db;
       }
       
-      /* Signature */
-      .signature {
-        border-top: 1px solid #e5e7eb;
-        padding-top: 25px;
-        margin-top: 30px;
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+        border: 1px solid #3b82f6;
+        border-radius: 16px;
+        padding: 64px 32px;
+        text-align: center;
+        margin-top: 64px;
       }
-      .signature-name {
+      .cta-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 16px 0;
+        color: #1f2937;
+      }
+      .cta-text {
+        color: #4b5563;
+        margin: 0 0 32px 0;
+        max-width: 512px;
+        margin-left: auto;
+        margin-right: auto;
         font-size: 16px;
-        font-weight: 600;
-        color: #042d62;
-        margin: 0 0 5px 0;
       }
-      .signature-title {
-        font-size: 14px;
-        color: #6b7280;
-        margin: 0;
+      .cta-form {
+        max-width: 384px;
+        margin: 0 auto;
+      }
+      .form-row {
+        display: flex;
+        gap: 12px;
+      }
+      .input-wrapper {
+        flex: 1;
+        position: relative;
+      }
+      .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        width: 20px;
+        height: 20px;
+      }
+      .email-input {
+        width: 100%;
+        padding: 12px 12px 12px 40px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 16px;
+        background: white;
+      }
+      .submit-button {
+        background: #2563eb;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .submit-button:hover {
+        background: #1d4ed8;
       }
       
       /* Footer */
       .footer {
-        background: #f8fafc;
-        padding: 20px 30px;
+        background: #f9fafb;
+        padding: 40px 16px;
         text-align: center;
         border-top: 1px solid #e5e7eb;
       }
@@ -237,27 +253,39 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
       }
       .unsubscribe-link {
         font-size: 12px;
-        color: #042d62;
+        color: #2563eb;
         text-decoration: underline;
       }
       
       /* Responsive */
-      @media (max-width: 600px) {
-        .header {
-          padding: 30px 20px;
+      @media (max-width: 768px) {
+        .hero {
+          padding: 64px 16px;
         }
-        .content {
-          padding: 30px 20px;
+        .hero-title {
+          font-size: 36px;
         }
-        .social-section {
-          padding: 25px 20px;
-        }
-        .footer {
-          padding: 20px;
-        }
-        .social-links {
+        .hero-meta {
           flex-direction: column;
-          gap: 10px;
+          gap: 16px;
+        }
+        .article {
+          padding: 48px 16px;
+        }
+        .prose h2 {
+          font-size: 28px;
+        }
+        .cta-section {
+          padding: 48px 24px;
+        }
+        .cta-title {
+          font-size: 28px;
+        }
+        .form-row {
+          flex-direction: column;
+        }
+        .logo-section {
+          gap: 16px;
         }
       }
     </style>
@@ -265,171 +293,144 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
   <body>
     <div class="wrapper">
       
-      <!-- Header -->
-      <div class="header">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_q1CpWxAbZOTXYbEJi2fVA6Ta412C/xQRRbMXX7cUBtDQZ_SlGm7/public/images/rallie-logo-white.png" alt="Rallie Tennis" class="logo" />
-        <h1 class="header-title">🎾 June Update: Major Milestones!</h1>
-        <p class="header-subtitle">First field test results, team growth, and our brand new look</p>
-      </div>
-
-      <!-- Content -->
-      <div class="content">
-        <p class="intro">
-          Hi there! We're excited to share our latest progress on Rallie, your future AI-powered tennis training companion. This month has been incredible with major milestones reached!
-        </p>
-
-        <!-- New Logo Section -->
-        <div class="section">
-          <h2 class="section-title">🎨 Brand New Look</h2>
-          <div class="highlight-box">
-            <h3>We've got a fresh new logo!</h3>
-            <p>After months of design work, we're excited to unveil Rallie's new visual identity. The sleek, modern design better represents our innovative approach to tennis training technology. You'll see this new logo across all our communications, website, and eventually on the Rallie device itself. What do you think? We'd love to hear your feedback!</p>
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="hero-container">
+          <div class="badge">PROGRESS</div>
+          <h1 class="hero-title">First Field Test Success + New Logo Reveal</h1>
+          <div class="hero-meta">
+            <div class="meta-item">
+              <span>📅</span>
+              <span>6/23/2025</span>
+            </div>
+            <div class="meta-item">
+              <span>⏱️</span>
+              <span>8 min read</span>
+            </div>
+            <div class="meta-item">
+              <span>👤</span>
+              <span>Development Team</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- First Field Test -->
-        <div class="section">
-          <h2 class="section-title">🏆 First Field Test Results</h2>
-          <p>The moment we've all been waiting for - our first real-world field test is complete! We took Rallie to the courts and the results exceeded our expectations.</p>
-          
-          <div class="video-container">
-            <a href="https://www.youtube.com/@rallietennis" target="_blank">
-              <img src="/placeholder.svg?height=250&width=400&text=Field+Test+Video" 
-                   alt="Rallie Field Test Video" 
-                   class="video-thumbnail" />
-            </a>
-            <p class="video-caption">▶️ Click to watch our field test highlights on YouTube!</p>
-          </div>
+      <!-- Article Content -->
+      <div class="article">
+        <div class="article-container">
+          <div class="prose">
+            <p class="lead">
+              We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
+            </p>
 
-          <div class="highlight-box">
-            <h3>Key Results:</h3>
-            <ul class="checkmark-list">
-              <li class="checkmark-item">
-                <span class="checkmark">✓</span>
-                <strong>95% shot accuracy</strong> - Rallie consistently hit target zones
-              </li>
-              <li class="checkmark-item">
-                <span class="checkmark">✓</span>
-                <strong>Seamless AI adaptation</strong> - The system learned player patterns in real-time
-              </li>
-              <li class="checkmark-item">
-                <span class="checkmark">✓</span>
-                <strong>30+ minute battery life</strong> - Exceeded our initial projections
-              </li>
-              <li class="checkmark-item">
-                <span class="checkmark">✓</span>
-                <strong>Easy setup</strong> - From box to court in under 5 minutes
-              </li>
+            <p>
+              After months of engineering and development, seeing Rallie perform on an actual tennis court was an incredible milestone for our team.
+            </p>
+
+            <h2>Field Test Breakthrough</h2>
+
+            <p>
+              We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design.
+            </p>
+
+            <div class="image-section">
+              <img
+                src="https://i.imgur.com/UNvBo5i.gif"
+                alt="Rallie field test demonstration showing the tennis ball machine in action"
+                class="field-test-gif"
+              />
+            </div>
+            <p class="image-caption">FIRST FIELD TEST - JUNE 2025</p>
+
+            <p>
+              The field test validated our core engineering decisions, from the dual motor system to the servo-controlled oscillation mechanism. We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating both topspin and backspin capabilities that exceeded our initial specifications.
+            </p>
+
+            <h2>Team Update</h2>
+
+            <p>
+              My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce that I'm joined with incredibly talented engineers!
+            </p>
+
+            <p>
+              <strong>Lisa Wang</strong> - Co-founder & AI/Computer Vision Lead: Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay tuned—exciting AI feature demos are coming soon!
+            </p>
+
+            <p>
+              <strong>Ray Shen</strong> - Hardware & Embedded Systems Engineering: A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's hardware development and will lead our path to scalable production.
+            </p>
+
+            <p>
+              We're looking for 10 tennis facilities to participate in our beta program. Selected partners will receive early access to Rallie units and direct input into the final product design.
+            </p>
+
+            <h2>New Logo Reveal</h2>
+
+            <p>
+              Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern design.
+            </p>
+
+            <div class="logo-section">
+              <div class="logo-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_q1CpWxAbZOTXYbEJi2fVA6Ta412C/gfGv-c3AmWb7kc4dcOZpuP/public/images/rallie-logo-black.png" alt="Rallie logo in black" />
+                <p>Black version</p>
+              </div>
+              <div class="logo-item dark">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_q1CpWxAbZOTXYbEJi2fVA6Ta412C/xQRRbMXX7cUBtDQZ_SlGm7/public/images/rallie-logo-white.png" alt="Rallie logo in white" />
+                <p>White version</p>
+              </div>
+            </div>
+
+            <p>
+              The new logo captures the dynamic energy of tennis while maintaining the clean, tech-forward aesthetic that represents our AI-powered approach to training.
+            </p>
+
+            <h2>What's Next</h2>
+
+            <p>
+              With the successful field test behind us, we're now focusing on refining the AI coaching algorithms and preparing for our beta program launch. The next few months will be crucial as we work toward bringing Rallie to tennis facilities and players worldwide.
+            </p>
+
+            <p>Key milestones ahead:</p>
+
+            <ul>
+              <li>• AI coaching system integration</li>
+              <li>• Beta program launch with select tennis facilities</li>
+              <li>• User interface and mobile app development</li>
+              <li>• Production planning and manufacturing partnerships</li>
             </ul>
+
+            <p>
+              We're incredibly excited about what's coming next and grateful for the support from our growing community of tennis players and coaches who believe in the future of AI-powered training.
+            </p>
           </div>
 
-          <p>The feedback from our test players was incredible. One player said, <em>"It's like having a personal coach that never gets tired and always knows exactly what shot I need to practice."</em></p>
-        </div>
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <h3 class="cta-title">Join the Beta Program</h3>
+            <p class="cta-text">
+              Be among the first to experience Rallie's AI-powered tennis coaching. Join our beta program and help shape the future of tennis training.
+            </p>
 
-        <!-- Team Growth -->
-        <div class="section">
-          <h2 class="section-title">👥 Team Growth</h2>
-          <p>Our team continues to grow with incredible talent! This month we welcomed:</p>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0;">
-            <div style="text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px;">
-              <h4 style="margin: 0 0 8px 0; color: #042d62; font-size: 14px;">🔧 Senior Hardware Engineer</h4>
-              <p style="margin: 0; font-size: 12px; color: #6b7280;">8+ years robotics experience</p>
-            </div>
-            <div style="text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px;">
-              <h4 style="margin: 0 0 8px 0; color: #042d62; font-size: 14px;">💻 AI/ML Engineer</h4>
-              <p style="margin: 0; font-size: 12px; color: #6b7280;">PhD in Computer Vision</p>
-            </div>
-            <div style="text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px;">
-              <h4 style="margin: 0 0 8px 0; color: #042d62; font-size: 14px;">🎨 Product Designer</h4>
-              <p style="margin: 0; font-size: 12px; color: #6b7280;">Award-winning UX designer</p>
+            <div class="cta-form">
+              <div class="form-row">
+                <div class="input-wrapper">
+                  <span class="input-icon">✉️</span>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    class="email-input"
+                    readonly
+                  />
+                </div>
+                <button class="submit-button">
+                  Join Beta
+                  <span>→</span>
+                </button>
+              </div>
             </div>
           </div>
-
-          <p>With our expanded team, we're accelerating development and moving closer to bringing Rallie to courts everywhere!</p>
         </div>
-
-        <!-- Development Highlights -->
-        <div class="section">
-          <h2 class="section-title">⚡ Development Highlights</h2>
-          <ul class="checkmark-list">
-            <li class="checkmark-item">
-              <span class="checkmark">✓</span>
-              Completed first successful field test
-            </li>
-            <li class="checkmark-item">
-              <span class="checkmark">✓</span>
-              Improved ball trajectory algorithms by 40%
-            </li>
-            <li class="checkmark-item">
-              <span class="checkmark">✓</span>
-              Enhanced mobile app with new training modes
-            </li>
-            <li class="checkmark-item">
-              <span class="checkmark">✓</span>
-              Optimized power consumption for longer sessions
-            </li>
-            <li class="checkmark-item">
-              <span class="checkmark">✓</span>
-              Finalized manufacturing partnerships
-            </li>
-          </ul>
-        </div>
-
-        <!-- Beta Program -->
-        <div class="section">
-          <h2 class="section-title">🚀 Beta Program Coming Soon</h2>
-          <p>Based on our successful field test, we're preparing to launch our exclusive beta program! Beta testers will get:</p>
-          <ul style="margin: 15px 0; padding-left: 20px; color: #374151;">
-            <li>Early access to Rallie devices</li>
-            <li>Direct input on features and improvements</li>
-            <li>Special beta tester pricing</li>
-            <li>Exclusive community access</li>
-          </ul>
-          <p>Stay tuned for beta program applications opening soon!</p>
-        </div>
-
-        <!-- Survey CTA -->
-        <div class="cta-section">
-          <h2 style="color: #042d62; font-size: 18px; margin: 0 0 15px 0;">📋 Help Shape Rallie's Future</h2>
-          <p style="margin: 0 0 20px 0; color: #374151;">Your feedback is crucial to making Rallie the best tennis training companion possible.</p>
-          <a href="https://rallie.tennis/survey" class="cta-button">
-            Take Our 2-Minute Survey
-          </a>
-          <p style="margin: 15px 0 0 0; font-size: 14px; color: #6b7280; font-style: italic;">Survey participants get priority access to beta testing!</p>
-        </div>
-
-        <!-- Signature -->
-        <div class="signature">
-          <p style="margin: 0 0 15px 0; color: #374151;">Thanks for your continued support,</p>
-          <p class="signature-name">Sophie Luo</p>
-          <p class="signature-title">Founder & CEO, Rallie</p>
-          <p style="margin: 10px 0 0 0; font-size: 14px; color: #6b7280; font-style: italic;">Building the future of tennis training, one shot at a time</p>
-        </div>
-      </div>
-
-      <!-- Social Media Section -->
-      <div class="social-section">
-        <h3 class="social-title">🌟 Join Our Community</h3>
-        <p style="margin: 0 0 20px 0; color: rgba(255,255,255,0.9);">Connect with fellow tennis enthusiasts and stay updated on Rallie's journey:</p>
-        
-        <div class="social-links">
-          <a href="https://www.facebook.com/groups/963981362613884" class="social-link">
-            📘 Facebook Group
-          </a>
-          <a href="https://www.instagram.com/rallie.tennis/" class="social-link">
-            📸 Instagram
-          </a>
-          <a href="https://www.youtube.com/@rallietennis" class="social-link">
-            🎥 YouTube
-          </a>
-        </div>
-        
-        <p style="margin: 20px 0 0 0; font-size: 14px; color: rgba(255,255,255,0.7);">
-          <strong>Facebook Group:</strong> Share tips, ask questions, and connect with other players<br>
-          <strong>Instagram:</strong> Behind-the-scenes content and development updates<br>
-          <strong>YouTube:</strong> Field tests, tutorials, and product demonstrations
-        </p>
       </div>
 
       <!-- Footer -->
