@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Mail, ArrowRight, HelpCircle, Clock } from "lucide-react"
+import Link from "next/link"
 
 export default function FAQPage() {
   const [waitlistEmail, setWaitlistEmail] = useState("")
@@ -27,13 +28,13 @@ export default function FAQPage() {
     try {
       const formData = new FormData()
       formData.append("email", waitlistEmail)
-      const result = await joinWaitlist(formData)
+      const result = await joinWaitlist(null, formData)
 
       if (result.success) {
         setWaitlistMessage("Thanks for joining! We'll be in touch soon.")
         setWaitlistEmail("")
       } else {
-        setWaitlistMessage(result.error || "Something went wrong. Please try again.")
+        setWaitlistMessage(result.message || "Something went wrong. Please try again.")
       }
     } catch (error) {
       setWaitlistMessage("Something went wrong. Please try again.")
@@ -48,11 +49,14 @@ export default function FAQPage() {
 
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 text-white py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">FAQ</h1>
-          <p className="text-xl md:text-2xl text-amber-100 max-w-3xl mx-auto">
-            Frequently asked questions about Rallie and AI tennis coaching
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <Badge className="mb-6 bg-amber-100 text-amber-800">FAQ</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">FAQ</h1>
+            <p className="text-xl text-amber-100 leading-relaxed">
+              Frequently asked questions about Rallie and AI tennis coaching
+            </p>
+          </div>
         </div>
       </div>
 
@@ -67,9 +71,9 @@ export default function FAQPage() {
                 <HelpCircle className="h-16 w-16 text-orange-600 mx-auto mb-6" />
                 <h2 className="text-3xl font-bold mb-4">FAQ Section Coming Soon</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  We're currently compiling the most frequently asked questions about Rallie and AI tennis
-                  coaching. This section will be available soon with comprehensive answers to help you understand how
-                  Rallie can transform your tennis training.
+                  We're currently compiling the most frequently asked questions about Rallie and AI tennis coaching.
+                  This section will be available soon with comprehensive answers to help you understand how Rallie can
+                  transform your tennis training.
                 </p>
               </div>
 
@@ -102,35 +106,43 @@ export default function FAQPage() {
 
           {/* Quick Links */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Our Story</h4>
-                <p className="text-gray-600 text-sm mb-4">Learn about the founding story and mission behind Rallie.</p>
-                <Button variant="outline" size="sm" asChild>
-                  <a href="/brand-story">Read More</a>
-                </Button>
-              </CardContent>
-            </Card>
+            <Link href="/brand-story">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Our Story</h4>
+                  <p className="text-gray-600 text-sm mb-4">
+                    Learn about the founding story and mission behind Rallie.
+                  </p>
+                  <Button variant="outline" size="sm">
+                    Read More
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Latest Updates</h4>
-                <p className="text-gray-600 text-sm mb-4">Stay updated with our progress and latest insights.</p>
-                <Button variant="outline" size="sm" asChild>
-                  <a href="/updates">View Updates</a>
-                </Button>
-              </CardContent>
-            </Card>
+            <Link href="/updates">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Latest Updates</h4>
+                  <p className="text-gray-600 text-sm mb-4">Stay updated with our progress and latest insights.</p>
+                  <Button variant="outline" size="sm">
+                    View Updates
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Get in Touch</h4>
-                <p className="text-gray-600 text-sm mb-4">Have specific questions? Reach out to our team directly.</p>
-                <Button variant="outline" size="sm" asChild>
-                  <a href="/contact">Contact Us</a>
-                </Button>
-              </CardContent>
-            </Card>
+            <Link href="/contact">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Get in Touch</h4>
+                  <p className="text-gray-600 text-sm mb-4">Have specific questions? Reach out to our team directly.</p>
+                  <Button variant="outline" size="sm">
+                    Contact Us
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
 
           {/* CTA Section */}

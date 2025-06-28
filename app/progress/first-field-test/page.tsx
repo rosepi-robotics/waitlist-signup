@@ -1,224 +1,232 @@
-import Link from "next/link"
-import { ArrowLeft, Calendar, User, CheckCircle, Award, Users, TrendingUp } from "lucide-react"
-import { Navbar } from "../../components/navbar"
-import { Footer } from "../../components/footer"
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Calendar, Clock, User, ArrowRight, Mail, CheckCircle, Zap, Target } from "lucide-react"
+import { Navbar } from "@/app/components/navbar"
+import { Footer } from "@/app/components/footer"
+import { joinWaitlist } from "@/app/actions/waitlist"
 
 export default function FirstFieldTestPage() {
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    setIsSubmitting(true)
+    setMessage("")
+
+    try {
+      const formData = new FormData()
+      formData.append("email", email)
+      const result = await joinWaitlist(null, formData)
+
+      if (result.success) {
+        setMessage("Thanks for joining! We'll be in touch soon.")
+        setEmail("")
+      } else {
+        setMessage(result.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setMessage("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <Badge className="mb-6 bg-blue-100 text-blue-800">PROGRESS</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">First Field Test Success + New Logo Reveal</h1>
+            <div className="flex items-center gap-6 text-blue-100">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-5 w-5" />
+                <span>6/23/2025</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5" />
+                <span>8 min read</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <User className="h-5 w-5" />
+                <span>Development Team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Article Content */}
       <div className="container mx-auto px-4 py-16">
-        {/* Back Navigation */}
-        <div className="mb-8">
-          <Link href="/updates" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Updates
-          </Link>
-        </div>
-
-        {/* Article Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">PROGRESS</span>
-            <div className="flex items-center text-gray-500 text-sm">
-              <Calendar className="w-4 h-4 mr-1" />
-              June 23, 2025
-            </div>
-          </div>
-
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            First Field Test Success + New Logo Reveal
-          </h1>
-
-          <div className="flex items-center text-gray-600 mb-6">
-            <User className="w-4 h-4 mr-2" />
-            Development Team
-          </div>
-
-          <p className="text-xl text-gray-600 leading-relaxed">
-            We did our first field test and the results exceeded expectations! The system is working perfectly, creating
-            incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
-          </p>
-        </div>
-
-        {/* Article Content */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none">
-            {/* Team Update Section - MOVED TO TOP */}
-            <div className="mb-8">
-              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
-                <Users className="mr-2 h-5 w-5 text-blue-500" />
-                TEAM UPDATE
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <p className="mb-6 text-gray-700">
-                  My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce
-                  that I'm joined with incredibly talented engineers!
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <p className="text-xl font-medium text-gray-800">
+                We did our first field test and the results exceeded expectations! The system is working perfectly,
+                creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
+              </p>
+
+              <p>
+                After months of engineering and development, seeing Rallie perform on an actual tennis court was an
+                incredible milestone for our team. The field test validated our core engineering decisions, from the
+                dual motor system to the servo-controlled oscillation mechanism.
+              </p>
+
+              <p>
+                We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating both
+                topspin and backspin capabilities that rival much larger, more expensive machines. The compact 30-pound
+                design proved its portability advantage while maintaining the power and precision needed for serious
+                training.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Test Results</h2>
+
+              <div className="grid md:grid-cols-3 gap-6 my-8">
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Zap className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-bold mb-2">Speed Range</h3>
+                    <p className="text-gray-600">10-80 MPH with consistent accuracy across all speeds</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Target className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-bold mb-2">Precision</h3>
+                    <p className="text-gray-600">±2 inch accuracy at 39 feet with variable spin control</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <CheckCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-bold mb-2">Portability</h3>
+                    <p className="text-gray-600">30 lbs total weight, setup in under 5 minutes</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Engineering Breakthroughs</h2>
+
+              <p>
+                The dual motor system we developed allows for independent control of ball speed and spin, something that
+                traditional single-motor machines struggle with. Our servo-controlled oscillation mechanism provides
+                smooth, precise movement patterns that can be programmed for specific training drills.
+              </p>
+
+              <p>
+                One of the most impressive aspects of the test was the machine's ability to maintain consistent
+                performance across different ball types and court conditions. Whether using pressurized or pressureless
+                balls, on hard court or clay, Rallie delivered reliable results.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">New Logo Reveal</h2>
+
+              <div className="bg-gray-50 rounded-lg p-8 my-8 text-center">
+                <Image
+                  src="/images/rallie-logo-black.png"
+                  alt="New Rallie Logo"
+                  width={200}
+                  height={80}
+                  className="mx-auto mb-4"
+                />
+                <p className="text-gray-600">
+                  Our new logo reflects our commitment to precision, innovation, and the dynamic nature of tennis. The
+                  clean, modern design represents the intersection of technology and sport.
                 </p>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-blue-600 font-semibold text-lg">LW</span>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-gray-900">Lisa Wang</h4>
-                        <p className="text-sm text-gray-600">Co-founder & AI/Computer Vision Lead</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 text-sm mb-3">
-                      Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay
-                      tuned—exciting AI feature demos are coming soon!
-                    </p>
-                  </div>
+              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">What's Next</h2>
 
-                  <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-orange-600 font-semibold text-lg">RS</span>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-gray-900">Ray Shen</h4>
-                        <p className="text-sm text-gray-600">Hardware & Embedded Systems Engineering</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 text-sm mb-3">
-                      A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
-                      hardware development and will lead our path to scalable production.
-                    </p>
+              <p>
+                With the successful field test behind us, we're now focusing on integrating the AI coaching features
+                that will set Rallie apart from traditional ball machines. The next phase involves implementing computer
+                vision for real-time technique analysis and adaptive training algorithms.
+              </p>
+
+              <p>
+                We're also working on the mobile app that will allow players to customize their training sessions, track
+                progress, and receive personalized coaching insights. The app will seamlessly connect with the machine
+                to create a complete training ecosystem.
+              </p>
+
+              <p>
+                Our beta testing program will begin in Q3 2025, and we're looking for passionate tennis players to help
+                us refine the experience. If you're interested in being part of this journey, join our waitlist below.
+              </p>
+
+              <div className="bg-blue-50 rounded-lg p-6 my-8">
+                <h3 className="text-lg font-bold mb-3">Beta Program Benefits</h3>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Early access to Rallie before public launch</li>
+                  <li>Direct input on features and functionality</li>
+                  <li>Exclusive pricing for beta participants</li>
+                  <li>One-on-one support from our development team</li>
+                </ul>
+              </div>
+
+              <p>
+                The future of tennis training is here, and we're excited to share it with players who are as passionate
+                about improvement as we are about innovation.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 mt-16">
+            <CardContent className="p-8 md:p-12 text-center">
+              <h3 className="text-3xl font-bold mb-4">Join the Beta Program</h3>
+              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Be among the first to experience Rallie's revolutionary AI tennis coaching. Join our beta program and
+                help shape the future of tennis training.
+              </p>
+
+              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                <div className="flex gap-3">
+                  <div className="flex-1 relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="pl-10"
+                      required
+                    />
                   </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6"
+                  >
+                    {isSubmitting ? "Joining..." : "Join Beta"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </div>
-
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <h4 className="font-medium text-blue-900 mb-2">Beta Testing Program</h4>
-                  <p className="text-blue-800 text-sm">
-                    We're looking for 10 tennis facilities to participate in our beta program. Selected partners will
-                    receive early access to Rallie units and direct input into the final product design.
+                {message && (
+                  <p className={`mt-3 text-sm ${message.includes("Thanks") ? "text-blue-600" : "text-red-600"}`}>
+                    {message}
                   </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Field Test Success */}
-            <div className="mb-8">
-              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
-                <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
-                FIELD TEST BREAKTHROUGH
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <p className="mb-6 text-gray-700">
-                  We did our first field test and the results exceeded expectations! The system is working perfectly,
-                  creating incredibly fast and strong balls with its compact design.
-                </p>
-
-                <div className="mb-6 flex justify-center">
-                  <img
-                    src="https://i.imgur.com/UNvBo5i.gif"
-                    alt="Rallie field test demonstration showing the tennis ball machine in action"
-                    className="max-w-sm mx-auto rounded-lg"
-                  />
-                </div>
-                <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 mt-6">
-                  <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                    <div className="text-2xl font-light text-gray-900 mb-2">✅ Topspin</div>
-                    <div className="text-sm text-gray-600">Perfect spin generation</div>
-                  </div>
-                  <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                    <div className="text-2xl font-light text-gray-900 mb-2">✅ Backspin</div>
-                    <div className="text-sm text-gray-600">Precise control achieved</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* New Logo Section */}
-            <div className="mb-8">
-              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
-                <Award className="mr-2 h-5 w-5 text-orange-500" />
-                NEW LOGO REVEAL
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <p className="mb-6 text-gray-700">
-                  Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern design.
-                </p>
-                <div className="flex justify-center mb-6">
-                  <div className="bg-white rounded-lg p-8 border border-gray-200">
-                    <img src="/images/rallie-logo-black.png" alt="New Rallie Logo" className="h-16 w-auto" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* What's Next */}
-            <div className="mb-6">
-              <h3 className="text-xl font-medium mb-4 flex items-center text-gray-900">
-                <TrendingUp className="mr-2 h-5 w-5 text-orange-500" />
-                WHAT'S NEXT
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="text-gray-900 font-medium mb-1">Pitch & Oscillation Testing</h4>
-                      <p className="text-gray-600 text-sm">
-                        Next week we'll test the full court coverage system, designed to produce smashes up to 8 meters.
-                        Watch our YouTube channel for test videos.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="text-gray-900 font-medium mb-1">Industrial Design Process</h4>
-                      <p className="text-gray-600 text-sm">
-                        We've started the Industrial Design phase! Currently in ideation stage. Look for our ID
-                        preferences survey in early July.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="text-gray-900 font-medium mb-1">Beta Partner Selection</h4>
-                      <p className="text-gray-600 text-sm">
-                        Finalizing partnerships with tennis facilities for comprehensive beta testing program.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Related Articles */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Continue Reading</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/updates" className="group">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                  View All Updates
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Explore more insights and progress updates from the Rallie team.
-                </p>
-              </div>
-            </Link>
-            <Link href="/insights/ai-tennis-coach" className="group">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                  Why Tennis Needs AI Coaching
-                </h4>
-                <p className="text-gray-600 text-sm">Learn about the vision behind AI-powered tennis training.</p>
-              </div>
-            </Link>
-          </div>
+                )}
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

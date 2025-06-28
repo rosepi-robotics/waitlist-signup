@@ -4,17 +4,16 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import { Calendar, Clock, User, ArrowRight, Mail } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, ArrowRight, Mail, User } from "lucide-react"
-import { Navbar } from "@/app/components/navbar"
-import { Footer } from "@/app/components/footer"
-import { joinWaitlist } from "@/app/actions/waitlist"
+import { Navbar } from "../components/navbar"
+import { Footer } from "../components/footer"
+import { joinWaitlist } from "../actions/waitlist"
 
 export default function UpdatesPage() {
-  const [activeTab, setActiveTab] = useState("all")
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState("")
@@ -24,8 +23,13 @@ export default function UpdatesPage() {
     if (!email) return
 
     setIsSubmitting(true)
+    setMessage("")
+
     try {
-      const result = await joinWaitlist(email)
+      const formData = new FormData()
+      formData.append("email", email)
+      const result = await joinWaitlist(null, formData)
+
       if (result.success) {
         setMessage("Thanks for joining! We'll be in touch soon.")
         setEmail("")
@@ -39,160 +43,137 @@ export default function UpdatesPage() {
     }
   }
 
-  const insights = [
-    {
-      id: "ai-tennis-coach",
-      title: "The Future of Tennis Coaching: How AI is Revolutionizing the Game",
-      excerpt:
-        "Discover how artificial intelligence and robotics is transforming tennis training, making professional-level coaching accessible to players of all skill levels.",
-      date: "2025-06-28",
-      readTime: "5 min read",
-      author: "Sophie Luo",
-      category: "insights",
-      slug: "/insights/ai-tennis-coach",
-    },
-  ]
-
-  const progress = [
-    {
-      id: "first-field-test",
-      title: "First Field Test Success + New Logo Reveal",
-      excerpt:
-        "We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.",
-      date: "2025-06-23",
-      readTime: "8 min read",
-      author: "Development Team",
-      category: "progress",
-      slug: "/progress/first-field-test",
-    },
-  ]
-
-  const allUpdates = [...insights, ...progress].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-  const getFilteredUpdates = () => {
-    switch (activeTab) {
-      case "insights":
-        return insights
-      case "progress":
-        return progress
-      default:
-        return allUpdates
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-600 text-white py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Updates</h1>
-          <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-            Insights, progress updates, and behind-the-scenes content from the Rallie team
-          </p>
-        </div>
-      </div>
-
-      {/* Tab Navigation */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center">
-          <div className="bg-white rounded-full p-1 shadow-sm border">
-            <div className="flex">
-              <button
-                onClick={() => setActiveTab("all")}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeTab === "all" ? "bg-gray-900 text-white" : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                All Updates
-              </button>
-              <button
-                onClick={() => setActiveTab("insights")}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeTab === "insights" ? "bg-gray-900 text-white" : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Insights
-              </button>
-              <button
-                onClick={() => setActiveTab("progress")}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeTab === "progress" ? "bg-gray-900 text-white" : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Progress
-              </button>
-            </div>
+      <div className="bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <Badge className="mb-6 bg-orange-100 text-orange-800">UPDATES</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Latest Updates</h1>
+            <p className="text-xl text-orange-100 leading-relaxed">
+              Stay up to date with Rallie's progress, insights, and the future of AI-powered tennis training.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Content Grid */}
-      <div className="container mx-auto px-4 pb-16">
+      {/* Updates Content */}
+      <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <div className="grid gap-8">
-            {getFilteredUpdates().map((update) => (
-              <Card key={update.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Badge
-                        className={
-                          update.category === "insights" ? "bg-purple-100 text-purple-800" : "bg-blue-100 text-blue-800"
-                        }
-                      >
-                        {update.category.toUpperCase()}
-                      </Badge>
-                      <div className="flex items-center text-sm text-gray-500 gap-4">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          {new Date(update.date).toLocaleDateString()}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          {update.readTime}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          {update.author}
-                        </div>
-                      </div>
+          {/* Featured Updates */}
+          <div className="space-y-8 mb-16">
+            {/* Insights Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <Badge className="bg-purple-100 text-purple-800">INSIGHTS</Badge>
+                  <div className="flex items-center text-sm text-gray-500 gap-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      6/28/2025
                     </div>
-
-                    <h2 className="text-2xl font-bold mb-3 text-gray-900">{update.title}</h2>
-
-                    <p className="text-gray-600 mb-6 leading-relaxed">{update.excerpt}</p>
-
-                    <Link href={update.slug}>
-                      <Button variant="outline" className="group bg-transparent">
-                        Read More
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />3 min read
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      Rallie Tennis
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+
+                <h2 className="text-2xl font-bold mb-4">Why Tennis Players Need a Ball Machine That Thinks</h2>
+
+                <p className="text-base font-medium text-gray-700 mb-6">
+                  Most tennis ball machines today fall into two categories, but they all miss the mark in a fundamental
+                  way.
+                </p>
+
+                <div className="space-y-4 text-gray-600 mb-6">
+                  <p>
+                    On one end, there are the affordable, static feeders — machines that shoot balls at regular
+                    intervals, often with just topspin and minimal control. On the other end, you'll find more expensive
+                    models with oscillation, multiple shot types, and even a handful of programmable drills.
+                  </p>
+                  <p>
+                    Recently, a new class of machines has started to emerge: ones that claim to rally with you, move
+                    around the court, or even collect balls automatically. They look futuristic. But let's be honest —
+                    many of these are still in Kickstarter campaigns, and most tennis players haven't actually tried
+                    them yet.
+                  </p>
+                </div>
+
+                <Link
+                  href="/insights/ai-tennis-coach"
+                  className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium"
+                >
+                  Read More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Progress Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
+                  <div className="flex items-center text-sm text-gray-500 gap-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      6/23/2025
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />8 min read
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      Development Team
+                    </div>
+                  </div>
+                </div>
+
+                <h2 className="text-2xl font-bold mb-4">First Field Test Success + New Logo Reveal</h2>
+
+                <p className="text-base font-medium text-gray-700 mb-6">
+                  We did our first field test and the results exceeded expectations! The system is working perfectly,
+                  creating incredibly fast and strong balls with its compact design.
+                </p>
+
+                <div className="space-y-4 text-gray-600 mb-6">
+                  <p>
+                    After months of engineering and development, seeing Rallie perform on an actual tennis court was an
+                    incredible milestone for our team. The field test validated our core engineering decisions, from the
+                    dual motor system to the servo-controlled oscillation mechanism.
+                  </p>
+                  <p>
+                    We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating
+                    both topspin and backspin capabilities that exceeded our initial specifications. Plus, we're
+                    revealing our new logo that reflects our commitment to precision and modern design.
+                  </p>
+                </div>
+
+                <Link
+                  href="/progress/first-field-test"
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Read More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </CardContent>
+            </Card>
           </div>
 
-          {getFilteredUpdates().length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No updates found for this category.</p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="container mx-auto px-4 pb-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
+          {/* CTA Section */}
+          <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-orange-200">
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Be the first to know about new features, insights, and progress updates. Join our waitlist to stay in
-                the loop.
+                Join our waitlist to receive the latest updates on Rallie's development and be the first to know when we
+                launch.
               </p>
 
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -211,14 +192,14 @@ export default function UpdatesPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-6"
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-6"
                   >
                     {isSubmitting ? "Joining..." : "Join Waitlist"}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
                 {message && (
-                  <p className={`mt-3 text-sm ${message.includes("Thanks") ? "text-indigo-600" : "text-red-600"}`}>
+                  <p className={`mt-3 text-sm ${message.includes("Thanks") ? "text-orange-600" : "text-red-600"}`}>
                     {message}
                   </p>
                 )}

@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { CheckCircle, Target, Users, Zap, ArrowRight, Mail } from "lucide-react"
+import { Target, Users, Zap, ArrowRight, Mail } from "lucide-react"
 import { Navbar } from "@/app/components/navbar"
 import { Footer } from "@/app/components/footer"
 import { joinWaitlist } from "@/app/actions/waitlist"
@@ -23,8 +23,13 @@ export default function BrandStoryPage() {
     if (!email) return
 
     setIsSubmitting(true)
+    setMessage("")
+
     try {
-      const result = await joinWaitlist(email)
+      const formData = new FormData()
+      formData.append("email", email)
+      const result = await joinWaitlist(null, formData)
+
       if (result.success) {
         setMessage("Thanks for joining! We'll be in touch soon.")
         setEmail("")
@@ -44,11 +49,14 @@ export default function BrandStoryPage() {
 
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 text-white py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Story</h1>
-          <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto">
-            Revolutionizing tennis training through AI coaching and intelligent ball machines
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <Badge className="mb-6 bg-emerald-100 text-emerald-800">OUR STORY</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Story</h1>
+            <p className="text-xl text-emerald-100 leading-relaxed">
+              Revolutionizing tennis training through AI coaching and intelligent ball machines
+            </p>
+          </div>
         </div>
       </div>
 
@@ -170,7 +178,8 @@ export default function BrandStoryPage() {
                   </div>
                   <h4 className="font-bold mb-2">Analyze</h4>
                   <p className="text-gray-600 text-sm">
-                    AI analyzes your technique and hitting patterns, identifies weaknesses, and determines optimal training patterns
+                    AI analyzes your technique and hitting patterns, identifies weaknesses, and determines optimal
+                    training patterns
                   </p>
                 </div>
 
@@ -189,7 +198,9 @@ export default function BrandStoryPage() {
                     <span className="text-2xl font-bold text-emerald-600">4</span>
                   </div>
                   <h4 className="font-bold mb-2">Improve</h4>
-                  <p className="text-gray-600 text-sm">You receive personalized feedback post-training and targeted practice sessions</p>
+                  <p className="text-gray-600 text-sm">
+                    You receive personalized feedback post-training and targeted practice sessions
+                  </p>
                 </div>
               </div>
 

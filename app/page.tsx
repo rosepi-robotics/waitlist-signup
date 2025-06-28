@@ -7,19 +7,7 @@ import { Footer } from "./components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import {
-  ArrowRight,
-  CheckCircle,
-  Award,
-  Users,
-  TrendingUp,
-  Calendar,
-  Clock,
-  Layers,
-  Zap,
-  Settings,
-  Brain,
-} from "lucide-react"
+import { ArrowRight, CheckCircle, Users, TrendingUp, Calendar, Clock, Layers, Zap, Settings, Brain } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
 import { getWaitlistCount, joinWaitlist } from "./actions/waitlist"
 import { useToast } from "@/components/ui/use-toast"
@@ -32,6 +20,9 @@ export default function Home() {
   const [heroLoading, setHeroLoading] = useState(false)
   const [aiCtaLoading, setAiCtaLoading] = useState(false)
   const [finalCtaLoading, setFinalCtaLoading] = useState(false)
+  const [heroMessage, setHeroMessage] = useState("")
+  const [aiCtaMessage, setAiCtaMessage] = useState("")
+  const [finalCtaMessage, setFinalCtaMessage] = useState("")
   const { toast } = useToast()
 
   useEffect(() => {
@@ -54,6 +45,7 @@ export default function Home() {
     email: string,
     setEmail: (email: string) => void,
     setLoading: (loading: boolean) => void,
+    setMessage: (message: string) => void,
     source: string,
   ) => {
     if (!email) {
@@ -66,6 +58,7 @@ export default function Home() {
     }
 
     setLoading(true)
+    setMessage("")
     try {
       const formData = new FormData()
       formData.append("email", email)
@@ -73,28 +66,17 @@ export default function Home() {
       const result = await joinWaitlist(null, formData)
 
       if (result.success) {
-        toast({
-          title: "Success!",
-          description: result.message,
-        })
+        setMessage("Thanks for joining! We'll be in touch soon.")
         setEmail("")
         if (result.count) {
           setWaitlistCount(result.count)
         }
         trackEvent("waitlist_join", source, email)
       } else {
-        toast({
-          title: "Error",
-          description: result.message,
-          variant: "destructive",
-        })
+        setMessage(result.message || "Something went wrong. Please try again.")
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      })
+      setMessage("Something went wrong. Please try again.")
     } finally {
       setLoading(false)
     }
@@ -236,12 +218,19 @@ export default function Home() {
                   <Button
                     size="lg"
                     className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-3 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
-                    onClick={() => handleWaitlistSubmit(heroEmail, setHeroEmail, setHeroLoading, "hero")}
+                    onClick={() =>
+                      handleWaitlistSubmit(heroEmail, setHeroEmail, setHeroLoading, setHeroMessage, "hero")
+                    }
                     disabled={heroLoading}
                   >
                     {heroLoading ? "JOINING..." : "JOIN BETA PROGRAM"}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
+                  {heroMessage && (
+                    <p className={`text-sm ${heroMessage.includes("Thanks") ? "text-orange-600" : "text-red-600"}`}>
+                      {heroMessage}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -417,7 +406,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Besides all the AI features, Rallie is a solid, high-performance, beatiful machine engineered by the best talents in mechanical engineering and motor control.
+              Besides all the AI features, Rallie is a solid, high-performance, beatiful machine engineered by the best
+              talents in mechanical engineering and motor control.
             </p>
           </div>
 
@@ -456,8 +446,8 @@ export default function Home() {
               <h3 className="text-xl font-medium text-gray-900 mb-4">SERVO-CONTROLLED OSCILLATION</h3>
               <p className="text-gray-600 leading-relaxed">
                 <span className="font-semibold text-orange-600"> ±45° horizontal</span> and
-                <span className="font-semibold text-orange-600"> 5° - 50° vertical</span> range. No random oscilation. Full court coverage
-                from baseline position.
+                <span className="font-semibold text-orange-600"> 5° - 50° vertical</span> range. No random oscilation.
+                Full court coverage from baseline position.
               </p>
             </div>
 
@@ -511,12 +501,19 @@ export default function Home() {
                 <Button
                   size="lg"
                   className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
-                  onClick={() => handleWaitlistSubmit(aiCtaEmail, setAiCtaEmail, setAiCtaLoading, "ai_cta")}
+                  onClick={() =>
+                    handleWaitlistSubmit(aiCtaEmail, setAiCtaEmail, setAiCtaLoading, setAiCtaMessage, "ai_cta")
+                  }
                   disabled={aiCtaLoading}
                 >
                   {aiCtaLoading ? "JOINING..." : "JOIN WAITLIST"}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
+                {aiCtaMessage && (
+                  <p className={`text-sm ${aiCtaMessage.includes("Thanks") ? "text-white" : "text-red-200"}`}>
+                    {aiCtaMessage}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -725,7 +722,7 @@ export default function Home() {
 
             {/* Call to action for full progress */}
             <div className="pt-8 text-center">
-              <Link href="/progress">
+              <Link href="/updates">
                 <Button
                   variant="outline"
                   className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-lg bg-transparent"
@@ -763,17 +760,32 @@ export default function Home() {
                 <Button
                   size="lg"
                   className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
-                  onClick={() => handleWaitlistSubmit(finalCtaEmail, setFinalCtaEmail, setFinalCtaLoading, "final_cta")}
+                  onClick={() =>
+                    handleWaitlistSubmit(
+                      finalCtaEmail,
+                      setFinalCtaEmail,
+                      setFinalCtaLoading,
+                      setFinalCtaMessage,
+                      "final_cta",
+                    )
+                  }
                   disabled={finalCtaLoading}
                 >
                   {finalCtaLoading ? "JOINING..." : "JOIN WAITLIST"}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
+                {finalCtaMessage && (
+                  <p className={`text-sm ${finalCtaMessage.includes("Thanks") ? "text-orange-600" : "text-red-600"}`}>
+                    {finalCtaMessage}
+                  </p>
+                )}
               </div>
             </div>
 
             <div className="mt-4 text-center">
-              <p className="text-gray-500 font-medium text-sm">{waitlistCount.toLocaleString()} TENNIS ENTHUSIASTS REGISTERED</p>
+              <p className="text-gray-500 font-medium text-sm">
+                {waitlistCount.toLocaleString()} TENNIS ENTHUSIASTS REGISTERED
+              </p>
             </div>
           </div>
         </div>
