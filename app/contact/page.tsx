@@ -188,14 +188,7 @@ export default function ContactPage() {
                       <MapPin className="h-5 w-5 text-purple-600 mr-3 mt-1" />
                       <div>
                         <p className="font-medium">Location</p>
-                        <p className="text-gray-600">San Francisco, CA</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <Clock className="h-5 w-5 text-purple-600 mr-3 mt-1" />
-                      <div>
-                        <p className="font-medium">Response Time</p>
-                        <p className="text-gray-600">Within 24 hours</p>
+                        <p className="text-gray-600">303 Twin Dolphine Dr, Redwood City, CA</p>
                       </div>
                     </div>
                   </div>
@@ -235,12 +228,6 @@ export default function ContactPage() {
                     >
                       <YouTubeIcon className="w-5 h-5 text-red-600" />
                     </a>
-                  </div>
-
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p>• Join Facebook Group for community discussions</p>
-                    <p>• Follow on Instagram for behind-the-scenes content</p>
-                    <p>• Subscribe on YouTube for product demos and updates</p>
                   </div>
                 </CardContent>
               </Card>

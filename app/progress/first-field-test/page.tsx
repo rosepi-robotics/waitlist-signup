@@ -77,7 +77,7 @@ export default function FirstFieldTestPage() {
           <div className="prose prose-lg max-w-none">
             <div className="space-y-6 text-gray-700 leading-relaxed">
               <p className="text-xl font-medium text-gray-800">
-                We did our first field test and the results exceeded expectations! The system is working perfectly,
+                We did our first field test and the results exceeded expectations! The system is working great,
                 creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
               </p>
 
@@ -107,17 +107,9 @@ export default function FirstFieldTestPage() {
 
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <Target className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Precision</h3>
-                    <p className="text-gray-600">±2 inch accuracy at 39 feet with variable spin control</p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6 text-center">
                     <CheckCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                     <h3 className="text-xl font-bold mb-2">Portability</h3>
-                    <p className="text-gray-600">30 lbs total weight, setup in under 5 minutes</p>
+                    <p className="text-gray-600">30 lbs total weight by design, with possibility to further reduce the weight</p>
                   </CardContent>
                 </Card>
               </div>
@@ -128,12 +120,6 @@ export default function FirstFieldTestPage() {
                 The dual motor system we developed allows for independent control of ball speed and spin, something that
                 traditional single-motor machines struggle with. Our servo-controlled oscillation mechanism provides
                 smooth, precise movement patterns that can be programmed for specific training drills.
-              </p>
-
-              <p>
-                One of the most impressive aspects of the test was the machine's ability to maintain consistent
-                performance across different ball types and court conditions. Whether using pressurized or pressureless
-                balls, on hard court or clay, Rallie delivered reliable results.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">New Logo Reveal</h2>

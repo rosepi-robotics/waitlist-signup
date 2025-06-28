@@ -66,105 +66,109 @@ export default function UpdatesPage() {
           {/* Featured Updates */}
           <div className="space-y-8 mb-16">
             {/* Insights Card */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Badge className="bg-purple-100 text-purple-800">INSIGHTS</Badge>
-                  <div className="flex items-center text-sm text-gray-500 gap-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      6/28/2025
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />3 min read
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <User className="h-4 w-4" />
-                      Rallie Tennis
+            <Link href="/insights/ai-tennis-coach" className="block group">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Badge className="bg-purple-100 text-purple-800">INSIGHTS</Badge>
+                    <div className="flex items-center text-sm text-gray-500 gap-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        6/28/2025
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />3 min read
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        Rallie Tennis
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <h2 className="text-2xl font-bold mb-4">Why Tennis Players Need a Ball Machine That Thinks</h2>
+                  <h2 className="text-2xl font-bold mb-4">Why Tennis Players Need a Ball Machine That Thinks</h2>
 
-                <p className="text-base font-medium text-gray-700 mb-6">
-                  Most tennis ball machines today fall into two categories, but they all miss the mark in a fundamental
-                  way.
-                </p>
-
-                <div className="space-y-4 text-gray-600 mb-6">
-                  <p>
-                    On one end, there are the affordable, static feeders — machines that shoot balls at regular
-                    intervals, often with just topspin and minimal control. On the other end, you'll find more expensive
-                    models with oscillation, multiple shot types, and even a handful of programmable drills.
+                  <p className="text-base font-medium text-gray-700 mb-6">
+                    Most tennis ball machines today fall into two categories, but they all miss the mark in a fundamental
+                    way.
                   </p>
-                  <p>
-                    Recently, a new class of machines has started to emerge: ones that claim to rally with you, move
-                    around the court, or even collect balls automatically. They look futuristic. But let's be honest —
-                    many of these are still in Kickstarter campaigns, and most tennis players haven't actually tried
-                    them yet.
-                  </p>
-                </div>
 
-                <Link
-                  href="/insights/ai-tennis-coach"
-                  className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium"
-                >
-                  Read More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
+                  <div className="space-y-4 text-gray-600 mb-6">
+                    <p>
+                      On one end, there are the affordable, static feeders — machines that shoot balls at regular
+                      intervals, often with just topspin and minimal control. On the other end, you'll find more expensive
+                      models with oscillation, multiple shot types, and even a handful of programmable drills.
+                    </p>
+                    <p>
+                      Recently, a new class of machines has started to emerge: ones that claim to rally with you, move
+                      around the court, or even collect balls automatically. They look futuristic. But let's be honest —
+                      many of these are still in Kickstarter campaigns, and most tennis players haven't actually tried
+                      them yet.
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/insights/ai-tennis-coach"
+                    className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium"
+                  >
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </Link>
 
             {/* Progress Card */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
-                  <div className="flex items-center text-sm text-gray-500 gap-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      6/23/2025
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />8 min read
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <User className="h-4 w-4" />
-                      Development Team
+            <Link href="/insights/ai-tennis-coach" className="block group">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
+                    <div className="flex items-center text-sm text-gray-500 gap-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        6/23/2025
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />8 min read
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        Development Team
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <h2 className="text-2xl font-bold mb-4">First Field Test Success + New Logo Reveal</h2>
+                  <h2 className="text-2xl font-bold mb-4">First Field Test Success + New Logo Reveal</h2>
 
-                <p className="text-base font-medium text-gray-700 mb-6">
-                  We did our first field test and the results exceeded expectations! The system is working perfectly,
-                  creating incredibly fast and strong balls with its compact design.
-                </p>
-
-                <div className="space-y-4 text-gray-600 mb-6">
-                  <p>
-                    After months of engineering and development, seeing Rallie perform on an actual tennis court was an
-                    incredible milestone for our team. The field test validated our core engineering decisions, from the
-                    dual motor system to the servo-controlled oscillation mechanism.
+                  <p className="text-base font-medium text-gray-700 mb-6">
+                    We did our first field test and the results exceeded expectations! The system is working perfectly,
+                    creating incredibly fast and strong balls with its compact design.
                   </p>
-                  <p>
-                    We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating
-                    both topspin and backspin capabilities that exceeded our initial specifications. Plus, we're
-                    revealing our new logo that reflects our commitment to precision and modern design.
-                  </p>
-                </div>
 
-                <Link
-                  href="/progress/first-field-test"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                >
-                  Read More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
+                  <div className="space-y-4 text-gray-600 mb-6">
+                    <p>
+                      After months of engineering and development, seeing Rallie perform on an actual tennis court was an
+                      incredible milestone for our team. The field test validated our core engineering decisions, from the
+                      dual motor system to the servo-controlled oscillation mechanism.
+                    </p>
+                    <p>
+                      We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating
+                      both topspin and backspin capabilities that exceeded our initial specifications. Plus, we're
+                      revealing our new logo that reflects our commitment to precision and modern design.
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/progress/first-field-test"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
 
           {/* CTA Section */}
