@@ -371,7 +371,27 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
           </div>
 
           <!-- CTA Section -->
-          
+          <div class="cta-section">
+            <h3 class="cta-title">Stay Connected with Rallie</h3>
+            <p class="cta-text">
+              Follow our journey and connect with fellow tennis enthusiasts in our growing community. Get behind-the-scenes updates, training tips, and be the first to see new developments!
+            </p>
+
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px;">
+              <a href="https://www.facebook.com/groups/963981362613884" style="display: inline-flex; align-items: center; gap: 8px; background: #1877f2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                <span>📘</span>
+                <span>Join Facebook Group</span>
+              </a>
+              <a href="https://www.instagram.com/rallie.tennis/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                <span>📸</span>
+                <span>Follow Instagram</span>
+              </a>
+              <a href="https://www.youtube.com/@rallietennis" style="display: inline-flex; align-items: center; gap: 8px; background: #ff0000; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                <span>🎥</span>
+                <span>Subscribe YouTube</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
