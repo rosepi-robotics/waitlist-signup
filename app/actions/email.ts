@@ -150,10 +150,12 @@ export async function sendUpdateToSubscribers() {
 }
 
 /**
- * Send the June update email to all subscribers with improved error handling
+ * Send June update in ultra-small batches to avoid timeouts
  */
 export async function sendJuneUpdateToSubscribers() {
   const startTime = Date.now()
+  const maxExecutionTime = 25000 // 25 seconds to stay under Vercel's 30s limit
+
   console.log(`🚀 Starting June update email campaign at ${new Date().toISOString()}`)
 
   try {
@@ -167,9 +169,8 @@ export async function sendJuneUpdateToSubscribers() {
     }
 
     console.log(`📊 Found ${subscribers.length} total subscribers`)
-    console.log(`📋 Subscriber list: ${subscribers.slice(0, 5).join(", ")}${subscribers.length > 5 ? "..." : ""}`)
 
-    // Check which subscribers already received June update
+    // Check which subscribers already received June update (including retries)
     const emailKeys = await redis.zrange("sent_emails", 0, 1000, { rev: true })
     const alreadySentEmails = new Set()
 
@@ -178,7 +179,7 @@ export async function sendJuneUpdateToSubscribers() {
       if (
         emailData &&
         (emailData.campaign === "june-update" || emailData.campaign === "june-update-retry") &&
-        emailData.success === "true"
+        (emailData.success === "true" || emailData.success === true)
       ) {
         alreadySentEmails.add(emailData.email)
       }
@@ -193,119 +194,106 @@ export async function sendJuneUpdateToSubscribers() {
       return { success: true, message: "All subscribers have already received the June update" }
     }
 
-    // Send emails in smaller batches with better error handling
-    const batchSize = 5 // Smaller batches for better reliability
+    // Process only a small batch to avoid timeouts - we'll do multiple runs
+    const maxEmailsPerRun = 8 // Very conservative to avoid timeouts
+    const emailsToProcess = subscribersToSend.slice(0, maxEmailsPerRun)
+
+    console.log(
+      `📦 Processing ${emailsToProcess.length} emails in this run (${subscribersToSend.length - emailsToProcess.length} remaining for next run)`,
+    )
+
     const results = []
     const timestamp = Date.now()
     const allErrors = []
-    let totalProcessed = 0
 
-    console.log(`📦 Processing in batches of ${batchSize}`)
+    // Process emails one by one with time checks
+    for (let i = 0; i < emailsToProcess.length; i++) {
+      // Check if we're approaching timeout
+      if (Date.now() - startTime > maxExecutionTime) {
+        console.log(`⏰ Approaching timeout limit, stopping at ${i}/${emailsToProcess.length}`)
+        break
+      }
 
-    for (let i = 0; i < subscribersToSend.length; i += batchSize) {
-      const batch = subscribersToSend.slice(i, i + batchSize)
-      const batchNumber = Math.floor(i / batchSize) + 1
-      const totalBatches = Math.ceil(subscribersToSend.length / batchSize)
+      const email = emailsToProcess[i]
 
-      console.log(
-        `📦 Processing batch ${batchNumber}/${totalBatches} with ${batch.length} emails: [${batch.join(", ")}]`,
-      )
+      try {
+        console.log(`📤 [${i + 1}/${emailsToProcess.length}] Sending June update to: ${email}`)
+        const unsubscribeUrl = `https://rallie.tennis/unsubscribe?email=${encodeURIComponent(email)}`
 
-      // Process each email in the batch with individual error handling
-      for (const email of batch) {
-        try {
-          console.log(`📤 Sending June update to: ${email}`)
-          const unsubscribeUrl = `https://rallie.tennis/unsubscribe?email=${encodeURIComponent(email)}`
+        const { data, error } = await resend.emails.send({
+          from: "Rallie Tennis <hello@updates.rallie.tennis>",
+          replyTo: "hello@rallie.tennis",
+          to: email,
+          subject: "Rallie Tennis - Major Milestones & First Field Test Done!",
+          html: ProgressUpdateJune({ unsubscribeUrl, isTest: false }),
+        })
 
-          const { data, error } = await resend.emails.send({
-            from: "Rallie Tennis <hello@updates.rallie.tennis>",
-            replyTo: "hello@rallie.tennis",
-            to: email,
-            subject: "Rallie Tennis - Major Milestones & First Field Test Done!",
-            html: ProgressUpdateJune({ unsubscribeUrl, isTest: false }),
-          })
-
-          const result = {
-            email,
-            timestamp,
-            success: !error,
-            messageId: data?.id || null,
-            error: error ? error.message : null,
-            campaign: "june-update",
-          }
-
-          // Store the result in Redis immediately
-          try {
-            await redis.hset(`email:${timestamp}:${email}`, result)
-            await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
-          } catch (redisError) {
-            console.error(`❌ Redis error for ${email}:`, redisError)
-          }
-
-          if (error) {
-            console.error(`❌ Resend error for ${email}:`, error)
-            allErrors.push({ email, error: error.message })
-            results.push({ email, success: false, error: error.message })
-          } else {
-            console.log(`✅ Successfully sent June update to ${email} (Message ID: ${data?.id})`)
-            results.push({ email, success: true, messageId: data?.id })
-          }
-
-          totalProcessed++
-        } catch (emailError) {
-          const errorMessage = emailError instanceof Error ? emailError.message : "Unknown error"
-          console.error(`💥 Exception sending to ${email}:`, emailError)
-          allErrors.push({ email, error: errorMessage })
-
-          // Still store the failed attempt
-          const result = {
-            email,
-            timestamp,
-            success: false,
-            messageId: null,
-            error: errorMessage,
-            campaign: "june-update",
-          }
-
-          try {
-            await redis.hset(`email:${timestamp}:${email}`, result)
-            await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
-          } catch (redisError) {
-            console.error(`❌ Redis error storing failed attempt for ${email}:`, redisError)
-          }
-
-          results.push({ email, success: false, error: errorMessage })
-          totalProcessed++
+        const result = {
+          email,
+          timestamp,
+          success: !error,
+          messageId: data?.id || null,
+          error: error ? error.message : null,
+          campaign: "june-update",
         }
 
-        // Small delay between individual emails
-        await new Promise((resolve) => setTimeout(resolve, 500))
+        // Store the result in Redis immediately
+        try {
+          await redis.hset(`email:${timestamp}:${email}`, result)
+          await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
+        } catch (redisError) {
+          console.error(`❌ Redis error for ${email}:`, redisError)
+        }
+
+        if (error) {
+          console.error(`❌ Resend error for ${email}:`, error)
+          allErrors.push({ email, error: error.message })
+          results.push({ email, success: false, error: error.message })
+        } else {
+          console.log(`✅ Successfully sent June update to ${email} (Message ID: ${data?.id})`)
+          results.push({ email, success: true, messageId: data?.id })
+        }
+      } catch (emailError) {
+        const errorMessage = emailError instanceof Error ? emailError.message : "Unknown error"
+        console.error(`💥 Exception sending to ${email}:`, emailError)
+        allErrors.push({ email, error: errorMessage })
+
+        // Still store the failed attempt
+        const result = {
+          email,
+          timestamp,
+          success: false,
+          messageId: null,
+          error: errorMessage,
+          campaign: "june-update",
+        }
+
+        try {
+          await redis.hset(`email:${timestamp}:${email}`, result)
+          await redis.zadd("sent_emails", { score: timestamp, member: `${timestamp}:${email}` })
+        } catch (redisError) {
+          console.error(`❌ Redis error storing failed attempt for ${email}:`, redisError)
+        }
+
+        results.push({ email, success: false, error: errorMessage })
       }
 
-      // Progress update
-      const successCount = results.filter((r) => r.success).length
-      const failureCount = results.length - successCount
-      console.log(
-        `📊 Batch ${batchNumber} complete. Total progress: ${totalProcessed}/${subscribersToSend.length} (${successCount} success, ${failureCount} failed)`,
-      )
-
-      // Longer delay between batches
-      if (i + batchSize < subscribersToSend.length) {
-        console.log("⏳ Pausing between batches...")
-        await new Promise((resolve) => setTimeout(resolve, 3000))
-      }
+      // Small delay between emails
+      await new Promise((resolve) => setTimeout(resolve, 200))
     }
 
     const finalSuccessCount = results.filter((r) => r.success).length
     const finalFailureCount = results.length - finalSuccessCount
     const duration = Date.now() - startTime
+    const remainingEmails = subscribersToSend.length - emailsToProcess.length
 
-    console.log(`🎉 June email campaign complete!`)
-    console.log(`📊 Final Results:`)
-    console.log(`   - Total processed: ${totalProcessed}/${subscribersToSend.length}`)
+    console.log(`🎉 June email batch complete!`)
+    console.log(`📊 This batch results:`)
+    console.log(`   - Processed: ${results.length}/${emailsToProcess.length}`)
     console.log(`   - Successful: ${finalSuccessCount}`)
     console.log(`   - Failed: ${finalFailureCount}`)
     console.log(`   - Duration: ${Math.round(duration / 1000)}s`)
+    console.log(`   - Remaining for next run: ${remainingEmails}`)
 
     if (allErrors.length > 0) {
       console.log("❌ Errors encountered:")
@@ -316,11 +304,16 @@ export async function sendJuneUpdateToSubscribers() {
 
     return {
       success: true,
-      totalSent: subscribersToSend.length,
+      totalSent: emailsToProcess.length,
       successCount: finalSuccessCount,
       failureCount: finalFailureCount,
+      remainingEmails,
       timestamp,
       duration,
+      message:
+        remainingEmails > 0
+          ? `Sent to ${finalSuccessCount} subscribers. ${remainingEmails} remaining - run again to continue.`
+          : "All subscribers processed!",
       errors: allErrors.length > 0 ? allErrors : undefined,
     }
   } catch (error) {
@@ -495,13 +488,16 @@ export async function getCampaignStats() {
           campaignStats[campaign] = { sent: 0, successful: 0, failed: 0, emails: [] }
         }
 
-        campaignStats[campaign].sent++
-        campaignStats[campaign].emails.push(emailData.email)
+        // Only count unique emails (avoid double counting retries)
+        if (!campaignStats[campaign].emails.includes(emailData.email)) {
+          campaignStats[campaign].sent++
+          campaignStats[campaign].emails.push(emailData.email)
 
-        if (emailData.success === "true" || emailData.success === true) {
-          campaignStats[campaign].successful++
-        } else {
-          campaignStats[campaign].failed++
+          if (emailData.success === "true" || emailData.success === true) {
+            campaignStats[campaign].successful++
+          } else {
+            campaignStats[campaign].failed++
+          }
         }
       }
     }
@@ -611,10 +607,12 @@ export async function retryFailedEmails(emails: string[]) {
 }
 
 /**
- * Retry sending June update to specific emails with comprehensive logging
+ * Retry sending June update to specific emails in small batches
  */
 export async function retryJuneUpdateEmails(emails: string[]) {
   const startTime = Date.now()
+  const maxExecutionTime = 25000 // 25 seconds to stay under Vercel's 30s limit
+
   console.log(`🔄 Starting June update retry for ${emails.length} emails at ${new Date().toISOString()}`)
 
   try {
@@ -622,16 +620,28 @@ export async function retryJuneUpdateEmails(emails: string[]) {
       return { success: false, error: "No emails provided" }
     }
 
+    // Process only a small batch to avoid timeouts
+    const maxEmailsPerRun = 8
+    const emailsToProcess = emails.slice(0, maxEmailsPerRun)
+
+    console.log(
+      `📦 Processing ${emailsToProcess.length} emails in this retry run (${emails.length - emailsToProcess.length} remaining)`,
+    )
+
     const timestamp = Date.now()
     const results = []
     const { redis } = await import("../lib/redis")
 
-    console.log(`📋 Retrying June update for: ${emails.join(", ")}`)
+    for (let i = 0; i < emailsToProcess.length; i++) {
+      // Check if we're approaching timeout
+      if (Date.now() - startTime > maxExecutionTime) {
+        console.log(`⏰ Approaching timeout limit, stopping at ${i}/${emailsToProcess.length}`)
+        break
+      }
 
-    for (let i = 0; i < emails.length; i++) {
-      const email = emails[i]
+      const email = emailsToProcess[i]
       try {
-        console.log(`📤 [${i + 1}/${emails.length}] Retrying June update to: ${email}`)
+        console.log(`📤 [${i + 1}/${emailsToProcess.length}] Retrying June update to: ${email}`)
         const unsubscribeUrl = `https://rallie.tennis/unsubscribe?email=${encodeURIComponent(email)}`
 
         const { data, error } = await resend.emails.send({
@@ -665,7 +675,7 @@ export async function retryJuneUpdateEmails(emails: string[]) {
         }
 
         // Add a delay between emails
-        await new Promise((resolve) => setTimeout(resolve, 500))
+        await new Promise((resolve) => setTimeout(resolve, 200))
       } catch (emailError) {
         const errorMessage = emailError instanceof Error ? emailError.message : "Unknown error"
         console.error(`💥 Exception sending June update to ${email}:`, emailError)
@@ -675,16 +685,23 @@ export async function retryJuneUpdateEmails(emails: string[]) {
 
     const successCount = results.filter((r) => r.success).length
     const duration = Date.now() - startTime
+    const remainingEmails = emails.length - emailsToProcess.length
 
-    console.log(`🎉 June update retry complete!`)
-    console.log(`📊 Results: ${successCount}/${emails.length} successful in ${Math.round(duration / 1000)}s`)
+    console.log(`🎉 June update retry batch complete!`)
+    console.log(`📊 Results: ${successCount}/${emailsToProcess.length} successful in ${Math.round(duration / 1000)}s`)
+    console.log(`📧 Remaining for next retry: ${remainingEmails}`)
 
     return {
       success: true,
-      totalSent: emails.length,
+      totalSent: emailsToProcess.length,
       successCount,
-      failureCount: emails.length - successCount,
+      failureCount: emailsToProcess.length - successCount,
+      remainingEmails,
       duration,
+      message:
+        remainingEmails > 0
+          ? `Sent to ${successCount} more subscribers. ${remainingEmails} remaining - click retry again to continue.`
+          : "All retry emails processed!",
     }
   } catch (error) {
     const duration = Date.now() - startTime
