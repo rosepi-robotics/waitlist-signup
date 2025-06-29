@@ -51,7 +51,7 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
         margin-bottom: 24px;
       }
       .hero-title {
-        font-size: 48px;
+        font-size: 56px;
         font-weight: 700;
         margin: 0 0 24px 0;
         line-height: 1.1;
@@ -171,72 +171,35 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
       
       /* CTA Section */
       .cta-section {
-        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-        border: 1px solid #3b82f6;
-        border-radius: 16px;
-        padding: 64px 32px;
+        background: #f3f4f6;
+        padding: 48px 32px;
         text-align: center;
         margin-top: 64px;
       }
       .cta-title {
-        font-size: 32px;
-        font-weight: 700;
-        margin: 0 0 16px 0;
-        color: #1f2937;
-      }
-      .cta-text {
-        color: #4b5563;
-        margin: 0 0 32px 0;
-        max-width: 512px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 16px;
-      }
-      .cta-form {
-        max-width: 384px;
-        margin: 0 auto;
-      }
-      .form-row {
-        display: flex;
-        gap: 12px;
-      }
-      .input-wrapper {
-        flex: 1;
-        position: relative;
-      }
-      .input-icon {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #9ca3af;
-        width: 20px;
-        height: 20px;
-      }
-      .email-input {
-        width: 100%;
-        padding: 12px 12px 12px 40px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 16px;
-        background: white;
-      }
-      .submit-button {
-        background: #2563eb;
-        color: white;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 6px;
+        font-size: 24px;
         font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
+        margin: 0 0 32px 0;
+        color: #4b5563;
+      }
+      .social-links {
         display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .social-link {
+        display: inline-flex;
         align-items: center;
         gap: 8px;
-        white-space: nowrap;
+        color: #4b5563;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.2s;
       }
-      .submit-button:hover {
-        background: #1d4ed8;
+      .social-link:hover {
+        color: #1f2937;
       }
       
       /* Footer */
@@ -263,7 +226,7 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
           padding: 64px 16px;
         }
         .hero-title {
-          font-size: 36px;
+          font-size: 42px;
         }
         .hero-meta {
           flex-direction: column;
@@ -372,23 +335,19 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
 
           <!-- CTA Section -->
           <div class="cta-section">
-            <h3 class="cta-title">Stay Connected with Rallie</h3>
-            <p class="cta-text">
-              Follow our journey and connect with fellow tennis enthusiasts in our growing community. Get behind-the-scenes updates, training tips, and be the first to see new developments!
-            </p>
-
-            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px;">
-              <a href="https://www.facebook.com/groups/963981362613884" style="display: inline-flex; align-items: center; gap: 8px; background: #1877f2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+            <h3 class="cta-title">Follow our journey</h3>
+            <div class="social-links">
+              <a href="https://www.facebook.com/groups/963981362613884" class="social-link" target="_blank" rel="noopener noreferrer">
                 <span>📘</span>
-                <span>Join Facebook Group</span>
+                <span>Facebook</span>
               </a>
-              <a href="https://www.instagram.com/rallie.tennis/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
-                <span>📸</span>
-                <span>Follow Instagram</span>
+              <a href="https://www.instagram.com/rallie.tennis/" class="social-link" target="_blank" rel="noopener noreferrer">
+                <span>📷</span>
+                <span>Instagram</span>
               </a>
-              <a href="https://www.youtube.com/@rallietennis" style="display: inline-flex; align-items: center; gap: 8px; background: #ff0000; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
-                <span>🎥</span>
-                <span>Subscribe YouTube</span>
+              <a href="https://www.youtube.com/@rallietennis" class="social-link" target="_blank" rel="noopener noreferrer">
+                <span>▶️</span>
+                <span>YouTube</span>
               </a>
             </div>
           </div>
