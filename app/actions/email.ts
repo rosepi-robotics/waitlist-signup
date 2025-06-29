@@ -170,7 +170,7 @@ export async function sendJuneUpdateToSubscribers() {
 
     console.log(`📊 Found ${subscribers.length} total subscribers`)
 
-    // Check which subscribers already received June update (including retries)
+    // Check which subscribers already received June update (combining all june campaigns)
     const emailKeys = await redis.zrange("sent_emails", 0, 1000, { rev: true })
     const alreadySentEmails = new Set()
 
@@ -234,7 +234,7 @@ export async function sendJuneUpdateToSubscribers() {
           success: !error,
           messageId: data?.id || null,
           error: error ? error.message : null,
-          campaign: "june-update",
+          campaign: "june-update", // Always use "june-update" for consistency
         }
 
         // Store the result in Redis immediately
@@ -265,7 +265,7 @@ export async function sendJuneUpdateToSubscribers() {
           success: false,
           messageId: null,
           error: errorMessage,
-          campaign: "june-update",
+          campaign: "june-update", // Always use "june-update" for consistency
         }
 
         try {
@@ -467,7 +467,7 @@ export async function getEmailsByCampaign(campaign: string, limit = 500) {
 }
 
 /**
- * Get campaign statistics
+ * Get campaign statistics with unified June update tracking
  */
 export async function getCampaignStats() {
   try {
@@ -483,20 +483,32 @@ export async function getCampaignStats() {
     for (const key of emailKeys) {
       const emailData = await redis.hgetall(`email:${key}`)
       if (emailData && emailData.campaign) {
-        const campaign = emailData.campaign
+        // Combine all June campaigns into one
+        let campaign = emailData.campaign
+        if (campaign === "june-update-retry") {
+          campaign = "june-update" // Merge retry into main campaign
+        }
+
         if (!campaignStats[campaign]) {
           campaignStats[campaign] = { sent: 0, successful: 0, failed: 0, emails: [] }
         }
 
-        // Only count unique emails (avoid double counting retries)
+        // Only count unique emails (avoid double counting)
         if (!campaignStats[campaign].emails.includes(emailData.email)) {
-          campaignStats[campaign].sent++
           campaignStats[campaign].emails.push(emailData.email)
 
-          if (emailData.success === "true" || emailData.success === true) {
+          // Count as sent if there's any successful attempt for this email
+          const isSuccessful = emailData.success === "true" || emailData.success === true
+          if (isSuccessful) {
             campaignStats[campaign].successful++
+            campaignStats[campaign].sent++
           } else {
-            campaignStats[campaign].failed++
+            // Only count as failed if there's no successful attempt for this email
+            const hasSuccessfulAttempt = await checkForSuccessfulAttempt(redis, emailData.email, campaign)
+            if (!hasSuccessfulAttempt) {
+              campaignStats[campaign].failed++
+              campaignStats[campaign].sent++
+            }
           }
         }
       }
@@ -521,6 +533,27 @@ export async function getCampaignStats() {
     console.error("Error getting campaign stats:", error)
     return { success: false, error: "Failed to retrieve campaign statistics" }
   }
+}
+
+/**
+ * Helper function to check if an email has any successful attempt for a campaign
+ */
+async function checkForSuccessfulAttempt(redis: any, email: string, campaign: string): Promise<boolean> {
+  const emailKeys = await redis.zrange("sent_emails", 0, 1000, { rev: true })
+
+  for (const key of emailKeys) {
+    const emailData = await redis.hgetall(`email:${key}`)
+    if (
+      emailData &&
+      emailData.email === email &&
+      (emailData.campaign === campaign || (campaign === "june-update" && emailData.campaign === "june-update-retry")) &&
+      (emailData.success === "true" || emailData.success === true)
+    ) {
+      return true
+    }
+  }
+
+  return false
 }
 
 /**
@@ -569,7 +602,7 @@ export async function retryFailedEmails(emails: string[]) {
           success: !error,
           messageId: data?.id || null,
           error: error ? error.message : null,
-          campaign: "june-update-retry",
+          campaign: "june-update", // Use unified campaign name
         }
 
         // Store the result in Redis
@@ -658,7 +691,7 @@ export async function retryJuneUpdateEmails(emails: string[]) {
           success: !error,
           messageId: data?.id || null,
           error: error ? error.message : null,
-          campaign: "june-update-retry",
+          campaign: "june-update", // Use unified campaign name
         }
 
         // Store the result in Redis
