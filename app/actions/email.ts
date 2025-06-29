@@ -186,7 +186,7 @@ export async function sendJuneUpdateToSubscribers() {
             from: "Rallie Tennis <hello@updates.rallie.tennis>",
             replyTo: "hello@rallie.tennis",
             to: email,
-            subject: "Rallie Tennis - Major Milestones & First Field Test Results!",
+            subject: "Rallie Tennis - Major Milestones & First Field Test Done!",
             html: ProgressUpdateJune({ unsubscribeUrl, isTest: false }),
           })
 

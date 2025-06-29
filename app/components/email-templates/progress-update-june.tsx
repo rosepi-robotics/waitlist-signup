@@ -295,23 +295,8 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
       
       <!-- Hero Section -->
       <div class="hero">
-        <div class="hero-container">
-          <div class="badge">PROGRESS</div>
-          <h1 class="hero-title">First Field Test Success + New Logo Reveal</h1>
-          <div class="hero-meta">
-            <div class="meta-item">
-              <span>📅</span>
-              <span>6/23/2025</span>
-            </div>
-            <div class="meta-item">
-              <span>⏱️</span>
-              <span>8 min read</span>
-            </div>
-            <div class="meta-item">
-              <span>👤</span>
-              <span>Development Team</span>
-            </div>
-          </div>
+        <div class="hero-container"
+          <h1 class="hero-title">Team Addition + First Field Test Success</h1>
         </div>
       </div>
 
@@ -320,82 +305,62 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
         <div class="article-container">
           <div class="prose">
             <p class="lead">
-              We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
+              Hi Rallie subscribers! Hope you are enjoying your summer as we are!  
+            </p>
+            </p>
+              We have some exciting news to share! First, we had two important additions to the team, we also did our first field test and the results were encouraging! The system is working as expected, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
             </p>
 
             <p>
-              After months of engineering and development, seeing Rallie perform on an actual tennis court was an incredible milestone for our team.
+              After months of engineering and development, seeing these pieces coming together for Rallie was an incredible milestone for our team.
+            </p>
+
+            <h2>Team Update</h2>
+
+            <p>
+              Finally it's not my one man shop anymore! I'm super excited to announce that I'm joined with incredibly talented engineers!
+            </p>
+
+            <p>
+              <strong>Lisa Wang</strong> - Co-founder & AI/Computer Vision Lead: Lisa is a talented engineer and ex-Googler, she will be leading AI development at Rallie. Stay tuned—exciting AI feature demos are coming soon!
+            </p>
+
+            <p>
+              <strong>Ray Shen</strong> - Hardware & Embedded Systems Engineering: Ray bring his 15-year experience in mechanical & electrical engineering, motor control and manufacturing to the team. Ray will be the hardware lead at Rallie and will lead our path to scalable production.
             </p>
 
             <h2>Field Test Breakthrough</h2>
 
             <p>
-              We did our first field test and the results exceeded expectations! The system is working perfectly, creating incredibly fast and strong balls with its compact design.
+              After months of struggling with stability issues of structural parts, we are finally confident that Rallie is launching consistent, high-quality, stable balls at a MEASURED top speed of 80 MPH. A balance between performance and portability is achieved.
+            </p>
+
+            <p>
+              Below is the video of Rallie's very first ball launch a week ago. We will be sharing more videos on tests on real tennis courts, and comparisons with other machines.
             </p>
 
             <div class="image-section">
-              <img
-                src="https://i.imgur.com/UNvBo5i.gif"
+              <video
+                src="https://www.youtube.com/watch?v=3w82jRrf7nw"
                 alt="Rallie field test demonstration showing the tennis ball machine in action"
                 class="field-test-gif"
               />
             </div>
             <p class="image-caption">FIRST FIELD TEST - JUNE 2025</p>
 
-            <p>
-              The field test validated our core engineering decisions, from the dual motor system to the servo-controlled oscillation mechanism. We achieved consistent ball speeds ranging from 10-80 MPH with precise spin control, demonstrating both topspin and backspin capabilities that exceeded our initial specifications.
-            </p>
-
-            <h2>Team Update</h2>
-
-            <p>
-              My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce that I'm joined with incredibly talented engineers!
-            </p>
-
-            <p>
-              <strong>Lisa Wang</strong> - Co-founder & AI/Computer Vision Lead: Lisa, a brilliant engineer and former Googler, is leading AI development at Rallie. Stay tuned—exciting AI feature demos are coming soon!
-            </p>
-
-            <p>
-              <strong>Ray Shen</strong> - Hardware & Embedded Systems Engineering: A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's hardware development and will lead our path to scalable production.
-            </p>
-
-            <p>
-              We're looking for 10 tennis facilities to participate in our beta program. Selected partners will receive early access to Rallie units and direct input into the final product design.
-            </p>
-
-            <h2>New Logo Reveal</h2>
-
-            <p>
-              Rallie got a fresh new look! Our updated logo reflects our commitment to precision and modern design.
-            </p>
-
-            <div class="logo-section">
-              <div class="logo-item">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_q1CpWxAbZOTXYbEJi2fVA6Ta412C/gfGv-c3AmWb7kc4dcOZpuP/public/images/rallie-logo-black.png" alt="Rallie logo in black" />
-                <p>Black version</p>
-              </div>
-              <div class="logo-item dark">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_q1CpWxAbZOTXYbEJi2fVA6Ta412C/xQRRbMXX7cUBtDQZ_SlGm7/public/images/rallie-logo-white.png" alt="Rallie logo in white" />
-                <p>White version</p>
-              </div>
-            </div>
-
-            <p>
-              The new logo captures the dynamic energy of tennis while maintaining the clean, tech-forward aesthetic that represents our AI-powered approach to training.
-            </p>
-
             <h2>What's Next</h2>
 
             <p>
-              With the successful field test behind us, we're now focusing on refining the AI coaching algorithms and preparing for our beta program launch. The next few months will be crucial as we work toward bringing Rallie to tennis facilities and players worldwide.
+              We're now focusing on refining the AI coaching algorithms and preparing for our beta program launch. The next few months will be crucial as we work toward bringing Rallie to beta testers.
             </p>
 
             <p>Key milestones ahead:</p>
 
             <ul>
+              <li>• ID Design</li>
+              <li>• Continued testing (and making it even more portable)</li>
               <li>• AI coaching system integration</li>
-              <li>• Beta program launch with select tennis facilities</li>
+              <li>• Beta program launch with select users</li>
               <li>• User interface and mobile app development</li>
               <li>• Production planning and manufacturing partnerships</li>
             </ul>
@@ -406,30 +371,7 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
           </div>
 
           <!-- CTA Section -->
-          <div class="cta-section">
-            <h3 class="cta-title">Join the Beta Program</h3>
-            <p class="cta-text">
-              Be among the first to experience Rallie's AI-powered tennis coaching. Join our beta program and help shape the future of tennis training.
-            </p>
-
-            <div class="cta-form">
-              <div class="form-row">
-                <div class="input-wrapper">
-                  <span class="input-icon">✉️</span>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    class="email-input"
-                    readonly
-                  />
-                </div>
-                <button class="submit-button">
-                  Join Beta
-                  <span>→</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
