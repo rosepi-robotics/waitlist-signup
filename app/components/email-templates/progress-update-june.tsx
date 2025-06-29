@@ -262,14 +262,7 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
   </head>
   <body>
     <div class="wrapper">
-      
-      <!-- Hero Section -->
-      <div class="hero">
-        <div class="hero-container"
-          <h1 class="hero-title">Team Addition + First Field Test Success</h1>
-        </div>
-      </div>
-
+    
       <!-- Article Content -->
       <div class="article">
         <div class="article-container">
@@ -278,11 +271,7 @@ export default function ProgressUpdateJune({ unsubscribeUrl, isTest = false }: P
               Hi Rallie subscribers! Hope you are enjoying your summer as we are!  
             </p>
             </p>
-              We have some exciting news to share! First, we had two important additions to the team, we also did our first field test and the results were encouraging! The system is working as expected, creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
-            </p>
-
-            <p>
-              After months of engineering and development, seeing these pieces coming together for Rallie was an incredible milestone for our team.
+              We have some exciting news to share! First, we had two important additions to the team, we also did our first field test and the results were encouraging! The system is working as expected, creating incredibly fast and strong balls with its compact design.
             </p>
 
             <h2>Team Update</h2>
