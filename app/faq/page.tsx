@@ -1,16 +1,17 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
+import { Navbar } from "@/app/components/navbar"
+import { Footer } from "@/app/components/footer"
 
 export default function FAQPage() {
-  const searchParams = useSearchParams()
-  const category = searchParams.get("category")
-
   return (
-    <div>
-      <h1>Frequently Asked Questions</h1>
-      {category && <p>Category: {category}</p>}
-      {/* Add FAQ content here based on the category or display all FAQs */}
-    </div>
+    <main className="min-h-screen flex flex-col">
+      <Navbar />
+      <section className="flex-1 p-12 max-w-3xl mx-auto">
+        <h1 className="text-4xl font-light mb-8 text-center">FAQ</h1>
+        <p className="text-gray-600 text-center">Content coming soon.</p>
+      </section>
+      <Footer />
+    </main>
   )
 }

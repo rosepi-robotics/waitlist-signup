@@ -1,22 +1,13 @@
 "use client"
 
-import { Suspense, useState, useEffect, type ReactNode } from "react"
+import type React from "react"
 
 interface ClientSafeWrapperProps {
-  children: ReactNode
-  fallback?: ReactNode
+  children: React.ReactNode
 }
 
-export function ClientSafeWrapper({ children, fallback = null }: ClientSafeWrapperProps) {
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  if (!isClient) {
-    return <>{fallback}</>
-  }
-
-  return <Suspense fallback={fallback}>{children}</Suspense>
+const ClientSafeWrapper: React.FC<ClientSafeWrapperProps> = ({ children }) => {
+  return <>{children}</>
 }
+
+export default ClientSafeWrapper
