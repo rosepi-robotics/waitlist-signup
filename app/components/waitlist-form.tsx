@@ -34,7 +34,7 @@ function WaitlistForm({ defaultEmail = "" }: WaitlistFormProps) {
         referral: referralCode,
       })
 
-      // Track the successful waitlist signup - this will fire the events
+      // Track the successful waitlist signup with proper GCLID attribution
       trackWaitlistSignup(email)
 
       toast({ title: "Success!", description: "You're on the list 🎾" })
