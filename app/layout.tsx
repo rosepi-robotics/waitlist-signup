@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { Suspense } from "react"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { GCLIDPreserver } from "./components/gclid-preserver"
 
@@ -19,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <GCLIDPreserver />
-        {children}
+        <Suspense fallback={null}>
+          <GCLIDPreserver />
+        </Suspense>
+        <Suspense fallback={null}>{children}</Suspense>
         <GoogleAnalytics gaId="G-VEYXZ8D6KJ" />
       </body>
     </html>
