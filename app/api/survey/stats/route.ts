@@ -3,6 +3,20 @@ import { redis } from "@/app/lib/redis"
 
 export async function GET() {
   try {
+    // Remove no-store to allow static generation
+    const pipeline = redis.pipeline()
+
+    // Get all survey responses
+    pipeline.hgetall("survey:responses")
+    pipeline.hgetall("survey:demographics")
+    pipeline.get("survey:total_responses")
+
+    const results = await pipeline.exec()
+
+    const responses = results[0][1] || {}
+    const demographics = results[1][1] || {}
+    const totalResponses = Number.parseInt(results[2][1] || "0")
+
     // Get participant count
     const participantCount = await redis.scard("drawing_participants")
 
@@ -102,6 +116,9 @@ export async function GET() {
     }
 
     return NextResponse.json({
+      responses,
+      demographics,
+      totalResponses,
       participantCount,
       featureCounts,
       skillLevelCounts,
@@ -112,10 +129,9 @@ export async function GET() {
       ballMachineFrequencyCounts,
       heardOfBallMachineCounts,
       expectedCostRanges,
-      totalSurveys: keys.length,
     })
   } catch (error) {
     console.error("Error getting survey stats:", error)
-    return NextResponse.json({ error: "Failed to get survey statistics" }, { status: 500 })
+    return NextResponse.json({ error: "Failed to get survey stats" }, { status: 500 })
   }
 }
