@@ -1,71 +1,27 @@
-import { sendGAEvent } from "@next/third-parties/google"
+// Analytics utility functions
 
-// Get stored click IDs for conversion tracking
-function getClickIDs() {
-  if (typeof window === "undefined") return {}
-
-  return {
-    gclid: localStorage.getItem("gclid") || sessionStorage.getItem("gclid"),
-    fbclid: localStorage.getItem("fbclid") || sessionStorage.getItem("fbclid"),
-    msclkid: localStorage.getItem("msclkid") || sessionStorage.getItem("msclkid"),
+/**
+ * Track a button click or other event
+ */
+export const trackEvent = (eventName: string, category: string, label: string, value?: number) => {
+  if (typeof window !== "undefined" && "gtag" in window) {
+    const gtag = (window as any).gtag
+    gtag("event", eventName, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    })
   }
 }
 
-export const trackWaitlistSignup = (email: string) => {
-  const clickIDs = getClickIDs()
-
-  // Fire the primary conversion event with click ID data
-  sendGAEvent("event", "generate_lead", {
-    event_category: "engagement",
-    event_label: "waitlist_signup",
-    value: 1,
-    currency: "USD",
-    // Include click IDs for proper attribution
-    gclid: clickIDs.gclid,
-    fbclid: clickIDs.fbclid,
-    msclkid: clickIDs.msclkid,
-    // Custom parameters
-    form_type: "waitlist",
-    user_email: email,
-    non_interaction: false,
-  })
-
-  // Fire supplementary events (these won't count as conversions)
-  sendGAEvent("event", "sign_up", {
-    event_category: "engagement",
-    event_label: "waitlist",
-    method: "email",
-    gclid: clickIDs.gclid,
-    non_interaction: true,
-  })
-
-  sendGAEvent("event", "form_submit", {
-    event_category: "form",
-    event_label: "waitlist_form",
-    form_id: "waitlist",
-    gclid: clickIDs.gclid,
-    non_interaction: true,
-  })
-}
-
+/**
+ * Track a page view
+ */
 export const trackPageView = (url: string) => {
-  const clickIDs = getClickIDs()
-
-  sendGAEvent("event", "page_view", {
-    page_location: url,
-    gclid: clickIDs.gclid,
-    fbclid: clickIDs.fbclid,
-    msclkid: clickIDs.msclkid,
-  })
-}
-
-export const trackEvent = (eventName: string, parameters: Record<string, any> = {}) => {
-  const clickIDs = getClickIDs()
-
-  sendGAEvent("event", eventName, {
-    ...parameters,
-    gclid: clickIDs.gclid,
-    fbclid: clickIDs.fbclid,
-    msclkid: clickIDs.msclkid,
-  })
+  if (typeof window !== "undefined" && "gtag" in window) {
+    const gtag = (window as any).gtag
+    gtag("config", "G-VEYXZ8D6KJ", {
+      page_path: url,
+    })
+  }
 }

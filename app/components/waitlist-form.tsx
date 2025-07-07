@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useSearchParams } from "next/navigation"
 import { addToWaitlist } from "@/lib/api"
-import { trackWaitlistSignup } from "@/app/utils/analytics"
 
 interface WaitlistFormProps {
   defaultEmail?: string
@@ -23,7 +22,7 @@ function WaitlistForm({ defaultEmail = "" }: WaitlistFormProps) {
   const { toast } = useToast()
 
   /* ------------------------------------------------------------------ */
-  /* Submit handler with analytics tracking                             */
+  /* Submit handler (no React-Query)                                     */
   /* ------------------------------------------------------------------ */
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -33,11 +32,7 @@ function WaitlistForm({ defaultEmail = "" }: WaitlistFormProps) {
         email,
         referral: referralCode,
       })
-
-      // Track the successful waitlist signup with proper GCLID attribution
-      trackWaitlistSignup(email)
-
-      toast({ title: "Success!", description: "You're on the list 🎾" })
+      toast({ title: "Success!", description: "You’re on the list 🎾" })
       setEmail("")
     } catch (err: any) {
       toast({
