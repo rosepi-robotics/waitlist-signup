@@ -9,6 +9,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Preserve URL query parameters including gclid
+  async redirects() {
+    return []
+  },
+  // Ensure gclid is passed to all pages
+  trailingSlash: false,
 }
 
 export default nextConfig
