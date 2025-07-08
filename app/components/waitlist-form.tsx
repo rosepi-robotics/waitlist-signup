@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useSearchParams } from "next/navigation"
 import { addToWaitlist } from "@/lib/api"
+import { trackWaitlistSignup } from "@/app/utils/analytics"
 
 interface WaitlistFormProps {
   defaultEmail?: string
@@ -32,7 +33,11 @@ function WaitlistForm({ defaultEmail = "" }: WaitlistFormProps) {
         email,
         referral: referralCode,
       })
-      toast({ title: "Success!", description: "You’re on the list 🎾" })
+      
+      // Track the waitlist signup conversion
+      trackWaitlistSignup(email)
+      
+      toast({ title: "Success!", description: "You're on the list 🎾" })
       setEmail("")
     } catch (err: any) {
       toast({

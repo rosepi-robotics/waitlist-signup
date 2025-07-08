@@ -25,3 +25,35 @@ export const trackPageView = (url: string) => {
     })
   }
 }
+
+/**
+ * Track a conversion for Google Ads
+ */
+export const trackConversion = (conversionId: string, conversionLabel: string, value?: number) => {
+  if (typeof window !== "undefined" && "gtag" in window) {
+    const gtag = (window as any).gtag
+    gtag("event", "conversion", {
+      send_to: `${conversionId}/${conversionLabel}`,
+      value: value,
+      currency: "USD",
+    })
+  }
+}
+
+/**
+ * Track a waitlist signup conversion
+ */
+export const trackWaitlistSignup = (email: string) => {
+  // Track event in Google Analytics
+  trackEvent("signup", "waitlist", "email_signup");
+  
+  // For GA4 conversions imported to Google Ads, we need to track the GA4 event
+  // This will automatically be picked up by Google Ads
+  if (typeof window !== "undefined" && "gtag" in window) {
+    const gtag = (window as any).gtag
+    gtag("event", "ads_conversion_Sign_up_1", {
+      // You can add additional parameters if needed
+      email: email,
+    });
+  }
+}
