@@ -5,14 +5,23 @@ import type { NextRequest } from "next/server"
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   
-  // Preserve gclid parameter in cookies for cross-page tracking
-  const gclid = request.nextUrl.searchParams.get('gclid');
-  if (gclid) {
-    // Store gclid in a cookie that lasts for 30 days
-    response.cookies.set('gclid', gclid, { 
-      maxAge: 60 * 60 * 24 * 30,
-      path: '/',
-    });
+  // Log all URL parameters for debugging
+  console.log("URL Parameters:", request.nextUrl.search);
+  
+  // Preserve all URL parameters in cookies for cross-page tracking
+  const urlParams = new URLSearchParams(request.nextUrl.search);
+  const paramEntries = Array.from(urlParams.entries());
+  
+  // Store each parameter in cookies
+  for (const [key, value] of paramEntries) {
+    if (value) {
+      // Store parameter in a cookie that lasts for 30 days
+      response.cookies.set(key, value, { 
+        maxAge: 60 * 60 * 24 * 30,
+        path: '/',
+      });
+      console.log(`Stored parameter in cookie: ${key}=${value}`);
+    }
   }
   
   // Check if the path starts with /admin
@@ -25,9 +34,11 @@ export function middleware(request: NextRequest) {
       const url = new URL("/admin/login", request.url)
       url.searchParams.set("from", request.nextUrl.pathname)
       
-      // Preserve gclid in redirects if present
-      if (gclid) {
-        url.searchParams.set("gclid", gclid);
+      // Preserve all URL parameters in redirects
+      for (const [key, value] of paramEntries) {
+        if (key !== "from") {
+          url.searchParams.set(key, value);
+        }
       }
       
       return NextResponse.redirect(url)

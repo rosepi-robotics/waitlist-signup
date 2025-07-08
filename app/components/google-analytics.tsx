@@ -25,6 +25,11 @@ function AnalyticsWithParams({
   const searchParams = useSearchParams()
 
   useEffect(() => {
+    // Debug: Log all URL parameters
+    console.log("Current URL:", window.location.href);
+    console.log("Search params:", searchParams?.toString());
+    console.log("All cookies:", document.cookie);
+    
     if (typeof window !== "undefined" && window.gtag && pathname) {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "")
       window.gtag("config", GA_MEASUREMENT_ID, {
@@ -42,9 +47,12 @@ function AnalyticsWithParams({
       // Check for gclid in URL or cookies and send it to Google Ads
       const gclid = searchParams?.get('gclid') || getCookie('gclid');
       if (gclid && AW_CONVERSION_ID) {
+        console.log("Found gclid:", gclid);
         window.gtag('set', 'user_data', {
           'gclid': gclid,
         });
+      } else {
+        console.log("No gclid found in URL or cookies");
       }
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID, AW_CONVERSION_ID])
@@ -73,16 +81,20 @@ export default function GoogleAnalytics({
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname + window.location.search,
+              debug_mode: true
             });
-            ${AW_CONVERSION_ID ? `gtag('config', '${AW_CONVERSION_ID}');` : ''}
+            ${AW_CONVERSION_ID ? `gtag('config', '${AW_CONVERSION_ID}', { debug_mode: true });` : ''}
             
             // Check for gclid in URL and store in cookie if present
             const params = new URLSearchParams(window.location.search);
             const gclid = params.get('gclid');
             if (gclid) {
+              console.log("Script found gclid:", gclid);
               const expirationDate = new Date();
               expirationDate.setDate(expirationDate.getDate() + 30);
               document.cookie = 'gclid=' + gclid + '; expires=' + expirationDate.toUTCString() + '; path=/';
+            } else {
+              console.log("Script found no gclid in URL:", window.location.href);
             }
           `,
         }}
