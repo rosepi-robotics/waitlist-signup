@@ -1,10 +1,20 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import Script from "next/script"
 import { usePathname, useSearchParams } from "next/navigation"
 
-export default function GoogleAnalytics({ 
+// Helper function to get cookies
+function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+  return null;
+}
+
+// Create a separate component that uses searchParams
+function AnalyticsWithParams({ 
   GA_MEASUREMENT_ID, 
   AW_CONVERSION_ID 
 }: { 
@@ -39,15 +49,17 @@ export default function GoogleAnalytics({
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID, AW_CONVERSION_ID])
 
-  // Helper function to get cookies
-  function getCookie(name: string): string | null {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
-    return null;
-  }
+  return null;
+}
 
+// Main component that doesn't directly use searchParams
+export default function GoogleAnalytics({ 
+  GA_MEASUREMENT_ID, 
+  AW_CONVERSION_ID 
+}: { 
+  GA_MEASUREMENT_ID: string,
+  AW_CONVERSION_ID?: string 
+}) {
   return (
     <>
       <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
@@ -75,6 +87,14 @@ export default function GoogleAnalytics({
           `,
         }}
       />
+      
+      {/* Wrap the component using searchParams in Suspense */}
+      <Suspense fallback={null}>
+        <AnalyticsWithParams 
+          GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} 
+          AW_CONVERSION_ID={AW_CONVERSION_ID} 
+        />
+      </Suspense>
     </>
   )
 }
