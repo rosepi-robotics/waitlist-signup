@@ -47,13 +47,15 @@ export const trackWaitlistSignup = (email: string) => {
   // Track event in Google Analytics
   trackEvent("signup", "waitlist", "email_signup");
   
-  // For GA4 conversions imported to Google Ads, we need to track the GA4 event
-  // This will automatically be picked up by Google Ads
+  // For GA4 conversions imported to Google Ads, we need to use the exact event name
+  // that's configured in Google Ads (form_submit)
   if (typeof window !== "undefined" && "gtag" in window) {
     const gtag = (window as any).gtag
-    gtag("event", "ads_conversion_Sign_up_1", {
+    gtag("event", "form_submit", {
       // You can add additional parameters if needed
       email: email,
     });
+    
+    console.log("Tracked form_submit event for Google Ads conversion");
   }
 }
