@@ -26,33 +26,44 @@ function AnalyticsWithParams({
 
   useEffect(() => {
     // Debug: Log all URL parameters
-    console.log("Current URL:", window.location.href);
-    console.log("Search params:", searchParams?.toString());
-    console.log("All cookies:", document.cookie);
+    console.log("GA Component - Current URL:", window.location.href);
+    console.log("GA Component - Search params:", searchParams?.toString());
+    console.log("GA Component - All cookies:", document.cookie);
     
     if (typeof window !== "undefined" && window.gtag && pathname) {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "")
       window.gtag("config", GA_MEASUREMENT_ID, {
         page_path: url,
         send_page_view: true,
+        debug_mode: true
       })
       
       // If Google Ads ID is provided, configure it too
       if (AW_CONVERSION_ID) {
         window.gtag("config", AW_CONVERSION_ID, {
           send_page_view: true,
+          debug_mode: true
         });
       }
       
       // Check for gclid in URL or cookies and send it to Google Ads
       const gclid = searchParams?.get('gclid') || getCookie('gclid');
+      const isGoogleReferrer = getCookie('google_ads_referrer') === 'true';
+      
       if (gclid && AW_CONVERSION_ID) {
-        console.log("Found gclid:", gclid);
+        console.log("GA Component - Found gclid:", gclid);
         window.gtag('set', 'user_data', {
           'gclid': gclid,
         });
+      } else if (isGoogleReferrer && AW_CONVERSION_ID) {
+        console.log("GA Component - Using Google Ads referrer flag");
+        // Even without gclid, we know this came from Google Ads
+        window.gtag('set', {
+          'source': 'google',
+          'medium': 'cpc'
+        });
       } else {
-        console.log("No gclid found in URL or cookies");
+        console.log("GA Component - No gclid found in URL or cookies");
       }
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID, AW_CONVERSION_ID])
@@ -89,12 +100,20 @@ export default function GoogleAnalytics({
             const params = new URLSearchParams(window.location.search);
             const gclid = params.get('gclid');
             if (gclid) {
-              console.log("Script found gclid:", gclid);
+              console.log("GA Script - Found gclid:", gclid);
               const expirationDate = new Date();
               expirationDate.setDate(expirationDate.getDate() + 30);
               document.cookie = 'gclid=' + gclid + '; expires=' + expirationDate.toUTCString() + '; path=/';
             } else {
-              console.log("Script found no gclid in URL:", window.location.href);
+              console.log("GA Script - No gclid in URL:", window.location.href);
+              
+              // Check if this is a Google referrer
+              if (document.referrer && (document.referrer.includes('google') || document.referrer.includes('googleads'))) {
+                console.log("GA Script - Google referrer detected:", document.referrer);
+                const expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + 30);
+                document.cookie = 'google_ads_referrer=true; expires=' + expirationDate.toUTCString() + '; path=/';
+              }
             }
           `,
         }}

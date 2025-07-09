@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   
   // Log all URL parameters for debugging
-  console.log("URL Parameters:", request.nextUrl.search);
+  console.log("Middleware - URL Parameters:", request.nextUrl.search);
   
   // Preserve all URL parameters in cookies for cross-page tracking
   const urlParams = new URLSearchParams(request.nextUrl.search);
@@ -20,8 +20,23 @@ export function middleware(request: NextRequest) {
         maxAge: 60 * 60 * 24 * 30,
         path: '/',
       });
-      console.log(`Stored parameter in cookie: ${key}=${value}`);
+      console.log(`Middleware - Stored parameter in cookie: ${key}=${value}`);
     }
+  }
+  
+  // Special handling for Google Ads - check for gclid in URL or referrer
+  const gclid = urlParams.get('gclid');
+  const referrer = request.headers.get('referer') || '';
+  
+  if (gclid) {
+    console.log(`Middleware - Found gclid in URL: ${gclid}`);
+  } else if (referrer.includes('google') || referrer.includes('googleads')) {
+    console.log(`Middleware - Google referrer detected: ${referrer}`);
+    // This might be a Google Ads click without explicit gclid
+    response.cookies.set('google_ads_referrer', 'true', { 
+      maxAge: 60 * 60 * 24 * 30,
+      path: '/',
+    });
   }
   
   // Check if the path starts with /admin

@@ -51,11 +51,26 @@ export const trackWaitlistSignup = (email: string) => {
   // that's configured in Google Ads (form_submit)
   if (typeof window !== "undefined" && "gtag" in window) {
     const gtag = (window as any).gtag
+    
+    // Send the form_submit event for GA4
     gtag("event", "form_submit", {
       // You can add additional parameters if needed
       email: email,
     });
     
-    console.log("Tracked form_submit event for Google Ads conversion");
+    // Also send a direct conversion event for Google Ads
+    // This will work with "Event" conversion tracking in Google Ads
+    const AW_CONVERSION_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+    const AW_CONVERSION_LABEL = "waitlist_signup"; // Replace with your actual conversion label
+    
+    if (AW_CONVERSION_ID) {
+      gtag("event", "conversion", {
+        send_to: `${AW_CONVERSION_ID}/${AW_CONVERSION_LABEL}`,
+        value: 1.0,
+        currency: "USD",
+      });
+    }
+    
+    console.log("Tracked form_submit event and direct conversion for Google Ads");
   }
 }
