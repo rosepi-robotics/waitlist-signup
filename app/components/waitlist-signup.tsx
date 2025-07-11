@@ -177,7 +177,7 @@ export function WaitlistSignup() {
                         <h3 className="text-2xl font-medium mb-2">
                           Hi, I'm Sophie Luo, creator of{" "}
                           <span className={`${rajdhani.className} font-bold text-3xl`} style={logoGradientStyle}>
-                            rallie
+                            mavio
                           </span>
                         </h3>
                         {/* Added more space before "I'm a:" */}

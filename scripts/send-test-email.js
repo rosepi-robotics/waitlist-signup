@@ -16,7 +16,7 @@ async function sendTestEmail() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rallie Tennis - May Progress Update</title>
+  <title>Mavio AI - May Progress Update</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,9 +36,9 @@ async function sendTestEmail() {
   </style>
 </head>
 <body>
-  <h1>Rallie Tennis - May Progress Update</h1>
+  <h1>Mavio AI - May Progress Update</h1>
   
-  <p>Hello from Rallie Tennis!</p>
+  <p>Hello from Mavio AI!</p>
   
   <p>We've just published our May update on the progress page. Here are the highlights:</p>
   
@@ -65,15 +65,15 @@ async function sendTestEmail() {
   
   <div class="highlight">
     <p><strong>Read the full update on our website:</strong></p>
-    <p><a href="https://rallie.tennis/progress">https://rallie.tennis/progress</a></p>
+    <p><a href="https://mavio.ai/progress">https://mavio.ai/progress</a></p>
   </div>
   
-  <p>Thank you for your continued support and interest in Rallie Tennis!</p>
+  <p>Thank you for your continued support and interest in Mavio AI!</p>
   
-  <p>Best regards,<br>Sophie Luo<br>Creator of Rallie Tennis</p>
+  <p>Best regards,<br>Sophie Luo<br>Creator of Mavio AI</p>
   
   <div class="footer">
-    <p>© 2025 Rallie Tennis. All rights reserved.</p>
+    <p> 2025 Mavio AI. All rights reserved.</p>
     <p>If you'd prefer not to receive these updates, you can <a href="#">unsubscribe</a>.</p>
   </div>
 </body>
@@ -82,9 +82,9 @@ async function sendTestEmail() {
 
     // Send the test email
     const { data, error } = await resend.emails.send({
-      from: "Rallie Tennis <hello@updates.rallie.tennis>",
+      from: "Mavio AI <hello@updates.mavio.ai>",
       to: yourEmail,
-      subject: "[TEST] Rallie Tennis - May Progress Update",
+      subject: "[TEST] Mavio AI - May Progress Update",
       html: emailHtml,
     })
 

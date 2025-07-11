@@ -30,9 +30,9 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     // Send welcome email using Resend with your verified subdomain
     try {
       const { data, error } = await resend.emails.send({
-        from: "Rallie Tennis <hello@updates.rallie.tennis>", // Using your verified subdomain
+        from: "Mavio AI <hello@updates.mavio.ai>", // Using your verified subdomain
         to: email.toString(),
-        subject: "Welcome to the Rallie Tennis Waitlist!",
+        subject: "Welcome to the Mavio AI Waitlist!",
         html: EmailTemplate({ email: email.toString() }),
       })
 

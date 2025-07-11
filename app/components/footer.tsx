@@ -12,10 +12,10 @@ function Footer() {
           {/* Column 1: Logo and Description */}
             <div className="pl-4">
               <Link href="/" className="flex items-center">
-                <Image src="/images/rallie-logo-black.png" alt="Rallie Logo" width={120} height={40} className="mr-2" />
+                <Image src="/images/mavio-logo-black.png" alt="Mavio Logo" width={120} height={40} className="mr-2" />
               </Link>
               <p className="text-gray-600 mt-4 text-sm">
-                Rallie is an tennis training system combining high-performance hardware and AI native software to help
+                Mavio is an tennis training system combining high-performance hardware and AI native software to help
                 players train smarter—anytime, anywhere.
               </p>
             </div>
@@ -72,7 +72,7 @@ function Footer() {
                 <span className="text-sm">Facebook Community</span>
               </a>
               <a
-                href="https://www.instagram.com/rallie.tennis/"
+                href="https://www.instagram.com/mavio.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 hover:text-pink-500 transition-colors"
@@ -81,7 +81,7 @@ function Footer() {
                 <span className="text-sm">Instagram</span>
               </a>
               <a
-                href="https://www.youtube.com/@rallietennis"
+                href="https://www.youtube.com/@mavioai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 hover:text-red-500 transition-colors"
@@ -100,7 +100,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Rallie Tennis. All rights reserved.
+          &copy; {new Date().getFullYear()} Mavio AI. All rights reserved.
         </div>
       </div>
     </footer>

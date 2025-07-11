@@ -258,19 +258,19 @@ export default function Home() {
           </div>
 
           <div className="space-y-20">
-            {/* Point 1: rallie. observes - Image left, text right */}
+            {/* Point 1: mavio. observes - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <img
                   src="/placeholder.svg?height=400&width=600"
-                  alt="Rallie observes your position, poses, and footwork"
+                  alt="Mavio observes your position, poses, and footwork"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
               <div className="space-y-6">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     OBSERVES
                   </h3>
                   <p className="text-xl text-gray-600">Real-time analysis of your tennis technique</p>
@@ -292,12 +292,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Point 2: rallie. analyzes - Text left, image right */}
+            {/* Point 2: mavio. analyzes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6 lg:order-1 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     ANALYZES
                   </h3>
                   <p className="text-xl text-gray-600">Deep insights into your playing patterns</p>
@@ -320,25 +320,25 @@ export default function Home() {
               <div className="relative lg:order-2">
                 <img
                   src="/placeholder.svg?height=400&width=600"
-                  alt="Rallie analyzes your patterns and performance"
+                  alt="Mavio analyzes your patterns and performance"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
             </div>
 
-            {/* Point 3: rallie. acts - Image left, text right */}
+            {/* Point 3: mavio. acts - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <img
                   src="/placeholder.svg?height=400&width=600"
-                  alt="Rallie acts with smart adaptive drills"
+                  alt="Mavio acts with smart adaptive drills"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
               <div className="space-y-6">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     ACTS
                   </h3>
                   <p className="text-xl text-gray-600">Intelligent training that adapts in real-time</p>
@@ -360,12 +360,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Point 4: rallie. summarizes - Text left, image right */}
+            {/* Point 4: mavio. summarizes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6 lg:order-1 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/rallie-logo-black.png" alt="Rallie" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     SUMMARIZES
                   </h3>
                   <p className="text-xl text-gray-600">Comprehensive insights and future planning</p>
@@ -391,7 +391,7 @@ export default function Home() {
               <div className="relative lg:order-2">
                 <img
                   src="/placeholder.svg?height=400&width=600"
-                  alt="Rallie summarizes your progress and plans next steps"
+                  alt="Mavio summarizes your progress and plans next steps"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
@@ -421,7 +421,7 @@ export default function Home() {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/rallie.tennis"
+              href="https://www.instagram.com/mavio.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors cursor-pointer z-10 relative"
@@ -456,7 +456,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-4">ADVANCED ENGINEERING</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Besides all the AI features, Rallie is a solid, high-performance, beatiful machine engineered by the best
+              Besides all the AI features, Mavio is a solid, high-performance, beatiful machine engineered by the best
               talents in mechanical engineering and motor control.
             </p>
           </div>
@@ -536,7 +536,7 @@ export default function Home() {
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
             <div className="space-y-6">
               <p className="text-lg text-white font-medium leading-relaxed">
-                We are early in our journey. Rallie is rapidly evolving. Join us in shaping the future of tennis
+                We are early in our journey. Mavio is rapidly evolving. Join us in shaping the future of tennis
                 training.
               </p>
 
@@ -620,7 +620,7 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-gray-700 text-sm">
-                        Lisa, a brilliant engineer and ex-Googler, is leading AI development at Rallie. Stay
+                        Lisa, a brilliant engineer and ex-Googler, is leading AI development at Mavio. Stay
                         tuned—exciting AI feature demos are coming soon!
                       </p>
                     </div>
@@ -636,7 +636,7 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-gray-700 text-sm">
-                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Rallie's
+                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Mavio's
                         hardware development and will lead our path to scalable production.
                       </p>
                     </div>
@@ -671,7 +671,7 @@ export default function Home() {
                   <div className="mb-6 flex justify-center">
                     <iframe
                       src="https://www.youtube.com/embed/3w82jRrf7nw"
-                      title="Rallie Tennis Ball Machine First Test"
+                      title="Mavio Tennis Ball Machine First Test"
                       className="w-full max-w-[300px] mx-auto rounded-lg aspect-video"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -721,7 +721,7 @@ export default function Home() {
                   </div>
 
                   <p className="text-gray-700 mb-4">
-                    {"We'll be posting comparison videos of Rallie vs. other machines' top speed on YouTube."}
+                    {"We'll be posting comparison videos of Mavio vs. other machines' top speed on YouTube."}
                     <a
                       href="https://www.youtube.com/channel/UCe2iDqdEYGT3k_F4HtWyajA"
                       target="_blank"

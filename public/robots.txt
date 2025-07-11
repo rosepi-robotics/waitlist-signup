@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://rallie.tennis/sitemap.xml
+Sitemap: https://mavio.ai/sitemap.xml

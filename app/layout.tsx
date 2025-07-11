@@ -4,9 +4,9 @@ import "./globals.css"
 import { AnalyticsProvider } from "./components/analytics-provider"
 
 export const metadata: Metadata = {
-  title: "Rallie | AI-Powered Tennis Ball Machine for Smarter Training",
+  title: "Mavio | AI-Powered Tennis Ball Machine for Smarter Training",
   description:
-    "Train like a pro with Rallie — the compact, intelligent tennis ball machine that uses AI and computer vision to personalize every shot. Lightweight, powerful, and endlessly customizable.",
+    "Train like a pro with Mavio — the compact, intelligent tennis ball machine that uses AI and computer vision to personalize every shot. Lightweight, powerful, and endlessly customizable.",
   generator: "Next.js",
 }
 
