@@ -25,7 +25,7 @@ const highlightGradientStyle = {
 
 // Define the gradient style for the logo
 const logoGradientStyle = {
-  background: "linear-gradient(to right, #c64f34, #ffd700)",
+  background: "linear-gradient(to right, #3b82f6, #10b981)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   backgroundClip: "text",
