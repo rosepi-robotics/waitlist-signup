@@ -12,7 +12,7 @@ function Footer() {
           {/* Column 1: Logo and Description */}
             <div className="pl-4">
               <Link href="/" className="flex items-center">
-                <Image src="/images/mavio-logo-black.png" alt="Mavio Logo" width={120} height={40} className="mr-2" />
+                <Image src="/images/mavio-logo.png" alt="Mavio Logo" width={120} height={40} className="mr-2" />
               </Link>
               <p className="text-gray-600 mt-4 text-sm">
                 Mavio is an tennis training system combining high-performance hardware and AI native software to help

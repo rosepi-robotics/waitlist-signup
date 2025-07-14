@@ -253,7 +253,7 @@ export default function Home() {
             <h2 className="text-4xl font-light text-gray-900 mb-4">BEYOND A BALL MACHINE</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Ball machines should help you train & improve your game in a systematic way, not just headlessly shoot
-              balls at you.
+              balls at you are just move around and return your balls.
             </p>
           </div>
 
@@ -270,7 +270,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     OBSERVES
                   </h3>
                   <p className="text-xl text-gray-600">Real-time analysis of your tennis technique</p>
@@ -297,7 +297,7 @@ export default function Home() {
               <div className="space-y-6 lg:order-1 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     ANALYZES
                   </h3>
                   <p className="text-xl text-gray-600">Deep insights into your playing patterns</p>
@@ -338,7 +338,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     ACTS
                   </h3>
                   <p className="text-xl text-gray-600">Intelligent training that adapts in real-time</p>
@@ -365,7 +365,7 @@ export default function Home() {
               <div className="space-y-6 lg:order-1 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
-                    <img src="/images/mavio-logo-black.png" alt="Mavio" className="h-8 w-auto mr-3" />
+                    <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
                     SUMMARIZES
                   </h3>
                   <p className="text-xl text-gray-600">Comprehensive insights and future planning</p>
