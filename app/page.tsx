@@ -13,7 +13,7 @@ import { getWaitlistCount, joinWaitlist } from "./actions/waitlist"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function Home() {
-  const [waitlistCount, setWaitlistCount] = useState(247)
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
   const [heroEmail, setHeroEmail] = useState("")
   const [aiCtaEmail, setAiCtaEmail] = useState("")
   const [finalCtaEmail, setFinalCtaEmail] = useState("")
@@ -32,9 +32,10 @@ export default function Home() {
     const loadWaitlistCount = async () => {
       try {
         const count = await getWaitlistCount()
-        setWaitlistCount(count || 247) // fallback to 247 if count fails
+        setWaitlistCount(count || 0) // Use 0 as fallback instead of 247
       } catch (error) {
         console.error("Failed to load waitlist count:", error)
+        setWaitlistCount(0) // Set to 0 on error
       }
     }
 
@@ -238,7 +239,11 @@ export default function Home() {
               <div className="flex items-center justify-center space-x-8 pt-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-orange-500" />
-                  <span>{waitlistCount.toLocaleString()} tennis players are already on the waitlist</span>
+                  {waitlistCount === null ? (
+                    <span>Loading waitlist count...</span>
+                  ) : (
+                    <span>{waitlistCount.toLocaleString()} tennis players are already on the waitlist</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -260,14 +265,14 @@ export default function Home() {
           <div className="space-y-20">
             {/* Point 1: mavio. observes - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative">
+              <div className="relative order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio observes your position, poses, and footwork"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6">
+              <div className="space-y-6 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -294,7 +299,7 @@ export default function Home() {
 
             {/* Point 2: mavio. analyzes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 lg:order-1 lg:pl-16">
+              <div className="space-y-6 order-1 lg:order-2 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -317,7 +322,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="relative lg:order-2">
+              <div className="relative order-2 lg:order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio analyzes your patterns and performance"
@@ -328,14 +333,14 @@ export default function Home() {
 
             {/* Point 3: mavio. acts - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative">
+              <div className="relative order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio acts with smart adaptive drills"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6">
+              <div className="space-y-6 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -362,7 +367,7 @@ export default function Home() {
 
             {/* Point 4: mavio. summarizes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 lg:order-1 lg:pl-16">
+              <div className="space-y-6 order-1 lg:order-2 lg:pl-16">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -388,7 +393,7 @@ export default function Home() {
                   "Every session builds on the last, creating a systematic path to tennis mastery."
                 </blockquote>
               </div>
-              <div className="relative lg:order-2">
+              <div className="relative order-2 lg:order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio summarizes your progress and plans next steps"
@@ -806,7 +811,11 @@ export default function Home() {
 
             <div className="mt-4 text-center">
               <p className="text-gray-500 font-medium text-sm">
-                {waitlistCount.toLocaleString()} TENNIS ENTHUSIASTS REGISTERED
+                {waitlistCount === null ? (
+                  <span>Loading waitlist count...</span>
+                ) : (
+                  <span>{waitlistCount.toLocaleString()} TENNIS ENTHUSIASTS REGISTERED</span>
+                )}
               </p>
             </div>
           </div>
