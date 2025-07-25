@@ -265,14 +265,14 @@ export default function Home() {
           <div className="space-y-20">
             {/* Point 1: mavio. observes - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative lg:pl-0">
+              <div className="relative lg:order-1 order-1 lg:justify-self-end">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio observes your position, poses, and footwork"
-                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                  className="w-full max-w-md mx-auto lg:ml-0 rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6 lg:pl-0">
+              <div className="space-y-6 lg:order-2 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -299,7 +299,7 @@ export default function Home() {
 
             {/* Point 2: mavio. analyzes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 lg:pl-0">
+              <div className="space-y-6 lg:order-1 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -322,25 +322,25 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="relative lg:pl-0">
+              <div className="relative lg:order-2 order-1 lg:justify-self-start">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio analyzes your patterns and performance"
-                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                  className="w-full max-w-md mx-auto lg:mr-0 rounded-lg shadow-lg"
                 />
               </div>
             </div>
 
             {/* Point 3: mavio. acts - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative lg:pl-0">
+              <div className="relative lg:order-1 order-1 lg:justify-self-end">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio acts with smart adaptive drills"
-                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                  className="w-full max-w-md mx-auto lg:ml-0 rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6 lg:pl-0">
+              <div className="space-y-6 lg:order-2 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -367,7 +367,7 @@ export default function Home() {
 
             {/* Point 4: mavio. summarizes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 lg:pl-0">
+              <div className="space-y-6 lg:order-1 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -393,11 +393,11 @@ export default function Home() {
                   "Every session builds on the last, creating a systematic path to tennis mastery."
                 </blockquote>
               </div>
-              <div className="relative lg:pl-0">
+              <div className="relative lg:order-2 order-1 lg:justify-self-start">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio summarizes your progress and plans next steps"
-                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                  className="w-full max-w-md mx-auto lg:mr-0 rounded-lg shadow-lg"
                 />
               </div>
             </div>
@@ -600,12 +600,12 @@ export default function Home() {
           </div>
 
           <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 shadow-sm">
-            {/* Latest Update - June 23 */}
+            {/* Latest Update - July 25 */}
             <div className="pb-10 border-b border-gray-200 mb-10">
               <div className="flex items-center text-gray-500 mb-4 space-x-4 text-sm">
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-1 text-orange-500" />
-                  <time dateTime="2025-06-23">JUNE 23, 2025</time>
+                  <time dateTime="2025-07-25">JULY 25, 2025</time>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-1 text-blue-500" />
@@ -613,179 +613,60 @@ export default function Home() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-light text-gray-900 mb-6">TEAM ADDITION + FIRST FIELD TEST SUCCESS</h3>
+              <h3 className="text-2xl font-light text-gray-900 mb-6">NEW NAME, NEW TEST, NEW GROWTH</h3>
 
-              {/* Team Update Section */}
+              {/* Name Change Section */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <Users className="mr-2 h-5 w-5 text-blue-500" />
-                  TEAM UPDATE
+                  <Tag className="mr-2 h-5 w-5 text-blue-500" />
+                  FAREWELL RALLIE, HELLO MAVIO
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    My team is growing! Finally it's not my one man shop anymore! I'm super excited to announce that I'm
-                    joined with incredibly talented engineers!
+                    After discovering that the name Rallie was already in use, we needed to think of a new name. Thanks to input from our beta program members and community surveys, we're excited to unveil our new name:
+                    <strong> Mavio</strong> — smart, reliable, and fun!
                   </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-blue-600 font-semibold text-lg">LW</span>
-                        </div>
-                        <div>
-                          <h5 className="text-lg font-medium text-gray-900">Lisa Wang</h5>
-                          <p className="text-sm text-gray-600">Co-founder & AI/Computer Vision Lead</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 text-sm">
-                        Lisa, a brilliant engineer and ex-Googler, is leading AI development at Mavio. Stay
-                        tuned—exciting AI feature demos are coming soon!
-                      </p>
-                    </div>
-
-                    <div className="bg-white/70 p-6 rounded-lg border border-gray-200">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-orange-600 font-semibold text-lg">RS</span>
-                        </div>
-                        <div>
-                          <h5 className="text-lg font-medium text-gray-900">Ray Shen</h5>
-                          <p className="text-sm text-gray-600">Hardware & Embedded Systems Engineering</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 text-sm">
-                        A 15-year veteran in motor control and manufacturing, Ray brings deep expertise to Mavio's
-                        hardware development and will lead our path to scalable production.
-                      </p>
-                    </div>
-                  </div>
-
                   <p className="text-gray-700">
-                    We're also excited to announce partnerships with local tennis clubs for beta testing. If you're
-                    interested in hosting a beta test at your facility,
-                    <a href="/contact" className="text-orange-500 hover:text-orange-600 ml-1 underline">
-                      reach out to us
-                    </a>
-                    !
+                    The name reflects our mission to combine precision engineering with playful, intuitive user experience. It's a fresh start with the same big ambition: to redefine how tennis players train.
                   </p>
                 </div>
               </div>
 
-              {/* Field Test Success */}
+              {/* Field Test Section */}
               <div className="mb-8">
                 <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
                   <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
-                  FIELD TEST BREAKTHROUGH
+                  NEXT FIELD TEST INCOMING
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    We did our first field test and the results exceeded expectations! The system is working well,
-                    creating incredibly fast and strong balls with its compact design. However, the test also revealed
-                    some areas for improvement, including noise levels that were higher than expected and some
-                    structural components that need refinement.
+                    We're gearing up for our third field test! We've made significant hardware improvements since our last run—most notably, redesigning the launch wheels.
                   </p>
 
-                  {/* YouTube Field Test Video */}
+                  {/* Field Test GIF */}
                   <div className="mb-6 flex justify-center">
-                    <iframe
-                      src="https://www.youtube.com/embed/3w82jRrf7nw"
-                      title="Mavio Tennis Ball Machine First Test"
-                      className="w-full max-w-[300px] mx-auto rounded-lg aspect-video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
+                    <img
+                      src="https://i.imgur.com/UNvBo5i.gif"
+                      alt="Mavio field test demonstration"
+                      className="max-w-sm mx-auto rounded-lg"
                     />
                   </div>
-                  <p className="text-xs text-center mt-2 text-gray-500">FIRST FIELD TEST - JUNE 2025</p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 mt-6">
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                      <div className="text-2xl font-light text-gray-900 mb-2">✅ Topspin</div>
-                      <div className="text-sm text-gray-600">Great spin generation</div>
-                    </div>
-                    <div className="bg-white/70 p-4 rounded-lg border border-gray-200">
-                      <div className="text-2xl font-light text-gray-900 mb-2">✅ Backspin</div>
-                      <div className="text-sm text-gray-600">Precise control achieved</div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 mb-4">
-                    <h5 className="text-gray-900 font-medium mb-3">Areas for Improvement</h5>
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <span className="text-gray-700 text-sm">
-                            <strong>Noise Reduction:</strong> Current prototype operates louder than target levels
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <span className="text-gray-700 text-sm">
-                            <strong>Structural Refinements:</strong> Some components need optimization for durability
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-4">
-                    <p className="text-blue-800 text-sm">
-                      <strong>Good news:</strong> We already have solid engineering plans to address these issues. Our
-                      team is confident these improvements will be implemented well before Fall 2025 beta testing
-                      begins.
-                    </p>
-                  </div>
-
-                  <p className="text-gray-700 mb-4">
-                    {"We'll be posting comparison videos of Mavio vs. other machines' top speed on YouTube."}
-                    <a
-                      href="https://www.youtube.com/channel/UCe2iDqdEYGT3k_F4HtWyajA"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-orange-500 hover:text-orange-600 ml-1 underline"
-                    >
-                      Subscribe to our channel
-                    </a>{" "}
-                    to see the results first!
+                  <p className="text-xs text-center mt-2 text-gray-500">MAVIO FIELD TEST - JULY 2025</p>
+                  
+                  <p className="mt-6 text-gray-700">
+                    We originally used PU (polyurethane) wheels because they're lightweight, helping us keep the machine as light as possible. For this test, we've made significant improvements to the wheel design for better durability and performance.
                   </p>
                 </div>
               </div>
 
-              {/* What's Next */}
-              <div className="mb-6">
-                <h4 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <TrendingUp className="mr-2 h-5 w-5 text-orange-500" />
-                  {"WHAT'S NEXT"}
-                </h4>
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <h5 className="text-gray-900 font-medium mb-1">Pitch & Oscillation Testing</h5>
-                        <p className="text-gray-600 text-sm">
-                          {
-                            "Next week we'll test the full court coverage system, designed to produce smashes up to 8 meters. Watch our YouTube channel for test videos."
-                          }
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <h5 className="text-gray-900 font-medium mb-1">Industrial Design Process</h5>
-                        <p className="text-gray-600 text-sm">
-                          {
-                            "We've started the Industrial Design phase! Currently in ideation stage. Look for our ID preferences survey in early July."
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex justify-center">
+                <Link
+                  href="/progress/july-update"
+                  className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                >
+                  READ FULL UPDATE
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </div>
             </div>
 
