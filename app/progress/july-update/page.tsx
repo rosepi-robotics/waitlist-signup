@@ -64,7 +64,7 @@ export default function JulyUpdatePage() {
             <div className="flex flex-wrap items-center gap-6 text-blue-100 mb-8">
               <div className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                7/22/2025
+                7/25/2025
               </div>
               <div className="flex items-center">
                 <Clock className="mr-2 h-4 w-4" />8 min read

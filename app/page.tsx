@@ -265,14 +265,14 @@ export default function Home() {
           <div className="space-y-20">
             {/* Point 1: mavio. observes - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative order-1">
+              <div className="relative lg:order-1 order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio observes your position, poses, and footwork"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6 order-2">
+              <div className="space-y-6 lg:order-2 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -299,7 +299,7 @@ export default function Home() {
 
             {/* Point 2: mavio. analyzes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 order-1 lg:order-2 lg:pl-16">
+              <div className="space-y-6 lg:order-1 order-2 lg:pl-0">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -322,7 +322,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="relative order-2 lg:order-1">
+              <div className="relative lg:order-2 order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio analyzes your patterns and performance"
@@ -333,14 +333,14 @@ export default function Home() {
 
             {/* Point 3: mavio. acts - Image left, text right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative order-1">
+              <div className="relative lg:order-1 order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio acts with smart adaptive drills"
                   className="w-full max-w-md mx-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="space-y-6 order-2">
+              <div className="space-y-6 lg:order-2 order-2">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -367,7 +367,7 @@ export default function Home() {
 
             {/* Point 4: mavio. summarizes - Text left, image right */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 order-1 lg:order-2 lg:pl-16">
+              <div className="space-y-6 lg:order-1 order-2 lg:pl-0">
                 <div>
                   <h3 className="text-3xl font-light text-gray-900 mb-4 flex items-center">
                     <img src="/images/mavio-logo.png" alt="Mavio" className="h-8 w-auto mr-3" />
@@ -393,7 +393,7 @@ export default function Home() {
                   "Every session builds on the last, creating a systematic path to tennis mastery."
                 </blockquote>
               </div>
-              <div className="relative order-2 lg:order-1">
+              <div className="relative lg:order-2 order-1">
                 <img
                   src="/placeholder.svg?height=400&width=600"
                   alt="Mavio summarizes your progress and plans next steps"
@@ -461,7 +461,7 @@ export default function Home() {
               onClick={() => trackEvent("social_click", "youtube", "homepage_divider")}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                <path d="M23.498 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
               </svg>
               <span className="font-medium">YouTube</span>
             </a>
