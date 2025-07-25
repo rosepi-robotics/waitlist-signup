@@ -91,7 +91,7 @@ function Footer() {
                 <span className="text-sm">Facebook Group</span>
               </a>
               <a
-                href="https://www.youtube.com/@mavioai"
+                href="https://www.youtube.com/channel/UCLx99nZ7ObZCuvc-55tfbgA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 hover:text-red-500 transition-colors"
