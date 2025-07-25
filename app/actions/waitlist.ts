@@ -24,8 +24,22 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
       return { success: false, message: result.error.errors[0].message }
     }
 
-    // Store email in Upstash Redis waitlist
+    // Store email in the main set for backward compatibility
     await redis.sadd("waitlist_emails", email.toString())
+
+    // Store email with timestamp in a hash for detailed tracking
+    const timestamp = Date.now()
+    await redis.hset(`waitlist_signup:${email.toString()}`, {
+      email: email.toString(),
+      timestamp: timestamp,
+      signupDate: new Date(timestamp).toISOString(),
+    })
+
+    // Add to sorted set for easy chronological retrieval
+    await redis.zadd("waitlist_signups_by_time", {
+      score: timestamp,
+      member: email.toString(),
+    })
 
     // Send welcome email using Resend with your verified subdomain
     try {
@@ -78,5 +92,71 @@ export async function addToWaitlist(email: string) {
   } catch (error) {
     console.error("Error adding to waitlist:", error)
     return false
+  }
+}
+
+// Get waitlist signups with timestamps
+export async function getWaitlistSignupsWithTimestamps(limit = 100) {
+  try {
+    // Get emails sorted by signup time (most recent first)
+    const emails = await redis.zrange("waitlist_signups_by_time", 0, limit - 1, { rev: true })
+
+    if (!emails || emails.length === 0) {
+      return { success: true, signups: [] }
+    }
+
+    const signups = []
+
+    for (const email of emails) {
+      const signupData = await redis.hgetall(`waitlist_signup:${email}`)
+      if (signupData) {
+        signups.push({
+          email: signupData.email,
+          timestamp: Number.parseInt(signupData.timestamp),
+          signupDate: signupData.signupDate,
+          formattedDate: new Date(Number.parseInt(signupData.timestamp)).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        })
+      }
+    }
+
+    return { success: true, signups }
+  } catch (error) {
+    console.error("Error getting waitlist signups with timestamps:", error)
+    return { success: false, error: "Failed to retrieve signup data" }
+  }
+}
+
+// Get waitlist statistics
+export async function getWaitlistStats() {
+  try {
+    const totalCount = await redis.scard("waitlist_emails")
+    const recentSignups = await redis.zrange("waitlist_signups_by_time", -7, -1, { rev: true })
+
+    // Get signups from last 24 hours
+    const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000
+    const last24Hours = await redis.zrangebyscore("waitlist_signups_by_time", oneDayAgo, Date.now())
+
+    // Get signups from last 7 days
+    const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
+    const last7Days = await redis.zrangebyscore("waitlist_signups_by_time", sevenDaysAgo, Date.now())
+
+    return {
+      success: true,
+      stats: {
+        totalSignups: totalCount,
+        last24Hours: last24Hours.length,
+        last7Days: last7Days.length,
+        recentSignups: recentSignups.length,
+      },
+    }
+  } catch (error) {
+    console.error("Error getting waitlist stats:", error)
+    return { success: false, error: "Failed to retrieve stats" }
   }
 }
