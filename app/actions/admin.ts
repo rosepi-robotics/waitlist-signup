@@ -57,7 +57,7 @@ export async function runDrawing() {
     // Send winner notification email
     const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
-      from: "Rallie Tennis <hello@updates.rallie.tennis>",
+      from: "Mavio Tennis <hello@updates.mavio.ai>",
       to: winnerEmail,
       subject: "Congratulations! You won the $100 Tennis Warehouse Gift Card!",
       html: `
@@ -71,15 +71,15 @@ export async function runDrawing() {
           }</p>
           <p>We'll be in touch shortly with details on how to claim your prize.</p>
           <p>Thank you for participating in our survey and helping us build a better tennis ball machine.</p>
-          <p>Best regards,<br>The Rallie Team</p>
+          <p>Best regards,<br>The Mavio Team</p>
         </div>
       `,
     })
 
     // Send admin notification
     await resend.emails.send({
-      from: "Rallie Tennis <hello@updates.rallie.tennis>",
-      to: "admin@rallie.com", // Change to your admin email
+      from: "Mavio Tennis <hello@updates.mavio.ai>",
+      to: "admin@mavio.ai", // Change to your admin email
       subject: "Monthly Drawing Winner Selected",
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">

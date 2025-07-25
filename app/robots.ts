@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://rallie.tennis/sitemap.xml",
+    sitemap: "https://mavio.ai/sitemap.xml",
   }
 }

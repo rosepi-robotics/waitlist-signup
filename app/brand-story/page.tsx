@@ -70,7 +70,7 @@ export default function BrandStoryPage() {
                 <div>
                   <Badge className="mb-4 bg-emerald-100 text-emerald-800">Founder Story</Badge>
                   <h2 className="text-3xl font-bold mb-6">
-                    Hi, I'm Sophie — and I started Rallie because I couldn't find what I needed.
+                    Hi, I'm Sophie — and I started Mavio (previous Rallie) because I couldn't find what I needed.
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     A year ago, I got really into tennis. I was hooked — but also frustrated.
@@ -86,7 +86,7 @@ export default function BrandStoryPage() {
                     that eventually became a unicorn. I took that product from prototype to mass production, working
                     with amazing partners like Foxconn and Flex.
                   </p>
-                  <p className="text-gray-600 mb-6 leading-relaxed">But Rallie is different. This one is personal.</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">But Mavio is different. This one is personal.</p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     I started alone in March 2025 — hacking together early prototypes, writing code, and 3D-printing
                     parts on my living room floor. Now, I'm joined by an incredible team of engineers who are just as
@@ -97,13 +97,13 @@ export default function BrandStoryPage() {
                     attention, gives feedback, and evolves with us.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    That's what we're building with Rallie — and we're just getting started.
+                    That's what we're building with Mavio — and we're just getting started.
                   </p>
                 </div>
                 <div className="relative">
                   <Image
                     src="/images/sophie-founder-collage.png"
-                    alt="Sophie, Founder of Rallie"
+                    alt="Sophie, Founder of Mavio"
                     width={500}
                     height={400}
                     className="rounded-lg shadow-lg"
@@ -154,7 +154,7 @@ export default function BrandStoryPage() {
             <CardContent className="p-8 md:p-12">
               <div className="text-center mb-8">
                 <Badge className="mb-4 bg-blue-100 text-blue-800">Technology</Badge>
-                <h3 className="text-3xl font-bold mb-4">How Rallie Works</h3>
+                <h3 className="text-3xl font-bold mb-4">How Mavio Works</h3>
                 <p className="text-gray-600 max-w-3xl mx-auto">
                   Our integrated system combines AI-powered analysis with intelligent hardware to create a complete
                   tennis training solution that thinks, learns, and adapts.
@@ -236,7 +236,7 @@ export default function BrandStoryPage() {
               <h3 className="text-3xl font-bold mb-4">Join Us on This Journey</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
                 We're building the future of tennis training, and we want you to be part of it. Join our waitlist and
-                help shape Rallie.
+                help shape Mavio.
               </p>
 
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">

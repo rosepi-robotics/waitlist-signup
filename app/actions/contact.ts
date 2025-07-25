@@ -15,11 +15,11 @@ export async function submitContactForm(formData: FormData) {
       return { success: false, error: "All fields are required" }
     }
 
-    // Send email to hello@rallie.tennis
+    // Send email to hello@mavio.ai
     const { data, error } = await resend.emails.send({
-      from: "Rallie Tennis Contact <hello@updates.rallie.tennis>",
+      from: "Mavio Tennis Contact <hello@updates.mavio.ai>",
       replyTo: email, // User's email as reply-to
-      to: "hello@rallie.tennis",
+      to: "hello@mavio.ai",
       subject: `New Contact Form Message from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -35,7 +35,7 @@ export async function submitContactForm(formData: FormData) {
           </div>
           
           <p style="color: #666; font-size: 14px;">
-            This message was sent from the Rallie Tennis contact form.
+            This message was sent from the Mavio Tennis contact form.
             You can reply directly to this email to respond to ${name}.
           </p>
         </div>

@@ -79,7 +79,7 @@ export default function UnsubscribePage() {
             <div className="text-center py-8">
               <div className="bg-white/10 rounded-xl p-6 max-w-md mx-auto">
                 <h2 className="text-xl font-semibold mb-4">You've Been Unsubscribed</h2>
-                <p>You will no longer receive emails from Rallie Tennis.</p>
+                <p>You will no longer receive emails from Mavio.</p>
                 <p className="mt-4">Changed your mind? You can always re-join our waitlist on the homepage.</p>
               </div>
             </div>

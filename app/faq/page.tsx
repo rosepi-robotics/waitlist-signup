@@ -54,7 +54,7 @@ export default function FAQPage() {
             <Badge className="mb-6 bg-amber-100 text-amber-800">FAQ</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">FAQ</h1>
             <p className="text-xl text-amber-100 leading-relaxed">
-              Frequently asked questions about Rallie and AI tennis coaching
+              Frequently asked questions about Mavio and AI tennis coaching
             </p>
           </div>
         </div>
@@ -71,8 +71,8 @@ export default function FAQPage() {
                 <HelpCircle className="h-16 w-16 text-orange-600 mx-auto mb-6" />
                 <h2 className="text-3xl font-bold mb-4">FAQ Section Coming Soon</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  We're currently compiling the most frequently asked questions about Rallie and AI tennis coaching.
-                  This section will be available soon with comprehensive answers to help you understand how Rallie can
+                  We're currently compiling the most frequently asked questions about Mavio and AI tennis coaching.
+                  This section will be available soon with comprehensive answers to help you understand how Mavio can
                   transform your tennis training.
                 </p>
               </div>
@@ -81,7 +81,7 @@ export default function FAQPage() {
                 <Clock className="h-8 w-8 text-orange-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">What to Expect</h3>
                 <div className="text-left max-w-md mx-auto space-y-2 text-gray-600">
-                  <p>• How Rallie's AI coaching works</p>
+                  <p>• How Mavio's AI coaching works</p>
                   <p>• Equipment and setup requirements</p>
                   <p>• Pricing and availability information</p>
                   <p>• Technical specifications</p>
@@ -111,7 +111,7 @@ export default function FAQPage() {
                 <CardContent className="p-6">
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">Our Story</h4>
                   <p className="text-gray-600 text-sm mb-4">
-                    Learn about the founding story and mission behind Rallie.
+                    Learn about the founding story and mission behind Mavio.
                   </p>
                   <Button variant="outline" size="sm">
                     Read More

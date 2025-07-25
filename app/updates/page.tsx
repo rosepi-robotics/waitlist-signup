@@ -54,11 +54,57 @@ export default function UpdatesPage() {
             <Badge className="mb-6 bg-orange-100 text-orange-800">UPDATES</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Latest Updates</h1>
             <p className="text-xl text-orange-100 leading-relaxed">
-              Stay up to date with Rallie's progress, insights, and the future of AI-powered tennis training.
+              Stay up to date with Mavio's progress, insights, and the future of AI-powered tennis training.
             </p>
           </div>
         </div>
       </div>
+
+      {/* Progress Card */}
+      <Link href="/progress/july-update" className="block group">
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardContent className="p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
+              <div className="flex items-center text-sm text-gray-500 gap-4">
+                <div className="flex items-center gap-1">
+                  <Calendar className="h-4 w-4" />
+                  7/22/2025
+                </div>
+                <div className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />8 min read
+                </div>
+                <div className="flex items-center gap-1">
+                  <User className="h-4 w-4" />
+                  Development Team
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl font-bold mb-4">Bye Rallie, Hello Mavio!</h2>
+
+            <p className="text-base font-medium text-gray-700 mb-6">
+              Big updates across the board—starting with a new name, another field test coming up, and continued team growth as we build toward the next chapter of AI-powered tennis.
+            </p>
+
+            <div className="space-y-4 text-gray-600 mb-6">
+              <p>
+                This month has been filled with exciting developments as we continue to refine our AI-powered tennis training system.
+                Our team has been working tirelessly to enhance the user experience and expand our capabilities.
+              </p>
+              <p>
+                We've also established new partnerships and received valuable feedback from our early testers,
+                helping us shape the future of Mavio's technology and features.
+              </p>
+            </div>
+
+            <span className="inline-flex items-center text-blue-600 group-hover:text-blue-700 font-medium">
+              Read More
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </span>
+          </CardContent>
+        </Card>
+      </Link>
 
       {/* Updates Content */}
       <div className="container mx-auto px-4 py-16">
@@ -81,7 +127,7 @@ export default function UpdatesPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <User className="h-4 w-4" />
-                        Rallie Tennis
+                        Mavio Tennis
                       </div>
                     </div>
                   </div>
@@ -145,7 +191,7 @@ export default function UpdatesPage() {
 
                   <div className="space-y-4 text-gray-600 mb-6">
                     <p>
-                      After months of engineering and development, seeing Rallie perform on an actual tennis court was
+                      After months of engineering and development, seeing Mavio perform on an actual tennis court was
                       an incredible milestone for our team. The field test validated our core engineering decisions,
                       from the dual motor system to the servo-controlled oscillation mechanism.
                     </p>
@@ -170,7 +216,7 @@ export default function UpdatesPage() {
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join our waitlist to receive the latest updates on Rallie's development and be the first to know when we
+                Join our waitlist to receive the latest updates on Mavio's development and be the first to know when we
                 launch.
               </p>
 

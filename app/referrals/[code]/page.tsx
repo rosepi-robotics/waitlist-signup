@@ -39,7 +39,7 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
   }, [params.code])
 
   const handleCopyLink = () => {
-    const referralUrl = `https://rallie.tennis/survey?ref=${params.code}`
+    const referralUrl = `https://mavio.ai/survey?ref=${params.code}`
     navigator.clipboard.writeText(referralUrl)
     setCopyButtonText("Copied!")
     toast({
@@ -55,9 +55,9 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
   }
 
   const handleShare = async () => {
-    const referralUrl = `https://rallie.tennis/survey?ref=${params.code}`
+    const referralUrl = `https://mavio.ai/survey?ref=${params.code}`
     const shareData = {
-      title: "Rallie Tennis Survey",
+      title: "Mavio Tennis Survey",
       text: "Help shape the future of tennis training and get a chance to win a $100 Tennis Warehouse gift card!",
       url: referralUrl,
     }
@@ -115,8 +115,8 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
               </div>
               <p>
                 If you believe this is a mistake, please try again or contact us at{" "}
-                <a href="mailto:hello@rallie.tennis" className="text-blue-300 underline">
-                  hello@rallie.tennis
+                <a href="mailto:hello@mavio.ai" className="text-blue-300 underline">
+                  hello@mavio.ai
                 </a>
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
                 <p className="text-lg mb-2">Your unique referral link:</p>
                 <div className="bg-white/10 rounded-xl p-4 mb-4 flex items-center justify-between">
                   <code className="text-sm sm:text-base overflow-x-auto whitespace-nowrap max-w-[calc(100%-80px)]">
-                    https://rallie.tennis/survey?ref={params.code}
+                    https://mavio.ai/survey?ref={params.code}
                   </code>
                   <Button onClick={handleCopyLink} className="ml-2 bg-white/20 hover:bg-white/30 text-white" size="sm">
                     {copyButtonText}
@@ -203,7 +203,7 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
                   <a
                     href={`https://x.com/intent/tweet?text=${encodeURIComponent(
                       "Help shape the future of tennis training and get a chance to win a $100 Tennis Warehouse gift card! Take this quick survey:",
-                    )}&url=${encodeURIComponent(`https://rallie.tennis/survey?ref=${params.code}`)}`}
+                    )}&url=${encodeURIComponent(`https://mavio.ai/survey?ref=${params.code}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors"
@@ -211,17 +211,9 @@ export default function ReferralPage({ params }: { params: { code: string } }) {
                     Share on X
                   </a>
                   <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://rallie.tennis/survey?ref=${params.code}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors"
-                  >
-                    Share on Facebook
-                  </a>
-                  <a
                     href={`mailto:?subject=${encodeURIComponent("Help shape the future of tennis training")}&body=${encodeURIComponent(
                       "Hi there,\n\nI thought you might be interested in this survey about tennis ball machines. It only takes 2-3 minutes to complete, and you could win a $100 Tennis Warehouse gift card!\n\n",
-                    )}${encodeURIComponent(`https://rallie.tennis/survey?ref=${params.code}`)}`}
+                    )}${encodeURIComponent(`https://mavio.ai/survey?ref=${params.code}`)}`}
                     className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors"
                   >
                     Share via Email

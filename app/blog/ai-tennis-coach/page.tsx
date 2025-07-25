@@ -52,8 +52,8 @@ export default function AITennisCoachPost() {
                   <User className="h-6 w-6 text-blue-600" />
                 </div>
                 <div className="text-left">
-                  <p className="font-medium text-gray-900">Sophie Chen</p>
-                  <p className="text-sm text-gray-500">Founder & CEO at Rallie</p>
+                  <p className="font-medium text-gray-900">Sophie L</p>
+                  <p className="text-sm text-gray-500">Founder & CEO, Mavio</p>
                 </div>
               </div>
 
@@ -121,11 +121,11 @@ export default function AITennisCoachPost() {
               <p className="mb-6">They want a system that helps them train smarter, not just sweat harder.</p>
 
               <h2 className="text-2xl font-light text-gray-900 mt-8 mb-4">The Vision: A True AI Coach</h2>
-              <p className="mb-4">Imagine this: You say into the Rallie app:</p>
+              <p className="mb-4">Imagine this: You say into the Mavio app:</p>
               <div className="bg-gray-900 text-white p-4 rounded-lg my-6 font-mono text-sm">
                 <p>{'"I want to improve my topspin forehand."'}</p>
               </div>
-              <p className="mb-4">Rallie responds by creating an adaptive training session:</p>
+              <p className="mb-4">Mavio responds by creating an adaptive training session:</p>
               <ul className="mb-6 space-y-2">
                 <li>Launches a smart sequence of shots.</li>
                 <li>Tracks your position and timing.</li>
@@ -137,7 +137,7 @@ export default function AITennisCoachPost() {
               <div className="bg-gray-900 text-white p-4 rounded-lg my-6 font-mono text-sm">
                 <p>{'"I want to practice running up for a drop shot, then backing up for a lob."'}</p>
               </div>
-              <p className="mb-6">Rallie understands. It doesn't just follow — it coaches.</p>
+              <p className="mb-6">Mavio understands. It doesn't just follow — it coaches.</p>
 
               <h2 className="text-2xl font-light text-gray-900 mt-8 mb-4">True AI ≠ Fancy Mechanics</h2>
               <p className="mb-6">
@@ -150,7 +150,7 @@ export default function AITennisCoachPost() {
 
               <div className="text-center bg-blue-50 p-8 rounded-lg">
                 <p className="font-medium text-xl text-gray-900 mb-4">
-                  Rallie is building the first AI-powered tennis coach that actually coaches.
+                  Mavio is building the first AI-powered tennis coach that actually coaches.
                 </p>
                 <p className="text-lg text-gray-600 mb-6">
                   Because you don't just need someone (or something) to feed balls — you need a partner in your

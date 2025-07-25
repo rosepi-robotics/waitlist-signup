@@ -71,7 +71,7 @@ export default function AITennisCoachPage() {
               </div>
               <div className="flex items-center">
                 <User className="mr-2 h-4 w-4" />
-                Rallie Tennis
+                The Mavio Team
               </div>
             </div>
           </div>
@@ -185,10 +185,10 @@ export default function AITennisCoachPage() {
               just feeding balls faster or moving around aimlessly.
             </p>
 
-            <h2 className="text-2xl font-bold mt-12 mb-6">This Is What We're Building at Rallie</h2>
+            <h2 className="text-2xl font-bold mt-12 mb-6">This Is What We're Building at Mavio</h2>
 
             <p className="mb-6">
-              Our team at Rallie is developing a new kind of tennis ball machine — one that doesn't just launch balls,
+              Our team at Mavio is developing a new kind of tennis ball machine — one that doesn't just launch balls,
               but actually thinks.
             </p>
 
@@ -204,23 +204,12 @@ export default function AITennisCoachPage() {
               <p className="mb-2">
                 💡{" "}
                 <a
-                  href="https://rallie.tennis"
+                  href="https://mavio.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 underline"
                 >
-                  Visit rallie.tennis
-                </a>
-              </p>
-              <p className="mb-2">
-                📲 Follow us on Instagram:{" "}
-                <a
-                  href="https://www.instagram.com/rallie.tennis/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-700 underline"
-                >
-                  https://www.instagram.com/rallie.tennis/
+                  Visit mavio.ai
                 </a>
               </p>
               <p>
@@ -248,7 +237,7 @@ export default function AITennisCoachPage() {
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Experience AI Tennis Coaching?</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join the beta program and be among the first to experience the future of tennis training with Rallie's
+                Join the beta program and be among the first to experience the future of tennis training with Mavio's
                 AI-powered coaching system.
               </p>
 

@@ -1,5 +1,5 @@
 /**
- * Returns the full HTML for the "Welcome to the Rallie Tennis Waitlist" email.
+ * Returns the full HTML for the "Welcome to the Mavio Tennis Waitlist" email.
  * This MUST be a raw string because the Resend SDK only accepts a string in
  * the `html` field.
  */
@@ -13,7 +13,7 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Welcome to the Rallie Tennis Waitlist!</title>
+    <title>Welcome to the Mavio Tennis Waitlist!</title>
     <style>
       /* === Utility styles (kept inline for email-client safety) ============= */
       body {
@@ -82,8 +82,6 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
         text-decoration: none;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       }
-      .facebook { color: #1877f2; }
-      .instagram { color: #e4405f; }
       .youtube { color: #ff0000; }
       a { color: #2563eb; text-decoration: none; }
     </style>
@@ -93,7 +91,7 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
 
       <!-- 1️⃣  Header -->
       <div class="card" style="text-align:center; margin-bottom:30px;">
-        <h1 class="title">Welcome to the Rallie Tennis Waitlist!</h1>
+        <h1 class="title">Welcome to the Mavio Waitlist!</h1>
         <div class="underline"></div>
       </div>
 
@@ -125,7 +123,7 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
 
         <p style="font-size:16px;margin-bottom:24px;">
           In the meantime, we’d love for you to take our
-          <a href="https://rallie.tennis/survey">quick survey</a>. You’ll also be entered
+          <a href="https://mavio.ai/survey">quick survey</a>. You’ll also be entered
           to win a $100 Tennis Warehouse gift card!
         </p>
 
@@ -134,16 +132,8 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
           <p style="margin:0 0 12px;font-size:16px;font-weight:500;color:#374151;">
             Follow our journey
           </p>
-          <a class="chip facebook"
-             href="https://www.facebook.com/groups/963981362613884">
-            Facebook Community
-          </a>
-          <a class="chip instagram"
-             href="https://www.instagram.com/rallie.tennis/">
-            Instagram
-          </a>
           <a class="chip youtube"
-             href="https://www.youtube.com/@rallietennis">
+             href="https://www.youtube.com/channel/UCLx99nZ7ObZCuvc-55tfbgA">
             YouTube
           </a>
         </div>
@@ -152,13 +142,13 @@ export default function EmailTemplate({ email }: EmailTemplateProps): string {
         <div style="border-top:1px solid #e5e7eb;margin-top:32px;padding-top:24px;font-size:16px;">
           <p style="margin:0 0 4px;">Best regards,</p>
           <p style="margin:0 0 4px;font-weight:600;">Sophie Luo</p>
-          <p style="margin:0;font-size:14px;color:#6b7280;">Creator of Rallie Tennis</p>
+          <p style="margin:0;font-size:14px;color:#6b7280;">Creator of Mavio</p>
         </div>
       </div>
 
       <!-- 5️⃣  Footer -->
       <p style="text-align:center;color:#ffffff;font-size:12px;margin:30px 0 0;">
-        © 2025 Rallie Tennis. All rights reserved.
+        &copy; 2025 Mavio. All rights reserved.
       </p>
     </div>
   </body>

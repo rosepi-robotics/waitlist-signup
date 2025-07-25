@@ -11,8 +11,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Mail, MessageSquare, Send, MapPin } from "lucide-react"
-import { FacebookIcon } from "../components/icons/facebook-icon"
-import { InstagramIcon } from "../components/icons/instagram-icon"
 import { YouTubeIcon } from "../components/icons/youtube-icon"
 import { submitContactForm } from "../actions/contact"
 import { joinWaitlist } from "../actions/waitlist"
@@ -91,7 +89,7 @@ export default function ContactPage() {
             <Badge className="mb-6 bg-purple-100 text-purple-800">CONTACT</Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h1>
             <p className="text-xl text-purple-100 leading-relaxed">
-              Have questions about Rallie? Want to partner with us? We'd love to hear from you.
+              Have questions about Mavio? Want to partner with us? We'd love to hear from you.
             </p>
           </div>
         </div>
@@ -181,7 +179,7 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5 text-purple-600 mr-3 mt-1" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-gray-600">hello@rallie.tennis</p>
+                        <p className="text-gray-600">hello@mavio.ai</p>
                       </div>
                     </div>
                     <div className="flex items-start">
@@ -200,26 +198,10 @@ export default function ContactPage() {
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4">Join Our Community</h3>
                   <p className="text-gray-600 mb-6">
-                    Connect with other tennis players and stay updated on Rallie's development.
+                    Connect with other tennis players and stay updated on Mavio's development.
                   </p>
 
                   <div className="flex gap-3 mb-6">
-                    <a
-                      href="https://www.facebook.com/groups/963981362613884"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-                    >
-                      <FacebookIcon className="w-5 h-5 text-blue-600" />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/rallie.tennis/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-                    >
-                      <InstagramIcon className="w-5 h-5 text-pink-600" />
-                    </a>
                     <a
                       href="https://www.youtube.com/channel/UCe2iDqdEYGT3k_F4HtWyajA"
                       target="_blank"
@@ -237,7 +219,7 @@ export default function ContactPage() {
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4">Join the Waitlist</h3>
                   <p className="text-gray-600 mb-6">
-                    Be the first to know when Rallie becomes available and get exclusive early access.
+                    Be the first to know when Mavio becomes available and get exclusive early access.
                   </p>
 
                   <form onSubmit={handleWaitlistSubmit} className="space-y-4">

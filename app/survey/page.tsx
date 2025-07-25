@@ -177,7 +177,7 @@ export default function Survey() {
   const handleShare = async () => {
     if (referralUrl) {
       const shareData = {
-        title: "Rallie Tennis Survey",
+        title: "Mavio Survey",
         text: "Help shape the future of tennis training and get a chance to win a $100 Tennis Warehouse gift card!",
         url: referralUrl,
       }

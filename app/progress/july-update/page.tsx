@@ -13,7 +13,7 @@ import { ArrowLeft, Calendar, Clock, User, Mail, ArrowRight } from "lucide-react
 import Link from "next/link"
 import { joinWaitlist } from "../../actions/waitlist"
 
-export default function FirstFieldTestPage() {
+export default function JulyUpdatePage() {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState("")
@@ -60,11 +60,11 @@ export default function FirstFieldTestPage() {
 
           <div className="max-w-4xl mx-auto">
             <Badge className="mb-6 bg-blue-100 text-blue-800">PROGRESS</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">First Field Test Success + New Logo Reveal</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Bye Rallie, Hello Mavio!</h1>
             <div className="flex flex-wrap items-center gap-6 text-blue-100 mb-8">
               <div className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                6/23/2025
+                7/22/2025
               </div>
               <div className="flex items-center">
                 <Clock className="mr-2 h-4 w-4" />8 min read
@@ -159,6 +159,42 @@ export default function FirstFieldTestPage() {
               We're incredibly excited about what's coming next and grateful for the support from our growing community
               of tennis players and coaches who believe in the future of AI-powered training.
             </p>
+
+            <p className="mb-6">
+              Ps: come follow our socials!
+            </p>
+
+            <div className="flex flex-wrap gap-4 mb-8">
+              <a href="https://x.com/hellomavio" className="flex items-center text-blue-600 hover:text-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+                X
+              </a>
+              <a href="https://www.youtube.com/channel/UCLx99nZ7ObZCuvc-55tfbgA" className="flex items-center text-blue-600 hover:text-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+                YouTube
+              </a>
+              <a href="https://www.linkedin.com/company/hellomavio" className="flex items-center text-blue-600 hover:text-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+              </a>
+              <a href="https://www.tiktok.com/@hellomavio?lang=en" className="flex items-center text-blue-600 hover:text-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                TikTok
+              </a>
+            </div>
           </div>
 
           {/* CTA Section */}

@@ -405,34 +405,6 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xl text-gray-600 mb-6">Follow our journey</p>
           <div className="flex justify-center items-center space-x-8">
-            {/* Facebook */}
-            <a
-              href="https://www.facebook.com/groups/963981362613884"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors cursor-pointer z-10 relative"
-              onClick={() => trackEvent("social_click", "facebook", "homepage_divider")}
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-              <span className="font-medium">Facebook</span>
-            </a>
-
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/mavio.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors cursor-pointer z-10 relative"
-              onClick={() => trackEvent("social_click", "instagram", "homepage_divider")}
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.781c-.315 0-.595-.122-.807-.315-.21-.21-.315-.49-.315-.807 0-.315.105-.595.315-.807.21-.21.49-.315.807-.315.315 0 .595.105.807.315.21.21.315.49.315.807 0 .315-.105.595-.315.807-.21.193-.49.315-.807.315zm-3.832 9.781c-2.447 0-4.473-2.026-4.473-4.473s2.026-4.473 4.473-4.473 4.473 2.026 4.473 4.473-2.026 4.473-4.473 4.473z" />
-              </svg>
-              <span className="font-medium">Instagram</span>
-            </a>
-
             {/* YouTube */}
             <a
               href="https://www.youtube.com/channel/UCe2iDqdEYGT3k_F4HtWyajA"

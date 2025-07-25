@@ -182,7 +182,7 @@ export async function submitSurvey(formData: FormData) {
       await redis.set(`email:${email}:referralCode`, referralCode)
 
       // Create the referral URL
-      referralUrl = `https://rallie.tennis/survey?ref=${referralCode}`
+      referralUrl = `https://mavio.ai/survey?ref=${referralCode}`
 
       // Add email to drawing participants list
       await redis.sadd("drawing_participants", email)
@@ -196,7 +196,7 @@ export async function submitSurvey(formData: FormData) {
       // Send confirmation email with referral link
       const resend = new Resend(process.env.RESEND_API_KEY)
       await resend.emails.send({
-        from: "Rallie Tennis <hello@updates.rallie.tennis>",
+        from: "Mavio <hello@updates.mavio.ai>",
         to: email,
         subject: "Thanks for helping shape the future of tennis training!",
         html: `

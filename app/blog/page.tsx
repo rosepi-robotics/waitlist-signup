@@ -19,7 +19,7 @@ export default function BlogPage() {
     },
     {
       id: "field-test-success",
-      title: "First Field Test Success: Rallie in Action",
+      title: "First Field Test Success: Mavio in Action",
       excerpt: "Our breakthrough moment testing topspin and backspin generation in real court conditions.",
       date: "2025-06-23",
       readTime: "4 min read",
@@ -30,7 +30,7 @@ export default function BlogPage() {
     },
     {
       id: "team-growth",
-      title: "Building the Dream Team: New Engineers Join Rallie",
+      title: "Building the Dream Team: New Engineers Join Mavio",
       excerpt: "Introducing our new co-founder and hardware engineer as we scale towards production.",
       date: "2025-06-20",
       readTime: "3 min read",
@@ -48,7 +48,7 @@ export default function BlogPage() {
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-light text-gray-900 mb-4">RALLIE BLOG</h1>
+            <h1 className="text-5xl font-light text-gray-900 mb-4">MAVIO BLOG</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Insights, updates, and stories from the future of tennis training.
             </p>
@@ -139,7 +139,7 @@ export default function BlogPage() {
           <div className="mt-16 bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 shadow-sm text-center">
             <h3 className="text-2xl font-light text-gray-900 mb-4">Stay Updated</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Get the latest updates on Rallie's development, new blog posts, and exclusive insights delivered to your
+              Get the latest updates on Mavio's development, new blog posts, and exclusive insights delivered to your
               inbox.
             </p>
             <Link href="/">
