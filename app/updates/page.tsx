@@ -60,57 +60,57 @@ export default function UpdatesPage() {
         </div>
       </div>
 
-      {/* Progress Card */}
-      <Link href="/progress/july-update" className="block group">
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardContent className="p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
-              <div className="flex items-center text-sm text-gray-500 gap-4">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  7/22/2025
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />8 min read
-                </div>
-                <div className="flex items-center gap-1">
-                  <User className="h-4 w-4" />
-                  Development Team
-                </div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-bold mb-4">Bye Rallie, Hello Mavio!</h2>
-
-            <p className="text-base font-medium text-gray-700 mb-6">
-              Big updates across the board—starting with a new name, another field test coming up, and continued team growth as we build toward the next chapter of AI-powered tennis.
-            </p>
-
-            <div className="space-y-4 text-gray-600 mb-6">
-              <p>
-                This month has been filled with exciting developments as we continue to refine our AI-powered tennis training system.
-                Our team has been working tirelessly to enhance the user experience and expand our capabilities.
-              </p>
-              <p>
-                We've also established new partnerships and received valuable feedback from our early testers,
-                helping us shape the future of Mavio's technology and features.
-              </p>
-            </div>
-
-            <span className="inline-flex items-center text-blue-600 group-hover:text-blue-700 font-medium">
-              Read More
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </span>
-          </CardContent>
-        </Card>
-      </Link>
-
       {/* Updates Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Featured Updates */}
           <div className="space-y-8 mb-16">
+            {/* Progress Card */}
+            <Link href="/progress/july-update" className="block group">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Badge className="bg-blue-100 text-blue-800">PROGRESS</Badge>
+                    <div className="flex items-center text-sm text-gray-500 gap-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        7/22/2025
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />8 min read
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        Development Team
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2 className="text-2xl font-bold mb-4">Bye Rallie, Hello Mavio!</h2>
+
+                  <p className="text-base font-medium text-gray-700 mb-6">
+                    Big updates across the board—starting with a new name, another field test coming up, and continued team growth as we build toward the next chapter of AI-powered tennis.
+                  </p>
+
+                  <div className="space-y-4 text-gray-600 mb-6">
+                    <p>
+                      This month has been filled with exciting developments as we continue to refine our AI-powered tennis training system.
+                      Our team has been working tirelessly to enhance the user experience and expand our capabilities.
+                    </p>
+                    <p>
+                      We've also established new partnerships and received valuable feedback from our early testers,
+                      helping us shape the future of Mavio's technology and features.
+                    </p>
+                  </div>
+
+                  <span className="inline-flex items-center text-blue-600 group-hover:text-blue-700 font-medium">
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+
             {/* Insights Card */}
             <Link href="/insights/ai-tennis-coach" className="block group">
               <Card className="hover:shadow-lg transition-shadow">

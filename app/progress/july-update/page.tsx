@@ -82,82 +82,122 @@ export default function JulyUpdatePage() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none">
+            <h1 className="text-3xl font-bold mb-6">New Name, New Test, New Growth</h1>
+            
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              We did our first field test and the results exceeded expectations! The system is working perfectly,
-              creating incredibly fast and strong balls with its compact design. Plus, we're revealing our new logo.
+              Big updates across the board—starting with a new name, another field test coming up, and continued team growth as we build toward the next chapter of AI-powered tennis.
             </p>
 
+            <h2 className="text-2xl font-bold mt-12 mb-6">Farewell Rallie, Hello Mavio</h2>
+            
             <p className="mb-6">
-              After months of engineering and development, seeing Rallie perform on an actual tennis court was an
-              incredible milestone for our team.
+              After discovering that the name Rallie was already in use (sad face), we needed to think of a new name.
             </p>
-
-            <h2 className="text-2xl font-bold mt-12 mb-6">Field Test Breakthrough</h2>
-
+            
             <p className="mb-6">
-              We did our first field test and the results exceeded expectations! The system is working perfectly,
-              creating incredibly fast and strong balls with its compact design.
+              The choices were:
+            </p>
+            
+            <ol className="list-decimal pl-6 mb-6">
+              <li>Mavio</li>
+              <li>Skory</li>
+              <li>Bounza</li>
+              <li>Rivoa</li>
+              <li>Caelo</li>
+            </ol>
+            
+            <p className="mb-6">
+              Thanks to input from our beta program members and community surveys, we're excited to unveil our new name:
+              <strong> Mavio</strong> — smart, reliable, and fun (happy face!).
+            </p>
+            
+            <p className="mb-6">
+              The name reflects our mission to combine precision engineering with playful, intuitive user experience. It's a fresh start with the same big ambition: to redefine how tennis players train.
             </p>
 
+            <h2 className="text-2xl font-bold mt-12 mb-6">Next Field Test Incoming</h2>
+            
+            <p className="mb-6">
+              We're gearing up for our third field test this Tuesday!
+            </p>
+            
             <div className="mb-6 flex justify-center">
               <img
                 src="https://i.imgur.com/UNvBo5i.gif"
-                alt="Rallie field test demonstration showing the tennis ball machine in action"
+                alt="Mavio field test demonstration"
                 className="max-w-sm mx-auto rounded-lg"
               />
             </div>
-            <p className="text-xs text-center mt-2 text-gray-500 mb-8">FIRST FIELD TEST - JUNE 2025</p>
-
+            
             <p className="mb-6">
-              The field test validated our core engineering decisions, from the dual motor system to the
-              servo-controlled oscillation mechanism. We achieved consistent ball speeds ranging from 10-80 MPH with
-              precise spin control, demonstrating both topspin and backspin capabilities that exceeded our initial
-              specifications.
+              We've made significant hardware improvements since our last run—most notably, redesigning the launch wheels.
+            </p>
+            
+            <p className="mb-6">
+              We originally used PU (polyurethane) wheels because they're lightweight, helping us keep the machine as light as possible.
+            </p>
+            
+            <div className="mb-6 flex justify-center">
+              <img
+                src="https://i.imgur.com/example1.jpg"
+                alt="Original PU wheels design"
+                className="max-w-sm mx-auto rounded-lg"
+              />
+            </div>
+            
+            <p className="mb-6">
+              We knew there were risks with this choice, and expected that the high friction from ball launches might cause wear. But it was a calculated decision—we wanted to test the limits, knowing we could always switch back if needed.
+            </p>
+            
+            <p className="mb-6">
+              As expected, the wheels wore out quickly, so we're now moving forward with a more durable solution.
+            </p>
+            
+            <div className="mb-6 flex justify-center">
+              <img
+                src="https://i.imgur.com/example2.jpg"
+                alt="New durable wheel design"
+                className="max-w-sm mx-auto rounded-lg"
+              />
+            </div>
+            
+            <p className="mb-6">
+              We're optimistic about the performance improvements and can't wait to put them to the test on court.
+              It will also be our first integration test between the machine and the AI app.
+            </p>
+            
+            <p className="mb-6">
+              Wish us luck!
             </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-6">Team Update</h2>
-
+            
             <p className="mb-6">
-              My team continues is growing! Finally it's not my one man shop anymore! I'm super excited to announce that
-              I'm joined with incredibly talented engineers!
+              The team continues to grow—and not just in size, but in capability. While we're still finalizing some details (and names to be announced soon), I'm thrilled to say that the team is growing stronger!
             </p>
-
+            
             <p className="mb-6">
-              <strong>Lisa Wang</strong> - Co-founder & AI/Computer Vision Lead: Lisa, a brilliant engineer and former
-              Googler, is leading AI development at Rallie. Stay tuned—exciting AI feature demos are coming soon!
-            </p>
-
-            <p className="mb-6">
-              <strong>Ray Shen</strong> - Hardware & Embedded Systems Engineering: A 15-year veteran in motor control
-              and manufacturing, Ray brings deep expertise to Rallie's hardware development and will lead our path to
-              scalable production.
-            </p>
-
-            <p className="mb-6">
-              We're looking for 10 tennis facilities to participate in our beta program. Selected partners will receive
-              early access to Rallie units and direct input into the final product design.
+              We're bringing in exceptional people to accelerate both software and hardware development, and we're more committed than ever to creating the best AI tennis companion out there.
             </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-6">What's Next</h2>
-
+            
             <p className="mb-6">
-              With the successful field test behind us, we're now focusing on refining the AI coaching algorithms and
-              preparing for our beta program launch. The next few months will be crucial as we work toward bringing
-              Rallie to tennis facilities and players worldwide.
+              With the new name in place and another field test on the horizon, we're charging ahead. Our focus remains clear:
             </p>
-
-            <p className="mb-6">Key milestones ahead:</p>
-
-            <ul className="mb-6 space-y-2">
-              <li>• AI coaching system integration</li>
-              <li>• Beta program launch with select tennis facilities</li>
-              <li>• User interface and mobile app development</li>
-              <li>• Production planning and manufacturing partnerships</li>
+            
+            <ul className="list-disc pl-6 mb-6">
+              <li>Fine-tune the launch system and hardware reliability</li>
+              <li>Integrate real-time AI coaching features</li>
+              <li>Grow our team and provide the best product for you!</li>
             </ul>
-
-            <p className="mb-8">
-              We're incredibly excited about what's coming next and grateful for the support from our growing community
-              of tennis players and coaches who believe in the future of AI-powered training.
+            
+            <p className="mb-6">
+              We're incredibly grateful for the continued support—and can't wait to share more soon.
+            </p>
+            
+            <p className="mb-6">
+              — The Mavio Team
             </p>
 
             <p className="mb-6">
@@ -166,33 +206,35 @@ export default function JulyUpdatePage() {
 
             <div className="flex flex-wrap gap-4 mb-8">
               <a href="https://x.com/hellomavio" className="flex items-center text-blue-600 hover:text-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="mr-1">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
                 X
               </a>
-              <a href="https://www.youtube.com/channel/UCLx99nZ7ObZCuvc-55tfbgA" className="flex items-center text-blue-600 hover:text-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <a href="https://www.youtube.com/channel/UCLx99nZ7ObZCuvc-55tfbgA" className="flex items-center text-red-600 hover:text-red-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="mr-1">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                   <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                 </svg>
                 YouTube
               </a>
               <a href="https://www.linkedin.com/company/hellomavio" className="flex items-center text-blue-600 hover:text-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="mr-1">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
                 LinkedIn
               </a>
-              <a href="https://www.tiktok.com/@hellomavio?lang=en" className="flex items-center text-blue-600 hover:text-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
+              <a href="https://www.tiktok.com/@hellomavio?lang=en" className="flex items-center text-gray-800 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="mr-1">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                 </svg>
                 TikTok
+              </a>
+              <a href="https://www.facebook.com/groups/963981362613884/" className="flex items-center text-blue-600 hover:text-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="mr-1">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                Facebook
               </a>
             </div>
           </div>
@@ -202,7 +244,7 @@ export default function JulyUpdatePage() {
             <CardContent className="p-8 md:p-12 text-center">
               <h3 className="text-3xl font-bold mb-4">Join the Beta Program</h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Be among the first to experience Rallie's AI-powered tennis coaching. Join our beta program and help
+                Be among the first to experience Mavio's AI-powered tennis coaching. Join our beta program and help
                 shape the future of tennis training.
               </p>
 
