@@ -1,6 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { YouTubeIcon } from "./icons/youtube-icon"
+import { FacebookIcon } from "./icons/facebook-icon"
+import { XIcon } from "./icons/x-icon"
+import { TikTokIcon } from "./icons/tiktok-icon"
 
 function Footer() {
   return (
@@ -60,6 +63,33 @@ function Footer() {
           <div>
             <h6 className="font-semibold text-gray-800 mb-4">Connect With Us</h6>
             <div className="space-y-3 mb-6">
+              <a
+                href="https://x.com/hellomavio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-600 hover:text-black transition-colors"
+              >
+                <XIcon className="w-5 h-5 mr-2" />
+                <span className="text-sm">X</span>
+              </a>
+              <a
+                href="https://www.tiktok.com/@hellomavio?lang=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-600 hover:text-black transition-colors"
+              >
+                <TikTokIcon className="w-5 h-5 mr-2" />
+                <span className="text-sm">TikTok</span>
+              </a>
+              <a
+                href="https://www.facebook.com/groups/963981362613884/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-600 hover:text-blue-500 transition-colors"
+              >
+                <FacebookIcon className="w-5 h-5 mr-2" />
+                <span className="text-sm">Facebook Group</span>
+              </a>
               <a
                 href="https://www.youtube.com/@mavioai"
                 target="_blank"
