@@ -600,12 +600,12 @@ export default function Home() {
           </div>
 
           <div className="bg-white/70 backdrop-blur-sm rounded-lg p-8 border border-gray-200 shadow-sm">
-            {/* Latest Update - July 25 */}
+            {/* Latest Update - July 28 */}
             <div className="pb-10 border-b border-gray-200 mb-10">
               <div className="flex items-center text-gray-500 mb-4 space-x-4 text-sm">
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-1 text-orange-500" />
-                  <time dateTime="2025-07-25">JULY 25, 2025</time>
+                  <time dateTime="2025-07-28">JULY 28, 2025</time>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-1 text-blue-500" />

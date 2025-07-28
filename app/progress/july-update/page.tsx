@@ -64,7 +64,7 @@ export default function JulyUpdatePage() {
             <div className="flex flex-wrap items-center gap-6 text-blue-100 mb-8">
               <div className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                7/25/2025
+                7/28/2025
               </div>
               <div className="flex items-center">
                 <Clock className="mr-2 h-4 w-4" />8 min read
@@ -153,12 +153,25 @@ export default function JulyUpdatePage() {
               As expected, the wheels wore out quickly, so we're now moving forward with a more durable solution.
             </p>
             
-            <div className="mb-6 flex justify-center">
-              <img
-                src="/images/worn-wheel.jpeg"
-                alt="Worn wheel showing damage from use"
-                className="max-w-sm mx-auto rounded-lg"
-              />
+            <div className="mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col items-center">
+                  <img
+                    src="/images/worn-wheel.jpeg"
+                    alt="Worn wheel showing damage from use"
+                    className="w-full rounded-lg"
+                  />
+                  <p className="text-xs text-center mt-2 text-gray-500">WORN PU WHEEL AFTER TESTING</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src="/images/new-wheels.jpg"
+                    alt="New durable wheel design"
+                    className="w-full rounded-lg"
+                  />
+                  <p className="text-xs text-center mt-2 text-gray-500">NEW DURABLE WHEEL SOLUTION</p>
+                </div>
+              </div>
             </div>
             
             <p className="mb-6">
