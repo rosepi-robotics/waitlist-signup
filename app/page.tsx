@@ -646,7 +646,7 @@ export default function Home() {
                   {/* Field Test GIF */}
                   <div className="mb-6 flex justify-center">
                     <img
-                      src="/images/first-prototype.jpeg"
+                      src="/images/first_prototype.jpeg"
                       alt="The First Mavio Prototype"
                       className="max-w-sm mx-auto rounded-lg"
                     />
