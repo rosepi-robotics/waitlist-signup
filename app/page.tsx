@@ -646,12 +646,12 @@ export default function Home() {
                   {/* Field Test GIF */}
                   <div className="mb-6 flex justify-center">
                     <img
-                      src="https://i.imgur.com/UNvBo5i.gif"
-                      alt="Mavio field test demonstration"
+                      src="/images/first-prototype.jpeg"
+                      alt="The First Mavio Prototype"
                       className="max-w-sm mx-auto rounded-lg"
                     />
                   </div>
-                  <p className="text-xs text-center mt-2 text-gray-500">MAVIO FIELD TEST - JULY 2025</p>
+                  <p className="text-xs text-center mt-2 text-gray-500">THE FIRST MAVIO PROTOTYPE - JULY 2025</p>
                   
                   <p className="mt-6 text-gray-700">
                     We originally used PU (polyurethane) wheels because they're lightweight, helping us keep the machine as light as possible. For this test, we've made significant improvements to the wheel design for better durability and performance.
