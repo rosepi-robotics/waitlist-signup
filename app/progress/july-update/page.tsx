@@ -123,8 +123,8 @@ export default function JulyUpdatePage() {
             
             <div className="mb-6 flex justify-center">
               <img
-                src="https://i.imgur.com/UNvBo5i.gif"
-                alt="Mavio field test demonstration"
+                src="/images/first_prototype.jpeg"
+                alt="The First Mavio Prototype"
                 className="max-w-sm mx-auto rounded-lg"
               />
             </div>
@@ -139,8 +139,8 @@ export default function JulyUpdatePage() {
             
             <div className="mb-6 flex justify-center">
               <img
-                src="https://imgur.com/a/0WoO5zG"
-                alt="Original PU wheels design"
+                src="https://i.imgur.com/0WoO5zG.gif"
+                alt="Successful test - tennis ball machine"
                 className="max-w-sm mx-auto rounded-lg"
               />
             </div>
