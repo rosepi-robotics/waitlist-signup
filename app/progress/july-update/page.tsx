@@ -165,7 +165,7 @@ export default function JulyUpdatePage() {
                 </div>
                 <div className="flex flex-col items-center">
                   <img
-                    src="/images/new-wheels.jpg"
+                    src="/images/new_wheels.jpg"
                     alt="New durable wheel design"
                     className="w-full rounded-lg"
                   />
