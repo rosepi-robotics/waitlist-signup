@@ -154,12 +154,12 @@ export default function JulyUpdatePage() {
             </p>
             
             <div className="mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
                 <div className="flex flex-col items-center">
                   <img
                     src="/images/worn-wheel.jpeg"
                     alt="Worn wheel showing damage from use"
-                    className="w-full rounded-lg"
+                    className="w-full max-w-xs rounded-lg"
                   />
                   <p className="text-xs text-center mt-2 text-gray-500">WORN PU WHEEL AFTER TESTING</p>
                 </div>
@@ -167,7 +167,7 @@ export default function JulyUpdatePage() {
                   <img
                     src="/images/new_wheels.jpg"
                     alt="New durable wheel design"
-                    className="w-full rounded-lg"
+                    className="w-full max-w-xs rounded-lg"
                   />
                   <p className="text-xs text-center mt-2 text-gray-500">NEW DURABLE WHEEL SOLUTION</p>
                 </div>
