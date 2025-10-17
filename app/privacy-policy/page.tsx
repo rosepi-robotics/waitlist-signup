@@ -1,4 +1,4 @@
-"use client"
+// Privacy Policy page (server component)
 
 import Link from "next/link"
 import type { Metadata } from "next"
