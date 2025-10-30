@@ -56,11 +56,6 @@ function Footer() {
                   Beta Program
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/privacy-policy" className="hover:text-blue-500 cursor-pointer block">
-                  Privacy Policy
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -115,13 +110,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
-            <span>&copy; {new Date().getFullYear()} Mavio AI. All rights reserved.</span>
-            <span className="hidden md:inline text-gray-300">|</span>
-            <Link href="/privacy-policy" className="hover:text-blue-500">
-              Privacy Policy
-            </Link>
-          </div>
+          &copy; {new Date().getFullYear()} Mavio AI. All rights reserved.
         </div>
       </div>
     </footer>

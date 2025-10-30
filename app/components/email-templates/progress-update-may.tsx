@@ -28,7 +28,7 @@ export default function ProgressUpdateMay({ unsubscribeUrl = "#", isTest = false
           Congratulations to <strong>Delice</strong> for winning our May $100 Tennis Warehouse gift card draw!
         </p>
         <div style="text-align: center; margin: 16px 0;">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12591746755395_.pic.jpg-JEH1lyUrF7nv5XFtCspSQFgwaFIyoa.jpeg" 
+          <img src="/images/design-mode/12591746755395_.pic.jpg.jpeg" 
                alt="May drawing results showing Delice as the winner" 
                style="max-width: 100%; border-radius: 8px; border: 1px solid #e5e7eb;">
           <p style="color: #6b7280; font-size: 14px; margin-top: 8px;">Drawing results from May 9, 2025</p>
@@ -47,13 +47,13 @@ export default function ProgressUpdateMay({ unsubscribeUrl = "#", isTest = false
       
       <div style="display: flex; gap: 16px; margin-bottom: 24px;">
         <div style="flex: 1;">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-05-09%20at%2010.22.54%E2%80%AFAM-ubPoz1qBnWwFqAIf3p0YHyEHsVZ9sh.png" 
+          <img src="/images/design-mode/Screenshot%202025-05-09%20at%2010.22.54%E2%80%AFAM.png" 
                alt="3D model of our first prototype" 
                style="width: 100%; border-radius: 8px; border: 1px solid #e5e7eb;">
           <p style="color: #6b7280; font-size: 14px; text-align: center; margin-top: 8px;">First prototype design</p>
         </div>
         <div style="flex: 1;">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-05-09%20at%2010.23.14%E2%80%AFAM-vYx1ykFGdzHTxkcwfHMKTA09RwsZiN.png" 
+          <img src="/images/design-mode/Screenshot%202025-05-09%20at%2010.23.14%E2%80%AFAM.png" 
                alt="Close-up of the dual flywheel launching system" 
                style="width: 100%; border-radius: 8px; border: 1px solid #e5e7eb;">
           <p style="color: #6b7280; font-size: 14px; text-align: center; margin-top: 8px;">Dual flywheel system</p>

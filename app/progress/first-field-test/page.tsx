@@ -101,7 +101,7 @@ export default function FirstFieldTestPage() {
 
             <div className="mb-6 flex justify-center">
               <img
-                src="https://i.imgur.com/UNvBo5i.gif"
+                src="/images/design-mode/UNvBo5i.gif"
                 alt="Rallie field test demonstration showing the tennis ball machine in action"
                 className="max-w-sm mx-auto rounded-lg"
               />

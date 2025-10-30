@@ -39,6 +39,7 @@
     "@radix-ui/react-toggle-group": "latest",
     "@radix-ui/react-tooltip": "latest",
     "@react-email/components": "latest",
+    "@react-email/render": "latest",
     "@react-email/tailwind": "latest",
     "@types/node": "^20",
     "@types/react": "^18",

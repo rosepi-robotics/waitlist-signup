@@ -7,7 +7,7 @@ import { Footer } from "./components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, Users, TrendingUp, Calendar, Clock, Layers, Zap, Settings, Brain, Tag } from "lucide-react"
+import { ArrowRight, CheckCircle, Users, Calendar, Clock, Layers, Zap, Settings, Brain, Tag } from "lucide-react"
 import { trackEvent } from "./utils/analytics"
 import { getWaitlistCount, joinWaitlist } from "./actions/waitlist"
 import { useToast } from "@/components/ui/use-toast"
@@ -206,32 +206,9 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* CTA with Email Input */}
               <div className="flex flex-col items-center pt-4 space-y-4">
-                <div className="flex flex-col gap-3 w-full max-w-md">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={heroEmail}
-                    onChange={(e) => setHeroEmail(e.target.value)}
-                    className="w-full"
-                  />
-                  <Button
-                    size="lg"
-                    className="bg-orange-500 text-white hover:bg-orange-600 px-8 py-3 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg w-full"
-                    onClick={() =>
-                      handleWaitlistSubmit(heroEmail, setHeroEmail, setHeroLoading, setHeroMessage, "hero")
-                    }
-                    disabled={heroLoading}
-                  >
-                    {heroLoading ? "JOINING..." : "JOIN BETA PROGRAM"}
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                  {heroMessage && (
-                    <p className={`text-sm ${heroMessage.includes("Thanks") ? "text-orange-600" : "text-red-600"}`}>
-                      {heroMessage}
-                    </p>
-                  )}
+                <div className="w-full max-w-md">
+                  <div className="klaviyo-form-YtXYc2"></div>
                 </div>
               </div>
 
@@ -258,7 +235,7 @@ export default function Home() {
             <h2 className="text-4xl font-light text-gray-900 mb-4">BEYOND A BALL MACHINE</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Ball machines should help you train & improve your game in a systematic way, not just headlessly shoot
-              balls at you are just move around and return your balls.
+              balls at you nor move around and return your balls.
             </p>
           </div>
 
@@ -623,11 +600,13 @@ export default function Home() {
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    After discovering that the name Rallie was already in use, we needed to think of a new name. Thanks to input from our beta program members and community surveys, we're excited to unveil our new name:
+                    After discovering that the name Rallie was already in use, we needed to think of a new name. Thanks
+                    to input from our beta program members and community surveys, we're excited to unveil our new name:
                     <strong> Mavio</strong> — smart, reliable, and fun!
                   </p>
                   <p className="text-gray-700">
-                    The name reflects our mission to combine precision engineering with playful, intuitive user experience. It's a fresh start with the same big ambition: to redefine how tennis players train.
+                    The name reflects our mission to combine precision engineering with playful, intuitive user
+                    experience. It's a fresh start with the same big ambition: to redefine how tennis players train.
                   </p>
                 </div>
               </div>
@@ -640,7 +619,8 @@ export default function Home() {
                 </h4>
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <p className="mb-6 text-gray-700">
-                    We're gearing up for our third field test! We've made significant hardware improvements since our last run—most notably, redesigning the launch wheels.
+                    We're gearing up for our third field test! We've made significant hardware improvements since our
+                    last run—most notably, redesigning the launch wheels.
                   </p>
 
                   {/* Field Test GIF */}
@@ -652,9 +632,11 @@ export default function Home() {
                     />
                   </div>
                   <p className="text-xs text-center mt-2 text-gray-500">THE FIRST MAVIO PROTOTYPE - JULY 2025</p>
-                  
+
                   <p className="mt-6 text-gray-700">
-                    We originally used PU (polyurethane) wheels because they're lightweight, helping us keep the machine as light as possible. For this test, we've made significant improvements to the wheel design for better durability and performance.
+                    We originally used PU (polyurethane) wheels because they're lightweight, helping us keep the machine
+                    as light as possible. For this test, we've made significant improvements to the wheel design for
+                    better durability and performance.
                   </p>
                 </div>
               </div>

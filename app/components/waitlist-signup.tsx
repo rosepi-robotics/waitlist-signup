@@ -110,7 +110,7 @@ export function WaitlistSignup() {
                         style={innerContainerStyle}
                       >
                         <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-22%20at%2011.18.26%E2%80%AFAM-W1PBcxFbtu9EohHMJKOfckSiAxb62X.png"
+                          src="/images/design-mode/Screenshot%202025-03-22%20at%2011.18.26%E2%80%AFAM.png"
                           alt="Tennis player practicing"
                           className="w-full h-full object-cover"
                         />
@@ -122,7 +122,7 @@ export function WaitlistSignup() {
                         style={innerContainerStyle}
                       >
                         <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10921742666975_.pic.jpg-5UC1WP4jzwKfg270t86VZSZIdrSg8Q.jpeg"
+                          src="/images/design-mode/10921742666975_.pic.jpg.jpeg"
                           alt="Blue tennis court"
                           className="w-full h-full object-cover"
                         />
@@ -134,7 +134,7 @@ export function WaitlistSignup() {
                         style={innerContainerStyle}
                       >
                         <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10791742095813_.pic.jpg-3sRWyPK0NsTuIbYJGII7VuxX7Y7s2J.jpeg"
+                          src="/images/design-mode/10791742095813_.pic.jpg.jpeg"
                           alt="Tennis ball machine"
                           className="w-full h-full object-cover"
                         />
@@ -149,7 +149,7 @@ export function WaitlistSignup() {
                         }}
                       >
                         <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10821742146089_.pic.jpg-7GPZ59Mp2C9c76JHePFzeTBe2czn32.jpeg"
+                          src="/images/design-mode/10821742146089_.pic.jpg.jpeg"
                           alt="Loading tennis equipment"
                           className="w-full h-full object-cover"
                         />
@@ -161,7 +161,7 @@ export function WaitlistSignup() {
                         style={innerContainerStyle}
                       >
                         <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10911742666974_.pic.jpg-Zd2wSZBxytdTGEolrQ4x16b4zrw5dU.jpeg"
+                          src="/images/design-mode/10911742666974_.pic.jpg.jpeg"
                           alt="Tennis selfie with equipment"
                           className="w-full h-full object-cover"
                         />

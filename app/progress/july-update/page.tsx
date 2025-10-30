@@ -139,7 +139,7 @@ export default function JulyUpdatePage() {
             
             <div className="mb-6 flex justify-center">
               <img
-                src="https://i.imgur.com/b649e9z.gif"
+                src="/images/design-mode/b649e9z.gif"
                 alt="Successful test - tennis ball machine"
                 className="max-w-sm mx-auto rounded-lg"
               />
